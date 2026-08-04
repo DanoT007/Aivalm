@@ -41,7 +41,7 @@
         }
 
         .logo-img {
-            width: 60px; /* Veľkosť ľalie si môžeš prispôsobiť */
+            width: 60px;
             height: auto;
             margin-bottom: 15px;
         }
@@ -71,7 +71,7 @@
         .features {
             text-align: left;
             display: inline-block;
-            margin: 0 auto 40px auto;
+            margin: 0 auto 20px auto;
         }
 
         .features p {
@@ -89,7 +89,7 @@
             font-size: 1.15rem;
             margin-bottom: 10px;
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* Zabezpečí, že šípka ostane hore, ak sa text zalomí na dva riadky */
         }
 
         /* Kontrastná farba pre šípky */
@@ -99,13 +99,26 @@
             font-weight: bold;
         }
 
+        /* Nový štýl pre vysvetlivku k SMS */
+        .demo-note {
+            font-size: 0.95rem;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto 40px auto;
+            color: #444444; /* Jemne bledšia farba na odlíšenie od hlavného textu */
+        }
+
         .action-text {
             font-size: 1.1rem;
             font-style: italic;
             margin-bottom: 50px;
         }
 
-        /* Pätička */
+        /* Pätička so 70px margin-bottom */
+        footer {
+            margin-bottom: 70px;
+        }
+
         hr {
             border: none;
             border-top: 1px solid #e0e0e0;
@@ -115,7 +128,7 @@
 
         .footer-info {
             font-size: 1.05rem;
-            margin-bottom: 65px; /* Priestor pre widget */
+            margin-bottom: 40px; 
         }
 
         .footer-info p {
@@ -154,11 +167,15 @@
                 <p>Sledujte, ako agent:</p>
                 <ul>
                     <li><span>→</span> overí váš záujem</li>
-                    <li><span>→</span> odpovie na základné otázky o nehnuteľnosti</li>
-                    <li><span>→</span> ponúkne konkrétne termíny obhliadky</li>
-                    <li><span>→</span> dohodne si s vami termín</li>
+                    <li><span>→</span> opýta sa kľúčové informácie, ktoré vám po telefonáte so záujemcom pošle</li>
+                    <li><span>→</span> ponúkne konkrétny termín obhliadky podľa vášho kalendára</li>
+                    <li><span>→</span> pošle potvrdzujúcu SMS so všetkými informáciami*</li>
                 </ul>
             </div>
+            
+            <p class="demo-note">
+                * V tejto demo simulácii SMS neprichádza – hovor prebieha cez prehliadač bez telefónneho čísla. V ostrej prevádzke ju agent posiela automaticky do pár sekúnd po dohodnutí termínu.
+            </p>
 
             <p class="action-text">
                 Keď budete pripravený, kliknite na tlačidlo nižšie.<br>
