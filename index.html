@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIVALM - Simulácia obchodného hovoru</title>
+    <title>AIVALM - Odkaz od Daniela</title>
     <style>
-        /* CSS Premenné pre farby */
         :root {
             --bg-color: #ffffff;
             --text-color: #000000;
             --accent-color: #d0443f;
+            --muted-color: #444444;
+            --rule-color: #e0e0e0;
         }
 
-        /* Základný reset a typografia */
         body {
             font-family: "Times New Roman", Times, serif;
             background-color: var(--bg-color);
@@ -26,7 +26,6 @@
             line-height: 1.6;
         }
 
-        /* Hlavný kontajner, ktorý drží všetko "pokope" */
         .container {
             max-width: 600px;
             width: 100%;
@@ -35,9 +34,8 @@
             box-sizing: border-box;
         }
 
-        /* Hlavička - Logo a Názov */
         header {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .logo-img {
@@ -54,88 +52,145 @@
             font-weight: normal;
         }
 
-        /* Obsahová časť */
-        h2 {
-            font-size: 1.6rem;
-            font-weight: normal;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
+        /* Kto to posiela - prvá vec, ktorú človek vidí */
+        .identity-line {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
         }
 
-        .intro-text {
+        /* Jasné, viditeľné oznámenie že ide o AI - nie skryté, nie malým písmom */
+        .ai-badge {
+            display: inline-block;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 8px 16px;
+            margin-bottom: 25px;
+        }
+
+        .explain-text {
             font-size: 1.15rem;
             margin-bottom: 40px;
         }
 
-        /* Zoznam funkcií agenta */
-        .features {
-            text-align: left;
-            display: inline-block;
-            margin: 0 auto 20px auto;
-        }
-
-        .features p {
-            font-size: 1.15rem;
-            margin-bottom: 15px;
-        }
-
-        .features ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .features li {
-            font-size: 1.15rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start; /* Zabezpečí, že šípka ostane hore, ak sa text zalomí na dva riadky */
-        }
-
-        /* Kontrastná farba pre šípky */
-        .features li span {
-            color: var(--accent-color);
-            margin-right: 15px;
-            font-weight: bold;
-        }
-
-        /* Nový štýl pre vysvetlivku k SMS */
-        .demo-note {
-            font-size: 0.95rem;
-            text-align: left;
-            max-width: 500px;
-            margin: 0 auto 40px auto;
-            color: #444444; /* Jemne bledšia farba na odlíšenie od hlavného textu */
-        }
-
-        .action-text {
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 50px;
-        }
-
-        /* Pätička so 70px margin-bottom */
-        footer {
-            margin-bottom: 70px;
+        h3 {
+            font-size: 1.25rem;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+            margin: 0 0 22px 0;
         }
 
         hr {
             border: none;
-            border-top: 1px solid #e0e0e0;
+            border-top: 1px solid var(--rule-color);
             width: 60%;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 35px auto;
+        }
+
+        /* Kroky - čo presne má človek urobiť, v poradí */
+        .steps {
+            text-align: left;
+            display: inline-block;
+            margin: 0 auto 35px auto;
+        }
+
+        .steps > p {
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .steps ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            counter-reset: step-counter;
+        }
+
+        .steps li {
+            font-size: 1.15rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-start;
+            counter-increment: step-counter;
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            color: #ffffff;
+            background-color: var(--accent-color);
+            font-weight: bold;
+            min-width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 0.95rem;
+        }
+
+        .cta-line {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .after-call-note {
+            font-size: 1rem;
+            color: var(--muted-color);
+            max-width: 500px;
+            margin: 30px auto 0 auto;
+        }
+
+        /* Prečo to funguje - rovnaký štýl ako v pôvodnej verzii */
+        .why-section {
+            text-align: left;
+            margin: 0 auto 45px auto;
+        }
+
+        .why-section p {
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+
+        .why-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .why-source {
+            font-size: 0.85rem;
+            color: var(--muted-color);
+            font-style: italic;
+        }
+
+        .why-source a {
+            color: var(--muted-color);
+        }
+
+        footer {
+            margin-top: 45px;
+            margin-bottom: 70px;
         }
 
         .footer-info {
             font-size: 1.05rem;
-            margin-bottom: 40px; 
+            margin-bottom: 40px;
         }
 
         .footer-info p {
             margin: 5px 0;
         }
 
-        /* Kontrastná farba pre telefónne číslo */
         .phone-link {
             color: var(--accent-color);
             text-decoration: none;
@@ -143,8 +198,29 @@
             font-size: 1.15rem;
         }
 
-        .phone-link:hover {
+        .phone-link:hover,
+        .phone-link:focus-visible {
             text-decoration: underline;
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 45px 20px;
+            }
+
+            h1 {
+                letter-spacing: 3px;
+                font-size: 1.9rem;
+            }
+
+            .steps li {
+                font-size: 1.05rem;
+            }
         }
     </style>
 </head>
@@ -157,46 +233,61 @@
         </header>
 
         <main>
-            <h2>Simulácia obchodného hovoru</h2>
-            
-            <p class="intro-text">
-                Zahrajte si rolu človeka, ktorý má záujem o obhliadku nehnuteľnosti na Račianskej v Bratislave — presne tak, ako by to urobil váš klient po tom, čo uvidí inzerát na portáli.
-            </p>
+            <p class="identity-line" id="greeting">Posielam DEMO verziu softvéru ktorý som vytvoril<span id="meno-slot"></span> — ako sme sa dohodli na telefóne.</p>
 
-            <div class="features">
-                <p>Sledujte, ako agent:</p>
-                <ul>
-                    <li><span>→</span> overí Váš záujem</li>
-                    <li><span>→</span> opýta sa kľúčové informácie, ktoré Vám (maklérovi) po telefonáte so záujemcom pošle</li>
-                    <li><span>→</span> ponúkne konkrétny termín obhliadky podľa Vášho kalendára</li>
-                    <li><span>→</span> pošle potvrdzujúcu SMS so všetkými informáciami*</li>
-                </ul>
+            <p class="explain-text">Ide o softvér s umelou inteligenciou, ktorý dokáže telefonovať namiesto Vás — hovorí sa so záujemcami o byty a dohaduje im obhliadky. Za chvíľu si to vyskúšate sami, priamo tu na stránke a zaradmo.</p>
+
+            <hr>
+
+            <div class="steps">
+                <p>Čo urobiť:</p>
+                <ol>
+                    <li>Kliknite na tlačidlo nižšie: Začať hovor</li>
+                    <li>Keď sa prehliadač opýta, povoľte mikrofón.</li>
+                    <li>O pár sekúnd sa ozve hlas. Je to AI, nie skutočný človek.</li>
+                    <li>Rozprávajte sa s ňou tak, akoby ste Vy sami mali záujem o byt na Račianskej v Bratislave — to je najlepší spôsob, ako uvidíte, ako to môže fungovať u Vás.</li>
+                </ol>
             </div>
-            
-            <p class="demo-note">
-                * V tejto demo simulácii SMS neprichádza – hovor prebieha cez prehliadač bez telefónneho čísla. V ostrej prevádzke ju agent posiela automaticky do pár sekúnd po dohodnutí termínu.
-            </p>
 
-            <p class="action-text">
-                Keď budete pripravený, kliknite na tlačidlo nižšie - Začať hovor<br>
-                Hovor prebieha priamo cez mikrofón v prehliadači. <br>
-            </p>
+            <p class="cta-line">Tlačidlo na hovor nájdete v pravo dole na obrazovke.</p>
+
+            <elevenlabs-convai agent-id="agent_6301kz6fp11kfy3rx19j51m0sgvj"></elevenlabs-convai>
+            <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+            <p class="after-call-note">Zajtra Vám zavolám alebo napíšem a opýtam sa, čo si o tom myslíte.</p>
+
+            <hr style="margin-top: 35px;">
+
+            <h3>Prečo to pre Vás dáva zmysel</h3>
+
+            <div class="why-section">
+                <p>Podľa štúdie MIT a InsideSales.com, ktorá vychádza z vyše 100&nbsp;000 reálnych hovorov, platí jedno pravidlo: ak zavoláte záujemcovi do 5 minút namiesto 30, šanca, že sa z neho stane kvalifikovaný klient, je <span class="stat">21-násobne</span> vyššia.</p>
+                <p>Podľa auditu Harvard Business Review pritom väčšina firiem na online dopyt v priemere reaguje až za 42 hodín. Presne v tomto okne — medzi 5. minútou a 42. hodinou — sa väčšina záujemcov rozhodne pre niekoho iného, kto zavolal skôr.</p>
+                <p>Aj jeden zachránený záujemca sa pre Vás rovná stovkám až tisícom eur z provízií. V zahraničí AI agenti túto úlohu riešia už roky — na Slovensku je to zatiaľ výhoda len pre málokoho.</p>
+                <p class="why-source">Zdroj: <a href="https://25649.fs1.hubspotusercontent-na2.net/hub/25649/file-13535879-pdf/docs/mit_study.pdf" target="_blank">Lead Response Management Study</a> (MIT / InsideSales.com, 2007); Oldroyd, McElheran, Elkington — Harvard Business Review (2011).</p>
+            </div>
         </main>
 
         <footer>
             <hr>
             <div class="footer-info">
-                Zdroj:<br>
-                <a href="https://25649.fs1.hubspotusercontent-na2.net/hub/25649/file-13535879-pdf/docs/mit_study.pdf" target="_blank" style="color: #0000ff;">MIT štúdia</a> <br><br>
                 <p>Máte otázky?</p>
                 <p><a href="tel:+421948475484" class="phone-link">+421 948 475 484</a></p>
                 <p>Daniel Tomasch, CEO</p>
             </div>
-
-            <elevenlabs-convai agent-id="agent_6301kz6fp11kfy3rx19j51m0sgvj"></elevenlabs-convai>
-            <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
         </footer>
     </div>
+
+    <script>
+        // Voliteľná personalizácia cez URL parameter, napr. ...?meno=Peter
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const meno = params.get('meno');
+            if (meno) {
+                document.getElementById('meno-slot').textContent = ', ' + decodeURIComponent(meno).trim();
+            }
+        })();
+    </script>
 
 </body>
 </html>
