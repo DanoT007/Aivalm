@@ -13,6 +13,7 @@
         }
         .btn-dark { background-color: #1a1a1a; }
         .btn-dark:hover { background-color: #000000; }
+        .btn-dark:disabled { background-color: #6b7280; cursor: wait; }
         .text-accent { color: #dc2626; }
     </style>
 </head>
@@ -22,7 +23,6 @@
         
         <!-- Logo a Hlavička -->
         <div class="text-center space-y-4">
-            <!-- Logo lálie -->
             <div class="flex justify-center">
                 <img src="image_afc864.png" alt="AIVALM Logo" class="h-24 w-auto object-contain">
             </div>
@@ -36,7 +36,7 @@
         </div>
 
         <!-- Formulár na zber dát -->
-        <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <div id="form-card" class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm">
             <div class="mb-6 border-b border-gray-100 pb-4">
                 <h2 class="text-xl font-bold text-gray-900">Nastav si svoj osobný filter</h2>
                 <p class="text-gray-500 text-sm mt-1">Vyplň údaje nižšie, aby sme vedeli, aké inzeráty ti máme posielať.</p>
@@ -71,16 +71,16 @@
                     <h3 class="text-lg font-bold text-gray-900 border-b border-gray-100 pb-2 mb-4">Aké nehnuteľnosti hľadáš?</h3>
                 </div>
 
-                <!-- Špecifikácia nehnuteľností (Byty a Domy) -->
+                <!-- Typ nehnuteľnosti -->
                 <div>
                     <label class="block text-base font-semibold text-gray-800 mb-2">Typ nehnuteľnosti <span class="text-accent">*</span></label>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div id="typ-box" class="grid grid-cols-1 sm:grid-cols-2 gap-3 rounded-xl transition">
                         <label class="flex items-center space-x-3 bg-gray-50 p-3.5 rounded-xl border border-gray-200 cursor-pointer hover:border-gray-400 transition">
-                            <input type="checkbox" name="typ_nehnutelnosti[]" value="Byty" class="w-5 h-5 rounded border-gray-300 text-gray-900 focus:ring-gray-900">
+                            <input type="checkbox" name="typ_nehnutelnosti[]" value="Byty" class="typ-cb w-5 h-5 rounded border-gray-300 text-gray-900 focus:ring-gray-900">
                             <span class="text-base font-medium text-gray-800">Byty</span>
                         </label>
                         <label class="flex items-center space-x-3 bg-gray-50 p-3.5 rounded-xl border border-gray-200 cursor-pointer hover:border-gray-400 transition">
-                            <input type="checkbox" name="typ_nehnutelnosti[]" value="Domy" class="w-5 h-5 rounded border-gray-300 text-gray-900 focus:ring-gray-900">
+                            <input type="checkbox" name="typ_nehnutelnosti[]" value="Domy" class="typ-cb w-5 h-5 rounded border-gray-300 text-gray-900 focus:ring-gray-900">
                             <span class="text-base font-medium text-gray-800">Domy</span>
                         </label>
                     </div>
@@ -94,12 +94,12 @@
                     </div>
                     <div>
                         <label class="block text-base font-semibold text-gray-800 mb-1">Počet izieb</label>
-                        <input type="text" name="pocet_izieb" placeholder="napr. 2-izbové až 4-izbové" 
+                        <input type="text" name="pocet_izieb" placeholder="napr. 2-4" 
                             class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 transition">
                     </div>
                 </div>
 
-                <!-- Ceny s obmedzením na kladné čísla -->
+                <!-- Ceny -->
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-base font-semibold text-gray-800 mb-1">Cena OD (€)</label>
@@ -126,7 +126,7 @@
                         class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 transition"></textarea>
                 </div>
 
-                <!-- GDPR Zaškrtávacie pole s dynamickým zvýraznením -->
+                <!-- GDPR -->
                 <div id="gdpr-box" class="p-4 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-300">
                     <label class="flex items-start space-x-3 cursor-pointer">
                         <input type="checkbox" id="gdpr-checkbox" class="mt-1 w-5 h-5 rounded border-gray-300 text-gray-900 focus:ring-gray-900">
@@ -136,9 +136,11 @@
                     </label>
                 </div>
 
+                <p id="form-error" class="hidden text-sm text-accent"></p>
+
                 <!-- Tlačidlo -->
                 <div class="pt-2">
-                    <button type="submit" 
+                    <button id="submit-btn" type="submit" 
                         class="w-full btn-dark text-white font-semibold py-4 px-6 rounded-xl shadow-md transition duration-200 text-base">
                         Uložiť filter a spustiť doručovanie
                     </button>
@@ -147,69 +149,74 @@
             </form>
         </div>
 
+        <!-- Potvrdenie po odoslaní -->
+        <div id="success-card" class="hidden bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm text-center space-y-3">
+            <h2 class="text-xl font-bold text-gray-900">Hotovo, filter je uložený ✓</h2>
+            <p class="text-gray-600">Prvé súkromné inzeráty ti prídu na e-mail v najbližší pracovný deň ráno. Skontroluj prosím aj priečinok spam alebo promo akcie.</p>
+        </div>
+
         <p class="text-center text-sm text-gray-400 pb-8">
             © 2026 AIVALM.
         </p>
 
     </div>
 
-    <!-- Skript pre logickú kontrolu a validáciu formulára -->
     <script>
+        // Adresa Make webhooku (scenár novy_makler)
+        const MAKE_WEBHOOK = 'https://hook.eu1.make.com/bbwxh713vs788s9amr4arb38t5uqknsf';
+
         const form = document.getElementById('lead-form');
         const gdprBox = document.getElementById('gdpr-box');
         const gdprCheckbox = document.getElementById('gdpr-checkbox');
+        const typBox = document.getElementById('typ-box');
+        const typCheckboxes = form.querySelectorAll('.typ-cb');
         const cenaOdInput = form.querySelector('[name="cena_od"]');
         const cenaDoInput = form.querySelector('[name="cena_do"]');
         const leadyInput = form.querySelector('[name="pocet_leadov_denne"]');
+        const submitBtn = document.getElementById('submit-btn');
+        const formError = document.getElementById('form-error');
 
-        form.addEventListener('submit', function(e) {
+        function validate() {
             let isValid = true;
 
-            // Vyčistenie predošlých červených označení
-            form.querySelectorAll('input, textarea').forEach(input => {
-                input.classList.remove('border-red-500');
-            });
+            form.querySelectorAll('input, textarea').forEach(input => input.classList.remove('border-red-500'));
 
-            // 1. Kontrola povinných polí
-            const requiredInputs = form.querySelectorAll('[required]');
-            requiredInputs.forEach(input => {
+            // 1. Povinné polia
+            form.querySelectorAll('[required]').forEach(input => {
                 if (!input.value.trim()) {
                     isValid = false;
                     input.classList.add('border-red-500');
                 }
             });
 
-            // 2. Kontrola záporných čísel pre Ceny
-            const cenaOd = parseFloat(cenaOdInput.value);
-            const cenaDo = parseFloat(cenaDoInput.value);
-
-            if (cenaOdInput.value !== "" && cenaOd < 0) {
+            // 2. Aspoň jeden typ nehnuteľnosti
+            const typChecked = Array.from(typCheckboxes).some(cb => cb.checked);
+            if (!typChecked) {
                 isValid = false;
-                cenaOdInput.classList.add('border-red-500');
+                typBox.classList.add('ring-2', 'ring-red-400');
+            } else {
+                typBox.classList.remove('ring-2', 'ring-red-400');
             }
 
-            if (cenaDoInput.value !== "" && cenaDo < 0) {
+            // 3. Ceny nesmú byť záporné a DO musí byť väčšia ako OD
+            const cenaOd = parseFloat(cenaOdInput.value);
+            const cenaDo = parseFloat(cenaDoInput.value);
+            if (cenaOdInput.value !== '' && cenaOd < 0) { isValid = false; cenaOdInput.classList.add('border-red-500'); }
+            if (cenaDoInput.value !== '' && cenaDo < 0) { isValid = false; cenaDoInput.classList.add('border-red-500'); }
+            if (cenaOdInput.value !== '' && cenaDoInput.value !== '' && cenaDo <= cenaOd) {
                 isValid = false;
+                cenaOdInput.classList.add('border-red-500');
                 cenaDoInput.classList.add('border-red-500');
             }
 
-            // 3. Logická kontrola: Cena DO musí byť väčšia ako Cena OD
-            if (cenaOdInput.value !== "" && cenaDoInput.value !== "") {
-                if (cenaDo <= cenaOd) {
-                    isValid = false;
-                    cenaOdInput.classList.add('border-red-500');
-                    cenaDoInput.classList.add('border-red-500');
-                }
-            }
-
-            // 4. Kontrola počtu leadov (5 až 10)
+            // 4. Počet leadov 5 až 10
             const leadyVal = parseInt(leadyInput.value, 10);
             if (isNaN(leadyVal) || leadyVal < 5 || leadyVal > 10) {
                 isValid = false;
                 leadyInput.classList.add('border-red-500');
             }
 
-            // 5. Kontrola GDPR
+            // 5. GDPR
             if (!gdprCheckbox.checked) {
                 isValid = false;
                 gdprBox.classList.add('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-400');
@@ -217,22 +224,66 @@
                 gdprBox.classList.remove('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-400');
             }
 
-            // Ak nastala chyba, zamedzíme odoslaniu a posunieme obrazovku na prvú chybu
-            if (!isValid) {
-                e.preventDefault();
+            return isValid;
+        }
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            formError.classList.add('hidden');
+
+            if (!validate()) {
                 const firstError = form.querySelector('.border-red-500, .ring-red-400');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+                if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Ukladám…';
+
+            // Typ vo formáte, ktorý používa tabuľka Makléri: "byt,dom"
+            const typ = Array.from(typCheckboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value === 'Byty' ? 'byt' : 'dom')
+                .join(',');
+
+            // Dáta pre Make (jednoduchý formulárový formát, bez CORS problémov)
+            const makeData = new URLSearchParams({
+                meno: form.meno_priezvisko.value.trim(),
+                email: form.email.value.trim(),
+                telefon: form.telefon.value.trim(),
+                typ: typ,
+                lokalita: form.lokalita.value.trim(),
+                izby: form.pocet_izieb.value.trim(),
+                cena_od: cenaOdInput.value.trim(),
+                cena_do: cenaDoInput.value.trim(),
+                limit: leadyInput.value.trim(),
+                poznamka: form.poznamka.value.trim()
+            });
+
+            try {
+                // 1. Make: zápis nového makléra do tabuľky
+                await fetch(MAKE_WEBHOOK, { method: 'POST', mode: 'no-cors', body: makeData });
+
+                // 2. Web3Forms: notifikačný e-mail ako záloha
+                try {
+                    await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
+                } catch (err) { /* e-mail je iba záloha, chyba nevadí */ }
+
+                document.getElementById('form-card').classList.add('hidden');
+                document.getElementById('success-card').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (err) {
+                formError.textContent = 'Odoslanie sa nepodarilo. Skontroluj pripojenie a skús to prosím znova.';
+                formError.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Uložiť filter a spustiť doručovanie';
             }
         });
 
-        // Odstránenie červeného zvýraznenia GDPR po zaškrtnutí
         gdprCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                gdprBox.classList.remove('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-400');
-            }
+            if (this.checked) gdprBox.classList.remove('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-400');
         });
+        typCheckboxes.forEach(cb => cb.addEventListener('change', () => typBox.classList.remove('ring-2', 'ring-red-400')));
     </script>
 
 </body>
