@@ -3,291 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIVALM - Odkaz od Daniela</title>
+    <title>Lead Radar – Nastavenie tvojho filtra leadov</title>
+    <!-- Tailwind CSS cez CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --accent-color: #d0443f;
-            --muted-color: #444444;
-            --rule-color: #e0e0e0;
-        }
-
-        body {
-            font-family: "Times New Roman", Times, serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 600px;
-            width: 100%;
-            padding: 60px 30px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        header {
-            margin-bottom: 40px;
-        }
-
-        .logo-img {
-            width: 60px;
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            letter-spacing: 5px;
-            margin: 0;
-            text-transform: uppercase;
-            font-weight: normal;
-        }
-
-        /* Kto to posiela - prvá vec, ktorú človek vidí */
-        .identity-line {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        /* Jasné, viditeľné oznámenie že ide o AI - nie skryté, nie malým písmom */
-        .ai-badge {
-            display: inline-block;
-            font-size: 0.95rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 8px 16px;
-            margin-bottom: 25px;
-        }
-
-        .explain-text {
-            font-size: 1.15rem;
-            margin-bottom: 40px;
-        }
-
-        h3 {
-            font-size: 1.25rem;
-            font-weight: normal;
-            letter-spacing: 0.5px;
-            margin: 0 0 22px 0;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid var(--rule-color);
-            width: 60%;
-            margin: 0 auto 35px auto;
-        }
-
-        /* Kroky - čo presne má človek urobiť, v poradí */
-        .steps {
-            text-align: left;
-            display: inline-block;
-            margin: 0 auto 35px auto;
-        }
-
-        .steps > p {
-            font-size: 1.15rem;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .steps ol {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            counter-reset: step-counter;
-        }
-
-        .steps li {
-            font-size: 1.15rem;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: flex-start;
-            counter-increment: step-counter;
-        }
-
-        .steps li::before {
-            content: counter(step-counter);
-            color: #ffffff;
-            background-color: var(--accent-color);
-            font-weight: bold;
-            min-width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-            font-size: 0.95rem;
-        }
-
-        .cta-line {
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 30px;
-        }
-
-        .after-call-note {
-            font-size: 1rem;
-            color: var(--muted-color);
-            max-width: 500px;
-            margin: 30px auto 0 auto;
-        }
-
-        /* Prečo to funguje - rovnaký štýl ako v pôvodnej verzii */
-        .why-section {
-            text-align: left;
-            margin: 0 auto 45px auto;
-        }
-
-        .why-section p {
-            font-size: 1.1rem;
-            margin-bottom: 18px;
-        }
-
-        .why-section p:last-child {
-            margin-bottom: 0;
-        }
-
-        .stat {
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 1.25rem;
-        }
-
-        .why-source {
-            font-size: 0.85rem;
-            color: var(--muted-color);
-            font-style: italic;
-        }
-
-        .why-source a {
-            color: var(--muted-color);
-        }
-
-        footer {
-            margin-top: 45px;
-            margin-bottom: 70px;
-        }
-
-        .footer-info {
-            font-size: 1.05rem;
-            margin-bottom: 40px;
-        }
-
-        .footer-info p {
-            margin: 5px 0;
-        }
-
-        .phone-link {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.15rem;
-        }
-
-        .phone-link:hover,
-        .phone-link:focus-visible {
-            text-decoration: underline;
-        }
-
-        a:focus-visible {
-            outline: 2px solid var(--accent-color);
-            outline-offset: 3px;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 45px 20px;
-            }
-
-            h1 {
-                letter-spacing: 3px;
-                font-size: 1.9rem;
-            }
-
-            .steps li {
-                font-size: 1.05rem;
-            }
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-slate-900 text-slate-100 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
 
-    <div class="container">
-        <header>
-            <img src="image_afc864.png" alt="Čierna ľalia" class="logo-img">
-            <h1>AIVALM</h1>
-        </header>
+    <div class="max-w-3xl mx-auto space-y-8">
+        
+        <!-- Hlavička / Informácie o softvéri -->
+        <div class="text-center space-y-4">
+            <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-sm font-medium">
+                📡 Lead Radar Pre Maklérov
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Získavaj tie najlepšie súkromné inzeráty každý deň
+            </h1>
+            <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
+                Náš AI softvér nepretržite skenuje realitné portály na celom Slovensku. Sleduje poklesy cien, dĺžku inzerácie a pomocou algoritmov vyhodnocuje priame kontakty na majiteľov, na ktoré sa ti naozaj oplatí zavolať.
+            </p>
+        </div>
 
-        <main>
-            <p class="identity-line" id="greeting">DEMO verzia softvéru ktorý som vytvoril<span id="meno-slot"></span></p>
+        <!-- Výhody Lead Radaru -->
+        <div class="grid sm:grid-cols-3 gap-4 text-left">
+            <div class="bg-slate-800/60 border border-slate-700/50 p-4 rounded-xl space-y-2">
+                <div class="text-2xl">🎯</div>
+                <h3 class="font-semibold text-white">AI Filtrovanie</h3>
+                <p class="text-xs text-slate-400">Dostaneš len relevantné leady s vysokou šancou na nabratie.</p>
+            </div>
+            <div class="bg-slate-800/60 border border-slate-700/50 p-4 rounded-xl space-y-2">
+                <div class="text-2xl">📉</div>
+                <h3 class="font-semibold text-white">Detekcia zliav</h3>
+                <p class="text-xs text-slate-400">Automaticky zachytí zníženie ceny alebo ležiaky na trhu.</p>
+            </div>
+            <div class="bg-slate-800/60 border border-slate-700/50 p-4 rounded-xl space-y-2">
+                <div class="text-2xl">📩</div>
+                <h3 class="font-semibold text-white">Ranný Prehľad</h3>
+                <p class="text-xs text-slate-400">Čerstvý zoznam inzerátov v tvojom e-maile každý deň.</p>
+            </div>
+        </div>
 
-            <p class="explain-text">Ide o softvér s umelou inteligenciou, ktorý dokáže telefonovať namiesto Vás — hovorí sa so záujemcami o byty a dohaduje im obhliadky. Za chvíľu si to vyskúšate sami, priamo tu na stránke a zaradmo.</p>
-
-            <hr>
-
-            <div class="steps">
-                <p>Čo urobiť:</p>
-                <ol>
-                    <li>Kliknite na tlačidlo nižšie: Začať hovor</li>
-                    <li>Keď sa prehliadač opýta, povoľte mikrofón.</li>
-                    <li>O pár sekúnd sa ozve hlas. Je to AI, nie skutočný človek.</li>
-                    <li>Rozprávajte sa s ňou tak, akoby ste Vy sami mali záujem o byt na Trnavskej ceste v Bratislave — to je najlepší spôsob, ako uvidíte, ako to môže fungovať u Vás.</li>
-                </ol>
+        <!-- Formulár na zber dát -->
+        <div class="bg-slate-800 border border-slate-700/80 rounded-2xl p-6 sm:p-8 shadow-2xl">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-white">Nastav si svoj osobný filter</h2>
+                <p class="text-slate-400 text-sm mt-1">Vyplň údaje nižšie, aby sme vedeli, aké inzeráty ti máme posielať.</p>
             </div>
 
-            <p class="cta-line">Tlačidlo na hovor nájdete v pravo dole na obrazovke.</p>
+            <!-- SEM VLOŽÍŠ SVOJ ACCESS_KEY Z WEB3FORMS ALEBO FORMSPREE -->
+            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                
+                <!-- Skrytý kľúč pre e-mailovú službu -->
+                <input type="hidden" name="access_key" value="TENTO_KLUC_NAHRAD_SVOJIM_KLUM">
+                <input type="hidden" name="subject" value="Nový záujemca – Lead Radar Filter">
 
-            <elevenlabs-convai agent-id="agent_2501m1kks0vxe4prsfdzfv21s2m5"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
-            <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+                <!-- Osobné údaje -->
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Meno a Priezvisko *</label>
+                        <input type="text" name="meno_priezvisko" required placeholder="napr. Peter Novák" 
+                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">E-mail na doručovanie *</label>
+                        <input type="email" name="email" required placeholder="peter.novak@realitka.sk" 
+                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
+                    </div>
+                </div>
 
-            
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Telefónne číslo *</label>
+                    <input type="tel" name="telefon" required placeholder="+421 9XX XXX XXX" 
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
+                </div>
 
-            <hr style="margin-top: 35px;">
+                <hr class="border-slate-700 my-6">
 
-            <h3>Prečo to pre maklérov dáva zmysel</h3>
+                <!-- Špecifikácia nehnuteľností -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Typ nehnuteľnosti *</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <label class="flex items-center space-x-2 bg-slate-900 p-3 rounded-lg border border-slate-700 cursor-pointer hover:border-slate-500">
+                            <input type="checkbox" name="typ_nehnutelnosti[]" value="Byty" class="rounded text-blue-500 focus:ring-0 bg-slate-800">
+                            <span class="text-sm text-slate-200">Byty</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-slate-900 p-3 rounded-lg border border-slate-700 cursor-pointer hover:border-slate-500">
+                            <input type="checkbox" name="typ_nehnutelnosti[]" value="Domy" class="rounded text-blue-500 focus:ring-0 bg-slate-800">
+                            <span class="text-sm text-slate-200">Domy</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-slate-900 p-3 rounded-lg border border-slate-700 cursor-pointer hover:border-slate-500">
+                            <input type="checkbox" name="typ_nehnutelnosti[]" value="Pozemky" class="rounded text-blue-500 focus:ring-0 bg-slate-800">
+                            <span class="text-sm text-slate-200">Pozemky</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-slate-900 p-3 rounded-lg border border-slate-700 cursor-pointer hover:border-slate-500">
+                            <input type="checkbox" name="typ_nehnutelnosti[]" value="Iné" class="rounded text-blue-500 focus:ring-0 bg-slate-800">
+                            <span class="text-sm text-slate-200">Iné</span>
+                        </label>
+                    </div>
+                </div>
 
-            <div class="why-section">
-                <p>Podľa štúdie MIT a InsideSales.com, ktorá vychádza z vyše 100&nbsp;000 reálnych hovorov, platí jedno pravidlo: ak zavoláte záujemcovi do 5 minút namiesto 30, šanca, že sa z neho stane kvalifikovaný klient, je <span class="stat">21-násobne</span> vyššia.</p>
-                <p>Podľa auditu Harvard Business Review pritom väčšina firiem na online dopyt v priemere reaguje až za 42 hodín. Presne v tomto okne — medzi 5. minútou a 42. hodinou — sa väčšina záujemcov rozhodne pre niekoho iného, kto zavolal skôr.</p>
-                <p>Aj jeden zachránený záujemca sa pre Vás rovná stovkám až tisícom eur z provízií. V zahraničí AI agenti túto úlohu riešia už roky — na Slovensku je to zatiaľ výhoda len pre málokoho.</p>
-                <p class="why-source">Zdroj: <a href="https://25649.fs1.hubspotusercontent-na2.net/hub/25649/file-13535879-pdf/docs/mit_study.pdf" target="_blank">Lead Response Management Study</a> (MIT / InsideSales.com, 2007); Oldroyd, McElheran, Elkington — Harvard Business Review (2011).</p>
-            </div>
-        </main>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Lokalita / Mestská časť *</label>
+                        <input type="text" name="lokalita" required placeholder="napr. Bratislava - Petržalka, Ružinov" 
+                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Počet izieb</label>
+                        <input type="text" name="pocet_izieb" placeholder="napr. 2-izbové až 4-izbové (bez garzóniek)" 
+                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
+                    </div>
+                </div>
 
-        <footer>
-            <hr>
-            <div class="footer-info">
-                <p>Máte otázky?</p>
-                <p><a href="tel:+421948475484" class="phone-link">+421 948 475 484</a></p>
-                <p>Daniel Tomasch, CEO</p>
-            </div>
-        </footer>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Cena OD (€)</label>
+                        <input type="number" name="cena_od" placeholder="100000" 
+                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Cena DO (€)</label>
+                        <input type="number" name="cena_do" placeholder="250000" 
+                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Počet leadov denne (od 5 do 20) *</label>
+                    <input type="number" name="pocet_leadov_denne" min="5" max="20" value="10" required 
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-blue-500 transition">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Špeciálna poznámka / Preferencie</label>
+                    <textarea name="poznamka" rows="3" placeholder="napr. Uprednostňujem urgentné predaje, zlacnené nehnuteľnosti alebo byty s balkónom..." 
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition"></textarea>
+                </div>
+
+                <button type="submit" 
+                    class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3.5 px-6 rounded-lg shadow-lg hover:shadow-blue-500/25 transition duration-200">
+                    🚀 Uložiť filter a spustiť doručovanie
+                </button>
+
+            </form>
+        </div>
+
+        <p class="text-center text-xs text-slate-500">
+            © 2026 Lead Radar. Všetky práva vyhradené.
+        </p>
+
     </div>
-
-    <script>
-        // Voliteľná personalizácia cez URL parameter, napr. ...?meno=Peter
-        (function () {
-            const params = new URLSearchParams(window.location.search);
-            const meno = params.get('meno');
-            if (meno) {
-                document.getElementById('meno-slot').textContent = ', ' + decodeURIComponent(meno).trim();
-            }
-        })();
-    </script>
 
 </body>
 </html>
