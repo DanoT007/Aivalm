@@ -25,13 +25,13 @@
             <!-- Logo lálie -->
             <div class="flex justify-center">
                 <img src="image_afc864.png" alt="AIVALM Logo" class="h-24 w-auto object-contain">
-            </div><
+            </div>
 
             <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight leading-snug">
                 Súkromné inzeráty s najvyšším potenciálom. Každé ráno v tvojom e-maile
             </h1>
             <p class="text-gray-600 text-base px-2">
-                Náš AI systém nepretržite analyzuje slovenský realitný trh. Sleduje zníženia cien či dĺžku inzerácie a z tisícov ponúk pre teba vybrerie len tie priame kontakty na majiteľov, kde je najväčšia šanca na úspešné naberanie.
+                Náš AI systém nepretržite analyzuje slovenský realitný trh. Sleduje zníženia cien či dĺžku inzerácie a z tisícov ponúk pre teba vyberie len tie priame kontakty na majiteľov, kde je najväčšia šanca na úspešné naberanie.
             </p>
         </div>
 
@@ -71,7 +71,7 @@
                     <h3 class="text-lg font-bold text-gray-900 border-b border-gray-100 pb-2 mb-4">Aké nehnuteľnosti hľadáš?</h3>
                 </div>
 
-                <!-- Špecifikácia nehnuteľností (bez možnosti "Iné") -->
+                <!-- Špecifikácia nehnuteľností -->
                 <div>
                     <label class="block text-base font-semibold text-gray-800 mb-2">Typ nehnuteľnosti <span class="text-accent">*</span></label>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -103,22 +103,24 @@
                     </div>
                 </div>
 
+                <!-- Ceny s obmedzením na kladné čísla -->
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-base font-semibold text-gray-800 mb-1">Cena OD (€)</label>
-                        <input type="number" name="cena_od" placeholder="100 000" 
+                        <input type="number" name="cena_od" min="0" placeholder="100 000" 
                             class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 transition">
                     </div>
                     <div>
                         <label class="block text-base font-semibold text-gray-800 mb-1">Cena DO (€)</label>
-                        <input type="number" name="cena_do" placeholder="250 000" 
+                        <input type="number" name="cena_do" min="0" placeholder="250 000" 
                             class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gray-900 transition">
                     </div>
                 </div>
 
+                <!-- Počet leadov denne (5 až 10) -->
                 <div>
-                    <label class="block text-base font-semibold text-gray-800 mb-1">Počet leadov denne (5 - 20) <span class="text-accent">*</span></label>
-                    <input type="number" name="pocet_leadov_denne" min="5" max="20" value="10" required 
+                    <label class="block text-base font-semibold text-gray-800 mb-1">Počet leadov denne (5 - 10) <span class="text-accent">*</span></label>
+                    <input type="number" name="pocet_leadov_denne" min="5" max="10" value="10" required 
                         class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-gray-900 transition">
                 </div>
 
@@ -138,7 +140,7 @@
                     </label>
                 </div>
 
-                <!-- Tlačidlo bez šípky -->
+                <!-- Tlačidlo -->
                 <div class="pt-2">
                     <button type="submit" 
                         class="w-full btn-dark text-white font-semibold py-4 px-6 rounded-xl shadow-md transition duration-200 text-base">
@@ -155,44 +157,81 @@
 
     </div>
 
-    <!-- Skript pre kontrolu zaškrtnutia GDPR a červené rozsvietenie -->
+    <!-- Skript pre logickú kontrolu a validáciu formulára -->
     <script>
         const form = document.getElementById('lead-form');
         const gdprBox = document.getElementById('gdpr-box');
         const gdprCheckbox = document.getElementById('gdpr-checkbox');
+        const cenaOdInput = form.querySelector('[name="cena_od"]');
+        const cenaDoInput = form.querySelector('[name="cena_do"]');
+        const leadyInput = form.querySelector('[name="pocet_leadov_denne"]');
 
         form.addEventListener('submit', function(e) {
             let isValid = true;
 
-            // Kontrola povinných vstupov
+            // Vyčistenie predošlých červených označení
+            form.querySelectorAll('input, textarea').forEach(input => {
+                input.classList.remove('border-red-500');
+            });
+
+            // 1. Kontrola povinných polí
             const requiredInputs = form.querySelectorAll('[required]');
             requiredInputs.forEach(input => {
                 if (!input.value.trim()) {
                     isValid = false;
                     input.classList.add('border-red-500');
-                } else {
-                    input.classList.remove('border-red-500');
                 }
             });
 
-            // Kontrola GDPR
+            // 2. Kontrola záporných čísel pre Ceny
+            const cenaOd = parseFloat(cenaOdInput.value);
+            const cenaDo = parseFloat(cenaDoInput.value);
+
+            if (cenaOdInput.value !== "" && cenaOd < 0) {
+                isValid = false;
+                cenaOdInput.classList.add('border-red-500');
+            }
+
+            if (cenaDoInput.value !== "" && cenaDo < 0) {
+                isValid = false;
+                cenaDoInput.classList.add('border-red-500');
+            }
+
+            // 3. Logická kontrola: Cena DO musí byť väčšia ako Cena OD
+            if (cenaOdInput.value !== "" && cenaDoInput.value !== "") {
+                if (cenaDo <= cenaOd) {
+                    isValid = false;
+                    cenaOdInput.classList.add('border-red-500');
+                    cenaDoInput.classList.add('border-red-500');
+                }
+            }
+
+            // 4. Kontrola počtu leadov (5 až 10)
+            const leadyVal = parseInt(leadyInput.value, 10);
+            if (isNaN(leadyVal) || leadyVal < 5 || leadyVal > 10) {
+                isValid = false;
+                leadyInput.classList.add('border-red-500');
+            }
+
+            // 5. Kontrola GDPR
             if (!gdprCheckbox.checked) {
                 isValid = false;
-                e.preventDefault();
-                // Rozsvietenie GDPR boxu na červeno
                 gdprBox.classList.add('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-400');
-                gdprBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
                 gdprBox.classList.remove('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-400');
             }
 
-            if (isValid && gdprCheckbox.checked) {
-                // Odoslanie formulára
-                form.submit();
+            // Ak nastala chyba, zamedzíme odoslaniu a posunieme obrazovku na prvú chybu
+            if (!isValid) {
+                e.preventDefault();
+                const firstError = form.querySelector('.border-red-500, .ring-red-400');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             }
         });
 
-        // Odstránenie červeného zvýraznenia po zaškrtnutí
+        // Odstránenie červeného zvýraznenia GDPR po zaškrtnutí
         gdprCheckbox.addEventListener('change', function() {
             if (this.checked) {
                 gdprBox.classList.remove('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-400');
