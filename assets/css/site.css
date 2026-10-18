@@ -758,3 +758,9 @@ html.menu-open{overflow:hidden}
   .story.scenes:not(.is-static) .scene-t{top:clamp(48px,15vh,130px)}
   .story.scenes .story__title{margin-bottom:clamp(16px,2.4vh,28px)}
 }
+
+/* in-page glide (fx.js): JS drives the motion, so native smooth scrolling must not fight it */
+html.js{scroll-behavior:auto}
+.story__pin{transition:opacity .55s ease}
+.story.is-skipping .story__pin{opacity:0;transition:opacity .3s ease}
+[tabindex="-1"]:focus{outline:none}

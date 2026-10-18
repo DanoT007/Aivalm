@@ -33,16 +33,91 @@
     } else {
       (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
     }
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest('a[href*="#"]'); if (!a) return;
-      var url = new URL(a.href, location.href);
-      if (url.pathname !== location.pathname || !url.hash) return;
-      var el = document.querySelector(url.hash); if (!el) return;
-      e.preventDefault();
-      lenis.scrollTo(el, { offset: 0, duration: 1.4 });
-      history.replaceState(null, '', url.hash);
-    });
   }
+
+  /* ---------- premium in-page glide: every same-page anchor eases out, travels, eases in ----------
+     Duration scales with distance (about 1.9 s for one screen, 3-3.5 s for long trips).
+     Pinned scroll stories on the way are faded out and crossed at a fraction of the speed, so their
+     step animations don't flicker past; they fade back in already in their final state. */
+  var glide = null, root = document.documentElement;
+  function setY(y) { if (lenis) lenis.scrollTo(y, { immediate: true, force: true }); else window.scrollTo(0, y); }
+  function targetY(el) {
+    var y = el.getBoundingClientRect().top + window.scrollY;
+    if (!el.classList.contains('story')) y -= 88; /* clear the sticky nav; stories pin at their own top */
+    return Math.max(0, Math.min(Math.round(y), root.scrollHeight - window.innerHeight));
+  }
+  function pinZones(lo, hi) {
+    if (!window.ScrollTrigger) return [];
+    return ScrollTrigger.getAll().filter(function (st) { return st.pin && st.enabled !== false && st.end > lo && st.start < hi; })
+      .map(function (st) { return { st: st, el: st.trigger, a: Math.max(st.start, lo), b: Math.min(st.end, hi), on: false }; })
+      .sort(function (p, q) { return p.a - q.a; });
+  }
+  function buildMap(from, to, zones) {
+    var dir = to >= from ? 1 : -1, segs = [], pos = from, total = 0;
+    (dir > 0 ? zones : zones.slice().reverse()).forEach(function (z) {
+      var s = dir > 0 ? z.a : z.b, e = dir > 0 ? z.b : z.a;
+      if ((s - pos) * dir > 0) segs.push({ s: pos, e: s, w: 1 });
+      if (e !== s) segs.push({ s: s, e: e, w: .12 });
+      pos = e;
+    });
+    if ((to - pos) * dir > 0) segs.push({ s: pos, e: to, w: 1 });
+    segs.forEach(function (g) { g.len = Math.abs(g.e - g.s) * g.w; g.c0 = total; total += g.len; });
+    return { segs: segs, total: total };
+  }
+  function mapY(m, d) {
+    for (var i = 0; i < m.segs.length; i++) {
+      var g = m.segs[i];
+      if (d <= g.c0 + g.len || i === m.segs.length - 1) { var f = g.len ? (d - g.c0) / g.len : 1; return g.s + (g.e - g.s) * Math.min(1, Math.max(0, f)); }
+    }
+    return m.segs.length ? m.segs[m.segs.length - 1].e : 0;
+  }
+  function settle(z) {
+    if (window.ScrollTrigger) ScrollTrigger.update();
+    var tw = z.st.getTween && z.st.getTween(); if (tw) tw.progress(1);
+    z.el.classList.remove('is-skipping'); z.on = false;
+  }
+  function endGlide() {
+    if (!glide) return;
+    cancelAnimationFrame(glide.raf); clearTimeout(glide.dog);
+    glide.zones.forEach(function (z) { if (z.on) settle(z); });
+    root.classList.remove('is-gliding'); glide = null;
+  }
+  function glideTo(el, hash) {
+    endGlide();
+    var from = window.scrollY, to = targetY(el), vh = window.innerHeight;
+    var focus = function () { if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1'); try { el.focus({ preventScroll: true }); } catch (e) {} };
+    if (hash) history.replaceState(null, '', hash);
+    if (reduce || Math.abs(to - from) < 2) { setY(to); focus(); return; }
+    var zones = pinZones(Math.min(from, to), Math.max(from, to)), m = buildMap(from, to, zones);
+    var dur = Math.max(900, Math.min(3500, 590 + 1310 * Math.sqrt(m.total / vh))), t0 = performance.now(), dir = to > from ? 1 : -1;
+    glide = { raf: 0, zones: zones };
+    root.classList.add('is-gliding');
+    /* safety net: if frames stall (busy device, background tab) still land on the target */
+    glide.dog = setTimeout(function () { if (glide) { endGlide(); setY(to); focus(); } }, dur + 400);
+    (function step(now) {
+      if (!glide) return;
+      var p = Math.min(1, (now - t0) / dur), e = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+      var y = mapY(m, e * m.total);
+      setY(y);
+      zones.forEach(function (z) {
+        var on = y > z.st.start - (dir > 0 ? .45 : .1) * vh && y < z.st.end + (dir > 0 ? .1 : .45) * vh;
+        if (on && !z.on) { z.el.classList.add('is-skipping'); z.on = true; }
+        else if (!on && z.on) settle(z);
+      });
+      if (p < 1) glide.raf = requestAnimationFrame(step); else { endGlide(); focus(); }
+    })(t0);
+  }
+  ['wheel', 'touchstart', 'keydown'].forEach(function (ev) { addEventListener(ev, endGlide, { passive: true }); });
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest('a[href*="#"]'); if (!a || a.classList.contains('skip')) return;
+    var url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || url.pathname !== location.pathname || !/^#[\w-]+$/.test(url.hash)) return;
+    var el = document.querySelector(url.hash); if (!el) return;
+    e.preventDefault();
+    glideTo(el, url.hash);
+  });
+  window.AIVALM = window.AIVALM || {}; window.AIVALM.glideTo = glideTo;
 
   /* ---------- page curtain ---------- */
   var curtain = document.querySelector('.curtain');
