@@ -7,6 +7,19 @@
   var hasG = !!window.gsap;
   if (hasG && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
+  /* ---------- every page opens at its top (or at its #anchor) ---------- */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (hasG && window.ScrollTrigger && ScrollTrigger.clearScrollMemory) ScrollTrigger.clearScrollMemory('manual');
+  function toStart() {
+    var el = location.hash && /^#[\w-]+$/.test(location.hash) ? document.querySelector(location.hash) : null;
+    var y = el ? Math.max(0, el.getBoundingClientRect().top + window.scrollY - 76) : 0;
+    window.scrollTo(0, y);
+    if (window.AIVALM && window.AIVALM.lenis) window.AIVALM.lenis.scrollTo(y, { immediate: true, force: true });
+  }
+  window.scrollTo(0, 0);
+  window.addEventListener('load', function () { toStart(); setTimeout(toStart, 60); });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) toStart(); });
+
   /* ---------- smooth scroll ---------- */
   var lenis = null;
   if (!reduce && window.Lenis) {
@@ -25,7 +38,7 @@
       if (url.pathname !== location.pathname || !url.hash) return;
       var el = document.querySelector(url.hash); if (!el) return;
       e.preventDefault();
-      lenis.scrollTo(el, { offset: -76, duration: 1.4 });
+      lenis.scrollTo(el, { offset: 0, duration: 1.4 });
       history.replaceState(null, '', url.hash);
     });
   }
@@ -61,7 +74,26 @@
     document.body.append(dot, ring);
     document.documentElement.classList.add('has-cursor');
     var label = ring.firstChild, mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, shown = false;
+    var root = document.documentElement, bgCache = new WeakMap(), pending = false;
+    function isDark(el) {
+      for (var n = el; n && n !== document; n = n.parentElement) {
+        if (bgCache.has(n)) return bgCache.get(n);
+        var bg = getComputedStyle(n).backgroundColor, m = bg.match(/[\d.]+/g);
+        if (m && (m.length < 4 || +m[3] > .5)) {
+          var lum = (0.2126 * m[0] + 0.7152 * m[1] + 0.0722 * m[2]) / 255, d = lum < .45;
+          bgCache.set(n, d); return d;
+        }
+      }
+      return false;
+    }
+    function tone() {
+      pending = false;
+      var el = document.elementFromPoint(mx, my);
+      root.classList.toggle('cur-dark', !!el && isDark(el));
+    }
+    addEventListener('scroll', function () { if (!pending) { pending = true; requestAnimationFrame(tone); } }, { passive: true });
     addEventListener('pointermove', function (e) {
+      if (!pending) { pending = true; requestAnimationFrame(tone); }
       mx = e.clientX; my = e.clientY;
       if (!shown) { shown = true; rx = mx; ry = my; document.documentElement.classList.add('cur-on'); }
       dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)';
@@ -89,7 +121,7 @@
     addEventListener('pointerup', function () { ring.classList.remove('is-down'); });
 
     /* magnetic buttons */
-    document.querySelectorAll('.btn, .door__go, [data-magnet]').forEach(function (el) {
+    document.querySelectorAll('.btn, [data-magnet]').forEach(function (el) {
       var s = el.classList.contains('door__go') ? .35 : .22;
       el.addEventListener('pointermove', function (e) {
         var r = el.getBoundingClientRect();

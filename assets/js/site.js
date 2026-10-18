@@ -216,7 +216,7 @@
       days.forEach(function (day, i) {
         var b = document.createElement('button');
         b.type = 'button'; b.className = 'day';
-        b.innerHTML = '<span>' + DN[day.wd] + '</span><b>' + day.d + '.</b><span>' + day.m + '.</span>';
+        b.innerHTML = '<span>' + DN[day.wd] + '</span><b>' + day.d + '.' + day.m + '.</b>';
         b.setAttribute('aria-label', DL[day.wd] + ' ' + day.d + '. ' + day.m + '.');
         var free = dayHasFree(day);
         if (!free) b.disabled = true;
