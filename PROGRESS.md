@@ -13,13 +13,20 @@ Zdroj pravdy pre dizajn: `DESIGN.md`. Stránky sa skladajú cez `python3 tools/b
 - Pôvodná Lead Radar stránka presunutá do `lead-radar.html`
 
 ## Make webhooky (eu1)
-- rezervácia callu: hook 3928058 `0di8queev6d1cqlisd70lujsswaiui8l` – scenár TODO
-- spolupráca: hook 3928059 `42gkuqfpp97f332ughqe4usm2sgsddxc` – scenár TODO
-- ukážka dopytu: hook 3928060 `qti8okd8zj63vuswcwzynva3lnas2urd` – scenár TODO
+- rezervácia callu: hook 3928058, scenár 8032300 „WEB – rezervácia callu“ (sloty z kalendára, rezervácia, potvrdenie s Meet linkom, notifikácia, ochrana pred dvojitou rezerváciou) – otestované
+- spolupráca: hook 3928059, scenár 8032260 „WEB – spolupráca“ – otestované
+- ukážka dopytu: hook 3928060, scenár 8032364 „WEB – ukážka cenovej ponuky“ (3 odvetvia) – otestované
+- POZOR: scenáre s WebhookRespond nesmú mať zapnuté „sequential processing“ (vracajú len „Accepted“)
 - odhad auta: existujúci hook 3926425 (scenár 8027094)
 - Meet link: https://meet.google.com/fbi-hecg-bpg ; kalendár tomaschdaniel@gmail.com (spojenie 12064600), Gmail aivalm.agent (10823538), Gmail Daniel (12045542)
 
+## Feel layer (hotové)
+Lenis smooth scroll, vlastný kurzor (s labelom „Pozrieť“), magnetické tlačidlá, opona pri prechode stránok, filmové zrnenie, bežiaci text riadený rýchlosťou scrollu, 3 produkty vedľa seba s rozťahovaním pri hoveri, slová svietiace pri scrolle.
+
+## Náhľad
+https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodošlú – blokuje to sandbox; na aivalm.com fungujú)
+
 ## Ďalej
-1. Make scenáre (rezervácia, spolupráca, ukážka) + test cez webhooky
-2. Viac pohybu na hlavnej stránke, kontrola mobilu na všetkých stránkach
-3. Náhľad (artifact) pre Daniela, potom merge do main po schválení
+1. Spätná väzba od Daniela na náhľad
+2. Voliteľne 3D objekt (img2threejs) na produktovej stránke
+3. Merge `claude-redesign` → `main` (GitHub Pages, aivalm.com) po schválení; zmazať testovací termín 30. 10. 17:30 v kalendári
