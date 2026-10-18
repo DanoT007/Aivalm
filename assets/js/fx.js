@@ -22,7 +22,8 @@
 
   /* ---------- smooth scroll ---------- */
   var lenis = null;
-  if (!reduce && window.Lenis) {
+  var touch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  if (!reduce && !touch && window.Lenis) {
     lenis = new Lenis({ duration: 1.15, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, wheelMultiplier: 1, touchMultiplier: 1.4 });
     window.AIVALM = window.AIVALM || {}; window.AIVALM.lenis = lenis;
     if (hasG) {
@@ -189,8 +190,5 @@
       var amt = parseFloat(el.dataset.parallax) || 60;
       gsap.fromTo(el, { y: -amt }, { y: amt, ease: 'none', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
-    /* big footer word rises with scroll */
-    var fw = document.querySelector('.foot__word');
-    if (fw) gsap.fromTo(fw, { yPercent: 35, opacity: .2 }, { yPercent: 0, opacity: 1, ease: 'none', scrollTrigger: { trigger: '.foot', start: 'top bottom', end: 'top 30%', scrub: .6 } });
   }
 })();
