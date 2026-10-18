@@ -1,0 +1,57 @@
+<section class="sec on-ink" id="rezervacia" aria-labelledby="rez-h">
+  <div class="wrap book" data-booking data-done>
+    <div class="book__intro" data-group>
+      <h2 id="rez-h" data-rise>15 minút, <span class="grey">zadarmo</span></h2>
+      <p class="sec__lead muted" data-rise>Krátky online hovor cez Google Meet. Ukážem vám produkt naživo na vašom prípade a poviem na rovinu, či sa vám oplatí.</p>
+      <ul class="book__points" data-rise>
+        <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Živé demo vrátane hlasového agenta</li>
+        <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Odkaz na stretnutie príde hneď do e-mailu</li>
+        <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Žiadny záväzok, žiadna prezentácia na hodinu</li>
+      </ul>
+    </div>
+    <div class="panel" style="background:#fff;color:#0B0B0B">
+      <form class="form" novalidate>
+        <div>
+          <p class="legend" id="d-l">Deň</p>
+          <div class="days" role="group" aria-labelledby="d-l"></div>
+        </div>
+        <div>
+          <p class="legend" id="s-l">Čas <span class="muted" style="font-weight:500">(slovenský čas)</span></p>
+          <div class="slots" role="group" aria-labelledby="s-l" aria-live="polite"></div>
+          <p class="pick" aria-live="polite"></p>
+          <p class="err slot-err" style="display:block" aria-live="assertive"></p>
+          <input type="hidden" name="t">
+        </div>
+        <div class="row">
+          <div class="field"><label for="b-meno">Meno a priezvisko</label><input class="input" id="b-meno" name="meno" autocomplete="name" required></div>
+          <div class="field"><label for="b-firma">Firma <span class="opt">(nepovinné)</span></label><input class="input" id="b-firma" name="firma" autocomplete="organization"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="b-email">E-mail</label><input class="input" id="b-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+          <div class="field"><label for="b-tel">Telefón</label><input class="input" id="b-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" placeholder="+421 9xx xxx xxx" required></div>
+        </div>
+        <div class="field">
+          <label for="b-prod">O čom sa chcete baviť</label>
+          <select class="select" id="b-prod" name="produkt">
+            <option value="hlasovy-agent"{{sel:hlasovy-agent}}>AI hlasový agent</option>
+            <option value="odhad-ceny"{{sel:odhad-ceny}}>AI odhad ceny (autá, nehnuteľnosti)</option>
+            <option value="emailove-dopyty"{{sel:emailove-dopyty}}>E-mailové spracovanie dopytov</option>
+            <option value="neviem"{{sel:neviem}}>Ešte neviem, poraďte mi</option>
+          </select>
+        </div>
+        <div class="field"><label for="b-pozn">Čo by ste chceli vyriešiť <span class="opt">(nepovinné)</span></label><textarea class="textarea" id="b-pozn" name="poznamka" rows="3" placeholder="Napr. koľko dopytov mesačne, aký používate CRM…"></textarea></div>
+        <div class="hp" aria-hidden="true"><label>Pozícia<input name="pozicia" tabindex="-1" autocomplete="off"></label></div>
+        <p class="consent">Odoslaním súhlasíte so spracovaním údajov na účel dohodnutia stretnutia. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
+        <div><button class="btn" type="submit">Rezervovať termín <span class="arr" aria-hidden="true">→</span></button></div>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="done" role="status">
+        <div class="done__mark"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 13.5l5 5 11-12"/></svg></div>
+        <h3>Termín je rezervovaný</h3>
+        <p><strong data-echo="termin"></strong></p>
+        <p>Odkaz na Google Meet sme poslali na <strong data-echo="email"></strong>. Ak e-mail do pár minút nevidíte, pozrite aj priečinok Spam.</p>
+        <p class="muted">Teším sa na rozhovor. Daniel Tomasch</p>
+      </div>
+    </div>
+  </div>
+</section>

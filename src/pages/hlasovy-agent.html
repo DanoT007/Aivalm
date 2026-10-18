@@ -1,0 +1,133 @@
+<!--
+title: AI hlasový agent – záujemca má hovor do 2 minút | AIVALM
+desc: AI hlasový agent zavolá každému novému záujemcovi do 2 minút, zistí financovanie, dôvod kúpy a časový horizont a dohodne obhliadku podľa vášho kalendára.
+nav: hlasovy
+produkt: hlasovy-agent
+scripts: stories.js
+-->
+<section class="hero">
+  <div class="wrap phero">
+    <h1 class="lines" aria-label="Záujemca má hovor do 2 minút">
+        <span class="line"><span style="--i:0">Záujemca má hovor</span></span>
+        <span class="line"><span style="--i:1">do <span class="grey">2 minút</span></span></span>
+      </h1>
+    <div>
+      
+      <p class="hero__lead" data-rise style="--i:2">AI hlasový agent zavolá každému, kto vyplní formulár na portáli alebo na vašom webe. Zistí, čo potrebujete vedieť, a dohodne obhliadku podľa vášho kalendára. Aj v sobotu večer.</p>
+      <div class="hero__actions" data-rise style="--i:3">
+        <a class="btn" href="#rezervacia">Rezervovať 15 min call <span class="arr" aria-hidden="true">→</span></a>
+        <a class="link" href="#prax">Ako to funguje</a>
+      </div>
+      <p class="hero__note" data-rise style="--i:4">Pre realitné kancelárie, maklérov a developerov.</p>
+    </div>
+    <div class="phero__vis" aria-hidden="true" data-rise style="--i:2">
+      <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      <div class="callcard">
+        <p class="callcard__who">Realitná kancelária<br><b>AI asistent</b></p>
+        <p class="callcard__time tnum" data-ticker>0:00</p>
+        <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="callcard__line">„Dobrý deň, volám od makléra Petra ohľadom bytu v Ružinove, ktorý ste si práve pozerali. Som AI asistent…“</p>
+        <div class="callcard__btns"><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story is-static" id="prax" data-story="flow" aria-labelledby="prax-h">
+  <div class="story__pin">
+    <div class="wrap">
+      <h2 class="story__title" id="prax-h">Ako to funguje v <span class="grey">praxi</span><small>(Príklad)</small></h2>
+      <div class="stage">
+        <svg class="stage__svg desk" aria-hidden="true">
+          <path class="arrow" data-step="1" data-link="a>b" data-sides="bottom@0.4>left" data-bend=".55"/>
+          <path class="arrow" data-step="2" data-link="b>c" data-sides="top>bottom" data-bend=".4"/>
+          <path class="arrow" data-step="3" data-link="c>dic" data-sides="right@0.12>left" data-bend=".45"/>
+          <path class="arrow" data-step="4" data-link="d>e" data-sides="bottom@0.12>right@0.25" data-bend=".6"/>
+        </svg>
+        <svg class="stage__svg mob" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+
+        <div class="node" data-id="a" data-step="0" style="--x:13%;--y:40%">
+          <svg class="node__ic" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="28" r="22" fill="#0B0B0B"/><path d="M8 96c0-26 18-44 42-44s42 18 42 44z" fill="#0B0B0B"/></svg>
+          <p class="node__label">Štart</p>
+          <p>Záujemca vyplní formulár so záujmom o obhliadku nehnuteľnosti na portáli.</p>
+        </div>
+
+        <div class="node" data-id="b" data-step="1" style="--x:33%;--y:100%;--ty:-100%">
+          <svg data-anchor class="node__ic" viewBox="0 0 100 100" aria-hidden="true" style="width:clamp(48px,5.2vw,84px)"><circle cx="50" cy="28" r="22" fill="#7A7A7A"/><path d="M8 96c0-26 18-44 42-44s42 18 42 44z" fill="#7A7A7A"/></svg>
+          <p>Vám príde e-mail z webu o záujme o nehnuteľnosť. AI agent spracuje údaje o dopyte <strong>rovnako, ako by to spravila asistentka.</strong></p>
+        </div>
+
+        <div class="node" data-id="c" data-step="2" style="--x:47%;--y:24%">
+          <div class="phone-ic" data-fx="ring" aria-hidden="true">
+            <svg class="node__ic" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#0B0B0B"/><path d="M36 28c3-3 7-3 9 1l5 9c2 3 1 6-2 8l-4 3c3 7 9 13 16 16l3-4c2-3 5-4 8-2l9 5c4 2 4 6 1 9l-5 5c-4 4-10 5-15 2-15-7-28-20-35-35-3-5-2-11 2-15z" fill="#fff"/></svg>
+          </div>
+          <p>AI agent <strong>do 2 minút</strong> zavolá záujemcovi, zistí kvalifikačné informácie* a dohodne dátum a čas obhliadky podľa voľných termínov vo vašom kalendári. Hneď po hovore mu pošle <strong>potvrdzujúcu SMS</strong>.</p>
+          <p class="callpill" data-fx="pop"><span class="callpill__dot"></span><span>Hovor prebieha</span><span class="wave wave--sm" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></p>
+        </div>
+
+        <div class="node node--left" data-id="d" data-step="3" style="--x:83%;--y:30%">
+          <svg class="node__ic" data-id="dic" viewBox="0 0 100 100" aria-hidden="true" style="align-self:center"><circle cx="50" cy="50" r="44" fill="none" stroke="#0B0B0B" stroke-width="7"/><circle cx="53" cy="29" r="7" fill="#0B0B0B"/><path d="M44 44h12l-6 26c-1 4 2 5 5 3l3-2" fill="none" stroke="#0B0B0B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p style="font-weight:800;margin-bottom:.4em">*Informácie, ktoré zistí:</p>
+          <ul class="checklist" data-fx="ticks" data-anchor>
+            <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span>financovanie nehnuteľnosti</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span>dôvod kúpy</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span>časový horizont kúpy</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span>či predáva vlastnú nehnuteľnosť</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span>otázky priamo na makléra</li>
+            <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span>dátum, čas a miesto obhliadky</li>
+          </ul>
+        </div>
+
+        <div class="node node--left" data-id="e" data-step="4" style="--x:58%;--y:100%;--ty:-100%">
+          <div class="ui cal" data-fx="pop" data-anchor>
+            <div class="cal__h"><b>Pondelok</b><span>+ 3 ďalšie</span></div>
+            <div class="cal__ev"><span class="tnum">9:30</span>Obhliadka · 3-izb. byt, Ružinov</div>
+            <div class="cal__ev"><span class="tnum">11:00</span>Obhliadka · 2-izb. byt, Petržalka</div>
+          </div>
+          <p style="margin-top:12px"><strong>V pondelok ráno máte v kalendári všetky obhliadky dohodnuté cez víkend.</strong></p>
+        </div>
+      </div>
+      <div class="story__progress" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--mist)" aria-labelledby="why-h">
+  <div class="wrap split" data-group>
+    <div>
+      <p class="big-figure" data-rise>21×</p>
+      <h2 id="why-h" data-rise style="font-size:var(--fs-h3);line-height:1.15;max-width:22ch">vyššia šanca kvalifikovať záujemcu, keď sa ozvete do 5 minút namiesto 30</h2>
+      <p class="cite" data-rise>Zdroj: MIT a InsideSales.com, štúdia Lead Response Management (Dr. James Oldroyd).</p>
+    </div>
+    <div data-rise>
+      <p class="sec__lead" style="margin-top:0">Kto pošle dopyt na portál, väčšinou ho pošle aj ďalším maklérom. Obhliadku dostane ten, kto zavolá prvý. Nie ten, kto zavolá najlepšie.</p>
+      <p class="sec__lead">Cez týždeň ste na obhliadkach, večer a cez víkend máte voľno. Presne vtedy chodí najviac dopytov. Hlasový agent ich vybaví hneď, vy ráno len otvoríte kalendár.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="facts-h">
+  <div class="wrap">
+    <div class="sec__head" data-group>
+      <h2 id="facts-h" data-rise>Čo agent robí <span class="grey">a čo nie</span></h2>
+    </div>
+    <div class="facts" data-group>
+      <div class="fact" data-rise><h3>Hovorí po slovensky a vyká</h3><p>Prirodzený hlas a krátke otázky. Neopakuje po záujemcovi každú odpoveď a nezahlcuje ho prázdnymi pochvalami.</p></div>
+      <div class="fact" data-rise><h3>Vždy sa predstaví ako AI asistent</h3><p>Tak to od augusta 2026 vyžaduje európsky AI Act. Záujemcovia to berú ako servis, nie ako trik.</p></div>
+      <div class="fact" data-rise><h3>Ponúka len voľné termíny</h3><p>Vidí iba to, kedy ste voľný, nie čo máte v kalendári napísané. Dohodnutá obhliadka sa vám rovno zapíše.</p></div>
+      <div class="fact" data-rise><h3>Výsledok tam, kde pracujete</h3><p>Odpovede z hovoru zapíše do vášho CRM, Trella alebo tabuľky a pošle vám krátke zhrnutie e-mailom.</p></div>
+      <div class="fact" data-rise><h3>O cene a zľavách nerozhoduje</h3><p>Na otázky o vyjednávaní, zmluvách či hypotéke neodpovedá. Zapíše ich a vy sa ozvete s presnou odpoveďou.</p></div>
+      <div class="fact" data-rise><h3>Prispôsobí sa vašim štítkom</h3><p>Iné otázky pre kupujúceho, iné pre predávajúceho, iné pre nájom. Agent sa pýta len na to, čo vo vašom CRM ešte chýba.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="background:var(--mist)" aria-labelledby="demo-h">
+  <div class="wrap" data-group>
+    <h2 id="demo-h" data-rise>Počujte ho <span class="grey">naživo</span></h2>
+    <p data-rise>Demo hlasového agenta vám pustím priamo na calle. Zavolá na váš telefón a vy si vyskúšate, ako znie a ako reaguje, keď mu skočíte do reči.</p>
+    <a class="btn" href="#rezervacia" data-rise>Vybrať termín <span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<!--@booking-->
