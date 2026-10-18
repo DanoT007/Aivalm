@@ -750,3 +750,11 @@ html.menu-open{overflow:hidden}
   .curtain.is-leave::before{opacity:0}
   .curtain.is-leave img{opacity:0;transform:scale(1.06);transition:opacity .45s ease,transform .7s var(--ease-out)}
 }
+
+/* desktop: tighter hand-off from product hero to the scroll story; scene text sits at the top, next to the title */
+@media (min-width:981px){
+  .hero:has(+ .story){padding-bottom:clamp(16px,2vw,32px)}
+  .story.scenes:not(.is-static) .scenes__text{align-self:stretch}
+  .story.scenes:not(.is-static) .scene-t{top:clamp(48px,15vh,130px)}
+  .story.scenes .story__title{margin-bottom:clamp(16px,2.4vh,28px)}
+}
