@@ -17,6 +17,7 @@
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
+<div class="curtain" aria-hidden="true"><img src="assets/img/fleur.png" alt=""></div>
 <a class="skip" href="#obsah">Preskočiť na obsah</a>
 <header class="nav">
   <div class="wrap nav__in">
@@ -64,15 +65,15 @@
     <h2 id="prod-h" class="sr-only">Produkty</h2>
     <ul class="router" data-group>
       <li data-rise>
-        <a class="door" href="hlasovy-agent.html">
+        <a class="door" href="hlasovy-agent.html" data-spot data-cursor="Pozrieť">
           <span>
             <span class="door__pain">Nestíhate volať záujemcom?</span>
-            <span class="door__name">AI hlasový agent</span>
+            <span class="door__name" data-scramble>AI hlasový agent</span>
             <span class="door__desc">Zavolá každému novému záujemcovi do 2 minút, zistí, čo potrebujete vedieť, a dohodne obhliadku podľa vášho kalendára.</span>
             <span class="door__for">Pre realitné kancelárie, maklérov a developerov</span>
           </span>
           <svg class="door__glyph" viewBox="0 0 220 150" aria-hidden="true">
-            <circle class="g-fill" cx="110" cy="75" r="52" fill="#0B0B0B"/>
+            <circle class="g-stroke door__ring" cx="110" cy="75" r="52" fill="none" stroke="#0B0B0B" stroke-width="3"/><circle class="g-stroke door__ring" cx="110" cy="75" r="52" fill="none" stroke="#0B0B0B" stroke-width="3"/><circle class="g-fill" cx="110" cy="75" r="52" fill="#0B0B0B"/>
             <path class="g-paper" d="M93 55c3-3 7-3 9 1l5 9c2 3 1 6-2 8l-4 3c3 7 9 13 16 16l3-4c2-3 5-4 8-2l9 5c4 2 4 6 1 9l-5 5c-4 4-10 5-15 2-15-7-28-20-35-35-3-5-2-11 2-15z" fill="#fff"/>
             <path class="g-stroke door__wave" d="M170 48c8 8 12 17 12 27s-4 19-12 27M184 34c12 11 18 25 18 41s-6 30-18 41" fill="none" stroke="#0B0B0B" stroke-width="6" stroke-linecap="round"/>
           </svg>
@@ -80,10 +81,10 @@
         </a>
       </li>
       <li data-rise>
-        <a class="door" href="odhad-ceny.html">
+        <a class="door" href="odhad-ceny.html" data-spot data-cursor="Pozrieť">
           <span>
             <span class="door__pain">Ľudia chcú poznať cenu skôr, ako prídu?</span>
-            <span class="door__name">AI odhad ceny</span>
+            <span class="door__name" data-scramble>AI odhad ceny</span>
             <span class="door__desc">Majiteľ auta alebo nehnuteľnosti zadá pár údajov na vašom webe a do pár minút má v e-maile odhad ceny aj pozvánku na obhliadku.</span>
             <span class="door__for">Pre autobazáre a realitné kancelárie</span>
           </span>
@@ -100,23 +101,36 @@
         </a>
       </li>
       <li data-rise>
-        <a class="door" href="cenove-ponuky.html">
+        <a class="door" href="cenove-ponuky.html" data-spot data-cursor="Pozrieť">
           <span>
             <span class="door__pain">Dopyty v e-maile čakajú na cenovú ponuku?</span>
-            <span class="door__name">AI cenové ponuky</span>
+            <span class="door__name" data-scramble>AI cenové ponuky</span>
             <span class="door__desc">AI prečíta dopyt, váš cenník vypočíta ceny so zľavami a DPH a obchodník jedným klikom odošle hotovú ponuku. Aj večer, aj cez víkend.</span>
             <span class="door__for">Pre veľkoobchody, distribútorov a výrobcov</span>
           </span>
           <svg class="door__glyph" viewBox="0 0 220 150" aria-hidden="true">
-            <rect class="g-stroke" x="45" y="35" width="130" height="88" rx="10" fill="none" stroke="#0B0B0B" stroke-width="6"/>
-            <path class="g-stroke" d="M50 42l60 44 60-44" fill="none" stroke="#0B0B0B" stroke-width="6" stroke-linejoin="round"/>
-            <circle class="g-fill" cx="172" cy="38" r="20" fill="#0B0B0B"/>
-            <path class="g-paper" d="M163 38.5l6 6 11-12" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect class="g-paper door__letter" x="60" y="44" width="100" height="62" rx="4" fill="#fff" stroke="none"/>
+            <path class="g-stroke door__letter" d="M72 60h56M72 72h40M72 84h48" stroke="#0B0B0B" stroke-width="5" stroke-linecap="round"/>
+            <path class="g-paper" d="M45 60v53a10 10 0 0 0 10 10h110a10 10 0 0 0 10-10V60L110 98z" fill="#fff"/>
+            <rect class="g-stroke" x="45" y="42" width="130" height="81" rx="10" fill="none" stroke="#0B0B0B" stroke-width="6"/>
+            <path class="g-stroke door__flap" d="M50 47l60 42 60-42" fill="none" stroke="#0B0B0B" stroke-width="6" stroke-linejoin="round"/>
+            <g class="door__check"><circle class="g-fill" cx="172" cy="38" r="20" fill="#0B0B0B"/>
+            <path class="g-paper" d="M163 38.5l6 6 11-12" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></g>
           </svg>
           <span class="door__go" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M3 11h15M12 4l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
       </li>
     </ul>
+  </div>
+</section>
+
+<div class="marquee" data-marquee="70" aria-hidden="true">
+  <div class="marquee__track"><span>Hovor do 2 minút</span><span class="o">Odhad ceny do 3 minút</span><span>Ponuka do 60 sekúnd</span><span class="o">24/7</span></div>
+</div>
+
+<section class="sec" aria-label="Prečo na rýchlosti záleží">
+  <div class="wrap">
+    <p class="statement" data-words>Zákazník, ktorý čaká, nečaká na vás. Píše ďalšej firme. AIVALM odpovie skôr, ako stihne otvoriť druhú kartu.</p>
   </div>
 </section>
 
@@ -250,6 +264,10 @@
 </footer>
 <script>document.querySelectorAll('[data-year]').forEach(function(e){e.textContent=new Date().getFullYear()})</script>
 <script src="assets/js/site.js" defer></script>
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
+<script src="assets/js/fx.js" defer></script>
 
 </body>
 </html>

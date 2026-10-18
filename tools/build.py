@@ -39,10 +39,12 @@ for page in sorted((SRC / "pages").glob("*.html")):
     scripts = "\n".join(
         f'<script src="assets/js/{s.strip()}" defer></script>' for s in meta.get("scripts", "").split(",") if s.strip()
     )
+    base = ('<script src="assets/vendor/gsap.min.js" defer></script>\n'
+            '<script src="assets/vendor/ScrollTrigger.min.js" defer></script>\n'
+            '<script src="assets/vendor/lenis.min.js" defer></script>\n')
     if "stories.js" in meta.get("scripts", ""):
-        scripts = ('<script src="assets/vendor/gsap.min.js" defer></script>\n'
-                   '<script src="assets/vendor/ScrollTrigger.min.js" defer></script>\n'
-                   '<script src="assets/vendor/DrawSVGPlugin.min.js" defer></script>\n') + scripts
+        base += '<script src="assets/vendor/DrawSVGPlugin.min.js" defer></script>\n'
+    scripts = base + '<script src="assets/js/fx.js" defer></script>\n' + scripts
     foot = part["footer"].replace("{{scripts}}", scripts)
     body = raw.replace("<!--@booking-->", booking)
     out = head + body + foot

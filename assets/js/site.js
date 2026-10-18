@@ -109,6 +109,8 @@
     var o = {};
     new FormData(form).forEach(function (v, k) { o[k] = typeof v === 'string' ? v.trim() : v; });
     o.stranka = location.pathname.replace(/^\//, '') || 'index.html';
+    Object.keys(o).forEach(function (k) { if (o[k] === '' && k !== 'pozicia') delete o[k]; });
+    if (!o.pozicia) delete o.pozicia;
     return o;
   }
 
