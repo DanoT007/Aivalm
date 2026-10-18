@@ -1,0 +1,198 @@
+<!--
+title: AI odhad ceny – auto alebo nehnuteľnosť ocenené do pár minút | AIVALM
+desc: Majiteľ auta alebo nehnuteľnosti zadá údaje na vašom webe, AI porovná aktuálne inzeráty a do pár minút mu pošle orientačný odhad s pozvánkou na obhliadku.
+nav: odhad
+produkt: odhad-ceny
+scripts: stories.js, odhad.js
+-->
+<section class="hero">
+  <div class="wrap phero">
+    <h1 class="lines" aria-label="Zákazník pozná cenu do pár minút">
+      <span class="line"><span style="--i:0">Zákazník pozná cenu</span></span>
+      <span class="line"><span style="--i:1">do <span class="grey">pár minút</span></span></span>
+    </h1>
+    <div>
+      <p class="hero__lead" data-rise style="--i:2">Majiteľ auta alebo nehnuteľnosti zadá pár údajov na vašom webe. AI porovná aktuálne inzeráty, pošle mu orientačný odhad a rovno ponúkne termín obhliadky. Vy dostanete hotového záujemcu.</p>
+      <div class="hero__actions" data-rise style="--i:3">
+        <a class="btn" href="#demo">Vyskúšať na vlastnom aute <span class="arr" aria-hidden="true">→</span></a>
+        <a class="link" href="#rezervacia">Rezervovať 15 min call</a>
+      </div>
+      <p class="hero__note" data-rise style="--i:4">Pre autobazáre, výkup áut a realitné kancelárie.</p>
+    </div>
+    <div class="phero__vis tagvis" data-rise style="--i:2" data-tagdemo>
+      <div class="seg tagvis__seg" role="tablist" aria-label="Typ ukážky">
+        <button type="button" role="tab" aria-selected="true" data-kind="auto">Auto</button>
+        <button type="button" role="tab" aria-selected="false" data-kind="byt">Nehnuteľnosť</button>
+      </div>
+      <svg class="tagvis__obj tagvis__car" viewBox="0 0 400 170" aria-hidden="true"><path d="M30 118c-10 0-16-6-16-15v-14c0-9 6-15 15-16l46-6 40-34c8-7 18-10 29-10h110c12 0 23 5 31 13l38 38 34 6c12 2 20 12 20 24v14c0 9-7 15-16 15" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="100" cy="122" r="30" fill="none" stroke="currentColor" stroke-width="9"/><circle cx="300" cy="122" r="30" fill="none" stroke="currentColor" stroke-width="9"/><path d="M130 122h140M132 66h180" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/></svg>
+      <svg class="tagvis__obj tagvis__house" viewBox="0 0 400 170" aria-hidden="true"><path d="M70 160V78l130-66 130 66v82M40 94 200 12l160 82M160 160v-56h80v56M30 160h340" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><rect x="92" y="96" width="40" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="9"/><rect x="268" y="96" width="40" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="9"/></svg>
+      <div class="hang" aria-live="polite">
+        <span class="hang__string" aria-hidden="true"></span>
+        <div class="tag swing">
+          <div class="tag__face">
+            <span class="tag__hole" aria-hidden="true"></span>
+            <span class="tag__label" data-tag-label>Orientačná výkupná cena</span>
+            <span class="tag__price tnum"><span data-tag-from>11 200</span> – <span data-tag-to>12 400</span>&nbsp;€</span>
+            <span class="tag__what" data-tag-what>Škoda Octavia · 2019 · 128 000 km</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story is-static scenes" id="prax" data-story="scenes" aria-labelledby="prax-h">
+  <div class="story__pin">
+    <div class="wrap">
+      <h2 class="story__title" id="prax-h">Ako to funguje v <span class="grey">praxi</span><small>(Príklad: autobazár)</small></h2>
+      <div class="scenes__grid">
+        <div class="scenes__text">
+          <div class="scene-t" data-step="0"><h3>Zákazník zadá pár údajov</h3><p>Značka, model, rok, nájazd a stav. Na vašom webe, z mobilu, za minútu. Žiadny telefonát, ktorého sa ľudia boja.</p></div>
+          <div class="scene-t" data-step="1"><h3>AI prehľadá aktuálne inzeráty</h3><p>Na slovenských a českých portáloch nájde porovnateľné autá, vyradí nezmysly ako „cena dohodou“ či autá na diely a zoberie stred trhu.</p></div>
+          <div class="scene-t" data-step="2"><h3>Výkupnú cenu počíta váš vzorec</h3><p>Od trhovej ceny odpočíta vašu maržu podľa vašich pravidiel. AI nehádže čísla. Keď je dát málo, rozpätie je širšie, alebo príde rovno pozvánka na obhliadku.</p></div>
+          <div class="scene-t" data-step="3"><h3>Do pár minút má odhad v e-maile</h3><p>Pod vaším menom a v štýle vašej firmy. V e-maile sú rovno dva voľné termíny obhliadky na jeden klik.</p></div>
+          <div class="scene-t" data-step="4"><h3>Klik, a obhliadka je v kalendári</h3><p>Termín sa zapíše do vášho kalendára aj s autom, odhadom a kontaktom. Zákazníkovi príde potvrdenie, čo si má priniesť.</p></div>
+          <div class="scene-t" data-step="5"><h3>Rovnako pre nehnuteľnosti</h3><p>Byt alebo dom, lokalita, rozloha, stav. Majiteľ dostane orientačnú cenu a vy kontakt na niekoho, kto zvažuje predaj.</p></div>
+        </div>
+        <div class="scenes__vis" aria-hidden="true">
+          <div class="scene" data-step="0">
+            <div class="ui sform">
+              <div class="sform__row"><span>Značka</span><b data-fx="type">Škoda</b></div>
+              <div class="sform__row"><span>Model</span><b data-fx="type">Octavia Combi</b></div>
+              <div class="sform__row"><span>Rok výroby</span><b data-fx="type">2019</b></div>
+              <div class="sform__row"><span>Nájazd</span><b data-fx="type">128 000 km</b></div>
+              <div class="sform__row"><span>Stav</span><b data-fx="type">bez nehody</b></div>
+              <span class="sform__btn" data-fx="press">Chcem odhad ceny</span>
+            </div>
+          </div>
+          <div class="scene" data-step="1">
+            <div class="ads" data-fx="fan">
+              <div class="ad"><span class="ad__img"></span><b>Octavia Combi 2.0 TDI</b><span>2019 · 121 000 km</span><em class="tnum">13 990 €</em></div>
+              <div class="ad"><span class="ad__img"></span><b>Octavia Combi Style</b><span>2019 · 140 500 km</span><em class="tnum">13 400 €</em></div>
+              <div class="ad"><span class="ad__img"></span><b>Octavia 2.0 TDI DSG</b><span>2020 · 118 000 km</span><em class="tnum">15 200 €</em></div>
+              <div class="ad"><span class="ad__img"></span><b>Octavia Combi Ambition</b><span>2018 · 132 000 km</span><em class="tnum">12 750 €</em></div>
+            </div>
+            <p class="ads__count">Porovnaných inzerátov: <b class="tnum" data-count="14">0</b></p>
+          </div>
+          <div class="scene" data-step="2">
+            <div class="hang hang--story">
+              <span class="hang__string" aria-hidden="true"></span>
+              <div class="tag" data-fx="swing">
+                <div class="tag__face">
+                  <span class="tag__hole"></span>
+                  <span class="tag__label">Orientačná výkupná cena</span>
+                  <span class="tag__price tnum"><span data-count="11200" data-from="0">0</span> – <span data-count="12400" data-from="0">0</span>&nbsp;€</span>
+                  <span class="tag__what">Trh 14 100 € · vaša marža 15 %</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="scene" data-step="3">
+            <div class="ui mail">
+              <div class="ui__bar"><i></i><i></i><i></i></div>
+              <div class="ui__body">
+                <p class="mail__from">AutoVýkup Bratislava · <span class="muted">pred 3 min</span></p>
+                <p class="mail__subj">Odhad výkupnej ceny – Škoda Octavia</p>
+                <div class="mail__price"><span>Orientačná výkupná cena</span><b class="tnum">11 200 – 12 400 €</b></div>
+                <p class="mail__small">Vyberte si termín obhliadky:</p>
+                <div class="mail__slots" data-fx="pop"><span>Utorok 21. 10. · 17:00</span><span>Streda 22. 10. · 18:30</span><span class="ghost">Vybrať iný termín</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="scene" data-step="4">
+            <div class="ui cal cal--big" data-fx="pop">
+              <div class="cal__h"><b>Utorok 21. 10.</b><span>Kalendár predajcov</span></div>
+              <div class="cal__ev cal__ev--ghost"><span class="tnum">16:00</span>voľné</div>
+              <div class="cal__ev"><span class="tnum">17:00</span>Obhliadka · Škoda Octavia · Peter</div>
+              <div class="cal__ev cal__ev--ghost"><span class="tnum">18:30</span>voľné</div>
+            </div>
+            <p class="confirm" data-fx="pop"><span class="confirm__dot"></span>Potvrdenie odoslané zákazníkovi</p>
+          </div>
+          <div class="scene" data-step="5">
+            <svg class="scene__house" viewBox="0 0 400 170" aria-hidden="true"><path d="M70 160V78l130-66 130 66v82M40 94 200 12l160 82M160 160v-56h80v56M30 160h340" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="hang hang--story">
+              <span class="hang__string" aria-hidden="true"></span>
+              <div class="tag" data-fx="swing">
+                <div class="tag__face">
+                  <span class="tag__hole"></span>
+                  <span class="tag__label">Orientačná trhová cena</span>
+                  <span class="tag__price tnum"><span data-count="189" data-from="120">120</span> – <span data-count="198" data-from="120">120</span>&nbsp;tis. €</span>
+                  <span class="tag__what">3-izbový byt · Ružinov · 74 m²</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="story__progress" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--mist)" aria-labelledby="why-h">
+  <div class="wrap split" data-group>
+    <h2 id="why-h" data-rise>Ľudia nechcú volať. <span class="grey">Chcú číslo.</span></h2>
+    <div data-rise>
+      <p class="sec__lead" style="margin-top:0">Kto predáva auto, pošle rovnaký dopyt piatim bazárom. Väčšina mu odpíše „príďte sa ukázať“ alebo neodpíše vôbec. Ten, kto mu ako prvý pošle konkrétne rozpätie a voľný termín, má auto na dvore.</p>
+      <p class="sec__lead">Pri nehnuteľnostiach je to rovnaké. Majiteľ, ktorý si zisťuje cenu, je človek, ktorý zvažuje predaj. To je najcennejší kontakt, aký maklér môže dostať.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="facts-h">
+  <div class="wrap">
+    <div class="sec__head" data-group><h2 id="facts-h" data-rise>Odhad, za ktorý <span class="grey">sa nehanbíte</span></h2></div>
+    <div class="facts" data-group>
+      <div class="fact" data-rise><h3>Z reálnych inzerátov</h3><p>AI hľadá porovnateľné autá a nehnuteľnosti v aktuálnych inzerátoch, nie v tabuľkách spred roka.</p></div>
+      <div class="fact" data-rise><h3>Vaša marža, vaše pravidlá</h3><p>Koľko percent strhnúť pri lacnom aute a koľko pri drahom, nastavíte vy. Vzorec sa nemení podľa nálady modelu.</p></div>
+      <div class="fact" data-rise><h3>Pri neistote neháda</h3><p>Keď je porovnateľných inzerátov málo, rozpätie je širšie. Ak sa auto oceniť nedá, zákazník dostane pozvánku na obhliadku namiesto čísla.</p></div>
+      <div class="fact" data-rise><h3>Termíny aj po práci</h3><p>Ponúka len voľné časy z vášho kalendára, aj večer do 21:00, keď ľudia reálne majú čas prísť.</p></div>
+      <div class="fact" data-rise><h3>Každý lead v prehľade</h3><p>Auto, odhad, zdroje inzerátov a kontakt v tabuľke alebo CRM. Predajca vie, s čím zákazník príde.</p></div>
+      <div class="fact" data-rise><h3>Voliteľne aj telefonát</h3><p>Ak chcete, údaje zistí AI hlasový agent v krátkom hovore a odhad pošle hneď po ňom.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec on-ink" id="demo" aria-labelledby="demo-h">
+  <div class="wrap split" data-done>
+    <div data-group>
+      <h2 id="demo-h" data-rise>Vyskúšajte si to <span class="grey">ako zákazník</span></h2>
+      <p class="sec__lead muted" data-rise>Zadajte údaje o aute. Odhad vám do pár minút pošle ukážkový autobazár „AutoVýkup Bratislava“ presne tak, ako by ho dostal váš zákazník. Auto, samozrejme, nikto nevykúpi.</p>
+      <p class="cite" data-rise>Ukážka je pre autá. Odhad nehnuteľností vám ukážem na calle.</p>
+    </div>
+    <div class="panel" style="background:#fff;color:var(--ink)">
+      <form class="form" data-hook="carDemo" data-cooldown="600" novalidate>
+        <input type="hidden" name="rezim" value="online">
+        <div class="row">
+          <div class="field"><label for="c-zn">Značka</label><input class="input" id="c-zn" name="znacka" placeholder="napr. Škoda" required></div>
+          <div class="field"><label for="c-mo">Model</label><input class="input" id="c-mo" name="model" placeholder="napr. Octavia Combi" required></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="c-rok">Rok výroby</label><input class="input" id="c-rok" name="rok" inputmode="numeric" maxlength="4" placeholder="2019" required data-msg="Doplňte rok výroby."></div>
+          <div class="field"><label for="c-km">Nájazd (km)</label><input class="input" id="c-km" name="km" inputmode="numeric" placeholder="128 000" required data-msg="Doplňte približný nájazd."></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="c-pal">Palivo</label><select class="select" id="c-pal" name="palivo"><option>nafta</option><option>benzín</option><option>hybrid</option><option>elektro</option><option>LPG</option></select></div>
+          <div class="field"><label for="c-pr">Prevodovka</label><select class="select" id="c-pr" name="prevodovka"><option>manuálna</option><option>automatická</option></select></div>
+        </div>
+        <div class="field"><label for="c-st">Stav</label><select class="select" id="c-st" name="stav"><option>bez nehody a poškodení</option><option>drobné škrabance alebo odreniny</option><option>po opravenej nehode</option><option>poškodené alebo nepojazdné</option></select></div>
+        <div class="row">
+          <div class="field"><label for="c-em">Váš e-mail</label><input class="input" id="c-em" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="c-tel">Telefón</label><input class="input" id="c-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+        </div>
+        <div class="hp" aria-hidden="true"><label>Pozícia<input name="pozicia" tabindex="-1" autocomplete="off"></label></div>
+        <p class="consent">Údaje použijeme len na odoslanie ukážkového odhadu. Nevoláme vám a nikomu ich nedávame. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
+        <div><button class="btn" type="submit" data-busy="Posielam…" style="background:var(--ink);color:#fff;border-color:var(--ink)">Poslať mi odhad <span class="arr" aria-hidden="true">→</span></button></div>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="done" role="status">
+        <div class="done__mark"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 13.5l5 5 11-12"/></svg></div>
+        <h3>Odhad je na ceste</h3>
+        <p>AI práve prechádza inzeráty. Odhad príde na <strong data-echo="email"></strong> zvyčajne do 3 minút. Pozrite aj priečinok Spam alebo Promo akcie.</p>
+        <p class="muted">V e-maile si môžete aj „rezervovať“ obhliadku. Uvidíte, ako to vyzerá z pohľadu zákazníka.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--@booking-->

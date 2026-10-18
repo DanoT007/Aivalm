@@ -6,7 +6,7 @@ Page front-matter (first lines, HTML comment):
 title: ...
 desc: ...
 nav: hlasovy | odhad | email | spolupraca | (empty)
-produkt: hlasovy-agent | odhad-ceny | emailove-dopyty | neviem
+produkt: hlasovy-agent | odhad-ceny | cenove-ponuky | neviem
 scripts: stories.js, demo.js
 -->
 Markers inside the page body: <!--@booking-->
@@ -34,7 +34,7 @@ for page in sorted((SRC / "pages").glob("*.html")):
         head = head.replace(f'data-nav="{nav}"', f'data-nav="{nav}" aria-current="page"')
     booking = part["booking"]
     prod = meta.get("produkt", "neviem")
-    for v in ["hlasovy-agent", "odhad-ceny", "emailove-dopyty", "neviem"]:
+    for v in ["hlasovy-agent", "odhad-ceny", "cenove-ponuky", "neviem"]:
         booking = booking.replace("{{sel:%s}}" % v, " selected" if v == prod else "")
     scripts = "\n".join(
         f'<script src="assets/js/{s.strip()}" defer></script>' for s in meta.get("scripts", "").split(",") if s.strip()

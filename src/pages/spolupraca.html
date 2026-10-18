@@ -1,0 +1,92 @@
+<!--
+title: Spolupráca – pre agentúry, webové štúdiá a obchodníkov | AIVALM
+desc: Máte klientov, ktorým utekajú dopyty? Odporučte ich, predávajte AIVALM s nami alebo prepojme systémy. Navrhnite spoluprácu.
+nav: spolupraca
+produkt: neviem
+scripts:
+-->
+<section class="hero">
+  <div class="wrap">
+    <h1 class="lines" aria-label="Chcete s nami spolupracovať?">
+      <span class="line"><span style="--i:0">Chcete s nami</span></span>
+      <span class="line"><span style="--i:1"><span class="grey">spolupracovať?</span></span></span>
+    </h1>
+    <p class="hero__lead" data-rise style="--i:2">Robíte marketing, weby, CRM alebo predaj pre firmy, ktorým utekajú dopyty? Vy máte klientov, ja produkt, ktorý im šetrí čas a prináša obchody. Poďme to spojiť.</p>
+    <div class="hero__actions" data-rise style="--i:3">
+      <a class="btn" href="#formular">Navrhnúť spoluprácu <span class="arr" aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec--tight" style="padding-top:0" aria-labelledby="ways-h">
+  <div class="wrap">
+    <h2 id="ways-h" class="sr-only">Formy spolupráce</h2>
+    <ol class="ways" data-group>
+      <li class="way" data-rise>
+        <h3>Odporúčanie</h3>
+        <p>Pošlete mi klienta, ktorému sa niektorý z produktov hodí. Kým u mňa zostane, dostávate podiel z každej jeho platby. Bez predávania, bez technickej práce.</p>
+        <p class="way__for">Pre webové štúdiá, účtovníkov, konzultantov</p>
+      </li>
+      <li class="way way--ink" data-rise>
+        <h3>Spoločný predaj</h3>
+        <p>Ponúkate AI hlasového agenta, AI odhad ceny alebo AI cenové ponuky ako súčasť vlastných služieb. Ja postavím a prevádzkujem techniku, vy máte vzťah s klientom.</p>
+        <p class="way__for">Pre marketingové agentúry a obchodníkov</p>
+      </li>
+      <li class="way" data-rise>
+        <h3>Technologické partnerstvo</h3>
+        <p>Máte CRM, realitný softvér, telefóniu alebo portál? Prepojme systémy, aby vaši zákazníci dostali AI priamo tam, kde už pracujú.</p>
+        <p class="way__for">Pre softvérové firmy a portály</p>
+      </li>
+      <li class="way" data-rise>
+        <h3>Iný nápad</h3>
+        <p>Vidíte využitie, na ktoré som ešte neprišiel? Napíšte. Najlepšie produkty vznikli z jednej vety na networkingu.</p>
+        <p class="way__for">Pre kohokoľvek s dobrým nápadom</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="formular" style="background:var(--mist)" aria-labelledby="form-h">
+  <div class="wrap split" data-done>
+    <div data-group>
+      <h2 id="form-h" data-rise>Napíšte mi, <span class="grey">čo vymýšľate</span></h2>
+      <p class="sec__lead" data-rise>Odpíšem do 24 hodín v pracovné dni. Ak to dáva zmysel obom, dáme si 20-minútový call a dohodneme jednoduché písomné podmienky.</p>
+      <p class="cite" data-rise>Daniel Tomasch, zakladateľ AIVALM</p>
+    </div>
+    <div class="panel" style="background:#fff">
+      <form class="form" data-hook="partner" data-cooldown="120" novalidate>
+        <div class="field">
+          <label for="p-typ">Typ spolupráce</label>
+          <select class="select" id="p-typ" name="typ">
+            <option>Odporúčanie klientov</option>
+            <option>Spoločný predaj</option>
+            <option>Technologické partnerstvo</option>
+            <option>Iný nápad</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="field"><label for="p-meno">Meno a priezvisko</label><input class="input" id="p-meno" name="meno" autocomplete="name" required></div>
+          <div class="field"><label for="p-firma">Firma</label><input class="input" id="p-firma" name="firma" autocomplete="organization" required data-msg="Doplňte názov firmy, aj keby to bola SZČO."></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="p-email">E-mail</label><input class="input" id="p-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="p-tel">Telefón <span class="opt">(nepovinné)</span></label><input class="input" id="p-tel" name="telefon" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="p-web">Web <span class="opt">(nepovinné)</span></label><input class="input" id="p-web" name="web" type="url" inputmode="url" placeholder="https://"></div>
+        <div class="field"><label for="p-sprava">Čo navrhujete</label><textarea class="textarea" id="p-sprava" name="sprava" required placeholder="Napr. robíme weby pre 30 realitných kancelárií a radi by sme im ponúkli…" data-msg="Napíšte aspoň pár viet o tom, čo navrhujete."></textarea></div>
+        <div class="hp" aria-hidden="true"><label>Pozícia<input name="pozicia" tabindex="-1" autocomplete="off"></label></div>
+        <p class="consent">Údaje použijem len na odpoveď na váš návrh. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
+        <div><button class="btn" type="submit">Odoslať návrh <span class="arr" aria-hidden="true">→</span></button></div>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="done" role="status">
+        <div class="done__mark"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 13.5l5 5 11-12"/></svg></div>
+        <h3>Ďakujem, návrh mám</h3>
+        <p>Potvrdenie som poslal na <strong data-echo="email"></strong>. Ozvem sa do 24 hodín v pracovné dni.</p>
+        <p class="muted">Daniel Tomasch</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--@booking-->

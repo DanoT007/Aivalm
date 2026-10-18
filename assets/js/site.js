@@ -49,6 +49,17 @@
     document.querySelectorAll('[data-rise]').forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
   }
 
+  /* ---------- looping UI sequences ([data-loop] with children [data-at=n]) ---------- */
+  document.querySelectorAll('[data-loop]').forEach(function (box) {
+    var n = +box.dataset.loop || 4, ms = +box.dataset.loopMs || 1600, s = 0, items = box.querySelectorAll('[data-at]');
+    function paint() { items.forEach(function (el) { el.classList.toggle('is-on', +el.dataset.at <= s); }); }
+    if (reduce) { s = n - 1; paint(); return; }
+    paint();
+    var vis = true;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { vis = e[0].isIntersecting; }).observe(box);
+    setInterval(function () { if (!vis || document.hidden) return; s = (s + 1) % (n + 1); if (s === n) return; paint(); }, ms);
+  });
+
   /* ---------- helpers ---------- */
   function post(url, data) {
     var body = new URLSearchParams();
