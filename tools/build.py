@@ -48,5 +48,7 @@ for page in sorted((SRC / "pages").glob("*.html")):
     foot = part["footer"].replace("{{scripts}}", scripts)
     body = raw.replace("<!--@booking-->", booking)
     out = head + body + foot
+    if 'id="rezervacia"' not in out:  # page without booking: send CTAs to the home page booking
+        out = out.replace('href="#rezervacia"', 'href="index.html#rezervacia"')
     (ROOT / page.name).write_text(out, encoding="utf-8")
     print("built", page.name)

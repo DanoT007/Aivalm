@@ -4,7 +4,7 @@ Zdroj pravdy pre dizajn: `DESIGN.md`. Stránky sa skladajú cez `python3 tools/b
 
 ## Hotové
 - Dizajn systém (čierna/biela/sivá, Montserrat self-hosted, GSAP self-hosted)
-- `index.html` – rozcestník na 3 produkty + live feed v hero + rezervácia
+- `index.html` – úvod („AI, ktorá vybaví vašich zákazníkov…“), 3 statické produktové karty s „Pre koho“, „Ako prebieha zákazka krok za krokom“, „Kto za tým stojí“, rezervácia
 - `hlasovy-agent.html` – scroll story podľa slajdu „Ako to funguje v praxi“
 - `odhad-ceny.html` – hojdajúca sa cenovka (auto/byt prepínač), scenes story, demo formulár (napojený na Make „AUTO demo – odhad výkupnej ceny“)
 - `cenove-ponuky.html` – inbox loop v hero, scroll story podľa slajdu „ponuka odchádza sama“, formulár na ukážku
@@ -21,12 +21,20 @@ Zdroj pravdy pre dizajn: `DESIGN.md`. Stránky sa skladajú cez `python3 tools/b
 - Meet link: https://meet.google.com/fbi-hecg-bpg ; kalendár tomaschdaniel@gmail.com (spojenie 12064600), Gmail aivalm.agent (10823538), Gmail Daniel (12045542)
 
 ## Feel layer (hotové)
-Lenis smooth scroll, vlastný kurzor (s labelom „Pozrieť“), magnetické tlačidlá, opona pri prechode stránok, filmové zrnenie, bežiaci text riadený rýchlosťou scrollu, 3 produkty vedľa seba s rozťahovaním pri hoveri, slová svietiace pri scrolle.
+- Desktop: Lenis smooth scroll, kurzor (čierny na svetlom, biely na tmavom, pri hoveri len mierne zväčšenie, bez labelu), magnetické tlačidlá, opona pri prechode stránok, filmové zrnenie
+- Mobil/dotyk: bez Lenis a zrnenia (výkon), natívny scroll, horizontálny posun zamknutý
+- Odstránené na želanie: label „Pozrieť“, scramble textu, hover animácie produktových kariet, marquee/feed na úvode
+- Každá stránka sa otvára hore (alebo na #kotve); stránky bez rezervácie posielajú CTA na `index.html#rezervacia`
+- Mobilné menu: tenké názvy produktov + „Pre koho“, tlačidlo „Rezervovať bezplatný hovor“
+
+## Názvy produktov
+AI hlasový agent · AI odhad ceny · AI cenové ponuky
 
 ## Náhľad
 https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodošlú – blokuje to sandbox; na aivalm.com fungujú)
 
 ## Ďalej
-1. Spätná väzba od Daniela na náhľad
+1. Spätná väzba od Daniela na náhľad (QA 18. 10.: všetky stránky bez chýb v konzole, bez pretečenia na 390 px, príbehy bez prekryvov pri 1280×720)
+1b. Voliteľne portrétna fotka do „Kto za tým stojí“
 2. Voliteľne 3D objekt (img2threejs) na produktovej stránke
 3. Merge `claude-redesign` → `main` (GitHub Pages, aivalm.com) po schválení; zmazať testovací termín 30. 10. 17:30 v kalendári
