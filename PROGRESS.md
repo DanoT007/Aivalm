@@ -10,7 +10,7 @@ Zdroj pravdy pre dizajn: `DESIGN.md`. Stránky sa skladajú cez `python3 tools/b
 - `cenove-ponuky.html` – inbox loop v hero, scroll story podľa slajdu „ponuka odchádza sama“, formulár na ukážku
 - `spolupraca.html` – formy spolupráce + formulár
 - `ochrana-osobnych-udajov.html` – GDPR (dať skontrolovať)
-- Pôvodná Lead Radar stránka presunutá do `lead-radar.html`
+- Starý web (Lead Radar) zmazaný pri spustení 18. 10. – je v histórii gitu (commit f9a37fe)
 
 ## Make webhooky (eu1)
 - rezervácia callu: hook 3928058, scenár 8032300 „WEB – rezervácia callu“ (sloty z kalendára, rezervácia, potvrdenie s Meet linkom, notifikácia, ochrana pred dvojitou rezerváciou) – otestované
@@ -37,4 +37,4 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 1. Spätná väzba od Daniela na náhľad (QA 18. 10.: všetky stránky bez chýb v konzole, bez pretečenia na 390 px, príbehy bez prekryvov pri 1280×720)
 1b. Voliteľne portrétna fotka do „Kto za tým stojí“
 2. Voliteľne 3D objekt (img2threejs) na produktovej stránke
-3. Merge `claude-redesign` → `main` (GitHub Pages, aivalm.com) po schválení; zmazať testovací termín 30. 10. 17:30 v kalendári
+3. ✅ Spustené na main (aivalm.com) 18. 10.
