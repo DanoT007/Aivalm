@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import Engine from '../components/Engine.astro';
+import Flow from '../components/Flow.astro';
+import Cta from '../components/Cta.astro';
+
+const products = [
+  {
+    href: '/hlasovy-agent',
+    title: 'AI hlasový agent',
+    who: 'Realitky, makléri, developeri',
+    text: 'Po slovensky zavolá novému záujemcovi do pár minút od vyplnenia formulára, zistí, čo chýba, a maklérovi pošle zhrnutie.',
+  },
+  {
+    href: '/odhad-ceny',
+    title: 'AI odhad ceny / výkup',
+    who: 'Realitky, autobazáre',
+    tag: 'Nové',
+    text: 'Formulár „Zistite orientačnú cenu“. AI asistent zavolá, zistí parametre a pošle orientačný odhad. Cieľom je dohodnúť obhliadku alebo stretnutie.',
+  },
+  {
+    href: '/odpovede-na-dopyty',
+    title: 'AI odpovede na dopyty',
+    who: 'Obchodné firmy, B2B',
+    text: 'Na e-mailový dopyt pripraví cenovú ponuku podľa vášho cenníka a zliav do minút. Pred odoslaním ju môže schváliť obchodník.',
+  },
+];
+
+const principles = [
+  { title: 'Rýchlosť reakcie rozhoduje', text: 'Kto zareaguje na dopyt prvý, má najväčšiu šancu obchod získať.' },
+  { title: 'AI robí rutinu, ľudia obchod', text: 'Agent zavolá, vypýta si informácie a zapíše ich. Váš človek už len rozhoduje a uzatvára.' },
+  { title: 'Na mieru, na vašej infraštruktúre', text: 'Riešenie beží na vašich účtoch. Citlivé dáta vašich zákazníkov zostávajú u vás.' },
+  { title: 'Transparentnosť', text: 'AI agent sa na začiatku hovoru vždy predstaví ako AI asistent.' },
+];
+
+const process = [
+  { title: 'Úvodný hovor', text: '15 minút online.' },
+  { title: 'Zmluva', text: 'Pošleme vám ju e-mailom na prečítanie.' },
+  { title: 'Stretnutie a podpis', text: 'Osobne.' },
+  { title: 'Stavba na mieru', text: 'Začíname hneď po podpise.' },
+  { title: 'Dodanie a podpora', text: 'Do 2–3 týždňov, potom záruka a podpora.' },
+];
+---
+<Base title="AIVALM" description="Slovenská AI agentúra. AI hlasoví agenti a automatické odpovede na dopyty, aby vaša firma reagovala do minút, nie do dní.">
+  <section class="hero">
+    <div class="wrap">
+      <div class="stack-lg">
+        <span class="eyebrow">AI automatizácie pre slovenské firmy</span>
+        <h1>Žiadny dopyt nevychladne.</h1>
+        <p class="lead muted">Staviame AI hlasových agentov, ktorí po slovensky telefonujú so záujemcami, a automatické odpovede na dopyty. Vaša firma zareaguje do minút, nie do dní, a vaši ľudia dostanú už kvalifikované informácie.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/kontakt">Dohodnúť konzultáciu <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#produkty">Pozrieť produkty</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap engine-wrap">
+      <Engine />
+    </div>
+  </section>
+
+  <section class="band band-light" id="produkty">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Produkty</span>
+        <h2>Tri riešenia, jeden cieľ: rýchla reakcia</h2>
+      </div>
+      <div class="tiles">
+        {products.map((p, i) => (
+          <a class="tile" href={p.href}>
+            <span class="tile-top">
+              <span class="tile-num">0{i + 1}</span>
+              {p.tag && <span class="tag">{p.tag}</span>}
+            </span>
+            <h3>{p.title}</h3>
+            <span class="tile-who">{p.who}</span>
+            <p>{p.text}</p>
+            <span class="tile-more">Viac o riešení <span class="arrow" aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Ako pracujeme</span>
+        <h2>Na čom staviame každé riešenie</h2>
+      </div>
+      <ul class="benefits principles">
+        {principles.map((p) => <li><strong>{p.title}</strong><span class="muted">{p.text}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band band-raised">
+    <div class="wrap stack-lg">
+      <div class="grid-2">
+        <div class="stack">
+          <span class="eyebrow">Spolupráca</span>
+          <h2>Od prvého hovoru k spusteniu za 2–3 týždne</h2>
+        </div>
+        <p class="lead muted">Na Slovensku rozhodujú osobné vzťahy. Preto začíname krátkym rozhovorom a riešenie staviame pre vás, nie ako krabicový produkt.</p>
+      </div>
+      <Flow steps={process} label="Priebeh spolupráce" />
+      <div><a class="btn btn-ghost" href="/ako-spolupracujeme">Ako spolupráca prebieha <span class="arrow" aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .hero { padding-block: clamp(72px, 12vw, 160px) clamp(56px, 8vw, 110px); }
+  .engine-wrap { margin-top: clamp(56px, 8vw, 96px); }
+  .principles { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+  .hero h1 { font-size: clamp(2.8rem, 8.5vw, 6.5rem); letter-spacing: -0.035em; max-width: 12ch; line-height: 1.02; }
+  .hero .lead { max-width: 58ch; }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0; border-top: 1px solid var(--line-light); }
+  .tile { display: grid; grid-template-rows: auto auto auto 1fr auto; gap: 12px; padding: 32px 28px 32px 0; text-decoration: none; color: inherit; border-bottom: 1px solid var(--line-light); transition: background .25s, padding .25s; min-width: 0; }
+  @media (min-width: 960px) {
+    .tile { padding: 36px 28px; border-bottom: 0; border-right: 1px solid var(--line-light); }
+    .tile:last-child { border-right: 0; }
+  }
+  .tile:hover { background: var(--paper-2); }
+  .tile-top { display: flex; justify-content: space-between; align-items: center; }
+  .tile-num { font-size: 0.85rem; font-weight: 600; color: var(--on-light-muted); font-variant-numeric: tabular-nums; }
+  .tile h3 { font-size: var(--step-2); font-weight: 700; letter-spacing: -0.01em; }
+  .tile-who { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-light-muted); }
+  .tile p { color: var(--on-light-muted); }
+  .tile-more { font-weight: 600; font-size: var(--step--1); display: inline-flex; gap: 8px; }
+  .tile:hover .arrow { transform: translateX(4px); }
+  .tile .arrow { transition: transform .2s; }
+</style>

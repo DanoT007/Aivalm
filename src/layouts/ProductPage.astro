@@ -1,0 +1,134 @@
+---
+import Base from './Base.astro';
+import Flow from '../components/Flow.astro';
+import Stats from '../components/Stats.astro';
+import Cta from '../components/Cta.astro';
+
+interface Step { title: string; text?: string }
+interface Benefit { title: string; text: string }
+interface Props {
+  title: string;
+  metaDescription: string;
+  eyebrow: string;
+  headline: string;
+  intro: string;
+  tag?: string;
+  problem: string;
+  solution: string;
+  steps: Step[];
+  benefits: Benefit[];
+  audience: { title: string; text: string }[];
+  showStats?: boolean;
+  product: string;
+}
+const p = Astro.props;
+const setup: Step[] = [
+  { title: 'Konzultácia', text: '15-minútový online hovor o tom, ako dnes pracujete s dopytmi.' },
+  { title: 'Nastavenie na vaše systémy', text: 'Riešenie postavíme na mieru a napojíme na nástroje, ktoré už používate.' },
+  { title: 'Test', text: 'Spolu ho vyskúšame na reálnych situáciách a doladíme.' },
+  { title: 'Spustenie', text: 'Dodanie do 2–3 týždňov od podpisu, potom podpora.' },
+];
+---
+<Base title={p.title} description={p.metaDescription}>
+  <section class="band hero">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <span class="eyebrow">{p.eyebrow} {p.tag && <span class="tag">{p.tag}</span>}</span>
+        <h1>{p.headline}</h1>
+        <p class="lead muted">{p.intro}</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href={`/kontakt?produkt=${encodeURIComponent(p.product)}`}>Dohodnúť 15-min. konzultáciu <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#ako-to-funguje">Ako to funguje</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-light">
+    <div class="wrap grid-2">
+      <div class="stack">
+        <span class="eyebrow">Problém</span>
+        <h2>{p.problem}</h2>
+      </div>
+      <div class="stack">
+        <span class="eyebrow">Riešenie</span>
+        <p class="lead">{p.solution}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="ako-to-funguje">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Ako to funguje</span>
+        <h2>Od dopytu k pripravenému obchodu</h2>
+      </div>
+      <Flow steps={p.steps} label="Postup riešenia" />
+      <slot name="after-flow" />
+    </div>
+  </section>
+
+  {p.showStats && (
+    <section class="band band-raised">
+      <div class="wrap stack-lg">
+        <div class="stack">
+          <span class="eyebrow">Prečo na rýchlosti záleží</span>
+          <h2>Kto zareaguje prvý, má najväčšiu šancu</h2>
+        </div>
+        <Stats />
+      </div>
+    </section>
+  )}
+
+  <section class="band band-light">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Benefity</span>
+        <h2>Čo tým získate</h2>
+      </div>
+      <ul class="benefits">
+        {p.benefits.map((b) => <li><strong>{b.title}</strong><span class="muted">{b.text}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap grid-2">
+      <div class="stack">
+        <span class="eyebrow">Pre koho</span>
+        <h2>Pre koho je určený</h2>
+      </div>
+      <div class="audience">
+        {p.audience.map((a) => <div class="aud"><h3>{a.title}</h3><p class="muted">{a.text}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-raised">
+    <div class="wrap stack-lg">
+      <div class="grid-2">
+        <div class="stack">
+          <span class="eyebrow">Ako to funguje u vás</span>
+          <h2>Štyri kroky k spusteniu</h2>
+        </div>
+        <div class="stack price">
+          <span class="eyebrow">Cena</span>
+          <p class="lead">Na vyžiadanie, podľa rozsahu riešenia.</p>
+          <p class="muted">Každé riešenie staviame na mieru, preto cenu povieme po úvodnej konzultácii.</p>
+        </div>
+      </div>
+      <Flow steps={setup} label="Postup spolupráce" />
+      <slot name="note" />
+    </div>
+  </section>
+
+  <Cta product={p.product} />
+</Base>
+
+<style>
+  .hero { padding-block: clamp(72px, 12vw, 150px) clamp(56px, 8vw, 100px); }
+  .hero .eyebrow { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .hero h1 { max-width: 18ch; }
+  .audience { display: grid; gap: 0; border-top: 1px solid var(--line-dark); }
+  .aud { display: grid; gap: 6px; padding-block: 22px; border-bottom: 1px solid var(--line-dark); }
+</style>

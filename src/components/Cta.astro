@@ -1,0 +1,25 @@
+---
+interface Props { title?: string; text?: string; product?: string }
+const {
+  title = 'Prejdime si to na 15 minút',
+  text = 'Na krátkom online hovore zistíme, kde vám dopyty čakajú najdlhšie, a povieme vám, či a ako by sa to dalo automatizovať. Konzultácia je bezplatná.',
+  product,
+} = Astro.props;
+const href = product ? `/kontakt?produkt=${encodeURIComponent(product)}` : '/kontakt';
+---
+<section class="band band-light cta">
+  <div class="wrap cta-row">
+    <div class="stack">
+      <h2>{title}</h2>
+      <p class="lead muted">{text}</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href={href}>Dohodnúť 15-min. konzultáciu <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-row { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 32px; }
+  .cta-row > .stack { min-width: 0; flex: 1 1 480px; }
+</style>

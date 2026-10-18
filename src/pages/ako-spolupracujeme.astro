@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Flow from '../components/Flow.astro';
+import Cta from '../components/Cta.astro';
+const steps = [
+  { title: 'Úvodný online hovor', text: '15 minút. Zistíme, ako dnes pracujete s dopytmi a kde vám najviac unikajú.' },
+  { title: 'Zmluva na prečítanie', text: 'Pošleme vám ju e-mailom, aby ste si ju mohli v pokoji prejsť.' },
+  { title: 'Osobné stretnutie', text: 'Podpis a faktúra.' },
+  { title: 'Stavba na mieru', text: 'Začíname hneď po podpise, na vašich účtoch a systémoch.' },
+  { title: 'Dodanie', text: 'Do 2–3 týždňov od podpisu.' },
+  { title: 'Záruka a podpora', text: 'Po spustení sme k dispozícii a riešenie dolaďujeme.' },
+];
+---
+<Base title="Ako spolupráca prebieha" description="Ako prebieha spolupráca s AIVALM: úvodný 15-minútový hovor, riešenie na mieru, dodanie do 2–3 týždňov a podpora po spustení.">
+  <section class="band">
+    <div class="wrap stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Spolupráca</span>
+        <h1>Osobne, na mieru a bez zbytočných kôl</h1>
+        <p class="lead muted">Každé riešenie staviame pre konkrétnu firmu. Začíname krátkym rozhovorom a do 2–3 týždňov od podpisu ho máte spustené.</p>
+      </div>
+    </div>
+  </section>
+  <section class="band band-light">
+    <div class="wrap stack-lg">
+      <h2>Šesť krokov od prvého hovoru po podporu</h2>
+      <Flow steps={steps} label="Priebeh spolupráce" />
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap grid-2">
+      <div class="stack">
+        <span class="eyebrow">Na čom sa dohodneme</span>
+        <h2>Riešenie beží u vás</h2>
+      </div>
+      <div class="stack">
+        <p class="lead">Automatizácie postavíme na vašich účtoch a napojíme na nástroje, ktoré už používate, napríklad Trello, Google Sheets alebo vaše CRM.</p>
+        <p class="muted">Cenu povieme po úvodnej konzultácii, podľa rozsahu riešenia.</p>
+      </div>
+    </div>
+  </section>
+  <Cta />
+</Base>

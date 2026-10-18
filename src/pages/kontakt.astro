@@ -1,0 +1,165 @@
+---
+import Base from '../layouts/Base.astro';
+import { WEBHOOK_URL, CONTACT_EMAIL, CONTACT_PHONE } from '../config';
+
+const products = ['AI hlasový agent', 'AI odhad ceny / výkup', 'AI odpovede na dopyty', 'Ešte neviem'];
+const slots = ['8:00 – 10:00', '10:00 – 12:00', '12:00 – 14:00', '14:00 – 16:00', '16:00 – 18:00'];
+---
+<Base title="Kontakt" description="Dohodnite si bezplatnú 15-minútovú konzultáciu s AIVALM alebo nám napíšte.">
+  <section class="band">
+    <div class="wrap contact-grid">
+      <div class="stack-lg intro">
+        <div class="stack">
+          <span class="eyebrow">Kontakt</span>
+          <h1>Dohodnime si 15 minút</h1>
+          <p class="lead muted">Vyberte si termín online konzultácie alebo nám len napíšte. Ozveme sa vám a termín potvrdíme.</p>
+        </div>
+        <dl class="direct">
+          <div><dt class="eyebrow">E-mail</dt><dd>{CONTACT_EMAIL ? <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> : <span class="todo">DOPLNIŤ: e-mail</span>}</dd></div>
+          <div><dt class="eyebrow">Telefón</dt><dd>{CONTACT_PHONE ? <a href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`}>{CONTACT_PHONE}</a> : <span class="todo">DOPLNIŤ: telefón</span>}</dd></div>
+        </dl>
+      </div>
+
+      <form id="contact" class="form" data-webhook={WEBHOOK_URL ?? ''} novalidate>
+        <fieldset class="choice">
+          <legend class="sr-only">Čo potrebujete</legend>
+          <label><input type="radio" name="typ" value="konzultacia" checked /> <span>Dohodnúť konzultáciu</span></label>
+          <label><input type="radio" name="typ" value="sprava" /> <span>Len napísať správu</span></label>
+        </fieldset>
+
+        <div class="row">
+          <label class="field"><span>Meno a priezvisko *</span><input id="f-meno" name="meno" autocomplete="name" required /></label>
+          <label class="field"><span>Firma</span><input id="f-firma" name="firma" autocomplete="organization" /></label>
+        </div>
+        <div class="row">
+          <label class="field"><span>E-mail *</span><input id="f-email" name="email" type="email" autocomplete="email" required /></label>
+          <label class="field"><span>Telefón *</span><input id="f-telefon" name="telefon" type="tel" autocomplete="tel" required /></label>
+        </div>
+        <label class="field"><span>O ktorý produkt ide</span>
+          <select id="f-produkt" name="produkt">
+            {products.map((p) => <option value={p}>{p}</option>)}
+          </select>
+        </label>
+
+        <div class="row booking">
+          <label class="field"><span>Preferovaný deň *</span><input id="f-den" name="den" type="date" required /></label>
+          <label class="field"><span>Preferovaný čas *</span>
+            <select id="f-cas" name="cas" required>
+              {slots.map((s) => <option value={s}>{s}</option>)}
+            </select>
+          </label>
+        </div>
+
+        <label class="field"><span>Správa</span><textarea id="f-sprava" name="sprava" rows="4"></textarea></label>
+
+        <label class="hp" aria-hidden="true">Nevypĺňajte<input name="web" tabindex="-1" autocomplete="off" /></label>
+
+        <label class="consent">
+          <input id="f-suhlas" name="suhlas" type="checkbox" required />
+          <span>Súhlasím so spracovaním osobných údajov za účelom odpovede na môj dopyt podľa <a href="/ochrana-osobnych-udajov">zásad ochrany osobných údajov</a>. Beriem na vedomie, že ma v súvislosti s dopytom môže kontaktovať aj AI asistent. *</span>
+        </label>
+
+        <div class="submit-row">
+          <button class="btn btn-primary" type="submit">Odoslať <span class="arrow" aria-hidden="true">→</span></button>
+          <p class="status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const form = document.getElementById('contact') as HTMLFormElement;
+  const status = form.querySelector('.status') as HTMLElement;
+  const booking = form.querySelector('.booking') as HTMLElement;
+  const day = form.elements.namedItem('den') as HTMLInputElement;
+
+  const tomorrow = new Date(Date.now() + 864e5).toISOString().slice(0, 10);
+  day.min = tomorrow;
+
+  const produkt = new URLSearchParams(location.search).get('produkt');
+  const select = form.elements.namedItem('produkt') as HTMLSelectElement;
+  if (produkt && [...select.options].some((o) => o.value === produkt)) select.value = produkt;
+
+  const syncType = () => {
+    const isBooking = (form.elements.namedItem('typ') as RadioNodeList).value === 'konzultacia';
+    booking.hidden = !isBooking;
+    booking.querySelectorAll('input, select').forEach((el) => ((el as HTMLInputElement).required = isBooking));
+  };
+  form.addEventListener('change', (e) => { if ((e.target as HTMLInputElement).name === 'typ') syncType(); });
+  syncType();
+
+  const setStatus = (text: string, kind: 'ok' | 'err' | '') => { status.textContent = text; status.dataset.kind = kind; };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.classList.add('checked');
+      const first = form.querySelector(':invalid') as HTMLElement | null;
+      first?.focus();
+      setStatus('Vyplňte prosím povinné polia označené hviezdičkou.', 'err');
+      return;
+    }
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (data.web) return;
+    delete data.web;
+    if (data.typ !== 'konzultacia') { delete data.den; delete data.cas; }
+    const webhook = form.dataset.webhook;
+    if (!webhook) { setStatus('Formulár zatiaľ nie je napojený. Napíšte nám prosím e-mail.', 'err'); return; }
+
+    const button = form.querySelector('button') as HTMLButtonElement;
+    button.disabled = true;
+    setStatus('Odosielam…', '');
+    try {
+      // Jednoduchý request bez CORS preflightu, rovnako ako pôvodný formulár. Odpoveď je nečitateľná,
+      // za úspech sa berie, že request odišiel.
+      const body = new URLSearchParams({ ...(data as Record<string, string>), suhlas: 'ano', zdroj: location.pathname, odoslane: new Date().toISOString() });
+      await fetch(webhook, { method: 'POST', mode: 'no-cors', body });
+      form.reset();
+      syncType();
+      setStatus(data.typ === 'konzultacia' ? 'Ďakujeme. Termín vám potvrdíme e-mailom.' : 'Ďakujeme, ozveme sa vám čo najskôr.', 'ok');
+    } catch {
+      setStatus('Odoslanie sa nepodarilo. Skúste to prosím znova alebo nám napíšte e-mail.', 'err');
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
+
+<style>
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 7vw, 96px); align-items: start; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+  .direct { margin: 0; display: grid; gap: 18px; }
+  .direct dd { margin: 4px 0 0; font-size: var(--step-1); }
+  .direct a { text-decoration: none; }
+
+  .form { display: grid; gap: 18px; padding: clamp(24px, 4vw, 40px); background: var(--paper); color: var(--on-light); border-radius: var(--radius); }
+  .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 18px; }
+  .field { display: grid; gap: 6px; font-size: 0.9rem; font-weight: 500; min-width: 0; }
+  .field input, .field select, .field textarea {
+    width: 100%; font: 400 1rem/1.4 var(--font); color: var(--on-light); background: #fff;
+    border: 1px solid var(--line-light); border-radius: var(--radius); padding: 12px 14px;
+  }
+  .field textarea { resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--on-light); outline-offset: 0; border-color: transparent; }
+  :global(.form.checked) .field :invalid { border-color: #a12a2a; }
+
+  .choice { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .choice label { position: relative; }
+  .choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .choice span { display: inline-block; padding: 10px 16px; border: 1px solid var(--line-light); border-radius: 999px; font-size: 0.92rem; font-weight: 500; cursor: pointer; }
+  .choice input:checked + span { background: var(--on-light); color: var(--paper); border-color: var(--on-light); }
+  .choice input:focus-visible + span { outline: 2px solid var(--on-light); outline-offset: 2px; }
+
+  .consent { display: grid; grid-template-columns: 20px 1fr; gap: 12px; font-size: 0.85rem; color: var(--on-light-muted); align-items: start; }
+  .consent input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--on-light); }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .submit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .form .btn-primary { background: var(--on-light); color: var(--paper); border-color: var(--on-light); }
+  .form .btn-primary:hover { background: transparent; color: var(--on-light); }
+  .form .btn[disabled] { opacity: .6; cursor: wait; }
+  .status { font-size: 0.9rem; }
+  .status[data-kind='err'] { color: #a12a2a; }
+  .status[data-kind='ok'] { color: #1f6b3a; font-weight: 600; }
+</style>

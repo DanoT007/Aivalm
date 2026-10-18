@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+---
+<Base title="Bezpečnosť, GDPR a AI Act" description="Riešenia AIVALM bežia na účtoch a serveroch klienta, dáta zostávajú u neho. AI agent sa vždy predstaví ako AI podľa EU AI Act.">
+  <section class="band">
+    <div class="wrap stack">
+      <span class="eyebrow">Bezpečnosť</span>
+      <h1>Vaše dáta zostávajú u vás</h1>
+      <p class="lead muted">Pri automatizácii pracujeme s údajmi vašich zákazníkov. Preto je riešenie postavené tak, aby ste nad nimi mali kontrolu vy.</p>
+    </div>
+  </section>
+  <section class="band band-light">
+    <div class="wrap grid-2">
+      <div class="stack">
+        <span class="eyebrow">GDPR</span>
+        <h2>Na vašej infraštruktúre</h2>
+      </div>
+      <ul class="benefits single">
+        <li><strong>Beží na vašich účtoch</strong><span class="muted">Riešenie beží na účtoch a serveroch klienta. AIVALM nedrží vaše prístupové kľúče ani dáta vašich zákazníkov.</span></li>
+        <li><strong>Zmluvy so službami</strong><span class="muted">So službami, ktoré riešenie využíva, sú uzavreté zmluvy o spracúvaní údajov (DPA).</span></li>
+        <li><strong>Súhlas pri každom formulári</strong><span class="muted">Každý formulár s telefónnym číslom obsahuje súhlas so spracovaním údajov a informáciu, že môže zavolať AI asistent.</span></li>
+      </ul>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap grid-2">
+      <div class="stack">
+        <span class="eyebrow">EU AI Act</span>
+        <h2>AI sa vždy predstaví</h2>
+      </div>
+      <div class="stack">
+        <p class="lead">Podľa článku 50 nariadenia EU AI Act, povinného od 2. 8. 2026, sa AI hlasový agent musí na začiatku hovoru predstaviť ako AI.</p>
+        <p class="muted">Náš agent to robí vždy. Považujeme to za znak dôveryhodnosti: človek vie, s kým hovorí, a ďalej to prevezme váš človek.</p>
+      </div>
+    </div>
+  </section>
+  <Cta />
+</Base>
+
+<style>
+  .single { grid-template-columns: 1fr; }
+</style>

@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+---
+<Base title="O nás" description="AIVALM je slovenská AI agentúra, ktorú založil Daniel Tomasch. Staviame AI automatizácie pre firmy na Slovensku a v Česku.">
+  <section class="band">
+    <div class="wrap stack">
+      <span class="eyebrow">O nás</span>
+      <h1>Slovenská AI agentúra s osobným prístupom</h1>
+      <p class="lead muted">AIVALM stavia firmám automatizácie s umelou inteligenciou, predovšetkým AI hlasových agentov, ktorí po slovensky telefonujú so záujemcami, a automatické odpovede na dopyty. Pôsobíme na Slovensku a v Česku.</p>
+    </div>
+  </section>
+  <section class="band band-raised">
+    <div class="wrap person">
+      <img src="/img/daniel.jpg" width="466" height="618" alt="Daniel Tomasch, zakladateľ AIVALM" loading="lazy" decoding="async" />
+      <div class="stack">
+        <span class="eyebrow">Zakladateľ</span>
+        <h2>Daniel Tomasch</h2>
+        <p class="lead muted">Daniel Tomasch je zakladateľ AIVALM. Pri spolupráci hovoríte priamo s človekom, ktorý o riešení rozhoduje.</p>
+        <p><span class="todo">DOPLNIŤ: pár viet o Danielovi (kto je, prečo založil AIVALM)</span></p>
+      </div>
+    </div>
+  </section>
+  <Cta />
+</Base>
+
+<style>
+  .person { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .person img { width: 100%; height: auto; aspect-ratio: 466 / 618; object-fit: cover; border-radius: var(--radius); filter: grayscale(1) contrast(1.05); }
+  @media (max-width: 720px) { .person { grid-template-columns: 1fr; } .person img { max-width: 280px; } }
+</style>

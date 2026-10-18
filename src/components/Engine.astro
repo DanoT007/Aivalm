@@ -1,0 +1,45 @@
+---
+// Spoločný „motor“ produktov: dopyt → AI vrstva → výstup pre firmu.
+const inputs = ['Webový formulár', 'E-mailový dopyt', 'Lead z kampane'];
+const outputs = ['Zápis do CRM alebo tabuľky', 'E-mail a notifikácia', 'Cenová ponuka alebo odhad', 'Stretnutie v kalendári'];
+---
+<div class="engine" aria-label="Ako funguje AIVALM: dopyt, AI vrstva, výstup pre firmu" role="img">
+  <div class="col">
+    <span class="eyebrow">Dopyt</span>
+    {inputs.map((t, i) => <span class="node" style={`--d:${i * 0.25}s`}>{t}</span>)}
+  </div>
+  <div class="link" aria-hidden="true"><span class="pulse"></span></div>
+  <div class="core">
+    <span class="eyebrow">AI vrstva</span>
+    <span class="core-box">
+      <strong>Spustí sa hneď</strong>
+      <span>hlasový agent alebo AI e-mail</span>
+    </span>
+  </div>
+  <div class="link" aria-hidden="true"><span class="pulse" style="animation-delay:1.1s"></span></div>
+  <div class="col">
+    <span class="eyebrow">Výstup pre firmu</span>
+    {outputs.map((t, i) => <span class="node" style={`--d:${1.2 + i * 0.2}s`}>{t}</span>)}
+  </div>
+</div>
+
+<style>
+  .engine { display: grid; grid-template-columns: minmax(0, 1fr) 80px minmax(0, 1fr) 80px minmax(0, 1fr); align-items: center; gap: 0; }
+  .col, .core { display: grid; gap: 10px; }
+  .node { display: block; padding: 13px 16px; border: 1px solid var(--line-dark); border-radius: var(--radius); font-size: 0.92rem; color: var(--on-dark-muted); background: var(--ink); animation: lit 6s ease-in-out infinite; animation-delay: var(--d); }
+  .core-box { display: grid; gap: 4px; padding: 26px 20px; border: 1px solid var(--on-dark); border-radius: var(--radius); background: var(--on-dark); color: var(--ink); text-align: center; }
+  .core-box strong { font-size: 1.1rem; }
+  .core-box span { font-size: 0.9rem; }
+  .core .eyebrow { text-align: center; }
+  .link { position: relative; height: 1px; background: var(--line-dark); margin-top: 28px; overflow: hidden; }
+  .pulse { position: absolute; top: 0; left: -30%; width: 30%; height: 1px; background: var(--on-dark); animation: move 3s cubic-bezier(.6,0,.4,1) infinite; }
+  @keyframes move { to { left: 100%; } }
+  @keyframes lit { 0%, 70%, 100% { color: var(--on-dark-muted); border-color: var(--line-dark); } 10%, 25% { color: var(--on-dark); border-color: var(--on-dark-muted); } }
+
+  @media (max-width: 860px) {
+    .engine { grid-template-columns: 1fr; gap: 0; }
+    .link { width: 1px; height: 40px; margin: 8px auto; }
+    .pulse { left: 0; top: -30%; width: 1px; height: 30%; animation-name: movey; }
+    @keyframes movey { to { top: 100%; } }
+  }
+</style>

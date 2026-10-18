@@ -1,0 +1,54 @@
+---
+import ProductPage from '../layouts/ProductPage.astro';
+---
+<ProductPage
+  title="AI hlasový agent"
+  metaDescription="AI hlasový agent po slovensky zavolá novému záujemcovi do niekoľkých minút, vypýta si chýbajúce údaje a maklérovi pošle hotové zhrnutie."
+  eyebrow="Realitné kancelárie, makléri, developeri"
+  headline="Novému záujemcovi zavoláme do pár minút"
+  intro="AI hlasový agent po slovensky a s vykaním zavolá záujemcovi, ktorý vyplnil formulár na vašom webe, vo Facebook kampani alebo na portáli. Vypýta si chýbajúce informácie, zapíše ich do vášho systému a maklérovi pošle zhrnutie."
+  problem="Záujemca vyplní formulár, ale maklér mu zavolá až o deň. Dovtedy už hovorí s konkurenciou."
+  solution="Agent zavolá hneď, aj večer a cez víkend. Maklér nevolá naslepo, ale preberá už kvalifikovaný kontakt so všetkým, čo potrebuje vedieť."
+  steps={[
+    { title: 'Záujemca vyplní formulár', text: 'Na webe, vo Facebook kampani alebo na portáli.' },
+    { title: 'Hovor sa spustí okamžite', text: 'Bez čakania na voľného makléra.' },
+    { title: 'AI agent zavolá', text: 'Predstaví sa ako AI asistent, vyká a hovorí po slovensky.' },
+    { title: 'Zistí, čo chýba', text: 'Na údaje, ktoré už máte, sa znova nepýta.' },
+    { title: 'Zápis a zhrnutie', text: 'Údaje idú do vášho systému a maklérovi príde e-mail.' },
+  ]}
+  benefits={[
+    { title: 'Žiadny dopyt nevychladne', text: 'Reakcia v minútach, aj večer a cez víkend.' },
+    { title: 'Makléri neobvolávajú naslepo', text: 'Dostanú hotové informácie a venujú sa obchodu.' },
+    { title: 'Prirodzená slovenčina', text: 'Agent vyká, je trpezlivý a nechá človeka dohovoriť.' },
+    { title: 'Zápis do vášho systému', text: 'Trello, Google Sheets alebo CRM, s ktorým kancelária pracuje.' },
+    { title: 'Dáta zostávajú u vás', text: 'Riešenie beží na vašich účtoch, v súlade s GDPR.' },
+    { title: 'V súlade s EU AI Act', text: 'Agent sa na začiatku hovoru vždy predstaví ako AI.' },
+  ]}
+  audience={[
+    { title: 'Realitné kancelárie a makléri', text: 'Rýchla reakcia na nové dopyty a dozbieranie údajov, ktoré konkrétnemu dopytu chýbajú.' },
+    { title: 'Developeri', text: 'Rýchla kvalifikácia záujemcov o byty v projekte.' },
+    { title: 'Firmy so zásobníkom starých kontaktov', text: 'Agent prejde kontakty, na ktoré nestíhate volať, a oživí ich.' },
+  ]}
+  showStats
+  product="AI hlasový agent"
+>
+  <div slot="after-flow" class="facts">
+    <div class="stack">
+      <span class="eyebrow">Čo agent zisťuje</span>
+      <ul class="chips">
+        <li><strong>Zámer</strong> predať, kúpiť, prenajať</li>
+        <li><strong>Lokalita</strong> mesto, mestská časť</li>
+        <li><strong>Typ nehnuteľnosti</strong> byt, dom, pozemok</li>
+        <li><strong>Dispozícia</strong> počet izieb</li>
+        <li><strong>Cena</strong> očakávaná alebo rozpočet</li>
+      </ul>
+    </div>
+  </div>
+</ProductPage>
+
+<style>
+  .facts { padding-top: 24px; border-top: 1px solid var(--line-dark); }
+  .chips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+  .chips li { display: grid; gap: 2px; padding: 16px 18px; border: 1px solid var(--line-dark); border-radius: var(--radius); color: var(--on-dark-muted); font-size: 0.95rem; }
+  .chips strong { color: var(--on-dark); font-weight: 600; }
+</style>

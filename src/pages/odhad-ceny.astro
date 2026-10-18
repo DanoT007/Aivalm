@@ -1,0 +1,37 @@
+---
+import ProductPage from '../layouts/ProductPage.astro';
+---
+<ProductPage
+  title="AI odhad ceny a výkup"
+  metaDescription="Formulár „Zistite orientačnú cenu“, po ktorom do minúty zavolá AI asistent, zistí parametre a pošle orientačný odhad. Pre realitky a autobazáre."
+  eyebrow="Realitné kancelárie, autobazáre"
+  tag="Nové"
+  headline="Orientačná cena do pár minút, ďalší krok v kalendári"
+  intro="Na vašom webe je jednoduchý formulár „Zistite orientačnú cenu“. Človek zadá len telefón a e-mail. Do minúty mu zavolá AI asistent, v krátkom rozhovore zistí parametre a orientačný odhad pošle e-mailom. Riešenie pripravujeme na mieru pre konkrétnu firmu."
+  problem="Kto si pýta odhad ceny, často zvažuje predaj. Ak sa mu ozvete neskoro, zákazku získa niekto iný."
+  solution="Odhad nie je cieľ, ale začiatok rozhovoru. Celý tok smeruje k dohodnutiu ďalšieho kroku: obhliadky nehnuteľnosti alebo stretnutia s predajcom."
+  steps={[
+    { title: 'Formulár na webe', text: '„Zistite orientačnú cenu“, stačí telefón a e-mail.' },
+    { title: 'AI asistent zavolá', text: 'Do približne minúty po odoslaní.' },
+    { title: 'Zistí parametre', text: 'Napríklad o nehnuteľnosti alebo o aute.' },
+    { title: 'Orientačný odhad e-mailom', text: 'Do približne 5 minút.' },
+    { title: 'Ďalší krok', text: 'Obhliadka alebo stretnutie s predajcom v kalendári.' },
+  ]}
+  benefits={[
+    { title: 'Najteplejší kontakt ako prvý', text: 'Zavoláte človeku vo chvíli, keď o predaji práve uvažuje.' },
+    { title: 'Menej práce pre ľudí', text: 'Parametre zistí a zapíše AI, váš človek preberá hotové informácie.' },
+    { title: 'Smeruje k stretnutiu', text: 'Cieľom je dohodnutá obhliadka alebo stretnutie, nie len číslo v e-maile.' },
+    { title: 'Jeden motor pre viac odvetví', text: 'Rovnaký postup funguje pre nehnuteľnosti aj autá.' },
+  ]}
+  audience={[
+    { title: 'Realitné kancelárie', text: 'Odhad ceny nehnuteľnosti pre majiteľov, ktorí zvažujú predaj. Výsledkom je dohodnutá obhliadka makléra.' },
+    { title: 'Autobazáre', text: 'Výkup áut: AI zistí značku, model, rok, najazdené kilometre a stav, porovná podobné inzeráty a pošle orientačnú výkupnú cenu.' },
+  ]}
+  product="AI odhad ceny / výkup"
+>
+  <p slot="note" class="note muted">Ide o orientačný odhad, nie o znalecký posudok ani záväznú ponuku.</p>
+</ProductPage>
+
+<style>
+  .note { font-size: 0.9rem; padding-top: 20px; border-top: 1px solid var(--line-dark); }
+</style>
