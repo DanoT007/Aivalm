@@ -51,7 +51,7 @@
     if (came) {
       curtain.classList.add('is-cover');
       requestAnimationFrame(function () { requestAnimationFrame(function () { curtain.classList.remove('is-cover'); curtain.classList.add('is-leave'); }); });
-      setTimeout(function () { curtain.classList.remove('is-leave'); }, 900);
+      setTimeout(function () { curtain.classList.remove('is-leave'); }, touch ? 820 : 900);
     }
     document.addEventListener('click', function (e) {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -61,7 +61,7 @@
       e.preventDefault();
       try { sessionStorage.setItem('aivalm-curtain', '1'); } catch (er) {}
       curtain.classList.add('is-enter');
-      setTimeout(function () { location.href = a.href; }, 520);
+      setTimeout(function () { location.href = a.href; }, touch ? 560 : 520);
     });
     window.addEventListener('pageshow', function (ev) { if (ev.persisted) curtain.classList.remove('is-enter', 'is-cover'); });
   }

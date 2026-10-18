@@ -730,3 +730,23 @@ body{overflow-x:clip;max-width:100%}
   .nav.is-open .nav__panel>*{animation:rise .5s var(--ease-out) both;animation-delay:calc(var(--i,0)*60ms + 60ms)}
 }
 @media (min-width:821px) and (max-height:780px){.cal .cal__ev+.cal__ev{display:none}}
+
+/* menu: lock scrolling on the viewport, not on body (body overflow broke the sticky nav) */
+html.menu-open{overflow:hidden}
+.nav__panel{overscroll-behavior:contain}
+
+/* page transition on touch devices: soft grey veil with a gradient start, black logo, ~1.2 s */
+@media (hover:none),(pointer:coarse){
+  .curtain{transform:none;opacity:0;background:var(--stone);transition:none;will-change:opacity}
+  .curtain::before{content:"";position:absolute;inset:0;background:linear-gradient(165deg,#FFFFFF 0%,#F3F3F3 40%,#CFCFCF 100%);opacity:1}
+  .curtain img{position:relative;width:58px;filter:none;opacity:0;transform:scale(.86)}
+  .curtain.is-enter{transform:none;opacity:1;transition:opacity .45s cubic-bezier(.33,0,.2,1)}
+  .curtain.is-enter::before{opacity:0;transition:opacity .5s ease .12s}
+  .curtain.is-enter img{opacity:1;transform:scale(1);transition:opacity .4s ease .12s,transform .6s var(--ease-out) .12s}
+  .curtain.is-cover{transform:none;opacity:1;transition:none}
+  .curtain.is-cover::before{opacity:0;transition:none}
+  .curtain.is-cover img{opacity:1;transform:none;transition:none}
+  .curtain.is-leave{transform:none;opacity:0;transition:opacity .55s cubic-bezier(.4,0,.2,1) .12s}
+  .curtain.is-leave::before{opacity:0}
+  .curtain.is-leave img{opacity:0;transform:scale(1.06);transition:opacity .45s ease,transform .7s var(--ease-out)}
+}

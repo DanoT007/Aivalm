@@ -19,13 +19,13 @@
     if (tog) tog.addEventListener('click', function () {
       var open = nav.classList.toggle('is-open');
       tog.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.body.style.overflow = open ? 'hidden' : '';
+      document.documentElement.classList.toggle('menu-open', open);
     });
     nav.querySelectorAll('.nav__panel a').forEach(function (a) {
       a.addEventListener('click', function () {
         nav.classList.remove('is-open');
         if (tog) tog.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+        document.documentElement.classList.remove('menu-open');
       });
     });
   }

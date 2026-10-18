@@ -25,7 +25,8 @@ Zdroj pravdy pre dizajn: `DESIGN.md`. Stránky sa skladajú cez `python3 tools/b
 - Mobil/dotyk: bez Lenis a zrnenia (výkon), natívny scroll, horizontálny posun zamknutý
 - Odstránené na želanie: label „Pozrieť“, scramble textu, hover animácie produktových kariet, marquee/feed na úvode
 - Každá stránka sa otvára hore (alebo na #kotve); stránky bez rezervácie posielajú CTA na `index.html#rezervacia`
-- Mobilné menu: tenké názvy produktov + „Pre koho“, tlačidlo „Rezervovať bezplatný hovor“
+- Mobilné menu: tenké názvy produktov + „Pre koho“, tlačidlo „Rezervovať bezplatný hovor“; scroll lock cez `html.menu-open` (nie body – to rozbíjalo sticky lištu)
+- Prechod stránok: desktop čierna opona; dotyk sivý závoj s gradientom na začiatku, čierne logo, ~1,2 s (fade, bez posunu)
 
 ## Názvy produktov
 AI hlasový agent · AI odhad ceny · AI cenové ponuky
