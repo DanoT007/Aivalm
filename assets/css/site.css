@@ -764,3 +764,4 @@ html.js{scroll-behavior:auto}
 .story__pin{transition:opacity .55s ease}
 .story.is-skipping .story__pin{opacity:0;transition:opacity .3s ease}
 [tabindex="-1"]:focus{outline:none}
+.story.is-skip-now .story__pin{opacity:0;transition:none}

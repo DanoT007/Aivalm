@@ -71,16 +71,25 @@
     }
     return m.segs.length ? m.segs[m.segs.length - 1].e : 0;
   }
-  function settle(z) {
-    if (window.ScrollTrigger) ScrollTrigger.update();
-    var tw = z.st.getTween && z.st.getTween(); if (tw) tw.progress(1);
-    z.el.classList.remove('is-skipping'); z.on = false;
-  }
+  /* The page itself never scrolls during the glide: <main> and the footer slide as one GPU layer
+     (translate3d), so nothing scroll-linked recalculates per frame. At the end the transform is
+     dropped and the real scroll position is set in the same frame, so the swap is invisible. */
   function endGlide() {
     if (!glide) return;
-    cancelAnimationFrame(glide.raf); clearTimeout(glide.dog);
-    glide.zones.forEach(function (z) { if (z.on) settle(z); });
-    root.classList.remove('is-gliding'); glide = null;
+    var g = glide; glide = null;
+    cancelAnimationFrame(g.raf); clearTimeout(g.dog);
+    var y = Math.round(g.from + g.off);
+    g.els.forEach(function (e) { e.style.transform = ''; e.style.willChange = ''; });
+    setY(y);
+    if (window.ScrollTrigger) ScrollTrigger.update();
+    g.zones.forEach(function (z) {
+      if (!z.on) return;
+      var tw = z.st.getTween && z.st.getTween(); if (tw) tw.progress(1);
+      z.el.classList.remove('is-skip-now');
+      requestAnimationFrame(function () { z.el.classList.remove('is-skipping'); });
+    });
+    root.classList.remove('is-gliding');
+    if (g.done) g.done();
   }
   function glideTo(el, hash) {
     endGlide();
@@ -88,23 +97,29 @@
     var focus = function () { if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1'); try { el.focus({ preventScroll: true }); } catch (e) {} };
     if (hash) history.replaceState(null, '', hash);
     if (reduce || Math.abs(to - from) < 2) { setY(to); focus(); return; }
+    setY(from); /* stop any smooth-scroll momentum still running */
     var zones = pinZones(Math.min(from, to), Math.max(from, to)), m = buildMap(from, to, zones);
     var dur = Math.max(900, Math.min(3500, 590 + 1310 * Math.sqrt(m.total / vh))), t0 = performance.now(), dir = to > from ? 1 : -1;
-    glide = { raf: 0, zones: zones };
+    var els = Array.prototype.slice.call(document.querySelectorAll('body > main, body > footer'));
+    els.forEach(function (e) { e.style.willChange = 'transform'; });
+    /* a story pinned right now would jump inside the moving layer: hide it instantly */
+    zones.forEach(function (z) { if (from >= z.st.start && from <= z.st.end) { z.el.classList.add('is-skip-now', 'is-skipping'); z.on = true; } });
+    glide = { raf: 0, zones: zones, els: els, from: from, off: 0, done: null };
     root.classList.add('is-gliding');
     /* safety net: if frames stall (busy device, background tab) still land on the target */
-    glide.dog = setTimeout(function () { if (glide) { endGlide(); setY(to); focus(); } }, dur + 400);
+    glide.dog = setTimeout(function () { if (glide) { glide.off = to - from; endGlide(); focus(); } }, dur + 400);
     (function step(now) {
       if (!glide) return;
       var p = Math.min(1, (now - t0) / dur), e = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-      var y = mapY(m, e * m.total);
-      setY(y);
+      var y = p < 1 ? mapY(m, e * m.total) : to;
+      glide.off = y - from;
+      var tr = 'translate3d(0,' + (-glide.off).toFixed(2) + 'px,0)';
+      els.forEach(function (x) { x.style.transform = tr; });
       zones.forEach(function (z) {
-        var on = y > z.st.start - (dir > 0 ? .45 : .1) * vh && y < z.st.end + (dir > 0 ? .1 : .45) * vh;
-        if (on && !z.on) { z.el.classList.add('is-skipping'); z.on = true; }
-        else if (!on && z.on) settle(z);
+        if (z.on) return; /* once hidden, a story stays hidden until we land (its real state is set then) */
+        if (y > z.st.start - (dir > 0 ? .45 : .1) * vh && y < z.st.end + (dir > 0 ? .1 : .45) * vh) { z.el.classList.add('is-skipping'); z.on = true; }
       });
-      if (p < 1) glide.raf = requestAnimationFrame(step); else { endGlide(); focus(); }
+      if (p < 1) glide.raf = requestAnimationFrame(step); else { glide.done = focus; endGlide(); }
     })(t0);
   }
   ['wheel', 'touchstart', 'keydown'].forEach(function (ev) { addEventListener(ev, endGlide, { passive: true }); });
