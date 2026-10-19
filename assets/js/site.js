@@ -180,7 +180,8 @@
 
   function workDays() {
     var now = parts(new Date());
-    var list = [], cur = new Date(Date.UTC(now.y, now.m - 1, now.d, 12));
+    // earliest bookable day is tomorrow (never today)
+    var list = [], cur = new Date(Date.UTC(now.y, now.m - 1, now.d, 12) + 86400000);
     while (list.length < DAYS_AHEAD) {
       var wd = cur.getUTCDay();
       if (wd !== 0 && wd !== 6) list.push({ y: cur.getUTCFullYear(), m: cur.getUTCMonth() + 1, d: cur.getUTCDate(), wd: wd });
