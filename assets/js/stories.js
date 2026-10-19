@@ -227,5 +227,18 @@
       .to(o, { v: 21, duration: 1, ease: 'power1.out', onUpdate: function () { if (num) num.textContent = Math.round(o.v); } }, 0);
   });
 
+  // response-time bars ("kto pošle cenu prvý"): each bar grows to its data-w while the block scrolls in,
+  // the winner's badge pops at the end
+  document.querySelectorAll('[data-tbars]').forEach(function (box) {
+    var rows = box.querySelectorAll('.tbars__row'), badge = box.querySelector('.tbars__row--win strong');
+    var tl = gsap.timeline({ scrollTrigger: { trigger: box, start: 'top 85%', end: 'top 30%', scrub: .6 } });
+    rows.forEach(function (r, i) {
+      var b = r.querySelector('i b'), w = +(r.dataset.w || 1);
+      gsap.set(b, { scaleX: 0 }); gsap.set(r, { autoAlpha: .25 });
+      tl.to(r, { autoAlpha: 1, duration: .15 }, i * .12).to(b, { scaleX: w, duration: .5, ease: 'power1.out' }, i * .12);
+    });
+    if (badge) { gsap.set(badge, { autoAlpha: 0, x: -8 }); tl.to(badge, { autoAlpha: 1, x: 0, duration: .2 }, .75); }
+  });
+
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
 })();
