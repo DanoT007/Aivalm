@@ -8,7 +8,9 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !window.gsap || !window.ScrollTrigger || !ctx) return; /* poster stays */
   gsap.registerPlugin(ScrollTrigger);
-  var N = 96, small = Math.min(window.innerWidth, 900) * (window.devicePixelRatio || 1) < 1100 || window.innerWidth < 820;
+  var phone = window.matchMedia('(max-width: 980px), (max-height: 639px)').matches;
+  /* phones stop on the phone / price tag / envelope frame (no reassembly), so they only need the first 58 frames */
+  var N = phone ? 58 : 96, small = Math.min(window.innerWidth, 900) * (window.devicePixelRatio || 1) < 1100 || window.innerWidth < 820;
   var dir = 'assets/img/lalia/' + (small ? 'm' : 'd') + '/';
   var imgs = new Array(N), loaded = new Array(N), cur = -1, want = 0;
   function src(i) { return dir + ('00' + (i + 1)).slice(-3) + '.webp'; }
@@ -52,6 +54,6 @@
   /* phones/tablets: the hero holds still (headline + film on screen) while the film plays through, then the page moves on */
   mm.add('(max-width: 980px), (max-height: 639px)', function () {
     gsap.to(o, { f: N - 1, ease: 'none', onUpdate: update,
-      scrollTrigger: { trigger: hero, start: function () { return 'top ' + navH() + 'px'; }, end: '+=85%', pin: true, scrub: .35, anticipatePin: 1, invalidateOnRefresh: true } });
+      scrollTrigger: { trigger: hero, start: function () { return 'top ' + navH() + 'px'; }, end: '+=60%', pin: true, scrub: .35, anticipatePin: 1, invalidateOnRefresh: true } });
   });
 })();
