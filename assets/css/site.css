@@ -991,3 +991,6 @@ html.js{scroll-behavior:auto}
 /* about: principles removed, text runs as one column */
 .about{grid-template-columns:1fr}
 .about .sec__lead{max-width:62ch}
+
+/* voice agent hero on phones: no card, so keep the hand-off to the story tight */
+@media (max-width:820px){.hero--voice{padding-bottom:28px}.hero--voice .phero{gap:0}}
