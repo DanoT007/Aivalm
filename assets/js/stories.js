@@ -48,7 +48,15 @@
       var gap = +(p.dataset.gap || 14);
       var A = anchor(rel(a.querySelector('[data-anchor]') || a), sides[0], gap), B = anchor(rel(b.querySelector('[data-anchor]') || b), sides[1], gap + 6);
       a.style.transform = ta; b.style.transform = tb;
-      var d = Math.hypot(B[0] - A[0], B[1] - A[1]) * +(p.dataset.bend || .45);
+      var dist = Math.hypot(B[0] - A[0], B[1] - A[1]);
+      p.classList.toggle('is-tiny', dist < 34);
+      if (dist < 110) {
+        // short hop: a curve has no room and smears into a blob, so draw a clean straight arrow
+        if (/^bottom/.test(sides[0]) && /^top/.test(sides[1]) && Math.abs(B[0] - A[0]) < 90) { var mx = (A[0] + B[0]) / 2; A[0] = mx; B[0] = mx; }
+        p.setAttribute('d', 'M' + A[0].toFixed(1) + ' ' + A[1].toFixed(1) + ' L' + B[0].toFixed(1) + ' ' + B[1].toFixed(1));
+        return;
+      }
+      var d = dist * +(p.dataset.bend || .45);
       var c1 = [A[0] + A[2] * d, A[1] + A[3] * d], c2 = [B[0] + B[2] * d, B[1] + B[3] * d];
       p.setAttribute('d', 'M' + A[0].toFixed(1) + ' ' + A[1].toFixed(1) + ' C' + c1[0].toFixed(1) + ' ' + c1[1].toFixed(1) + ', ' + c2[0].toFixed(1) + ' ' + c2[1].toFixed(1) + ', ' + B[0].toFixed(1) + ' ' + B[1].toFixed(1));
     });
@@ -56,9 +64,9 @@
   }
   function addHeads(svg) {
     svg.querySelectorAll('path.arrow:not(.head)').forEach(function (p) {
-      var L = p.getTotalLength(); if (!L) return;
-      var a = p.getPointAtLength(L), b = p.getPointAtLength(Math.max(0, L - 14));
-      var ang = Math.atan2(a.y - b.y, a.x - b.x), len = 22, spread = 0.6;
+      var L = p.getTotalLength(); if (!L || p.classList.contains('is-tiny')) return;
+      var a = p.getPointAtLength(L), b = p.getPointAtLength(Math.max(0, L - Math.min(14, L / 3)));
+      var ang = Math.atan2(a.y - b.y, a.x - b.x), len = Math.max(11, Math.min(22, L * 0.32)), spread = 0.6;
       var l = { x: a.x - len * Math.cos(ang - spread), y: a.y - len * Math.sin(ang - spread) };
       var r = { x: a.x - len * Math.cos(ang + spread), y: a.y - len * Math.sin(ang + spread) };
       var h = document.createElementNS('http://www.w3.org/2000/svg', 'path');

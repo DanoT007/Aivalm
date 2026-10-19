@@ -819,3 +819,6 @@ html.js{scroll-behavior:auto}
 .book__where{display:grid;gap:12px}
 .book__where[hidden],.book__addr[hidden]{display:none}
 @media (max-width:420px){.choice{grid-template-columns:1fr}}
+
+/* arrows with no room at all are hidden instead of drawn as a blob */
+.stage__svg path.arrow.is-tiny{display:none}
