@@ -987,3 +987,7 @@ html.js{scroll-behavior:auto}
 @media (max-width:980px){
   .hero--lalia .trust{align-items:flex-start;width:max-content;max-width:100%;margin-left:auto;margin-right:auto}
 }
+
+/* about: principles removed, text runs as one column */
+.about{grid-template-columns:1fr}
+.about .sec__lead{max-width:62ch}
