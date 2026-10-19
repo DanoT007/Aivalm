@@ -14,7 +14,7 @@ scripts: stories.js
     <div>
       <p class="hero__lead" data-rise style="--i:2">AI prečíta dopyt v e-maile, váš cenník vypočíta ceny so zľavami a DPH a obchodník dostane hotovú ponuku na schválenie do minúty. Jedným klikom ju odošle zákazníkovi. Aj večer, aj cez víkend.</p>
       <div class="hero__actions" data-rise style="--i:3">
-        <a class="btn" href="#rezervacia">Rezervovať 15 min call <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn" href="#rezervacia">Dohodnúť stretnutie <span class="arr" aria-hidden="true">→</span></a>
         <a class="link" href="#ukazka">Poslať si ukážku</a>
       </div>
       <p class="hero__note" data-rise style="--i:4">Pre veľkoobchody, distribútorov a výrobcov, ktorí odpovedajú na dopyty e-mailom.</p>
@@ -104,11 +104,26 @@ scripts: stories.js
 </section>
 
 <section class="sec" style="background:var(--mist)" aria-labelledby="why-h">
-  <div class="wrap split" data-group>
-    <h2 id="why-h" data-rise>Kto pošle ponuku prvý, <span class="grey">ten dodáva</span></h2>
-    <div data-rise>
-      <p class="sec__lead" style="margin-top:0">Firma, ktorá posiela dopyt, ho väčšinou posiela viacerým dodávateľom naraz. Kým obchodník po porade prepíše položky do cenníka, spočíta zľavy a pošle PDF, zákazník už má dve ponuky na stole.</p>
-      <p class="sec__lead">AI cenové ponuky robia tú mechanickú časť za neho. Obchodník len skontroluje a klikne. Má čas na zákazníkov, ktorí chcú poradiť, nie prepisovať.</p>
+  <div class="wrap split race-split" data-group>
+    <div>
+      <p class="eyebrow" data-rise>Príklad z praxe</p>
+      <h2 id="why-h" data-rise>Kto odpovie prvý, <span class="grey">ten predá</span></h2>
+      <p class="sec__lead" data-rise>Firma otvára novú kanceláriu a potrebuje stoličky, stoly a dekorácie. Dopyt pošle štyrom dodávateľom naraz.</p>
+      <p class="sec__lead" data-rise>Prvý odpovie do pár hodín a objednávku dostane on. Ostatní sa ozvú o štyri dni neskôr. Mali dobrú ponuku, ale zákazník už nakúpil inde.</p>
+      <p class="sec__lead" data-rise><strong>Často nerozhoduje najnižšia cena, ale najrýchlejšia odpoveď.</strong> S AI cenovými ponukami odpoviete do minúty, aj večer a cez víkend.</p>
+    </div>
+    <div class="race ui" data-rise data-loop="4" data-loop-ms="1900" aria-label="Príklad: dopyt poslaný štyrom dodávateľom, objednávku získa ten, kto odpovie prvý">
+      <div class="race__head">
+        <p class="mail__from">Dopyt · vybavenie novej kancelárie</p>
+        <p class="race__sub">Stoličky, stoly, dekorácie · odoslané 4 dodávateľom · pondelok 9:00</p>
+      </div>
+      <ol class="race__rows">
+        <li class="race__row race__row--win"><b>Dodávateľ A</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res" data-at="1">odpovedal o 11:40</span><span class="race__res race__res--win" data-at="2">✓ Získal objednávku</span></span></li>
+        <li class="race__row"><b>Dodávateľ B</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">odpoveď po 4 dňoch · zákazník už nakúpil</span></span></li>
+        <li class="race__row"><b>Dodávateľ C</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">odpoveď po 4 dňoch · zákazník už nakúpil</span></span></li>
+        <li class="race__row"><b>Dodávateľ D</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">odpoveď po 4 dňoch · zákazník už nakúpil</span></span></li>
+      </ol>
+      <p class="race__foot" data-at="3">S AIVALM ste dodávateľ A. Ponuka odíde do 60 sekúnd.</p>
     </div>
   </div>
 </section>

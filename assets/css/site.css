@@ -765,3 +765,57 @@ html.js{scroll-behavior:auto}
 .story.is-skipping .story__pin{opacity:0;transition:opacity .3s ease}
 [tabindex="-1"]:focus{outline:none}
 .story.is-skip-now .story__pin{opacity:0;transition:none}
+
+/* section kicker ("Vyberte si svoj segment") */
+.sec__kicker{margin:clamp(10px,1.4vw,18px) 0 0;font-size:var(--fs-h3);font-weight:300;letter-spacing:-.01em;line-height:1.2;color:var(--ink)}
+.sec__kicker+.sec__lead{margin-top:10px}
+
+/* product cards: gentle highlight under the cursor (desktop only) */
+@media (hover:hover) and (pointer:fine) and (min-width:981px) and (prefers-reduced-motion:no-preference){
+  .prods .prod{position:relative;transition:opacity .45s var(--ease-out),filter .45s var(--ease-out)}
+  .prods .prod__link{transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s cubic-bezier(.2,.8,.2,1)}
+  .prods .prod:hover{z-index:2}
+  .prods .prod__link:hover,.prods .prod__link:focus-visible{transform:scale(1.04);box-shadow:0 34px 70px -38px rgba(0,0,0,.5)}
+  .prods:hover .prod:not(:hover){opacity:.62;filter:saturate(.8)}
+}
+
+/* "kto odpovie prvý" race (cenove-ponuky) */
+.eyebrow{margin:0 0 14px;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ash)}
+.race-split{align-items:center}
+.race{background:#fff;border-radius:24px;padding:clamp(20px,2.2vw,30px);box-shadow:0 30px 60px -40px rgba(0,0,0,.35)}
+.race__head{padding-bottom:16px;border-bottom:1px solid var(--stone);margin-bottom:12px}
+.race__head .mail__from{margin:0 0 4px;font-weight:800}
+.race__sub{margin:0;font-size:.88rem;color:var(--ash)}
+.race__rows{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.race__row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 16px;border-radius:14px;background:var(--mist);font-size:.95rem;transition:background .5s var(--ease-out),color .5s var(--ease-out)}
+.race__row b{font-weight:800;white-space:nowrap;transition:color .5s}
+.race__st{text-align:right;font-weight:600}
+.race__wait{color:var(--ash);font-weight:500}
+.race__wait::after{content:"";display:inline-block;width:6px;height:6px;margin-left:8px;border-radius:50%;background:currentColor;vertical-align:middle;animation:racepulse 1.2s ease-in-out infinite}
+@keyframes racepulse{50%{opacity:.25}}
+.race__res{display:none}
+.race__res.is-on{display:inline;animation:raceIn .45s var(--ease-out)}
+@keyframes raceIn{from{opacity:0;transform:translateY(6px)}}
+.race__row:has(.race__res.is-on) .race__wait{display:none}
+.race__st:has(.race__res--win.is-on) .race__res:not(.race__res--win){display:none}
+.race__row--win:has(.race__res--win.is-on){background:var(--ink);color:#fff}
+.race__row:has(.race__res--late.is-on){background:transparent;color:var(--smoke)}
+.race__row:has(.race__res--late.is-on) b{text-decoration:line-through;color:var(--smoke)}
+.race__foot{margin:16px 2px 0;font-weight:700;opacity:0;transform:translateY(6px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out)}
+.race__foot.is-on{opacity:1;transform:none}
+@media (max-width:560px){.race__row{flex-direction:column;align-items:flex-start;gap:4px}.race__st{text-align:left}}
+
+/* booking: online / in person choice */
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.choice__opt{position:relative;display:block;cursor:pointer}
+.choice__opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.choice__opt span{display:flex;flex-direction:column;gap:2px;height:100%;padding:13px 16px;border:1.5px solid var(--stone);border-radius:14px;background:#fff;transition:border-color .2s,background .2s,color .2s}
+.choice__opt b{font-size:.98rem;font-weight:800}
+.choice__opt small{font-size:.8rem;color:var(--ash);line-height:1.35}
+.choice__opt:hover span{border-color:var(--fog)}
+.choice__opt input:checked+span{border-color:var(--ink);background:var(--ink);color:#fff}
+.choice__opt input:checked+span small{color:#cfcfcf}
+.choice__opt input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.book__where{display:grid;gap:12px}
+.book__where[hidden],.book__addr[hidden]{display:none}
+@media (max-width:420px){.choice{grid-template-columns:1fr}}

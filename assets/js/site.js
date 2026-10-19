@@ -146,7 +146,7 @@
         var em = box.querySelector('[data-echo=email]');
         if (em && data.email) em.textContent = data.email;
       }).catch(function () {
-        if (status) status.innerHTML = 'Odoslanie sa nepodarilo. Skúste to znova, alebo napíšte priamo na <a href="mailto:tomaschdaniel@gmail.com">tomaschdaniel@gmail.com</a>.';
+        if (status) status.innerHTML = 'Odoslanie sa nepodarilo. Skúste to znova, alebo napíšte priamo na <a href="mailto:aivalm.agent@gmail.com">aivalm.agent@gmail.com</a>.';
       }).then(function () {
         if (btn) { btn.disabled = false; btn.innerHTML = label; }
       });
@@ -156,7 +156,7 @@
   /* ---------- booking ---------- */
   var TZ = 'Europe/Bratislava';
   var DAYS_AHEAD = 10;            // working days offered
-  var FIRST = 9 * 60, LAST = 17 * 60 + 30, STEP = 30, LEAD_MIN = 180; // minutes
+  var FIRST = 9 * 60, END = 18 * 60, STEP = 30, LEAD_MIN = 180; // minutes; last meeting must end by 18:00
   var DN = ['ne', 'po', 'ut', 'st', 'št', 'pi', 'so'];
   var DL = ['nedeľa', 'pondelok', 'utorok', 'streda', 'štvrtok', 'piatok', 'sobota'];
 
@@ -197,14 +197,35 @@
     var tInput = form.querySelector('input[name=t]');
     var days = workDays();
     var busy = null, loaded = false, selDay = null, selT = null;
+    var whereEl = root.querySelector('.book__where'), addrEl = root.querySelector('.book__addr'), addrIn = form.querySelector('input[name=adresa]');
+    function mode() { var r = form.querySelector('input[name=forma]:checked'); return r ? r.value : 'online'; }
+    function dur() { return mode() === 'osobne' ? 60 : 30; }
+    function lastStart() { return END - dur(); }
+    function syncWhere() {
+      var os = mode() === 'osobne', uvas = os && (form.querySelector('input[name=miesto]:checked') || {}).value === 'u-vas';
+      if (whereEl) whereEl.hidden = !os;
+      if (addrEl) addrEl.hidden = !uvas;
+      if (addrIn) { addrIn.required = uvas; if (!uvas) setErr(addrIn, ''); }
+    }
+    form.querySelectorAll('input[name=forma], input[name=miesto]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        syncWhere();
+        if (r.name === 'forma') {
+          if (selT) { var d = selT; var tt = +d.slice(11, 13) * 60 + +d.slice(14, 16); var dt = wallToDate(+d.slice(0, 4), +d.slice(5, 7), +d.slice(8, 10), tt);
+            if (tt > lastStart() || busyAt(dt)) { selT = null; tInput.value = ''; pickEl.textContent = ''; } }
+          if (loaded) renderDays();
+        }
+      });
+    });
+    syncWhere();
 
     function busyAt(start) {
       if (!busy) return false;
-      var s = start.getTime(), e = s + STEP * 60000;
+      var s = start.getTime(), e = s + dur() * 60000;
       return busy.some(function (b) { return b[0] < e && b[1] > s; });
     }
     function dayHasFree(day) {
-      for (var t = FIRST; t <= LAST; t += STEP) {
+      for (var t = FIRST; t <= lastStart(); t += STEP) {
         var dt = wallToDate(day.y, day.m, day.d, t);
         if (dt.getTime() - Date.now() >= LEAD_MIN * 60000 && !busyAt(dt)) return true;
       }
@@ -237,7 +258,7 @@
       slotsEl.innerHTML = '';
       if (!loaded) { for (var k = 0; k < 8; k++) { var s = document.createElement('div'); s.className = 'skeleton'; slotsEl.appendChild(s); } return; }
       var day = days[selDay], any = false;
-      for (var t = FIRST; t <= LAST; t += STEP) {
+      for (var t = FIRST; t <= lastStart(); t += STEP) {
         var dt = wallToDate(day.y, day.m, day.d, t);
         if (dt.getTime() - Date.now() < LEAD_MIN * 60000) continue;
         var b = document.createElement('button');
@@ -289,13 +310,15 @@
       e.preventDefault();
       var slotErr = root.querySelector('.slot-err');
       var ok = validate(form);
-      if (!selT) { if (slotErr) slotErr.textContent = 'Vyberte si deň a čas hovoru.'; if (ok) slotsEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); return; }
+      if (!selT) { if (slotErr) slotErr.textContent = 'Vyberte si deň a čas stretnutia.'; if (ok) slotsEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); return; }
       if (!ok) return;
       var data = formData(form);
       if (data.pozicia) return;
       data.a = 'rezervuj';
+      if (data.forma !== 'osobne') { delete data.miesto; delete data.adresa; }
+      else if (data.miesto !== 'u-vas') delete data.adresa;
       var btn = form.querySelector('[type=submit]'), label = btn.innerHTML;
-      btn.disabled = true; btn.textContent = 'Rezervujem…';
+      btn.disabled = true; btn.textContent = 'Odosielam…';
       var status = form.querySelector('.form__status'); status.textContent = '';
       post(HOOKS.booking, data).then(function (res) {
         var j = res.json || {};
@@ -304,17 +327,18 @@
           var d = root.querySelector('.done');
           root.querySelector('[data-echo=termin]').textContent = j.termin || pickEl.textContent.replace('Vybraný termín: ', '');
           root.querySelector('[data-echo=email]').textContent = data.email;
+          var kde = root.querySelector('[data-echo=kde]'); if (kde) kde.textContent = data.forma === 'osobne' ? 'Potvrdenie s miestom stretnutia' : 'Odkaz na Google Meet';
           d.setAttribute('tabindex', '-1'); d.focus({ preventScroll: false });
         } else if (j.dovod === 'obsadene') {
           status.textContent = 'Tento čas si medzitým niekto rezervoval. Vyberte si prosím iný.';
           busy = (busy || []).concat([[wallToDate(+selT.slice(0, 4), +selT.slice(5, 7), +selT.slice(8, 10), +selT.slice(11, 13) * 60 + +selT.slice(14, 16)).getTime(), 0]]);
-          busy[busy.length - 1][1] = busy[busy.length - 1][0] + STEP * 60000;
+          busy[busy.length - 1][1] = busy[busy.length - 1][0] + dur() * 60000;
           selT = null; tInput.value = ''; pickEl.textContent = ''; renderSlots();
         } else {
           throw new Error('bad');
         }
       }).catch(function () {
-        status.innerHTML = 'Rezervácia sa nepodarila. Skúste to znova, alebo napíšte na <a href="mailto:tomaschdaniel@gmail.com">tomaschdaniel@gmail.com</a> a termín dohodneme ručne.';
+        status.innerHTML = 'Rezervácia sa nepodarila. Skúste to znova, alebo napíšte na <a href="mailto:aivalm.agent@gmail.com">aivalm.agent@gmail.com</a> a termín dohodneme ručne.';
       }).then(function () { btn.disabled = false; btn.innerHTML = label; });
     });
   });

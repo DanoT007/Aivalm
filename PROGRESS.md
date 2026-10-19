@@ -40,3 +40,13 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 1b. Voliteľne portrétna fotka do „Kto za tým stojí“
 2. Voliteľne 3D objekt (img2threejs) na produktovej stránke
 3. ✅ Spustené na main (aivalm.com) 18. 10.
+
+## Zmeny 19. 10. (spätná väzba od Raymonda a Mateja)
+- Úvod: sekcia „Naše služby“ + „Vyberte si svoj segment“, všeobecnejšie texty kariet; na desktope sa karta pod kurzorom zväčší o 4 %, ostatné ustúpia
+- „Ako prebieha zákazka“: 1 Predstavenie a konzultácia · 2 Analýza a nastavenie (niekoľko dní) · 3 Skúška a spustenie
+- AI cenové ponuky: príbeh „Kto odpovie prvý, ten predá“ (kancelársky nábytok, 4 dodávatelia) s animovanou kartou – z Canva prezentácie „E-mailová automatizácia pre obchodné firmy“
+- Rezervácia → „Dohodnime si stretnutie, online alebo osobne“: online 30 min (Meet), osobne 60 min v Tower 5 (Kalinčiakova 33, 831 04 Bratislava) alebo u klienta (adresa povinná); všetky „15 min call“ CTA → „Dohodnúť stretnutie“
+- Make 8032300 premenovaný na „WEB – rezervácia stretnutia“: dĺžka 30/60, miesto/Meet v udalosti aj e-mailoch, posledný osobný začiatok 17:00; potvrdenia klientom aj zo spolupráce (8032260) odchádzajú z aivalm.agent@gmail.com
+- Na webe všade aivalm.agent@gmail.com namiesto osobného Gmailu; v pätičke adresa kancelárie
+- Testovacie udalosti (29. 10. a starý 30. 10. 17:30) zmazané z kalendára
+- Čaká sa: fotky/video z kancelárie, YouTube video k hlasovému agentovi

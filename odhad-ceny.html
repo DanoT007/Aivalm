@@ -28,7 +28,7 @@
       <li><a href="cenove-ponuky.html" data-nav="email">AI cenové ponuky</a></li>
       <li><a href="spolupraca.html" data-nav="spolupraca">Spolupráca</a></li>
     </ul>
-    <a class="btn" href="#rezervacia">Rezervovať call</a>
+    <a class="btn" href="#rezervacia">Dohodnúť stretnutie</a>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <nav class="nav__panel" id="menu" aria-label="Hlavné menu">
@@ -36,7 +36,7 @@
     <a class="mnav" href="odhad-ceny.html" style="--i:1"><span><b>AI odhad ceny</b><small>Pre autobazáre a realitné kancelárie</small></span><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M3 11h15M12 4l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <a class="mnav" href="cenove-ponuky.html" style="--i:2"><span><b>AI cenové ponuky</b><small>Pre obchodné firmy a veľkoobchody</small></span><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M3 11h15M12 4l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <a class="mnav" href="spolupraca.html" style="--i:3"><span><b>Spolupráca</b><small>Pre agentúry a partnerov</small></span><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M3 11h15M12 4l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <a class="btn mnav__btn" href="#rezervacia" style="--i:4">Rezervovať bezplatný hovor</a>
+    <a class="btn mnav__btn" href="#rezervacia" style="--i:4">Dohodnúť stretnutie</a>
   </nav>
 </header>
 <main id="obsah">
@@ -50,7 +50,7 @@
       <p class="hero__lead" data-rise style="--i:2">Majiteľ auta alebo nehnuteľnosti zadá pár údajov na vašom webe. AI porovná aktuálne inzeráty, pošle mu orientačný odhad a rovno ponúkne termín obhliadky. Vy dostanete hotového záujemcu.</p>
       <div class="hero__actions" data-rise style="--i:3">
         <a class="btn" href="#demo">Vyskúšať na vlastnom aute <span class="arr" aria-hidden="true">→</span></a>
-        <a class="link" href="#rezervacia">Rezervovať 15 min call</a>
+        <a class="link" href="#rezervacia">Dohodnúť stretnutie</a>
       </div>
       <p class="hero__note" data-rise style="--i:4">Pre autobazáre, výkup áut a realitné kancelárie.</p>
     </div>
@@ -193,7 +193,7 @@
     <div data-group>
       <h2 id="demo-h" data-rise>Vyskúšajte si to <span class="grey">ako zákazník</span></h2>
       <p class="sec__lead muted" data-rise>Zadajte údaje o aute. Odhad vám do pár minút pošle ukážkový autobazár „AutoVýkup Bratislava“ presne tak, ako by ho dostal váš zákazník. Auto, samozrejme, nikto nevykúpi.</p>
-      <p class="cite" data-rise>Ukážka je pre autá. Odhad nehnuteľností vám ukážem na calle.</p>
+      <p class="cite" data-rise>Ukážka je pre autá. Odhad nehnuteľností vám ukážem na stretnutí.</p>
     </div>
     <div class="panel" style="background:#fff;color:var(--ink)">
       <form class="form" data-hook="carDemo" data-cooldown="600" novalidate>
@@ -233,16 +233,31 @@
 <section class="sec on-ink" id="rezervacia" aria-labelledby="rez-h">
   <div class="wrap book" data-booking data-done>
     <div class="book__intro" data-group>
-      <h2 id="rez-h" data-rise>Bezplatný online hovor <span class="grey">na 15 minút</span></h2>
-      <p class="book__lead muted" data-rise>Cez Google Meet vám ukážem riešenie naživo na vašom prípade, odpoviem na otázky a poviem na rovinu, či sa vám oplatí. Bez záväzku a bez hodinovej prezentácie.</p>
+      <h2 id="rez-h" data-rise>Dohodnime si stretnutie, <span class="grey">online alebo osobne</span></h2>
+      <p class="book__lead muted" data-rise>Predstavíme vám službu, prejdeme, ako dnes pracujete so zákazníkmi, a povieme na rovinu, či sa vám to oplatí. Bez záväzku.</p>
       <ul class="book__points" data-rise>
-        <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Živá ukážka vrátane hlasového agenta</li>
-        <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Odkaz na stretnutie príde hneď do e-mailu</li>
+        <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Online cez Google Meet, približne 30 minút</li>
+        <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Osobne v Tower 5 alebo priamo u vás, približne hodinu</li>
         <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Termín zmeníte jednou odpoveďou na e-mail</li>
       </ul>
     </div>
     <div class="panel" style="background:#fff;color:#0B0B0B">
       <form class="form" novalidate>
+        <div>
+          <p class="legend" id="f-l">Ako sa chcete stretnúť</p>
+          <div class="choice" role="radiogroup" aria-labelledby="f-l">
+            <label class="choice__opt"><input type="radio" name="forma" value="online" checked><span><b>Online</b><small>Google Meet · 30 min</small></span></label>
+            <label class="choice__opt"><input type="radio" name="forma" value="osobne"><span><b>Osobne</b><small>približne 1 hodina</small></span></label>
+          </div>
+        </div>
+        <div class="book__where" hidden>
+          <p class="legend" id="m-l">Kde sa stretneme</p>
+          <div class="choice" role="radiogroup" aria-labelledby="m-l">
+            <label class="choice__opt"><input type="radio" name="miesto" value="kancelaria" checked><span><b>U nás v kancelárii</b><small>Tower 5, Kalinčiakova 33, Bratislava</small></span></label>
+            <label class="choice__opt"><input type="radio" name="miesto" value="u-vas"><span><b>U vás</b><small>prídeme za vami</small></span></label>
+          </div>
+          <div class="field book__addr" hidden><label for="b-adr">Adresa stretnutia</label><input class="input" id="b-adr" name="adresa" autocomplete="street-address" placeholder="Ulica a číslo, mesto"></div>
+        </div>
         <div>
           <p class="legend" id="d-l">Vyberte deň</p>
           <div class="days" role="group" aria-labelledby="d-l"></div>
@@ -274,15 +289,15 @@
         <div class="field"><label for="b-pozn">Čo by ste chceli vyriešiť <span class="opt">(nepovinné)</span></label><textarea class="textarea" id="b-pozn" name="poznamka" rows="3" placeholder="Napr. koľko dopytov mesačne, aký používate CRM…"></textarea></div>
         <div class="hp" aria-hidden="true"><label>Pozícia<input name="pozicia" tabindex="-1" autocomplete="off"></label></div>
         <p class="consent">Odoslaním súhlasíte so spracovaním údajov na účel dohodnutia stretnutia. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
-        <div><button class="btn" type="submit">Rezervovať termín <span class="arr" aria-hidden="true">→</span></button></div>
+        <div><button class="btn" type="submit">Dohodnúť stretnutie <span class="arr" aria-hidden="true">→</span></button></div>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
       <div class="done" role="status">
         <div class="done__mark"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 13.5l5 5 11-12"/></svg></div>
-        <h3>Termín je rezervovaný</h3>
+        <h3>Stretnutie je dohodnuté</h3>
         <p><strong data-echo="termin"></strong></p>
-        <p>Odkaz na Google Meet sme poslali na <strong data-echo="email"></strong>. Ak e-mail do pár minút nevidíte, pozrite aj priečinok Spam.</p>
-        <p class="muted">Teším sa na rozhovor. Daniel Tomasch</p>
+        <p><span data-echo="kde">Odkaz na Google Meet</span> sme poslali na <strong data-echo="email"></strong>. Ak e-mail do pár minút nevidíte, pozrite aj priečinok Spam.</p>
+        <p class="muted">Teším sa na stretnutie. Daniel Tomasch</p>
       </div>
     </div>
   </div>
@@ -306,14 +321,15 @@
         <ul>
           <li><a href="spolupraca.html">Pre agentúry a partnerov</a></li>
           <li><a href="spolupraca.html#formular">Navrhnúť spoluprácu</a></li>
-          <li><a href="#rezervacia">Rezervovať 15 min call</a></li>
+          <li><a href="#rezervacia">Dohodnúť stretnutie</a></li>
         </ul>
       </div>
       <div>
         <h4>Kontakt</h4>
         <ul>
-          <li><a href="mailto:tomaschdaniel@gmail.com">tomaschdaniel@gmail.com</a></li>
+          <li><a href="mailto:aivalm.agent@gmail.com">aivalm.agent@gmail.com</a></li>
           <li><a href="https://www.aivalm.com">aivalm.com</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Tower%205%2C%20Kalin%C4%8Diakova%2033%2C%20Bratislava" target="_blank" rel="noopener">Kancelária: Tower 5, Kalinčiakova 33, Bratislava</a></li>
         </ul>
       </div>
       <div>
