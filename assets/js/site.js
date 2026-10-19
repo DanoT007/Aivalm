@@ -146,7 +146,7 @@
         var em = box.querySelector('[data-echo=email]');
         if (em && data.email) em.textContent = data.email;
       }).catch(function () {
-        if (status) status.innerHTML = 'Odoslanie sa nepodarilo. Skúste to znova, alebo napíšte priamo na <a href="mailto:aivalm.agent@gmail.com">aivalm.agent@gmail.com</a>.';
+        if (status) status.innerHTML = 'Odoslanie sa nepodarilo. Skúste to znova, alebo napíšte priamo na <a href="mailto:aivalm.agent@gmail.com">aivalm.agent@gmail.com</a> alebo zavolajte na <a href="tel:+421948475484">+421 948 475 484</a>.';
       }).then(function () {
         if (btn) { btn.disabled = false; btn.innerHTML = label; }
       });
@@ -338,7 +338,7 @@
           throw new Error('bad');
         }
       }).catch(function () {
-        status.innerHTML = 'Rezervácia sa nepodarila. Skúste to znova, alebo napíšte na <a href="mailto:aivalm.agent@gmail.com">aivalm.agent@gmail.com</a> a termín dohodneme ručne.';
+        status.innerHTML = 'Rezervácia sa nepodarila. Skúste to znova, alebo napíšte na <a href="mailto:aivalm.agent@gmail.com">aivalm.agent@gmail.com</a> alebo zavolajte na <a href="tel:+421948475484">+421 948 475 484</a> a termín dohodneme ručne.';
       }).then(function () { btn.disabled = false; btn.innerHTML = label; });
     });
   });
