@@ -1009,3 +1009,12 @@ html.js{scroll-behavior:auto}
 .tbars__row--win>strong{grid-area:s;justify-self:start;background:var(--ink);color:#fff;border-radius:999px;padding:5px 12px;font-size:.8rem}
 .tbars__row--none>i b{background:repeating-linear-gradient(90deg,var(--fog) 0 10px,transparent 10px 18px)}
 .tbars__row--none>span b{text-decoration:line-through;color:var(--ash)}
+
+/* home hero on phones: centred (film removed) */
+@media (max-width:980px){
+  .hero--center .wrap{text-align:center}
+  .hero--center .home-h1,.hero--center .hero__lead{margin-left:auto;margin-right:auto}
+  .hero--center .hero__actions{justify-content:center}
+  .hero--center .trust{flex-direction:column;align-items:flex-start;gap:10px;width:max-content;max-width:100%;margin-left:auto;margin-right:auto}
+  .hero--center .trust li{text-align:left}
+}
