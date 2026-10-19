@@ -1018,3 +1018,8 @@ html.js{scroll-behavior:auto}
   .hero--center .trust{flex-direction:column;align-items:flex-start;gap:10px;width:max-content;max-width:100%;margin-left:auto;margin-right:auto}
   .hero--center .trust li{text-align:left}
 }
+/* home hero centred on all screens */
+.hero--center .wrap{text-align:center}
+.hero--center .home-h1,.hero--center .hero__lead{margin-left:auto;margin-right:auto}
+.hero--center .hero__actions{justify-content:center}
+@media (min-width:981px){.hero--center .trust{justify-content:center}}
