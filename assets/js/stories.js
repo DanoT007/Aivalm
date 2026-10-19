@@ -50,6 +50,15 @@
       a.style.transform = ta; b.style.transform = tb;
       var dist = Math.hypot(B[0] - A[0], B[1] - A[1]);
       p.classList.toggle('is-tiny', dist < 34);
+      var sameSide = sides[0].split('@')[0] === sides[1].split('@')[0];
+      if (sameSide) {
+        // C-shaped detour (e.g. left>left): always a curve with a fixed minimum bulge, so it never collapses into a stub
+        var bulge = Math.max(72, dist * +(p.dataset.bend || .45));
+        var k1 = [A[0] + A[2] * bulge, A[1] + A[3] * bulge], k2 = [B[0] + B[2] * bulge, B[1] + B[3] * bulge];
+        p.setAttribute('d', 'M' + A[0].toFixed(1) + ' ' + A[1].toFixed(1) + ' C' + k1[0].toFixed(1) + ' ' + k1[1].toFixed(1) + ', ' + k2[0].toFixed(1) + ' ' + k2[1].toFixed(1) + ', ' + B[0].toFixed(1) + ' ' + B[1].toFixed(1));
+        p.classList.remove('is-tiny');
+        return;
+      }
       if (dist < 110) {
         // short hop: a curve has no room and smears into a blob, so draw a clean straight arrow
         if (/^bottom/.test(sides[0]) && /^top/.test(sides[1]) && Math.abs(B[0] - A[0]) < 90) { var mx = (A[0] + B[0]) / 2; A[0] = mx; B[0] = mx; }
