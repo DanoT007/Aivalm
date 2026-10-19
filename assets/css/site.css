@@ -974,3 +974,16 @@ html.js{scroll-behavior:auto}
   .hero--lalia .trust{order:5;margin:6px 0 0}
   .hero--home.hero--lalia{padding-top:clamp(28px,7vw,56px)}
 }
+/* home hero on phones: everything centred */
+@media (max-width:980px){
+  .hero--lalia .home-hero{text-align:center;justify-items:center}
+  .hero--lalia .home-h1{margin-left:auto;margin-right:auto}
+  .hero--lalia .hero__lead{margin-left:auto;margin-right:auto}
+  .hero--lalia .hero__actions{justify-content:center;align-items:center}
+  .hero--lalia .lalia{justify-self:stretch}
+  .hero--lalia .trust{flex-direction:column;align-items:center;gap:10px}
+  .hero--lalia .trust li{text-align:left}
+}
+@media (max-width:980px){
+  .hero--lalia .trust{align-items:flex-start;width:max-content;max-width:100%;margin-left:auto;margin-right:auto}
+}
