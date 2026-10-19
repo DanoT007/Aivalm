@@ -129,6 +129,7 @@
     var url = new URL(a.href, location.href);
     if (url.origin !== location.origin || url.pathname !== location.pathname || !/^#[\w-]+$/.test(url.hash)) return;
     var el = document.querySelector(url.hash); if (!el) return;
+    if (!el.getClientRects().length) el = document.querySelector(url.hash + '-m') || el; /* desktop-only section hidden on phones */
     e.preventDefault();
     glideTo(el, url.hash);
   });

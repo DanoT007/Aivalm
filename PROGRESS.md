@@ -50,4 +50,5 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Na webe všade aivalm.agent@gmail.com namiesto osobného Gmailu; v pätičke adresa kancelárie
 - Testovacie udalosti (29. 10. a starý 30. 10. 17:30) zmazané z kalendára
 - Čaká sa: fotky/video z kancelárie, YouTube video k hlasovému agentovi
+- Hlasový agent na mobile: samostatný príbeh #prax-m „Ako to funguje na príklade“ (5 scén v telefóne: notifikácia 21:47 → hovor → profil záujemcu → termín + SMS → Vy vs. makléri 2–5), desktop #prax ostáva (data-only); pod tým animácia 21× (počítadlo + pruhy, scrub)
 - 19. 10. večer: telefón +421 948 475 484 na webe (pätička, Kto za tým stojí, GDPR, chybové hlášky) a v podpise všetkých e-mailov (rezervácia, spolupráca, ukážka ponuky); upozornenie Danielovi na tomaschdaniel@gmail.com má predmet „🔔 Nový booking (online/osobne): termín · meno“ a tlačidlá Zavolať klientovi / Odpísať; .nojekyll pridaný (Pages nasadzuje bez Jekyllu)

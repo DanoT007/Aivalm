@@ -18,7 +18,7 @@ scripts: stories.js
         <a class="btn" href="#rezervacia">Dohodnúť stretnutie <span class="arr" aria-hidden="true">→</span></a>
         <a class="link" href="#prax">Ako to funguje</a>
       </div>
-      <p class="hero__note" data-rise style="--i:4">Pre realitné kancelárie, maklérov a developerov.</p>
+      <p class="hero__note" data-rise style="--i:4">Pre maklérov s neexkluzívnymi zmluvami, realitné kancelárie a developerov.</p>
     </div>
     <div class="phero__vis" aria-hidden="true" data-rise style="--i:2">
       <div class="ring"></div><div class="ring"></div><div class="ring"></div>
@@ -33,7 +33,7 @@ scripts: stories.js
   </div>
 </section>
 
-<section class="story is-static" id="prax" data-story="flow" aria-labelledby="prax-h">
+<section class="story is-static" id="prax" data-story="flow" data-only="desktop" aria-labelledby="prax-h">
   <div class="story__pin">
     <div class="wrap">
       <h2 class="story__title" id="prax-h">Ako to funguje v <span class="grey">praxi</span><small>(Príklad)</small></h2>
@@ -92,15 +92,91 @@ scripts: stories.js
   </div>
 </section>
 
+<section class="story is-static scenes vstory" id="prax-m" data-story="scenes" data-only="mobile" aria-labelledby="praxm-h">
+  <div class="story__pin">
+    <div class="wrap">
+      <h2 class="story__title" id="praxm-h">Ako to funguje <span class="grey">na príklade</span></h2>
+      <div class="scenes__grid">
+        <div class="scenes__text">
+          <div class="scene-t" data-step="0"><p class="scene-t__k">Sobota · 21:47</p><h3>Záujemca vyplní formulár. V sobotu večer.</h3><p>Pri neexkluzívnej zmluve ten istý dopyt dostali aj ďalší štyria makléri.</p></div>
+          <div class="scene-t" data-step="1"><p class="scene-t__k">Sobota · 21:48</p><h3>Do 2 minút mu volá AI asistent.</h3><p>Predstaví sa ako AI, hovorí po slovensky a vyká.</p></div>
+          <div class="scene-t" data-step="2"><p class="scene-t__k">Počas hovoru</p><h3>Zistí, či je to vážny kupec.</h3><p>Presne to, čo by ste sa pýtali vy. Odpovede vám zapíše do CRM.</p></div>
+          <div class="scene-t" data-step="3"><p class="scene-t__k">Sobota · 21:49</p><h3>Dohodne obhliadku podľa vášho kalendára.</h3><p>A záujemcovi hneď pošle potvrdzujúcu SMS.</p></div>
+          <div class="scene-t" data-step="4"><p class="scene-t__k">Pondelok · 8:00</p><h3>Kto zavolá prvý, ten má obhliadku.</h3><p>Ostatní makléri sa ozvú v pondelok. Záujemca už má termín u vás.</p></div>
+        </div>
+        <div class="scenes__vis" aria-hidden="true">
+          <div class="scene" data-step="0">
+            <div class="ph">
+              <div class="ph__bar"><span class="tnum">21:47</span><span class="ph__icons"><i></i><i></i><i></i></span></div>
+              <div class="ph__lock"><b class="tnum">21:47</b><span>sobota 17. októbra</span></div>
+              <div class="ph__stack" data-fx="pop">
+                <div class="ph__note"><span class="ph__app">N</span><div><p class="ph__meta">Nehnuteľnosti.sk · teraz</p><b>Nový záujemca: 3-izb. byt, Ružinov</b><p>Ján M. chce obhliadku</p></div></div>
+                <div class="ph__others"><span class="ph__avs"><i></i><i></i><i></i><i></i></span>Rovnaký dopyt dostali ďalší 4 makléri</div>
+              </div>
+            </div>
+          </div>
+          <div class="scene" data-step="1">
+            <div class="ph ph--call">
+              <div class="ph__bar"><span class="tnum">21:48</span><span class="ph__icons"><i></i><i></i><i></i></span></div>
+              <div class="ph__caller"><span class="ph__ring" data-fx="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M36 28c3-3 7-3 9 1l5 9c2 3 1 6-2 8l-4 3c3 7 9 13 16 16l3-4c2-3 5-4 8-2l9 5c4 2 4 6 1 9l-5 5c-4 4-10 5-15 2-15-7-28-20-35-35-3-5-2-11 2-15z" fill="#0B0B0B"/></svg></span><b>Ján M.</b><span>AI asistent volá · <span class="tnum" data-count="14" data-suffix=" s">0 s</span></span></div>
+              <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              <div class="ph__chat" data-fx="pop"><p class="bub">Dobrý deň, volám od makléra Petra ohľadom bytu v Ružinove. Som AI asistent.</p><p class="bub bub--me">Áno, dobrý deň, mám záujem.</p></div>
+            </div>
+          </div>
+          <div class="scene" data-step="2">
+            <div class="ph">
+              <div class="ph__bar"><span class="tnum">21:48</span><span class="ph__icons"><i></i><i></i><i></i></span></div>
+              <p class="ph__h">Profil záujemcu</p>
+              <p class="ph__sub">Ján M. · 3-izb. byt, Ružinov</p>
+              <ul class="checklist ph__list" data-fx="ticks">
+                <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span><b>Financovanie</b>hypotéka schválená</span></li>
+                <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span><b>Dôvod kúpy</b>vlastné bývanie</span></li>
+                <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span><b>Horizont</b>do 3 mesiacov</span></li>
+                <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span><b>Vlastný byt</b>nepredáva</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="scene" data-step="3">
+            <div class="ph">
+              <div class="ph__bar"><span class="tnum">21:49</span><span class="ph__icons"><i></i><i></i><i></i></span></div>
+              <p class="ph__h">Voľné termíny</p>
+              <div class="ph__slots">
+                <span class="ph__slot is-busy">Po 16:00<em>obsadené</em></span>
+                <span class="ph__slot" data-fx="press">Po 17:30<em>✓ potvrdené</em></span>
+                <span class="ph__slot">Ut 9:00<em>voľné</em></span>
+              </div>
+              <div class="ph__sms" data-fx="pop"><p class="ph__meta">SMS · teraz</p><p>Potvrdzujeme obhliadku bytu v Ružinove v pondelok o 17:30. Maklér Peter</p></div>
+            </div>
+          </div>
+          <div class="scene" data-step="4">
+            <div class="ph ph--race">
+              <div class="ph__bar"><span class="tnum">Po 8:00</span><span class="ph__icons"><i></i><i></i><i></i></span></div>
+              <div class="ph__race" data-fx="pop">
+                <div class="ph__win"><b>Vy</b><span>obhliadka dohodnutá už v sobotu o 21:49 ✓</span></div>
+                <div class="ph__lose"><b>Makléri 2 – 5</b><span>volajú v pondelok o 10:00 · záujemca už má termín</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="story__progress" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" style="background:var(--mist)" aria-labelledby="why-h">
   <div class="wrap split" data-group>
     <div>
-      <p class="big-figure" data-rise>21×</p>
+      <p class="big-figure" data-rise><span class="tnum" data-odds-count>21</span>×</p>
       <h2 id="why-h" data-rise style="font-size:var(--fs-h3);line-height:1.15;max-width:22ch">vyššia šanca kvalifikovať záujemcu, keď sa ozvete do 5 minút namiesto 30</h2>
+      <div class="odds" data-odds data-rise aria-hidden="true">
+        <div class="odds__row"><span>Ozvete sa do 5 minút</span><i><b></b></i><em class="tnum">21×</em></div>
+        <div class="odds__row odds__row--slow"><span>Ozvete sa po 30 minútach</span><i><b></b></i><em class="tnum">1×</em></div>
+      </div>
       <p class="cite" data-rise>Zdroj: MIT a InsideSales.com, štúdia Lead Response Management (Dr. James Oldroyd).</p>
     </div>
     <div data-rise>
-      <p class="sec__lead" style="margin-top:0">Kto pošle dopyt na portál, väčšinou ho pošle aj ďalším maklérom. Obhliadku dostane ten, kto zavolá prvý. Nie ten, kto zavolá najlepšie.</p>
+      <p class="sec__lead" style="margin-top:0">Kto pošle dopyt na portál, väčšinou ho pošle aj ďalším maklérom. Pri neexkluzívnych zmluvách predáva ten istý byt viac maklérov naraz. Obhliadku dostane ten, kto zavolá prvý. Nie ten, kto zavolá najlepšie.</p>
       <p class="sec__lead">Cez týždeň ste na obhliadkach, večer a cez víkend máte voľno. Presne vtedy chodí najviac dopytov. Hlasový agent ich vybaví hneď, vy ráno len otvoríte kalendár.</p>
     </div>
   </div>

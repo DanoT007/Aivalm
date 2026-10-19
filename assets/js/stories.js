@@ -132,7 +132,7 @@
 
   document.querySelectorAll('.story').forEach(function (root) {
     root.classList.remove('is-static');
-    var mode = root.dataset.story || 'flow';
+    var mode = root.dataset.story || 'flow', only = root.dataset.only || '';
     var pin = root.querySelector('.story__pin');
     var desk = root.querySelector('.stage__svg.desk');
     var nodes = Array.prototype.slice.call(root.querySelectorAll('[data-step]:not(path)'));
@@ -163,7 +163,7 @@
         tl.to({}, { duration: .6 });
         ScrollTrigger.create({ trigger: root, pin: pin, start: 'top top', end: '+=' + (steps * 85) + '%', scrub: .7, anticipatePin: 1, animation: tl, invalidateOnRefresh: true });
       });
-      mm.add('(max-width: 820px)', function () {
+      if (only !== 'desktop') mm.add('(max-width: 820px)', function () {
         var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
         var ns = root.querySelectorAll('.stage > [data-step]');
         gsap.set(ns, { xPercent: -50, yPercent: -50, x: 0, y: 0 });
@@ -180,7 +180,7 @@
         ScrollTrigger.create({ trigger: root, pin: pin, start: 'top top', end: '+=' + (steps * 100) + '%', scrub: .6, anticipatePin: 1, animation: tl, invalidateOnRefresh: true });
       });
     } else { // scenes
-      mm.add('(min-width: 0px)', function () {
+      mm.add(only === 'mobile' ? '(max-width: 820px)' : only === 'desktop' ? '(min-width: 821px)' : '(min-width: 0px)', function () {
         var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
         var texts = root.querySelectorAll('.scene-t'), scenes = root.querySelectorAll('.scene');
         var later = function (el) { return el.dataset.step !== '0'; };
@@ -213,6 +213,18 @@
       clearTimeout(rt);
       rt = setTimeout(function () { lastW = window.innerWidth; mm.revert(); setup(); ScrollTrigger.refresh(); }, 250);
     });
+  });
+
+  // "21x" odds: the number counts up and the two bars grow while the block scrolls into view
+  document.querySelectorAll('[data-odds]').forEach(function (box) {
+    var sec = box.closest('section') || box, num = sec.querySelector('[data-odds-count]');
+    var bars = box.querySelectorAll('.odds__row i b'), o = { v: 1 };
+    gsap.set(bars, { scaleX: 0 });
+    if (num) num.textContent = '1';
+    var tl = gsap.timeline({ scrollTrigger: { trigger: box, start: 'top 88%', end: 'top 40%', scrub: .6 } });
+    tl.to(bars[1], { scaleX: 1, duration: .25, ease: 'none' }, 0)
+      .to(bars[0], { scaleX: 1, duration: 1, ease: 'power1.out' }, 0)
+      .to(o, { v: 21, duration: 1, ease: 'power1.out', onUpdate: function () { if (num) num.textContent = Math.round(o.v); } }, 0);
   });
 
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
