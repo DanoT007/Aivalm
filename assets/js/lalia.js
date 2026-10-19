@@ -44,12 +44,14 @@
   function update() { draw(Math.round(o.f)); }
   var hero = document.querySelector('[data-lalia-hero]');
   var mm = gsap.matchMedia();
+  var navH = function () { var n = document.querySelector('.nav'); return n ? n.offsetHeight : 76; };
   mm.add('(min-width: 981px) and (min-height: 640px)', function () {
     gsap.to(o, { f: N - 1, ease: 'none', onUpdate: update,
-      scrollTrigger: { trigger: hero, start: 'top 76px', end: '+=110%', pin: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true } });
+      scrollTrigger: { trigger: hero, start: function () { return 'top ' + navH() + 'px'; }, end: '+=110%', pin: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true } });
   });
+  /* phones/tablets: the hero holds still (headline + film on screen) while the film plays through, then the page moves on */
   mm.add('(max-width: 980px), (max-height: 639px)', function () {
     gsap.to(o, { f: N - 1, ease: 'none', onUpdate: update,
-      scrollTrigger: { trigger: box, start: 0, end: 'bottom 15%', scrub: .5, invalidateOnRefresh: true } });
+      scrollTrigger: { trigger: hero, start: function () { return 'top ' + navH() + 'px'; }, end: '+=85%', pin: true, scrub: .35, anticipatePin: 1, invalidateOnRefresh: true } });
   });
 })();
