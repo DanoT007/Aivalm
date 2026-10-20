@@ -59,3 +59,4 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Ceny vždy končiť na 9 (99/95): 149 €/mes. + 699 €, 99 €/mes. + 499 €, nastavenie od 299 €
 - Demo sekcie na odhade a cenových ponukách: na PC formulár vľavo, text vpravo (.split--flip); rezervácia stretnutia ostáva text vľavo, formulár vpravo; mobil bez zmeny
 - Hlavná stránka: nadpis a text sekcie „Orientačné ceny“ zarovnané na stred
+- Rezervácia (všetky stránky): fotka Tower 5 (čiernobiela, oblé rohy, hover farba) + „Naša kancelária / Tower 5, Kalinčiakova 33, 831 04 Bratislava / Otvoriť v mapách“ na stred pod fotkou

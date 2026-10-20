@@ -1099,3 +1099,7 @@ html.js{scroll-behavior:auto}
 .office__go{display:inline-flex;gap:8px;margin-top:10px;font-size:.92rem;font-weight:700;color:#d6d6d6}
 .office:hover .office__go{color:#fff;text-decoration:underline}
 @media (max-width:960px){.office{max-width:none}}
+.office{text-align:center;max-width:400px}
+.office__img{aspect-ratio:4/5;object-position:50% 40%;border-radius:28px}
+.office__go{justify-content:center}
+@media (max-width:960px){.office{max-width:440px;margin-left:auto;margin-right:auto}}
