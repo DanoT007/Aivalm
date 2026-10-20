@@ -1103,3 +1103,4 @@ html.js{scroll-behavior:auto}
 .office__img{aspect-ratio:4/5;object-position:50% 40%;border-radius:28px}
 .office__go{justify-content:center}
 @media (max-width:960px){.office{max-width:440px;margin-left:auto;margin-right:auto}}
+.office__img{filter:none}.office:hover .office__img{filter:none}
