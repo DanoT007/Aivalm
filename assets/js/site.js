@@ -49,6 +49,13 @@
     document.querySelectorAll('[data-rise]').forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
   }
 
+  /* ---------- price tags between sections: swing once when they come into view ---------- */
+  document.querySelectorAll('[data-ptag]').forEach(function (t) {
+    if (reduce || !('IntersectionObserver' in window)) { t.classList.add('is-in'); return; }
+    var o = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { t.classList.add('is-in'); o.disconnect(); } }, { rootMargin: '0px 0px -15% 0px' });
+    o.observe(t);
+  });
+
   /* ---------- looping UI sequences ([data-loop] with children [data-at=n]) ---------- */
   document.querySelectorAll('[data-loop]').forEach(function (box) {
     var n = +box.dataset.loop || 4, ms = +box.dataset.loopMs || 1600, s = 0, items = box.querySelectorAll('[data-at]');
