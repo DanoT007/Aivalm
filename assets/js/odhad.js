@@ -38,3 +38,17 @@
   // first roll on load
   if (!reduce) { from.textContent = '0'; to.textContent = '0'; setTimeout(function () { roll(from, 11200); roll(to, 12400); }, 600); }
 })();
+
+/* demo form: brand picker with "Iná značka…" falling back to a typed field */
+(function () {
+  var sel = document.querySelector('select[data-brand]'); if (!sel) return;
+  var other = sel.parentNode.querySelector('.brand-other');
+  sel.addEventListener('change', function () {
+    var custom = sel.value === '__ina';
+    other.hidden = !custom; other.required = custom;
+    other.name = custom ? 'znacka' : ''; sel.name = custom ? '' : 'znacka';
+    if (custom) other.focus();
+  });
+  var form = sel.closest('form');
+  if (form) form.addEventListener('reset', function () { other.hidden = true; other.required = false; other.name = ''; sel.name = 'znacka'; });
+})();

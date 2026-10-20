@@ -173,7 +173,7 @@ scripts: stories.js, odhad.js
       <form class="form" data-hook="carDemo" data-cooldown="600" novalidate>
         <input type="hidden" name="rezim" value="online">
         <div class="row">
-          <div class="field"><label for="c-zn">Značka</label><input class="input" id="c-zn" name="znacka" placeholder="napr. Škoda" required></div>
+          <div class="field"><label for="c-zn">Značka</label><select class="select" id="c-zn" name="znacka" required data-brand><option value="" disabled selected>Vyberte značku</option><option>Škoda</option><option>Volkswagen</option><option>Hyundai</option><option>Kia</option><option>Toyota</option><option>Ford</option><option>Peugeot</option><option>Renault</option><option>Dacia</option><option>Opel</option><option>Audi</option><option>BMW</option><option>Mercedes-Benz</option><option>Seat</option><option>Citroën</option><option>Mazda</option><option value="__ina">Iná značka…</option></select><input class="input brand-other" name="" placeholder="Napíšte značku" aria-label="Iná značka" hidden></div>
           <div class="field"><label for="c-mo">Model</label><input class="input" id="c-mo" name="model" placeholder="napr. Octavia Combi" required></div>
         </div>
         <div class="row">
