@@ -49,11 +49,21 @@
     document.querySelectorAll('[data-rise]').forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
   }
 
-  /* ---------- price tags between sections: swing once when they come into view ---------- */
-  document.querySelectorAll('[data-ptag]').forEach(function (t) {
-    if (reduce || !('IntersectionObserver' in window)) { t.classList.add('is-in'); return; }
-    var o = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { t.classList.add('is-in'); o.disconnect(); } }, { rootMargin: '0px 0px -15% 0px' });
-    o.observe(t);
+  /* ---------- pricing card: reveal, draw checks, count the price up once ---------- */
+  document.querySelectorAll('[data-pplan]').forEach(function (card) {
+    var nums = card.querySelectorAll('[data-count]');
+    function go() {
+      card.classList.add('is-in');
+      if (reduce) return;
+      nums.forEach(function (n) {
+        var to = +n.dataset.count, t0 = null;
+        function step(t) { if (!t0) t0 = t; var k = Math.min(1, (t - t0) / 1300); n.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); }
+        n.textContent = '0'; requestAnimationFrame(step);
+      });
+    }
+    if (!('IntersectionObserver' in window)) { go(); return; }
+    var o = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { o.disconnect(); go(); } }, { rootMargin: '0px 0px -20% 0px' });
+    o.observe(card);
   });
 
   /* ---------- looping UI sequences ([data-loop] with children [data-at=n]) ---------- */
