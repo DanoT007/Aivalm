@@ -60,3 +60,4 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Demo sekcie na odhade a cenových ponukách: na PC formulár vľavo, text vpravo (.split--flip); rezervácia stretnutia ostáva text vľavo, formulár vpravo; mobil bez zmeny
 - Hlavná stránka: nadpis a text sekcie „Orientačné ceny“ zarovnané na stred
 - Rezervácia (všetky stránky): fotka Tower 5 (farebná, oblé rohy) + „Naša kancelária / Tower 5, Kalinčiakova 33, 831 04 Bratislava / Otvoriť v mapách“ na stred pod fotkou
+- 20. 10.: hlavná stránka – v „Kto za tým stojí“ portrét Daniela vpravo (farebný, oblé rohy, `assets/img/daniel.jpg`); na mobile pod textom. Len na tomto jednom mieste.
