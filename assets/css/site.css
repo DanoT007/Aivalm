@@ -1025,3 +1025,18 @@ html.js{scroll-behavior:auto}
 
 .brand-other{margin-top:8px}
 .brand-other[hidden]{display:none}
+
+/* ---------- home: indicative prices ---------- */
+.prices{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.price{display:flex;flex-direction:column;gap:10px;background:#fff;border-radius:28px;padding:clamp(24px,2.4vw,34px)}
+.price--ink{background:var(--ink);color:#fff}
+.price__name{margin:0;font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+.price__main{margin:6px 0 0;display:flex;align-items:baseline;flex-wrap:wrap;gap:6px}
+.price__main b{font-size:clamp(2.4rem,1.6rem + 2vw,3.4rem);font-weight:800;letter-spacing:-.04em;line-height:1}
+.price__main span{font-size:.95rem;font-weight:600;color:var(--ash)}
+.price__setup{margin:0;font-size:.98rem;font-weight:600}
+.price__dep{margin:6px 0 0;font-size:.9rem;line-height:1.45;color:var(--ash)}
+.price--ink .price__main span,.price--ink .price__dep{color:#bdbdbd}
+.price__link{margin-top:auto;padding-top:14px;font-weight:700;color:inherit;text-decoration:none;display:inline-flex;gap:8px}
+.price__link:hover{text-decoration:underline}
+@media (max-width:900px){.prices{grid-template-columns:1fr}}
