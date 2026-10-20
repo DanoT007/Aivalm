@@ -547,7 +547,6 @@ html.lenis,html.lenis body{height:auto}
 .cur-dark .cur-dot{background:#fff}
 .cur-dark .cur-ring::before{border-color:#fff}
 .cur-ring.is-hover::before{transform:scale(1.55)}
-.cur-ring.is-text::before{transform:scaleX(.06) scaleY(.75);border-radius:2px}
 .cur-ring.is-down::before{transform:scale(.85)}
 .cur-ring span{position:absolute;left:0;top:0;transform:translate(-50%,-50%) scale(.6);opacity:0;white-space:nowrap;background:var(--ink);color:#fff;font-weight:800;font-size:.8rem;padding:9px 14px;border-radius:999px;transition:transform .35s var(--ease-out),opacity .25s}
 .cur-dark .cur-ring span{background:#fff;color:var(--ink)}

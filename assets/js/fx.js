@@ -201,7 +201,6 @@
       var t = e.target.closest(HOVER); if (!t) return;
       var txt = t.closest('[data-cursor]') ? t.closest('[data-cursor]').dataset.cursor : '';
       ring.classList.toggle('is-label', !!txt); label.textContent = txt;
-      ring.classList.toggle('is-text', /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));
       ring.classList.add('is-hover');
     });
     document.addEventListener('pointerout', function (e) {
