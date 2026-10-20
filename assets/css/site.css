@@ -1087,3 +1087,5 @@ html.js{scroll-behavior:auto}
 .pplan__setup b{white-space:nowrap}
 @media (max-width:900px){.pplan__grid{grid-template-areas:"intro" "card" "deps";gap:36px}.pplan__deps .pplan__dl{margin-top:0}}
 @media (min-width:901px){.pplan__grid{row-gap:44px;grid-template-rows:1fr auto}}
+/* demo sections: form left, text right on desktop (booking below stays text left, form right) */
+@media (min-width:901px){.split--flip{grid-template-columns:1.1fr .9fr}.split--flip>:first-child{order:2}}
