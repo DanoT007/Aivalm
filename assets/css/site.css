@@ -1090,3 +1090,12 @@ html.js{scroll-behavior:auto}
 /* demo sections: form left, text right on desktop (booking below stays text left, form right) */
 @media (min-width:901px){.split--flip{grid-template-columns:1.1fr .9fr}.split--flip>:first-child{order:2}}
 .cennik .sec__head{text-align:center}.cennik .sec__head h2,.cennik .sec__lead{margin-left:auto;margin-right:auto}
+/* office card under booking intro (Tower 5 photo) */
+.office{display:block;margin-top:clamp(32px,4vw,48px);max-width:440px;color:#fff;text-decoration:none}
+.office__img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:24px;background:#1d1d1d;filter:grayscale(1) contrast(1.05);transition:transform .6s var(--ease-out),filter .6s ease}
+.office:hover .office__img{transform:scale(1.02);filter:grayscale(.6) contrast(1.05)}
+.office__k{display:block;margin-top:18px;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a}
+.office__addr{display:block;margin-top:6px;font-size:1.15rem;font-weight:800;line-height:1.3}
+.office__go{display:inline-flex;gap:8px;margin-top:10px;font-size:.92rem;font-weight:700;color:#d6d6d6}
+.office:hover .office__go{color:#fff;text-decoration:underline}
+@media (max-width:960px){.office{max-width:none}}
