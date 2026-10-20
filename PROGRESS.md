@@ -58,3 +58,4 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Produktové stránky: vlastná sekcia #cena „Koľko to stojí“ (sivé pozadie) nad spodnými formulármi — čierna karta s cenou (počítadlo, odškrtávanie „V cene“, jemný lesk), vľavo „Od čoho závisí cena“ (3 body); hlasový agent 149 €/mes. + 699 €, odhad 99 €/mes. + 499 €, cenové ponuky nastavenie 299 € + mesačne podľa objemu; pás „Počujte ho naživo“ je teraz biely
 - Ceny vždy končiť na 9 (99/95): 149 €/mes. + 699 €, 99 €/mes. + 499 €, nastavenie od 299 €
 - Demo sekcie na odhade a cenových ponukách: na PC formulár vľavo, text vpravo (.split--flip); rezervácia stretnutia ostáva text vľavo, formulár vpravo; mobil bez zmeny
+- Hlavná stránka: nadpis a text sekcie „Orientačné ceny“ zarovnané na stred

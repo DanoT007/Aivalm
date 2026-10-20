@@ -1089,3 +1089,4 @@ html.js{scroll-behavior:auto}
 @media (min-width:901px){.pplan__grid{row-gap:44px;grid-template-rows:1fr auto}}
 /* demo sections: form left, text right on desktop (booking below stays text left, form right) */
 @media (min-width:901px){.split--flip{grid-template-columns:1.1fr .9fr}.split--flip>:first-child{order:2}}
+.cennik .sec__head{text-align:center}.cennik .sec__head h2,.cennik .sec__lead{margin-left:auto;margin-right:auto}
