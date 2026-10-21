@@ -1181,3 +1181,11 @@ html.js{scroll-behavior:auto}
 .hero__feature .pilot-pill{font-weight:600;text-align:left}
 .hero__feature .pilot-pill b{font-weight:800}
 @media (max-width:600px){.hero__feature .pilot-pill{font-size:.84rem;border-radius:18px;align-items:flex-start}.hero__feature .pplan__dot{margin-top:6px}}
+
+/* 21. 10. – Danielove úpravy */
+.hero__feature .pilot-pill{background:var(--stone);color:var(--ink)}
+.hero__feature .pilot-pill:hover{background:#D6D6D6}
+.hero__feature .pilot-pill .pplan__dot{background:var(--ink)}
+@media (min-width:901px){.about__photo{margin-right:clamp(40px,7vw,110px)}}
+.forwho{padding-bottom:clamp(64px,6vw,110px)}
+.forwho + .sec{padding-top:0}

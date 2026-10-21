@@ -71,3 +71,10 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Živé demo #ukazka: predvyplnený predmet a text (dá sa prepísať), návštevník doplní e-mail → animácia obálky + časovač, ponuka príde do 2 min (Make 8100320)
 - Úvod: pilulka „Novinka: Replix“ v hero, karta Replix ako prvá, v orientačných cenách „Replix · pilot 0 € prvé 3 mesiace“
 - Kalkulačka strát: zatiaľ nie, čaká sa na názor Raymonda
+
+## Zmeny 21. 10. večer
+- Menu (PC aj mobil) a pätička: Replix prvý; „Spolupráca“ vyradená z horného a mobilného menu (stránka spolupraca.html ostáva, odkaz je v pätičke)
+- Úvod: pilulka „Novinka: Replix“ sivá (--stone, čierny text a bodka); len v hero úvodu, na stránke Replix ostáva čierna
+- Úvod „Naše služby“ aj „Orientačné ceny“: poradie odhad ceny · **Replix (čierna karta, v strede)** · hlasový agent
+- „Kto za tým stojí“: fotka na PC posunutá doľava (margin-right clamp 40–110 px), mobil bez zmeny
+- Replix stránka: medzera medzi #pre-koho a „Presné, nie len rýchle“ skrátená (z ~380 px na ~90 px pri 1440 px)
