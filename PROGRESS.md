@@ -78,3 +78,4 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Úvod „Naše služby“ aj „Orientačné ceny“: poradie odhad ceny · **Replix (čierna karta, v strede)** · hlasový agent
 - „Kto za tým stojí“: fotka na PC posunutá doľava (margin-right clamp 40–110 px), mobil bez zmeny
 - Replix stránka: medzera medzi #pre-koho a „Presné, nie len rýchle“ skrátená (z ~380 px na ~90 px pri 1440 px)
+- Replix hero: „Vyskúšať naživo“ nad/pred tlačidlom „Dohodnúť stretnutie“
