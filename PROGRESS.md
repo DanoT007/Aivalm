@@ -30,7 +30,7 @@ Zdroj pravdy pre dizajn: `DESIGN.md`. Stránky sa skladajú cez `python3 tools/b
 - Prechod stránok: desktop čierna opona; dotyk sivý závoj s gradientom na začiatku, čierne logo, ~1,2 s (fade, bez posunu)
 
 ## Názvy produktov
-AI hlasový agent · AI odhad ceny · AI cenové ponuky
+AI hlasový agent · AI odhad ceny · Replix (od 21. 10., predtým AI cenové ponuky; súbor ostáva cenove-ponuky.html)
 
 ## Náhľad
 https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodošlú – blokuje to sandbox; na aivalm.com fungujú)
@@ -61,3 +61,13 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Hlavná stránka: nadpis a text sekcie „Orientačné ceny“ zarovnané na stred
 - Rezervácia (všetky stránky): fotka Tower 5 (farebná, oblé rohy) + „Naša kancelária / Tower 5, Kalinčiakova 33, 831 04 Bratislava / Otvoriť v mapách“ na stred pod fotkou
 - 20. 10.: hlavná stránka – v „Kto za tým stojí“ portrét Daniela vpravo (farebný, oblé rohy, `assets/img/daniel.jpg`); na mobile pod textom. Len na tomto jednom mieste.
+
+## Zmeny 21. 10. – Replix je hlavný produkt
+- AI cenové ponuky premenované na **Replix** (menu, pätička, rezervácia, spolupráca, úvod)
+- cenove-ponuky.html: hero „Každý dopyt zodpovedaný do 2 minút. Aj o polnoci.“ + značka Replix nad nadpisom + pilulka pilotu
+- Cena odstránená → sekcia #pilot „Najprv výsledky, potom cena“: 0 € prvé 3 mesiace pre prvých 5 firiem, 4 kroky pilotu
+- Počítadlo miest: `data-seats="0"` v sekcii #pilot – keď pribudne firma, zvýšiť číslo (pri 0 sa pruh nezobrazuje, text „Voľné miesta: X z 5“ sa dopočíta)
+- Nová sekcia #pre-koho: odvetvia + „sedí vám, ak / skôr nie, ak“ (filter zlých leadov)
+- Živé demo #ukazka: predvyplnený predmet a text (dá sa prepísať), návštevník doplní e-mail → animácia obálky + časovač, ponuka príde do 2 min (Make 8100320)
+- Úvod: pilulka „Novinka: Replix“ v hero, karta Replix ako prvá, v orientačných cenách „Replix · pilot 0 € prvé 3 mesiace“
+- Kalkulačka strát: zatiaľ nie, čaká sa na názor Raymonda

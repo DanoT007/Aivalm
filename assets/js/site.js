@@ -6,7 +6,8 @@
     booking: 'https://hook.eu1.make.com/0di8queev6d1cqlisd70lujsswaiui8l',
     partner: 'https://hook.eu1.make.com/42gkuqfpp97f332ughqe4usm2sgsddxc',
     sample:  'https://hook.eu1.make.com/qti8okd8zj63vuswcwzynva3lnas2urd',
-    carDemo: 'https://hook.eu1.make.com/j4tyo99jquy94mc4gl5uyji6myot9l4o'
+    carDemo: 'https://hook.eu1.make.com/j4tyo99jquy94mc4gl5uyji6myot9l4o',
+    replix:  'https://hook.eu1.make.com/3hkb6j4f9ndi8lr6d40uqvr2nb47ol6a'
   };
   window.AIVALM = { HOOKS: HOOKS };
 
@@ -162,6 +163,7 @@
         if (d) { d.setAttribute('tabindex', '-1'); d.focus({ preventScroll: true }); }
         var em = box.querySelector('[data-echo=email]');
         if (em && data.email) em.textContent = data.email;
+        form.dispatchEvent(new CustomEvent('aivalm:sent', { bubbles: true, detail: data }));
       }).catch(function () {
         if (status) status.innerHTML = 'Odoslanie sa nepodarilo. Skúste to znova, alebo napíšte priamo na <a href="mailto:aivalm.agent@gmail.com">aivalm.agent@gmail.com</a> alebo zavolajte na <a href="tel:+421948475484">+421 948 475 484</a>.';
       }).then(function () {
@@ -359,5 +361,30 @@
         status.innerHTML = 'Rezervácia sa nepodarila. Skúste to znova, alebo napíšte na <a href="mailto:aivalm.agent@gmail.com">aivalm.agent@gmail.com</a> alebo zavolajte na <a href="tel:+421948475484">+421 948 475 484</a> a termín dohodneme ručne.';
       }).then(function () { btn.disabled = false; btn.innerHTML = label; });
     });
+  });
+
+  /* ---------- Replix: live demo timer + pilot seats ---------- */
+  document.addEventListener('aivalm:sent', function (e) {
+    if (!e.target || e.target.dataset.hook !== 'replix') return;
+    var box = e.target.closest('[data-done]');
+    var fx = box && box.querySelector('.sendfx');
+    var t = fx && fx.querySelector('[data-timer]');
+    if (!t) return;
+    var start = Date.now();
+    var iv = setInterval(function () {
+      var s = Math.floor((Date.now() - start) / 1000);
+      t.textContent = Math.floor(s / 60) + ':' + pad(s % 60);
+      if (s >= 120) {
+        clearInterval(iv);
+        fx.classList.add('is-arrived');
+        t.parentNode.innerHTML = '<span class="pplan__dot"></span>Ponuka by už mala byť vo vašej schránke';
+      }
+    }, 1000);
+  });
+  document.querySelectorAll('[data-seats]').forEach(function (el) {
+    var taken = +el.dataset.seats || 0, total = +el.dataset.total || 5;
+    el.querySelectorAll('.seats__bar i').forEach(function (i, n) { if (n < taken) i.classList.add('is-taken'); });
+    var b = el.querySelector('.seats__txt b');
+    if (b) b.textContent = (total - taken) + ' z ' + total;
   });
 })();

@@ -47,5 +47,6 @@ No other hues. Errors use ink + an icon, not red.
 - Booking: `WEB – rezervácia callu` webhook (`a=sloty` returns busy times, `a=rezervuj` books).
 - Partnership form: `WEB – spolupráca` webhook.
 - Price demo: existing `AUTO demo – odhad výkupnej ceny` webhook.
-- E-mail demo: `WEB – ukážka dopytu` webhook.
+- E-mail demo (Replix, živé): `WEB – Replix živé demo` webhook (hook 3950916, scenár 8100320) – návštevník pošle vlastný dopyt, AI ho spáruje s ukážkovým cenníkom (data store 220566), ceny počíta Make, ponuka príde e-mailom z aivalm.agent; limit 3 ukážky denne na e-mail (data store 227934), odkazy v texte sa odstránia.
+- Staré demo `WEB – ukážka cenovej ponuky` (hook 3928060) už web nepoužíva.
 Requests are sent as `application/x-www-form-urlencoded` (no CORS preflight).
