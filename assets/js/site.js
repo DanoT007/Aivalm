@@ -388,3 +388,35 @@
     if (b) b.textContent = (total - taken) + ' z ' + total;
   });
 })();
+
+/* Scroll progress ring (bottom-right): % of the page scrolled; tap = back to top */
+(function () {
+  var R = 21, C = 2 * Math.PI * R;
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'sprog'; b.setAttribute('aria-label', 'Späť hore');
+  b.innerHTML = '<svg viewBox="0 0 52 52" aria-hidden="true"><circle class="sprog__track" cx="26" cy="26" r="' + R + '"/>' +
+    '<circle class="sprog__bar" cx="26" cy="26" r="' + R + '" stroke-dasharray="' + C + '" stroke-dashoffset="' + C + '"/></svg>' +
+    '<span class="sprog__n tnum">0%</span>';
+  document.body.appendChild(b);
+  var bar = b.querySelector('.sprog__bar'), n = b.querySelector('.sprog__n'), last = -1, ticking = false;
+  function update() {
+    ticking = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    var pct = Math.round(p * 100);
+    b.classList.toggle('is-on', window.scrollY > 120);
+    if (pct === last) return; last = pct;
+    bar.setAttribute('stroke-dashoffset', (C * (1 - p)).toFixed(2));
+    n.textContent = pct + '%';
+  }
+  function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', req, { passive: true });
+  window.addEventListener('resize', req);
+  window.addEventListener('load', req);
+  update();
+  b.addEventListener('click', function () {
+    var l = window.AIVALM && window.AIVALM.lenis;
+    if (l) l.scrollTo(0, { duration: 1.6 });
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();

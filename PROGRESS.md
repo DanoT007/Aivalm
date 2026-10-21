@@ -79,3 +79,4 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - „Kto za tým stojí“: fotka na PC posunutá doľava (margin-right clamp 40–110 px), mobil bez zmeny
 - Replix stránka: medzera medzi #pre-koho a „Presné, nie len rýchle“ skrátená (z ~380 px na ~90 px pri 1440 px)
 - Replix hero: „Vyskúšať naživo“ nad/pred tlačidlom „Dohodnúť stretnutie“
+- Všetky stránky: krúžok s % prescrollovania vpravo dole (.sprog v site.js/site.css), objaví sa po 120 px, klik = späť hore, v otvorenom mobilnom menu skrytý
