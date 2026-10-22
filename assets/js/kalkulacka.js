@@ -26,7 +26,8 @@
     var k=p[0], n=$(p[1]), r=$(p[2]);
     st[k]=+r.value; pct(r);
     r.addEventListener('input',function(){st[k]=+r.value;n.value=r.value;pct(r);calc();});
-    n.addEventListener('input',function(){var v=Math.max(0,+n.value||0);if(k==='l')v=Math.min(100,v);st[k]=v;r.value=v;pct(r);calc();});
+    n.addEventListener('input',function(){var v=Math.max(0,+n.value||0);if(k==='l')v=Math.min(100,v);if(k==='o'&&v>+r.max){v=+r.max;n.value=v;}st[k]=v;r.value=v;pct(r);calc();});
+    if(k==='o') n.addEventListener('change',function(){var v=Math.min(+r.max,Math.max(+r.min,+n.value||+r.min));n.value=v;st[k]=v;r.value=v;pct(r);calc();});
   });
   calc();
 })();
