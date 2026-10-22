@@ -3,7 +3,7 @@ title: Replix – každý dopyt zodpovedaný do 2 minút | AIVALM
 desc: Replix prečíta e-mailový dopyt, váš cenník vypočíta ceny so zľavami a DPH a obchodník jedným klikom odošle hotovú cenovú ponuku. Do 2 minút, aj o polnoci. Pilot zadarmo pre prvých 5 firiem.
 nav: email
 produkt: cenove-ponuky
-scripts: stories.js
+scripts: stories.js, kalkulacka.js
 -->
 <section class="hero">
   <div class="wrap phero">
@@ -170,6 +170,42 @@ scripts: stories.js
       <div class="fact" data-rise><h3>Neznámu položku nevymyslí</h3><p>Keď produkt v katalógu nenájde, označí ho obchodníkovi namiesto toho, aby hádala.</p></div>
       <div class="fact" data-rise><h3>Spúšťa ju len nový e-mail</h3><p>Žiadne neustále kontrolovanie schránky. Systém sa zapne, až keď dopyt príde, a nič nestojí, keď je ticho.</p></div>
       <div class="fact" data-rise><h3>Prehľad o rýchlosti</h3><p>Ku každému dopytu vidíte, kedy prišiel a kedy odišla ponuka. Uvidíte, koľko hodín týždenne ušetrilo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec rcalc" id="kalkulacka" aria-labelledby="calc-h">
+  <div class="wrap rcalc__grid">
+    <div class="rcalc__card" data-rcalc aria-label="Kalkulačka výnosov">
+      <p class="pplan__tag"><span class="rcalc__dot"></span>Kalkulačka výnosov</p>
+      <p class="rcalc__name">Vyrátajte si to na vlastných číslach</p>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rc-n-q">Koľko e-mailových dopytov vám príde za mesiac?</label><span class="rcalc__val"><input id="rc-n-q" type="number" inputmode="numeric" min="0" value="300"><span>dopytov</span></span></div>
+        <input class="rcalc__range" id="rc-r-q" type="range" min="10" max="2000" step="10" value="300" aria-label="Dopyty za mesiac">
+        <p class="rcalc__hint">Napr. 15 dopytov denne ≈ 300 mesačne</p>
+      </div>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rc-n-o">Aká je vaša priemerná objednávka?</label><span class="rcalc__val"><input id="rc-n-o" type="number" inputmode="numeric" min="0" value="800"><span>€</span></span></div>
+        <input class="rcalc__range" id="rc-r-o" type="range" min="50" max="10000" step="50" value="800" aria-label="Priemerná objednávka v eurách">
+      </div>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rc-n-l">Koľko dopytov strácate, lebo konkurencia odpovie skôr?</label><span class="rcalc__val"><input id="rc-n-l" type="number" inputmode="numeric" min="0" max="100" value="20"><span>%</span></span></div>
+        <input class="rcalc__range" id="rc-r-l" type="range" min="1" max="60" step="1" value="20" aria-label="Percento stratených dopytov">
+        <p class="rcalc__hint">Väčšina firiem odhaduje 10–30 %</p>
+      </div>
+      <div class="rcalc__res" aria-live="polite">
+        <p class="rcalc__rl">Potenciálne výnosy navyše</p>
+        <p class="rcalc__big tnum"><b id="rc-out-m">48 000 €</b> <span>/ mesiac</span></p>
+        <div class="rcalc__row"><p><b class="tnum" id="rc-out-y">576 000 €</b>za rok</p><p><b class="tnum" id="rc-out-d">60</b>dopytov späť mesačne</p></div>
+      </div>
+    </div>
+    <div class="rcalc__copy" data-group>
+      <p class="eyebrow" data-rise>Potenciálne výnosy</p>
+      <h2 id="calc-h" data-rise>Pomalá ponuka <span class="grey">je stratená zákazka</span></h2>
+      <p class="sec__lead" data-rise>Zákazník pošle ten istý dopyt trom dodávateľom. Objednávku zvyčajne dostane ten, kto odpovie prvý. Replix pripraví ponuku do pár minút od príchodu e-mailu, takže tie zákazky, ktoré dnes odchádzajú ku konkurencii, môžu zostať u vás.</p>
+      <p class="rcalc__formula" data-rise><span>dopyty za mesiac</span><i>×</i><span>priemerná objednávka</span><i>×</i><span>% stratených dopytov</span></p>
+      <p class="rcalc__note" data-rise>Výpočet je orientačný a vychádza z vašich odhadov. V pilotnom programe ho nahradíme skutočnými číslami z vašej schránky: kedy dopyt prišiel a kedy odišla ponuka.</p>
+      <a class="btn rcalc__btn" href="#rezervacia" data-rise>Overiť to na mojich dátach <span class="arr" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
