@@ -83,3 +83,7 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 
 ## Zmeny 22. 10.
 - Replix: sekcia #kalkulacka „Pomalá ponuka je stratená zákazka“ medzi „Presné, nie len rýchle“ a pilotným programom – kalkulačka výnosov vľavo (dopyty/mes × priemerná objednávka × % stratených, predvolene 300 × 800 € × 20 %), text vpravo, tlačidlo „Overiť to na mojich dátach“ → #rezervacia; JS v assets/js/kalkulacka.js, CSS .rcalc v site.css
+
+## Zmeny 24. 10.
+- Replix živé demo (Make 8100320): funguje na akýkoľvek dopyt (tovar aj služby, napr. O2 paušály, stavebný materiál). AI vytvorí ilustračný cenník k dopytu (do 10 riadkov s množstevnými zľavami), priradí položky, chýbajúce množstvo doplní ako predpokladané; Make počíta zľavy, súčty a DPH (pri paušáloch „/ mesiac“). E-mail obsahuje odpoveď zákazníkovi, ponuku, podmienky dodania a použitý cenník s upozornením, že ceny sú ilustračné. Otestované 24. 10. (paušály O2, stavebný materiál).
+- Text pri demo formulári: dopyt sa dá prepísať na čokoľvek, ceny sú ilustračné.
