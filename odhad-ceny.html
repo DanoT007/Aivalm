@@ -242,12 +242,10 @@
           <div class="field"><label for="c-pr">Prevodovka</label><select class="select" id="c-pr" name="prevodovka"><option>manuálna</option><option>automatická</option></select></div>
         </div>
         <div class="field"><label for="c-st">Stav</label><select class="select" id="c-st" name="stav"><option>bez nehody a poškodení</option><option>drobné škrabance alebo odreniny</option><option>po opravenej nehode</option><option>poškodené alebo nepojazdné</option></select></div>
-        <div class="row">
-          <div class="field"><label for="c-em">Váš e-mail</label><input class="input" id="c-em" name="email" type="email" autocomplete="email" required></div>
-          <div class="field"><label for="c-tel">Telefón</label><input class="input" id="c-tel" name="telefon" type="tel" autocomplete="tel" required></div>
-        </div>
+        <div class="field"><label for="c-em">Váš e-mail <span class="opt">(sem príde odhad)</span></label><input class="input" id="c-em" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+        <input type="hidden" name="telefon" value="nezadany">
         <div class="hp" aria-hidden="true"><label>Pozícia<input name="pozicia" tabindex="-1" autocomplete="off"></label></div>
-        <p class="consent">Údaje použijeme len na odoslanie ukážkového odhadu. Nevoláme vám a nikomu ich nedávame. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
+        <p class="consent">Údaje o aute vyhodnotí AI (bez vášho e-mailu), e-mail použijeme len na odoslanie ukážky. Nevoláme vám a neposielame reklamu. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a> · <a href="podmienky-pouzivania.html#ukazky">Podmienky ukážok</a></p>
         <div><button class="btn" type="submit" data-busy="Posielam…" style="background:var(--ink);color:#fff;border-color:var(--ink)">Poslať mi odhad <span class="arr" aria-hidden="true">→</span></button></div>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
@@ -325,7 +323,7 @@
         </div>
         <div class="field"><label for="b-pozn">Čo by ste chceli vyriešiť <span class="opt">(nepovinné)</span></label><textarea class="textarea" id="b-pozn" name="poznamka" rows="3" placeholder="Napr. koľko dopytov mesačne, aký používate CRM…"></textarea></div>
         <div class="hp" aria-hidden="true"><label>Pozícia<input name="pozicia" tabindex="-1" autocomplete="off"></label></div>
-        <p class="consent">Odoslaním súhlasíte so spracovaním údajov na účel dohodnutia stretnutia. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
+        <p class="consent">Údaje použijeme len na dohodnutie a uskutočnenie stretnutia, nie na reklamu. Podrobnosti: <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
         <div><button class="btn" type="submit">Dohodnúť stretnutie <span class="arr" aria-hidden="true">→</span></button></div>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
@@ -376,12 +374,16 @@
           <li class="muted">Daniel Tomasch</li>
           <li class="muted">IČO: 57899797</li>
           <li class="muted">821 03 Bratislava – Ružinov</li>
+          <li class="muted">Živnostenský register Okresného úradu Bratislava</li>
+          <li class="muted">Neplatiteľ DPH</li>
         </ul>
       </div>
     </div>
     <div class="foot__legal">
       <span>© <span data-year>2026</span> Daniel Tomasch – AIVALM</span>
       <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a>
+      <a href="podmienky-pouzivania.html">Podmienky používania</a>
+      <a href="cookies.html">Cookies</a>
     </div>
   </div>
 </footer>

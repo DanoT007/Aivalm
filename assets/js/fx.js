@@ -138,7 +138,7 @@
   /* ---------- page curtain ---------- */
   var curtain = document.querySelector('.curtain');
   if (curtain && !reduce) {
-    var came = false; try { came = sessionStorage.getItem('aivalm-curtain') === '1'; sessionStorage.removeItem('aivalm-curtain'); } catch (e) {}
+    var came = false; try { var ref = document.referrer ? new URL(document.referrer) : null, nv = performance.getEntriesByType && performance.getEntriesByType('navigation')[0]; came = !!ref && ref.origin === location.origin && ref.pathname !== location.pathname && (!nv || nv.type === 'navigate'); } catch (e) {} /* no browser storage (cookie-free) */
     if (came) {
       curtain.classList.add('is-cover');
       requestAnimationFrame(function () { requestAnimationFrame(function () { curtain.classList.remove('is-cover'); curtain.classList.add('is-leave'); }); });
@@ -150,7 +150,6 @@
       var url = new URL(a.href, location.href);
       if (url.origin !== location.origin || !/\.html$|\/$/.test(url.pathname) || url.pathname === location.pathname) return;
       e.preventDefault();
-      try { sessionStorage.setItem('aivalm-curtain', '1'); } catch (er) {}
       curtain.classList.add('is-enter');
       setTimeout(function () { location.href = a.href; }, touch ? 560 : 520);
     });

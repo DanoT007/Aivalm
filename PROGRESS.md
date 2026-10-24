@@ -87,3 +87,12 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 ## Zmeny 24. 10.
 - Replix živé demo (Make 8100320): funguje na akýkoľvek dopyt (tovar aj služby, napr. O2 paušály, stavebný materiál). AI vytvorí ilustračný cenník k dopytu (do 10 riadkov s množstevnými zľavami), priradí položky, chýbajúce množstvo doplní ako predpokladané; Make počíta zľavy, súčty a DPH (pri paušáloch „/ mesiac“). E-mail obsahuje odpoveď zákazníkovi, ponuku, podmienky dodania a použitý cenník s upozornením, že ceny sú ilustračné. Otestované 24. 10. (paušály O2, stavebný materiál).
 - Text pri demo formulári: dopyt sa dá prepísať na čokoľvek, ceny sú ilustračné.
+
+## Zmeny 24. 10. večer – právny a prístupnostný audit
+- Nové stránky: `podmienky-pouzivania.html` (prevádzkovateľ, SOI, podmienky ukážok #ukazky, AI, autorské práva) a `cookies.html` (web bez cookies, len nevyhnutný local storage pri formulároch); `ochrana-osobnych-udajov.html` prepísaná podľa reálnych tokov v Make (OpenAI len pri ukážkach, hash e-mailu, outreach konateľov, doby uchovania, prenos do USA)
+- Pätička: odkazy Ochrana OÚ · Podmienky používania · Cookies; „Živnostenský register Okresného úradu Bratislava“, „Neplatiteľ DPH“. CHÝBA: ulica miesta podnikania a číslo živnostenského registra (§ 4 zák. 22/2004) – doplniť od Daniela
+- Odhad auta: pole Telefón odstránené (minimalizácia), formulár posiela skrytý `telefon=nezadany`, lebo filter v Make 8027094 vyžaduje existenciu telefónu – pri najbližšej úprave scenára filter zjednodušiť a hidden pole zmazať
+- Texty pri formulároch = informácia o spracúvaní (nie súhlas, právny základ je žiadosť/zmluva)
+- Kontrast: `--smoke` #9A9A9A → #8A8A8A, nový `--line` #8A8A8A pre okraje polí, volieb, dní a slotov (WCAG 1.4.11)
+- fx.js: opona pri prechode stránok už nepoužíva sessionStorage (document.referrer) → web bez neprípustného úložiska
+- Neoverené tvrdenia upravené: „Príklad z praxe“ → „Ilustračný príklad“, hint kalkulačky, AI Act veta, „najviac dopytov“, „väčšinou“, „Beží na vašich účtoch“, Nehnuteľnosti.sk v mockupe → „Realitný portál“

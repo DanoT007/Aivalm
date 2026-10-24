@@ -209,12 +209,10 @@ scripts: stories.js, odhad.js
           <div class="field"><label for="c-pr">Prevodovka</label><select class="select" id="c-pr" name="prevodovka"><option>manuálna</option><option>automatická</option></select></div>
         </div>
         <div class="field"><label for="c-st">Stav</label><select class="select" id="c-st" name="stav"><option>bez nehody a poškodení</option><option>drobné škrabance alebo odreniny</option><option>po opravenej nehode</option><option>poškodené alebo nepojazdné</option></select></div>
-        <div class="row">
-          <div class="field"><label for="c-em">Váš e-mail</label><input class="input" id="c-em" name="email" type="email" autocomplete="email" required></div>
-          <div class="field"><label for="c-tel">Telefón</label><input class="input" id="c-tel" name="telefon" type="tel" autocomplete="tel" required></div>
-        </div>
+        <div class="field"><label for="c-em">Váš e-mail <span class="opt">(sem príde odhad)</span></label><input class="input" id="c-em" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+        <input type="hidden" name="telefon" value="nezadany">
         <div class="hp" aria-hidden="true"><label>Pozícia<input name="pozicia" tabindex="-1" autocomplete="off"></label></div>
-        <p class="consent">Údaje použijeme len na odoslanie ukážkového odhadu. Nevoláme vám a nikomu ich nedávame. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
+        <p class="consent">Údaje o aute vyhodnotí AI (bez vášho e-mailu), e-mail použijeme len na odoslanie ukážky. Nevoláme vám a neposielame reklamu. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a> · <a href="podmienky-pouzivania.html#ukazky">Podmienky ukážok</a></p>
         <div><button class="btn" type="submit" data-busy="Posielam…" style="background:var(--ink);color:#fff;border-color:var(--ink)">Poslať mi odhad <span class="arr" aria-hidden="true">→</span></button></div>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
