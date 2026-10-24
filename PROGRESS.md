@@ -96,3 +96,4 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Kontrast: `--smoke` #9A9A9A → #8A8A8A, nový `--line` #8A8A8A pre okraje polí, volieb, dní a slotov (WCAG 1.4.11)
 - fx.js: opona pri prechode stránok už nepoužíva sessionStorage (document.referrer) → web bez neprípustného úložiska
 - Neoverené tvrdenia upravené: „Príklad z praxe“ → „Ilustračný príklad“, hint kalkulačky, AI Act veta, „najviac dopytov“, „väčšinou“, „Beží na vašich účtoch“, Nehnuteľnosti.sk v mockupe → „Realitný portál“
+- SEO (24. 10.): Google ešte ukazoval starý Lead Radar → pridané robots.txt, sitemap.xml (pri novej stránke doplniť), canonical + og:url na každej stránke (build.py `{{url}}`), favicon 192×192 a apple-touch-icon (Google vyžaduje násobok 48 px), JSON-LD WebSite + Organization na úvode. Daniel musí overiť doménu v Google Search Console, odoslať sitemap a požiadať o indexovanie.

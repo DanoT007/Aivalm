@@ -28,7 +28,7 @@ for page in sorted((SRC / "pages").glob("*.html")):
                 k, v = line.split(":", 1)
                 meta[k.strip()] = v.strip()
         raw = raw[m.end():]
-    head = part["head"].replace("{{title}}", meta.get("title", "AIVALM")).replace("{{desc}}", meta.get("desc", ""))
+    head = part["head"].replace("{{title}}", meta.get("title", "AIVALM")).replace("{{desc}}", meta.get("desc", "")).replace("{{url}}", "https://aivalm.com/" + ("" if page.name == "index.html" else page.name))
     nav = meta.get("nav", "")
     if nav:
         head = head.replace(f'data-nav="{nav}"', f'data-nav="{nav}" aria-current="page"')
