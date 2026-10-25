@@ -99,7 +99,7 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - SEO (24. 10.): Google ešte ukazoval starý Lead Radar → pridané robots.txt, sitemap.xml (pri novej stránke doplniť), canonical + og:url na každej stránke (build.py `{{url}}`), favicon 192×192 a apple-touch-icon (Google vyžaduje násobok 48 px), JSON-LD WebSite + Organization na úvode. Daniel musí overiť doménu v Google Search Console, odoslať sitemap a požiadať o indexovanie.
 
 ## Zmeny 25. 10. – SEO a viditeľnosť v AI vyhľadávačoch
-- Google mal zaindexovaný len starý Lead Radar → web overený v Google Search Console (vlastníctvo https://aivalm.com/, súbor `google4816212a357776b3.html` v koreni – NEMAZAŤ), odoslaná sitemap
+- Google mal zaindexovaný len starý Lead Radar → web overený v Google Search Console (vlastníctvo https://aivalm.com/, súbor `google4816212a357776b3.html` v koreni – NEMAZAŤ; Bing: `BingSiteAuth.xml` – NEMAZAŤ), odoslaná sitemap
 - Kľúčové slová (z Google návrhov a výsledkov vyhľadávania, Keyword Planner zatiaľ bez účtu):
   - úvod: AI automatizácia pre firmy, AI riešenia pre firmy, AI agentúra Slovensko, zavedenie AI do firmy
   - Replix: AI cenové ponuky, automatické cenové ponuky, automatizácia cenových ponúk, dopyty z e-mailu, veľkoobchody a distribútori
