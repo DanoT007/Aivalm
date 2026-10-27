@@ -4,7 +4,7 @@ Source of truth for every page on aivalm.com. Read before touching any UI.
 
 ## Identity
 - Brand: AIVALM, one product: **Replix** (automatic price quotes from e-mail inquiries for wholesalers and distributors). Since 27. 10. 2026 the site is a single page about Replix; the voice agent and price estimate were removed. Founder-led (Daniel Tomasch).
-- Mark: black fleur-de-lis (`assets/img/fleur.png`) + wordmark "AIVALM" set in Montserrat 800.
+- Mark: black fleur-de-lis, own vector `assets/img/fleur.svg` (drawn 27. 10. 2026; `fleur.png` and favicons are rendered from it) + wordmark "AIVALM" set in Montserrat 800.
 - Voice: Slovak, vykanie, factual, professional-to-professional. No hype, no exclamation marks, no invented proof.
 
 ## Colour (black / white / grey only)
