@@ -1,16 +1,17 @@
-# AIVALM
+# Replix od AIVALM
 
-> AIVALM je slovenská AI agentúra z Bratislavy (zakladateľ Daniel Tomasch). Robí AI automatizáciu pre firmy na Slovensku: AI riešenia, ktoré zákazníkom odpovedia okamžite, e-mailom aj telefonicky. Hlavný produkt je Replix, AI na automatické cenové ponuky z e-mailových dopytov pre veľkoobchody, distribútorov a obchodné firmy.
+> Replix je slovenská služba na automatické cenové ponuky z e-mailových dopytov pre veľkoobchody, distribútorov a výrobcov s cenníkom. Vyvíja ju AIVALM z Bratislavy (zakladateľ Daniel Tomasch). AIVALM sa venuje iba Replixu.
 
-Kontakt: aivalm.agent@gmail.com, +421 948 475 484, Tower 5, Kalinčiakova 33, 831 04 Bratislava. Bezplatná konzultácia online alebo osobne. Spustenie zvyčajne do 2 až 3 týždňov, zmluva o spracúvaní údajov podľa GDPR.
+Ako funguje: AI prečíta dopyt v e-maile a rozpozná produkty a množstvá. Ceny, množstevné zľavy a DPH vypočíta cenník firmy (nie AI). Obchodník dostane hotovú ponuku aj s pôvodným dopytom a jedným klikom ju odošle zákazníkovi z firemnej schránky, zvyčajne do 2 minút od príchodu dopytu, aj večer a cez víkend. Neznáme položky Replix nehádá, ale označí ich obchodníkovi. Pokyny vložené do e-mailov (napríklad žiadosť o zľavu) nevykoná.
 
-## Produkty
+Pre koho: stavebniny, spojovací materiál a náradie, kúrenie a sanita, elektro veľkoobchod, hutný materiál, obaly a spotrebný materiál, papier a hygiena. Ideálne pre firmy s 10 a viac e-mailovými dopytmi denne a cenníkom aj v Exceli. Nehodí sa na zákazkovú výrobu podľa výkresu bez cenníka.
 
-- [Replix – AI cenové ponuky z e-mailových dopytov](https://aivalm.com/cenove-ponuky.html): AI prečíta dopyt v e-maile a rozpozná produkty a množstvá, ceny so zľavami a DPH vypočíta cenník firmy (nie AI), obchodník hotovú ponuku schváli jedným klikom. Odpoveď do 2 minút, aj večer a cez víkend. Pre veľkoobchody, distribútorov a výrobcov s cenníkom. Pilot: prvé 3 mesiace zadarmo pre prvých 5 firiem.
-- [AI hlasový agent pre realitné kancelárie](https://aivalm.com/hlasovy-agent.html): telefonický AI asistent, ktorý do 2 minút zavolá novému záujemcovi o nehnuteľnosť, po slovensky zistí financovanie, dôvod kúpy a časový horizont a dohodne obhliadku podľa kalendára makléra. Od 149 € mesačne + nastavenie od 699 €.
-- [AI odhad ceny auta a nehnuteľnosti](https://aivalm.com/odhad-ceny.html): online odhad ceny na webe autobazáru, výkupu áut alebo realitky. AI porovná aktuálne inzeráty, zákazník dostane orientačnú cenu do pár minút aj s termínom obhliadky. Od 99 € mesačne + nastavenie od 499 €.
+Spolupráca začína 30-dňovým pilotom na 1 až 2 obchodníkoch. Cena závisí od počtu dopytov a obchodníkov a dohodne sa vopred písomne, bez viazanosti. Zmluva o spracúvaní osobných údajov podľa GDPR.
 
-## Ďalšie
+Kontakt: aivalm.agent@gmail.com, +421 948 475 484, Tower 5, Kalinčiakova 33, 831 04 Bratislava. Stretnutie online (30 min) alebo osobne (1 h).
 
-- [Úvod a časté otázky o AI automatizácii](https://aivalm.com/)
-- [Spolupráca pre agentúry a partnerov](https://aivalm.com/spolupraca.html)
+## Stránky
+
+- [Replix – živá ukážka, ako to funguje, pilot, časté otázky](https://aivalm.com/)
+- [Spolupráca pre partnerov, agentúry a implementátorov ERP](https://aivalm.com/spolupraca.html)
+- [Ochrana osobných údajov](https://aivalm.com/ochrana-osobnych-udajov.html)

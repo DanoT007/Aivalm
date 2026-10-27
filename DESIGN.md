@@ -3,7 +3,7 @@
 Source of truth for every page on aivalm.com. Read before touching any UI.
 
 ## Identity
-- Brand: AIVALM. Founder-led Slovak AI studio (Daniel Tomasch). Three products, one promise: no inquiry goes cold.
+- Brand: AIVALM, one product: **Replix** (automatic price quotes from e-mail inquiries for wholesalers and distributors). Since 27. 10. 2026 the site is a single page about Replix; the voice agent and price estimate were removed. Founder-led (Daniel Tomasch).
 - Mark: black fleur-de-lis (`assets/img/fleur.png`) + wordmark "AIVALM" set in Montserrat 800.
 - Voice: Slovak, vykanie, factual, professional-to-professional. No hype, no exclamation marks, no invented proof.
 
@@ -32,13 +32,13 @@ No other hues. Errors use ink + an icon, not red.
 
 ## Components
 - Button: pill (999px), flat ink fill, white text, 52px tall. Secondary: ink text with underline offset 6px.
-- Nav: fleur + wordmark, product links, "Spolupráca", one action "Rezervovať call".
+- Nav: fleur + wordmark, one text link "Spolupráca", one action "Dohodnúť stretnutie" ("Stretnutie" on phones). No product router, no hamburger.
 - Forms: 52px fields, `--stone` 1.5px border, focus = ink border + 3px ink outline offset.
 
 ## Motion
 - GSAP 3 + ScrollTrigger + DrawSVG, self-hosted in `assets/vendor`.
-- Each product page has one signature: the pinned "Ako to funguje v praxi" story rebuilt from the sales-deck slide (icons appear, hand-drawn arrows draw between them, scrubbed by scroll).
-- AI odhad ceny signature: a hanging price tag that swings in and rolls its digits.
+- Signature moment: the live demo in the hero (`assets/js/demo.js`). The sample inquiry types itself once, the visitor adds an e-mail, the window shows live steps with a timer and then renders the real offer returned by Make, with an "approve" step. Everything else stays quiet.
+- Second: the pinned "Od dopytu po odoslanú ponuku" story (icons appear, hand-drawn arrows draw, scrubbed by scroll).
 - Easing `cubic-bezier(.22,1,.36,1)`; press 140ms, hover 180ms, reveals 800ms. Transform/opacity only.
 - `prefers-reduced-motion`: no pin, no scrub; every story step shown in its final state.
 - Content is never hidden without JS (`html.js` gate).
@@ -46,7 +46,6 @@ No other hues. Errors use ink + an icon, not red.
 ## Data flows (Make.com, eu1)
 - Booking: `WEB – rezervácia callu` webhook (`a=sloty` returns busy times, `a=rezervuj` books).
 - Partnership form: `WEB – spolupráca` webhook.
-- Price demo: existing `AUTO demo – odhad výkupnej ceny` webhook.
-- E-mail demo (Replix, živé): `WEB – Replix živé demo` webhook (hook 3950916, scenár 8100320) – návštevník pošle dopyt na akýkoľvek tovar alebo službu, AI k nemu vytvorí ilustračný cenník a priradí položky, zľavy, súčty a DPH počíta Make (data store 220566 sa už nepoužíva), ponuka príde e-mailom z aivalm.agent; limit 3 ukážky denne na e-mail (data store 227934), odkazy v texte sa odstránia.
+- E-mail demo (Replix, živé): `WEB – Replix živé demo` webhook (hook 3950916, scenár 8100320) – návštevník pošle dopyt na akýkoľvek tovar alebo službu, AI k nemu vytvorí ilustračný cenník a priradí položky, zľavy, súčty a DPH počíta Make (data store 220566 sa už nepoužíva), webhook odpovedá JSON-om s ponukou (typ ponuka/nedopyt, riadky, súčty) a web ju vykreslí v okne ukážky; kópia ide e-mailom z aivalm.agent; limit 20 ukážok denne na e-mail (data store 227934), odkazy v texte sa odstránia. Ak webhook vráti niečo iné (limit, chyba), web ukáže „ponuka je na ceste do schránky“.
 - Staré demo `WEB – ukážka cenovej ponuky` (hook 3928060) už web nepoužíva.
 Requests are sent as `application/x-www-form-urlencoded` (no CORS preflight).

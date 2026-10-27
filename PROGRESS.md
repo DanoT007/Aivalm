@@ -109,3 +109,15 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - `brandname` riadok nad H1 aj na hlasovom agentovi a odhade ceny
 - Sekcia #otazky „Časté otázky“ (komponent `.faq`, `<details>`) na 4 stránkach + FAQPage schema; Service schema na produktoch; Organization/ProfessionalService schema na úvode
 - `llms.txt` v koreni – stručný popis firmy a produktov pre AI asistentov (ChatGPT, Claude, Perplexity)
+
+## Zmeny 27. 10. – web iba o Replixe (jedna stránka)
+- Rozhodnutie Daniela: AIVALM robí len Replix. Hlasový agent a odhad ceny zrušené z webu.
+- `index.html` = celá stránka o Replixe: hero so **živou ukážkou priamo v hero** (výber odvetvia, ukážkový dopyt sa sám napíše, návštevník doplní e-mail → kroky s časovačom → ponuka sa vykreslí na stránke, tlačidlo „Schváliť a odoslať“) → príbeh „Od dopytu po odoslanú ponuku“ → „Kto odpovie prvý“ → kalkulačka → Pre koho → Presné, bezpečné a pod kontrolou → Pilot 30 dní → Kto za tým stojí → Časté otázky → rezervácia
+- Ponuka na webe: **pilot 30 dní na 1–2 obchodníkoch, cena podľa objemu, dohodnutá vopred** (žiadne „3 mesiace zadarmo“, žiadne počítadlo miest)
+- Menu: logo + Spolupráca + „Dohodnúť stretnutie“; bez hamburgera
+- Staré URL (`cenove-ponuky.html`, `hlasovy-agent.html`, `odhad-ceny.html`) = presmerovania na úvod s kotvou (generuje `tools/build.py`, REDIRECTS). Outreach e-maily odkazujú na cenove-ponuky.html, preto presmerovanie NEMAZAŤ.
+- Rezervácia: namiesto výberu produktu pole „Koľko e-mailových dopytov vám príde za deň?“ (`dopyty`) + skryté `produkt=cenove-ponuky`; Make 8032300: téma „Replix“, dopyty v udalosti aj v upozornení Danielovi, potvrdenie klientovi hovorí o Replixe
+- Make 8100320 (živé demo): WebhookRespond presunutý na koniec → vracia JSON s ponukou (`typ`, `id`, `pocet`, `suma`, `dph`, `riadky`, `odpoved`, `zhrnutie`, `podmienky`, `neznamych`, `podozrive`); odpoveď ~10–15 s. E-maily: odkazy na aivalm.com/#rezervacia a #ukazka, text o pilote 30 dní
+- CSS prepísané nanovo (z 1262 na ~640 riadkov, bez mŕtvych štýlov), `odhad.js` zmazaný, `demo.js` nový
+- Spolupráca: Replix + nová forma „Prepojenie systémov“ pre implementátorov ERP (Pohoda, Money, SAP)
+- GDPR, podmienky, cookies, llms.txt, sitemap, schema.org upravené na Replix

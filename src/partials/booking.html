@@ -2,11 +2,11 @@
   <div class="wrap book" data-booking data-done>
     <div class="book__intro" data-group>
       <h2 id="rez-h" data-rise>Dohodnime si stretnutie, <span class="grey">online alebo osobne</span></h2>
-      <p class="book__lead muted" data-rise>Predstavíme vám službu, prejdeme, ako dnes pracujete so zákazníkmi, a povieme na rovinu, či sa vám to oplatí. Bez záväzku.</p>
+      <p class="book__lead muted" data-rise>Ukážeme vám Replix na príklade z vášho odvetvia, prejdeme, ako dnes vybavujete dopyty, a na rovinu povieme, či sa vám to oplatí. Bez záväzku.</p>
       <ul class="book__points" data-rise>
         <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Online cez Google Meet, približne 30 minút</li>
         <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Osobne v Tower 5 alebo priamo u vás, približne hodinu</li>
-        <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Termín zmeníte jednou odpoveďou na e-mail</li>
+        <li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#fff"/><path d="M6.5 11.3l3 3 6-6.4" fill="none" stroke="#0B0B0B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Stretnutie vedie priamo Daniel Tomasch, ktorý Replix stavia</li>
       </ul>
       <a class="office" href="https://www.google.com/maps/search/?api=1&amp;query=Tower%205%2C%20Kalin%C4%8Diakova%2033%2C%20Bratislava" target="_blank" rel="noopener" data-rise>
         <img class="office__img" src="assets/img/tower5.jpg" alt="Budova Tower 5 na Kalinčiakovej ulici v Bratislave" width="900" height="1201" loading="lazy" decoding="async">
@@ -52,16 +52,20 @@
           <div class="field"><label for="b-tel">Telefón</label><input class="input" id="b-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" placeholder="+421 9xx xxx xxx" required></div>
         </div>
         <div class="field">
-          <label for="b-prod">O čom sa chcete baviť</label>
-          <select class="select" id="b-prod" name="produkt">
-            <option value="hlasovy-agent"{{sel:hlasovy-agent}}>AI hlasový agent</option>
-            <option value="odhad-ceny"{{sel:odhad-ceny}}>AI odhad ceny (autá, nehnuteľnosti)</option>
-            <option value="cenove-ponuky"{{sel:cenove-ponuky}}>Replix – AI odpovede na dopyty (pilot zadarmo)</option>
-            <option value="neviem"{{sel:neviem}}>Ešte neviem, poraďte mi</option>
+          <label for="b-dop">Koľko e-mailových dopytov vám príde za deň? <span class="opt">(odhad stačí)</span></label>
+          <select class="select" id="b-dop" name="dopyty">
+            <option value="">Vyberte</option>
+            <option>menej ako 10</option>
+            <option>10 až 30</option>
+            <option>30 až 100</option>
+            <option>viac ako 100</option>
+            <option>neviem odhadnúť</option>
           </select>
+          <input type="hidden" name="produkt" value="cenove-ponuky">
         </div>
-        <div class="field"><label for="b-pozn">Čo by ste chceli vyriešiť <span class="opt">(nepovinné)</span></label><textarea class="textarea" id="b-pozn" name="poznamka" rows="3" placeholder="Napr. koľko dopytov mesačne, aký používate CRM…"></textarea></div>
+        <div class="field"><label for="b-pozn">Čo by ste chceli vyriešiť <span class="opt">(nepovinné)</span></label><textarea class="textarea" id="b-pozn" name="poznamka" rows="3" placeholder="Napr. kde máte cenník (Excel, Pohoda, SAP…), koľko ľudí píše ponuky"></textarea></div>
         <div class="hp" aria-hidden="true"><label>Pozícia<input name="pozicia" tabindex="-1" autocomplete="off"></label></div>
+        <p class="consent"><b>Čo bude ďalej:</b> hneď vám príde potvrdenie s odkazom na Google Meet alebo s miestom stretnutia. Termín zmeníte jednou odpoveďou na e-mail.</p>
         <p class="consent">Údaje použijeme len na dohodnutie a uskutočnenie stretnutia, nie na reklamu. Podrobnosti: <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
         <div><button class="btn" type="submit">Dohodnúť stretnutie <span class="arr" aria-hidden="true">→</span></button></div>
         <p class="form__status" role="status" aria-live="polite"></p>

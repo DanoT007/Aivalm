@@ -1,35 +1,15 @@
-/* AIVALM — shared behaviour: nav, reveals, forms, booking. */
+/* AIVALM / Replix — shared behaviour: reveals, forms, booking. */
 (function () {
   'use strict';
 
   var HOOKS = {
     booking: 'https://hook.eu1.make.com/0di8queev6d1cqlisd70lujsswaiui8l',
     partner: 'https://hook.eu1.make.com/42gkuqfpp97f332ughqe4usm2sgsddxc',
-    sample:  'https://hook.eu1.make.com/qti8okd8zj63vuswcwzynva3lnas2urd',
-    carDemo: 'https://hook.eu1.make.com/j4tyo99jquy94mc4gl5uyji6myot9l4o',
     replix:  'https://hook.eu1.make.com/3hkb6j4f9ndi8lr6d40uqvr2nb47ol6a'
   };
   window.AIVALM = { HOOKS: HOOKS };
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- nav ---------- */
-  var nav = document.querySelector('.nav');
-  if (nav) {
-    var tog = nav.querySelector('.nav__toggle');
-    if (tog) tog.addEventListener('click', function () {
-      var open = nav.classList.toggle('is-open');
-      tog.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.documentElement.classList.toggle('menu-open', open);
-    });
-    nav.querySelectorAll('.nav__panel a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        nav.classList.remove('is-open');
-        if (tog) tog.setAttribute('aria-expanded', 'false');
-        document.documentElement.classList.remove('menu-open');
-      });
-    });
-  }
 
   /* ---------- section entrances (staggered per section) ---------- */
   if (!reduce && 'IntersectionObserver' in window) {
@@ -132,7 +112,7 @@
     return o;
   }
 
-  /* ---------- generic webhook forms (partnership, e-mail sample, car demo) ---------- */
+  /* ---------- generic webhook forms (partnership) ---------- */
   document.querySelectorAll('form[data-hook]').forEach(function (form) {
     form.setAttribute('novalidate', '');
     form.addEventListener('submit', function (e) {
@@ -363,30 +343,6 @@
     });
   });
 
-  /* ---------- Replix: live demo timer + pilot seats ---------- */
-  document.addEventListener('aivalm:sent', function (e) {
-    if (!e.target || e.target.dataset.hook !== 'replix') return;
-    var box = e.target.closest('[data-done]');
-    var fx = box && box.querySelector('.sendfx');
-    var t = fx && fx.querySelector('[data-timer]');
-    if (!t) return;
-    var start = Date.now();
-    var iv = setInterval(function () {
-      var s = Math.floor((Date.now() - start) / 1000);
-      t.textContent = Math.floor(s / 60) + ':' + pad(s % 60);
-      if (s >= 120) {
-        clearInterval(iv);
-        fx.classList.add('is-arrived');
-        t.parentNode.innerHTML = '<span class="pplan__dot"></span>Ponuka by už mala byť vo vašej schránke';
-      }
-    }, 1000);
-  });
-  document.querySelectorAll('[data-seats]').forEach(function (el) {
-    var taken = +el.dataset.seats || 0, total = +el.dataset.total || 5;
-    el.querySelectorAll('.seats__bar i').forEach(function (i, n) { if (n < taken) i.classList.add('is-taken'); });
-    var b = el.querySelector('.seats__txt b');
-    if (b) b.textContent = (total - taken) + ' z ' + total;
-  });
 })();
 
 /* Scroll progress ring (bottom-right): % of the page scrolled; tap = back to top */
