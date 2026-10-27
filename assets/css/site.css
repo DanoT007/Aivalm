@@ -58,8 +58,10 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-.035em;line-height:.98;text
 .nav__link:hover::after,.nav__link[aria-current=page]::after{transform:scaleX(1)}
 .nav__cta-s{display:none}
 @media (max-width:640px){
-  .nav__in{height:64px;gap:16px}
-  .nav__link{display:none}
+  .nav__in{height:64px;gap:14px}
+  .nav__link{font-size:.88rem}
+  .brand{font-size:1.1rem;gap:8px}
+  .brand img{width:24px}
   .nav__cta{min-height:42px;padding:0 18px;font-size:.92rem}
   .nav__cta-l{display:none}.nav__cta-s{display:inline}
   html{scroll-padding-top:76px}
