@@ -64,11 +64,20 @@
     once.observe(ta);
   }
 
-  /* "Vyskúšať na vlastnom dopyte": glide to the demo and put the cursor in the e-mail field */
-  document.querySelectorAll('[data-focus]').forEach(function (a) {
-    a.addEventListener('click', function () {
-      var t = document.querySelector(a.dataset.focus);
-      if (t) setTimeout(function () { try { t.focus({ preventScroll: true }); } catch (e) { t.focus(); } }, window.innerWidth > 900 ? 120 : 900);
+  /* "Vyskúšať na vlastnom dopyte": point at the demo.
+     Desktop (demo already on screen): no scrolling, the black parts of the window pulse grey once.
+     Phones: the usual glide down to the demo. Everywhere: the three window dots turn green and stay. */
+  document.querySelectorAll('[data-demo-cue]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      root.classList.add('is-live');
+      var r = root.getBoundingClientRect();
+      var onScreen = r.top >= 0 && r.top < window.innerHeight * .4;
+      if (window.innerWidth > 980 && onScreen) {
+        e.preventDefault();
+        if (reduce) return;
+        root.classList.remove('is-cue'); void root.offsetWidth; root.classList.add('is-cue');
+        setTimeout(function () { root.classList.remove('is-cue'); }, 1300);
+      }
     });
   });
 

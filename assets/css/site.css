@@ -126,7 +126,11 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-.035em;line-height:.98;text
 /* the demo window */
 .demo{position:relative;background:var(--paper);border-radius:26px;box-shadow:0 40px 90px -40px rgba(0,0,0,.45),0 0 0 1.5px var(--stone);overflow:hidden;scroll-margin-top:84px}
 .demo__bar{display:flex;align-items:center;gap:7px;padding:14px 18px;background:var(--ink);color:#fff}
-.demo__bar i{width:10px;height:10px;border-radius:50%;background:#3a3a3a}
+.demo__bar i{width:10px;height:10px;border-radius:50%;background:#3a3a3a;transition:background .6s var(--ease-out),box-shadow .6s var(--ease-out)}
+.demo.is-live .demo__bar i{background:#22C55E;box-shadow:0 0 0 3px rgba(34,197,94,.18)}
+.demo.is-live .demo__bar i:nth-of-type(2){transition-delay:.12s}.demo.is-live .demo__bar i:nth-of-type(3){transition-delay:.24s}
+.demo.is-cue .demo__bar,.demo.is-cue .ind[aria-pressed=true],.demo.is-cue .demo__send .btn{animation:demoCue 1.2s var(--ease-io)}
+@keyframes demoCue{0%,100%{}45%{background-color:var(--smoke);border-color:var(--smoke)}}
 .demo__title{margin:0 0 0 10px;font-size:.92rem;font-weight:700;letter-spacing:0;line-height:1}
 .demo__clock{margin-left:auto;font-size:.82rem;font-weight:600;color:var(--fog)}
 .demo__compose,.demo__work,.demo__offer,.demo__msg{padding:clamp(18px,2vw,26px)}
