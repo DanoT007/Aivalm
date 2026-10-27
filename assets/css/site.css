@@ -714,6 +714,9 @@ html.lenis,html.lenis body{height:auto}
 .pmodel--ink{background:var(--ink);color:#fff}
 .pmodel__k{margin:0;font-size:.9rem;font-weight:700;color:var(--ash)}
 .pmodel--ink .pmodel__k{color:var(--fog)}
+.pmodel__pct{margin:14px 0 18px;font-size:clamp(3rem,2rem + 3vw,4.6rem);font-weight:800;letter-spacing:-.045em;line-height:.9}
+.pmodel__pct small{display:block;margin-top:10px;font-size:.9rem;font-weight:600;letter-spacing:0;color:var(--ash)}
+.pmodel--ink .pmodel__pct small{color:var(--fog)}
 .pmodel__h{margin:6px 0 22px;font-size:clamp(1.4rem,1rem + 1vw,1.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
 .pmodel .fit__list li{color:inherit}
 .pmodel .tick{--fill:1}

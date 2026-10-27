@@ -324,6 +324,7 @@
         var j = res.json || {};
         if (res.ok && (j.ok === 1 || j.ok === '1' || j.ok === true)) {
           root.classList.add('is-done');
+          if (window.aivTrack) aivTrack('stretnutie_rezervovane', { forma: data.forma || 'online', dopyty: data.dopyty || '' });
           var d = root.querySelector('.done');
           root.querySelector('[data-echo=termin]').textContent = j.termin || pickEl.textContent.replace('Vybraný termín: ', '');
           root.querySelector('[data-echo=email]').textContent = data.email;

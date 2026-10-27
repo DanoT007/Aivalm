@@ -130,3 +130,9 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Make: 15 nepoužívaných scenárov vypnutých a presunutých do priečinka „Na zmazanie (nepoužívané)“ (Daniel ich zmaže sám)
 - spolupraca.html prerobená na **Partnerský program**: hero + animovaný graf mesačného príjmu (`partner.js`), pre koho (6 typov partnerov), ideálna firma (ICP), 4 kroky, 2 modely (odporúčanie / spoločný predaj), prečo sa oplatí, formulár (polia typ, meno, email, telefon, firma, sprava → Make 8032260), FAQ. Percento podielu zámerne bez čísla – doplniť, keď ho Daniel určí.
 - Sobota 31. 10.: prechod z Makeu na Google Apps Script (pripomienka v kalendári)
+
+## Zmeny 27. 10. noc
+- Google Search Console: vyžiadané indexovanie `/` a `/spolupraca.html`, znova odoslaná sitemap (5 stránok). Bing Webmaster: odoslaných 5 URL (vrátane 3 starých presmerovaní s noindex).
+- Spolupráca: **Odporúčanie 20 %** (kontakt + dať vedieť riaditeľovi/majiteľovi, že sa ozveme), **Spoločný predaj 30 %** (aktívne zapojenie, napr. stretnutie). Veľké číslo v kartách (`.pmodel__pct`), hero, graf, kroky, FAQ.
+- Návštevnosť: PostHog EU, projekt 323168 „AIVALM web“, **cookieless_mode always** (projekt: cookieless_server_hash_mode = 2, timezone Europe/Bratislava), autocapture vypnutý, bez nahrávania. `assets/js/stats.js` v hlavičke; meria iba na doméne aivalm.com. Udalosti: $pageview, $pageleave, klik_stretnutie (kde), klik_vyskusat_ukazku, klik_email, klik_telefon, klik_chcem_byt_partnerom, ukazka_odoslana, ukazka_ponuka_hotova (sekundy, poloziek), stretnutie_rezervovane (forma, dopyty), partner_formular_odoslany (typ). Žiadne hodnoty z formulárov. Vlastné návštevy: raz otvoriť `?ja=1` (localStorage `aivalm-ja`), zrušiť `?ja=0`.
+- Ochrana OÚ + cookies: doplnená anonymná štatistika PostHog (oprávnený záujem, 12 mesiacov, EÚ).

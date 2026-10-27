@@ -195,6 +195,7 @@
     root.querySelectorAll('[data-echo=email]').forEach(function (el) { el.textContent = data.email; });
     var btn = form.querySelector('[type=submit]'); btn.disabled = true;
     var t0 = startWork(data.text);
+    if (window.aivTrack) aivTrack('ukazka_odoslana');
     show('work');
     try { localStorage.setItem(KEY, String(Date.now())); } catch (err) {}
 
@@ -211,6 +212,7 @@
           root.querySelectorAll('.wsteps li').forEach(function (li) { li.className = 'is-done'; });
           stopWork();
           renderOffer(j, secs);
+          if (window.aivTrack) aivTrack('ukazka_ponuka_hotova', { sekundy: Math.round(secs), poloziek: (j.riadky || []).length });
           setTimeout(function () { show('offer'); }, reduce ? 0 : 450);
         } else if (j.typ === 'nedopyt') {
           stopWork(); set('zhrnutie2', j.zhrnutie || 'Zákazník nežiada cenovú ponuku.'); show('nedopyt');
