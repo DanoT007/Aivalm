@@ -59,7 +59,7 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-.035em;line-height:.98;text
 .nav__cta-s{display:none}
 @media (max-width:640px){
   .nav__in{height:64px;gap:14px}
-  .nav__link{font-size:.88rem}
+  .nav__link{display:none}
   .brand{font-size:1.1rem;gap:8px}
   .brand img{width:24px}
   .nav__cta{min-height:42px;padding:0 18px;font-size:.92rem}
@@ -729,3 +729,5 @@ html.lenis,html.lenis body{height:auto}
 .pform__next li{display:flex;align-items:center;gap:14px;font-weight:600}
 .pform__next .psteps__n{width:32px;height:32px;font-size:.88rem}
 .cite a{color:inherit}
+
+@media (max-width:600px){.phero2 .hero__actions{flex-direction:column-reverse;align-items:center}}
