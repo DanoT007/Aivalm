@@ -1,90 +1,210 @@
 <!--
-title: Spolupráca – odporúčte Replix svojim klientom | AIVALM
-desc: Máte klientov medzi veľkoobchodmi a distribútormi? Odporučte im Replix, predávajte ho s nami alebo ho prepojte so svojím systémom. Navrhnite spoluprácu.
+title: Partnerský program Replix – odporučte obchodné firmy a zarábajte každý mesiac | AIVALM
+desc: Poznáte veľkoobchody a obchodné firmy s viacerými obchodníkmi? Odporučte im Replix a dostávajte podiel z každej ich mesačnej platby. Pre koučov obchodníkov, agentúry, webové štúdiá, implementátorov ERP a konzultantov.
 nav: spolupraca
-scripts:
+scripts: partner.js
 -->
-<section class="hero">
+<section class="hero phero2" aria-labelledby="ph-h">
+  <div class="wrap phero2__grid">
+    <div class="phero2__txt">
+      <p class="brandname" data-rise style="--i:0"><b>Partnerský program</b><span>Replix od AIVALM</span></p>
+      <h1 id="ph-h" class="phero2__h" data-rise style="--i:1">Poznáte obchodné firmy? <span class="grey">Zarábajte s nami každý mesiac.</span></h1>
+      <p class="hero__lead" data-rise style="--i:2">Odporučte Replix firmám, s ktorými už pracujete. Kým u nás zostanú, z každej ich mesačnej platby dostávate podiel. Predaj, nasadenie aj podporu robíme my.</p>
+      <div class="hero__actions" data-rise style="--i:3">
+        <a class="btn" href="#formular">Chcem sa stať partnerom</a>
+        <a class="link" href="#ako">Ako to funguje</a>
+      </div>
+    </div>
+
+    <figure class="pchart" data-pchart data-rise style="--i:2" aria-labelledby="pchart-cap">
+      <div class="pchart__head">
+        <p class="pchart__k">Váš príjem z partnerstva</p>
+        <p class="pchart__t">Každý odporučený klient pridá ďalší mesačný podiel</p>
+      </div>
+      <div class="pchart__plot" aria-hidden="true">
+        <!-- 12 months; client 1 pays from month 2, client 2 from month 5, client 3 from month 8 (each starts with a free month) -->
+        <div class="pcol"><i class="pseg pseg--free" style="--h:1"></i><span>1</span></div>
+        <div class="pcol"><i class="pseg pseg--a" style="--h:1"></i><span>2</span></div>
+        <div class="pcol"><i class="pseg pseg--a" style="--h:1"></i><span>3</span></div>
+        <div class="pcol"><i class="pseg pseg--free" style="--h:1"></i><i class="pseg pseg--a" style="--h:1"></i><span>4</span></div>
+        <div class="pcol"><i class="pseg pseg--b" style="--h:1"></i><i class="pseg pseg--a" style="--h:1"></i><span>5</span></div>
+        <div class="pcol"><i class="pseg pseg--b" style="--h:1"></i><i class="pseg pseg--a" style="--h:1"></i><span>6</span></div>
+        <div class="pcol"><i class="pseg pseg--free" style="--h:1"></i><i class="pseg pseg--b" style="--h:1"></i><i class="pseg pseg--a" style="--h:1"></i><span>7</span></div>
+        <div class="pcol"><i class="pseg pseg--c" style="--h:1"></i><i class="pseg pseg--b" style="--h:1"></i><i class="pseg pseg--a" style="--h:1"></i><span>8</span></div>
+        <div class="pcol"><i class="pseg pseg--c" style="--h:1"></i><i class="pseg pseg--b" style="--h:1"></i><i class="pseg pseg--a" style="--h:1"></i><span>9</span></div>
+        <div class="pcol"><i class="pseg pseg--c" style="--h:1"></i><i class="pseg pseg--b" style="--h:1"></i><i class="pseg pseg--a" style="--h:1"></i><span>10</span></div>
+        <div class="pcol"><i class="pseg pseg--c" style="--h:1"></i><i class="pseg pseg--b" style="--h:1"></i><i class="pseg pseg--a" style="--h:1"></i><span>11</span></div>
+        <div class="pcol"><i class="pseg pseg--c" style="--h:1"></i><i class="pseg pseg--b" style="--h:1"></i><i class="pseg pseg--a" style="--h:1"></i><span>12</span></div>
+      </div>
+      <p class="pchart__axis" aria-hidden="true">mesiac</p>
+      <ul class="pchart__legend">
+        <li><i class="pseg--a"></i>1. odporučená firma</li>
+        <li><i class="pseg--b"></i>2. firma</li>
+        <li><i class="pseg--c"></i>3. firma</li>
+        <li><i class="pseg--free"></i>prvý mesiac zadarmo pre firmu</li>
+      </ul>
+      <figcaption id="pchart-cap" class="pchart__cap">Ilustrácia: podiel z každej platby, kým firma zostane klientom. Výšku podielu dohodneme vopred písomne.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec pfor" aria-labelledby="pfor-h">
   <div class="wrap">
-    <h1 class="lines" aria-label="Chcete s nami spolupracovať?">
-      <span class="line"><span style="--i:0">Chcete s nami</span></span>
-      <span class="line"><span style="--i:1"><span class="grey">spolupracovať?</span></span></span>
-    </h1>
-    <p class="hero__lead" data-rise style="--i:2">Pracujete s veľkoobchodmi, distribútormi alebo výrobcami, ktorým zapadajú dopyty v e-mailoch? Vy máte vzťah s klientom, my Replix. Poďme to spojiť.</p>
-    <div class="hero__actions" data-rise style="--i:3">
-      <a class="btn" href="#formular">Navrhnúť spoluprácu</a>
-      <a class="link" href="index.html#ukazka">Najprv si Replix vyskúšať</a>
+    <div class="sec__head" data-group>
+      <h2 id="pfor-h" data-rise>Je to pre vás, <span class="grey">ak ste…</span></h2>
+      <p class="sec__lead" data-rise>…niekto, komu majitelia a obchodní riaditelia obchodných firiem dôverujú. Nemusíte rozumieť AI ani predávať. Stačí, že ich poznáte.</p>
+    </div>
+    <ul class="pfor__list" data-group>
+      <li data-rise><b>Kouč alebo tréner obchodníkov</b><span>Školíte obchodné tímy, ktoré trávia hodiny písaním ponúk. Replix im ten čas vráti na predaj.</span></li>
+      <li data-rise><b>Marketingová alebo B2B agentúra</b><span>Firmám nosíte dopyty. My zariadime, aby ani jeden nečakal na cenu do zajtra.</span></li>
+      <li data-rise><b>Webové štúdio alebo e-shop agentúra</b><span>Robíte weby s formulárom na dopyt. Replix je logický ďalší krok pre vašich klientov.</span></li>
+      <li data-rise><b>Implementátor ERP alebo účtovník</b><span>Poznáte ich cenníky v Pohode, Money či SAP lepšie ako ktokoľvek iný.</span></li>
+      <li data-rise><b>Konzultant alebo poradca firiem</b><span>Pomáhate majiteľom rásť a hľadáte riešenia, ktoré sa dajú zaviesť za pár dní.</span></li>
+      <li data-rise><b>Obchodník alebo bývalý obchodný riaditeľ</b><span>Máte za sebou roky v obchode a kontakty na ľudí, ktorí rozhodujú.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec picp" aria-labelledby="picp-h">
+  <div class="wrap picp__grid">
+    <div data-group>
+      <h2 id="picp-h" data-rise>Koho nám <span class="grey">odporučiť</span></h2>
+      <p class="sec__lead" data-rise>Najviac Replix pomôže firmám, kde dopyty chodia e-mailom a ponuky dnes ručne píše niekoľko obchodníkov. Ak vám pri tomto popise napadne konkrétna firma, je to presne ono.</p>
+      <p class="picp__ex" data-rise>Typicky: stavebniny, spojovací materiál a náradie, elektro, kúrenie a sanita, hutný materiál, obaly, papier a hygiena.</p>
+    </div>
+    <div class="picp__card" data-group>
+      <p class="picp__k" data-rise>Ideálna firma</p>
+      <ul class="picp__list">
+        <li data-rise><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span><b>Veľkoobchod, distribútor alebo výrobca</b> s cenníkom</span></li>
+        <li data-rise><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span><b>Obrat nad 5 mil. € ročne</b>, ideálne 10 mil. € a viac</span></li>
+        <li data-rise><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span><b>Tím 3 a viac obchodníkov</b>, ktorí odpovedajú na dopyty</span></li>
+        <li data-rise><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span><b>Dopyty chodia e-mailom</b>, ideálne 10 a viac denne</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section class="sec--tight" style="padding-top:0" aria-labelledby="ways-h">
+<section class="sec psteps" id="ako" aria-labelledby="ako-h">
   <div class="wrap">
-    <h2 id="ways-h" class="sr-only">Formy spolupráce</h2>
-    <ul class="ways" data-group>
-      <li class="way" data-rise>
-        <h3>Odporúčanie</h3>
-        <p>Pošlete nám firmu, ktorej Replix pomôže. Kým u nás zostane, dostávate podiel z jej platieb. Bez predávania a bez technickej práce, podmienky dáme na papier.</p>
-        <p class="way__for">Pre účtovníkov, konzultantov, obchodníkov a webové štúdiá</p>
-      </li>
-      <li class="way way--ink" data-rise>
-        <h3>Spoločný predaj</h3>
-        <p>Ponúkate Replix ako súčasť vlastných služieb. My ho nasadíme a prevádzkujeme, vy máte vzťah s klientom a podiel z každej platby.</p>
-        <p class="way__for">Pre marketingové agentúry a B2B obchodníkov</p>
-      </li>
-      <li class="way" data-rise>
-        <h3>Prepojenie systémov</h3>
-        <p>Implementujete Pohodu, Money, SAP alebo iný ERP či CRM? Prepojme Replix priamo s cenníkmi vašich klientov, aby dostali hotové ponuky tam, kde už pracujú.</p>
-        <p class="way__for">Pre implementátorov ERP a softvérové firmy</p>
-      </li>
-      <li class="way" data-rise>
-        <h3>Iný nápad</h3>
-        <p>Vidíte využitie, na ktoré sme ešte neprišli? Napíšte. Replix vznikol z jednej vety na networkingu.</p>
-        <p class="way__for">Pre kohokoľvek s dobrým nápadom</p>
-      </li>
-    </ul>
+    <div class="sec__head" data-group>
+      <h2 id="ako-h" data-rise>Ako to <span class="grey">funguje</span></h2>
+    </div>
+    <ol class="psteps__list" data-group>
+      <li data-rise><span class="psteps__n tnum">1</span><b>Pošlete nám kontakt</b><span>Cez formulár nižšie napíšete, akú firmu poznáte. Odo dňa, keď nám ju pošlete, ju vedieme ako vášho klienta.</span></li>
+      <li data-rise><span class="psteps__n tnum">2</span><b>Uvediete nás alebo nie</b><span>Stačí jedna veta majiteľovi, že sa ozveme. Alebo prídete s nami na stretnutie. Ako vám to vyhovuje.</span></li>
+      <li data-rise><span class="psteps__n tnum">3</span><b>Firma skúša mesiac zadarmo</b><span>Prvé 3 firmy majú prvý mesiac zadarmo, takže odporúčate bez rizika. Nastavenie aj ukážku robíme my.</span></li>
+      <li data-rise><span class="psteps__n tnum">4</span><b>Vy dostávate podiel</b><span>Z každej mesačnej platby klienta, kým zostane klientom. Podmienky máte vopred na papieri.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec pmodels" style="background:var(--mist)" aria-labelledby="pmod-h">
+  <div class="wrap">
+    <div class="sec__head" data-group>
+      <h2 id="pmod-h" data-rise>Dva spôsoby, <span class="grey">ako spolupracovať</span></h2>
+      <p class="sec__lead" data-rise>Vyberte si, koľko času do toho chcete dať. Čím viac pomôžete s predajom, tým vyšší je váš podiel.</p>
+    </div>
+    <div class="pmodels__grid" data-group>
+      <div class="pmodel" data-rise>
+        <p class="pmodel__k">Odporúčanie</p>
+        <p class="pmodel__h">Pošlete kontakt, zvyšok je na nás</p>
+        <ul class="fit__list">
+          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>stačí meno firmy a človeka, ktorý rozhoduje</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>stretnutie, ukážku aj nasadenie robíme my</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>podiel z každej platby, kým firma zostane</span></li>
+        </ul>
+        <p class="pmodel__for">Ideálne pre koučov, účtovníkov, konzultantov a webové štúdiá</p>
+      </div>
+      <div class="pmodel pmodel--ink" data-rise>
+        <p class="pmodel__k">Spoločný predaj</p>
+        <p class="pmodel__h">Predávate s nami, máte vyšší podiel</p>
+        <ul class="fit__list">
+          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>idete s nami na stretnutie alebo ho vediete sami</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>ponúkate Replix ako súčasť vlastných služieb</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>technika, nasadenie aj podpora ostávajú na nás</span></li>
+        </ul>
+        <p class="pmodel__for">Ideálne pre agentúry, trénerov a obchodníkov</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec pwhy" aria-labelledby="pwhy-h">
+  <div class="wrap">
+    <div class="sec__head" data-group>
+      <h2 id="pwhy-h" data-rise>Prečo sa to <span class="grey">oplatí</span></h2>
+    </div>
+    <div class="facts" data-group>
+      <div class="fact" data-rise><h3>Pravidelný príjem každý mesiac</h3><p>Nie jednorazová odmena. Podiel dostávate z každej platby klienta, kým u nás zostane, a s každou ďalšou firmou rastie.</p></div>
+      <div class="fact" data-rise><h3>Ľahko sa odporúča</h3><p>Firma si Replix vyskúša na vlastných dopytoch a prvý mesiac nič neplatí. Vy odporúčate bez rizika a bez trápnych rozhovorov o cene.</p></div>
+      <div class="fact" data-rise><h3>Žiadna technická práca</h3><p>Nemusíte rozumieť AI ani cenníkom. Nastavenie, ladenie aj podporu robíme my, klient volá nám, nie vám.</p></div>
+      <div class="fact" data-rise><h3>Všetko na papieri</h3><p>Výšku podielu, splatnosť a dĺžku spolupráce dohodneme vopred v jednoduchej písomnej zmluve. Žiadne prekvapenia.</p></div>
+      <div class="fact" data-rise><h3>Vaše kontakty sú vaše</h3><p>Firmu, ktorú nám pošlete, vedieme ako vašu. Bez vášho súhlasu ju neoslovíme inou cestou.</p></div>
+      <div class="fact" data-rise><h3>Vyzeráte dobre u klienta</h3><p>Prinesiete im niečo, čo im ušetrí hodiny práce a pomôže predať viac. Takéto odporúčanie si ľudia pamätajú.</p></div>
+    </div>
   </div>
 </section>
 
 <section class="sec" id="formular" style="background:var(--mist)" aria-labelledby="form-h">
   <div class="wrap split" data-done>
     <div data-group>
-      <h2 id="form-h" data-rise>Napíšte mi, <span class="grey">čo vymýšľate</span></h2>
-      <p class="sec__lead" data-rise>Odpíšem do 24 hodín v pracovné dni. Ak to dáva zmysel obom, dáme si krátke stretnutie a dohodneme jednoduché písomné podmienky.</p>
-      <p class="cite" data-rise>Daniel Tomasch, zakladateľ AIVALM</p>
+      <h2 id="form-h" data-rise>Staňte sa <span class="grey">partnerom</span></h2>
+      <p class="sec__lead" data-rise>Napíšte nám pár viet o sebe a o tom, aké firmy poznáte. Máte nápad na inú formu spolupráce? Napíšte aj ten.</p>
+      <ul class="pform__next" data-rise>
+        <li><span class="psteps__n tnum">1</span>Do 24 hodín v pracovné dni sa vám ozve Daniel.</li>
+        <li><span class="psteps__n tnum">2</span>Dáme si krátky hovor a ukážeme vám Replix naživo.</li>
+        <li><span class="psteps__n tnum">3</span>Pošleme vám jednoduchú zmluvu s podielom.</li>
+      </ul>
+      <p class="cite" data-rise>Daniel Tomasch, zakladateľ AIVALM · <a href="tel:+421948475484">+421 948 475 484</a></p>
     </div>
     <div class="panel" style="background:#fff">
       <form class="form" data-hook="partner" data-cooldown="120" novalidate>
         <div class="field">
-          <label for="p-typ">Typ spolupráce</label>
+          <label for="p-typ">Kto ste</label>
           <select class="select" id="p-typ" name="typ">
-            <option>Odporúčanie klientov</option>
-            <option>Spoločný predaj</option>
-            <option>Prepojenie systémov</option>
-            <option>Iný nápad</option>
+            <option>Kouč alebo tréner obchodníkov</option>
+            <option>Marketingová alebo B2B agentúra</option>
+            <option>Webové štúdio alebo e-shop agentúra</option>
+            <option>Implementátor ERP alebo účtovník</option>
+            <option>Konzultant alebo poradca firiem</option>
+            <option>Obchodník alebo obchodný riaditeľ</option>
+            <option>Iné</option>
           </select>
         </div>
         <div class="row">
           <div class="field"><label for="p-meno">Meno a priezvisko</label><input class="input" id="p-meno" name="meno" autocomplete="name" required></div>
-          <div class="field"><label for="p-firma">Firma</label><input class="input" id="p-firma" name="firma" autocomplete="organization" required data-msg="Doplňte názov firmy, aj keby to bola SZČO."></div>
+          <div class="field"><label for="p-email">E-mail</label><input class="input" id="p-email" name="email" type="email" autocomplete="email" required></div>
         </div>
         <div class="row">
-          <div class="field"><label for="p-email">E-mail</label><input class="input" id="p-email" name="email" type="email" autocomplete="email" required></div>
           <div class="field"><label for="p-tel">Telefón <span class="opt">(nepovinné)</span></label><input class="input" id="p-tel" name="telefon" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="p-firma">Firma alebo web <span class="opt">(nepovinné)</span></label><input class="input" id="p-firma" name="firma" autocomplete="organization"></div>
         </div>
-        <div class="field"><label for="p-web">Web <span class="opt">(nepovinné)</span></label><input class="input" id="p-web" name="web" type="url" inputmode="url" placeholder="https://"></div>
-        <div class="field"><label for="p-sprava">Čo navrhujete</label><textarea class="textarea" id="p-sprava" name="sprava" required placeholder="Napr. implementujeme Pohodu pre 40 veľkoobchodov a radi by sme im ponúkli…" data-msg="Napíšte aspoň pár viet o tom, čo navrhujete."></textarea></div>
+        <div class="field"><label for="p-sprava">Aké firmy poznáte alebo čo navrhujete</label><textarea class="textarea" id="p-sprava" name="sprava" required placeholder="Napr. školím obchodné tímy v 5 veľkoobchodoch so stavebninami, v každom je 4 až 8 obchodníkov…" data-msg="Napíšte aspoň pár slov o tom, aké firmy poznáte."></textarea></div>
         <div class="hp" aria-hidden="true"><label>Pozícia<input name="pozicia" tabindex="-1" autocomplete="off"></label></div>
-        <p class="consent">Údaje použijem len na odpoveď na váš návrh, nie na reklamu. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
-        <div><button class="btn" type="submit">Odoslať návrh</button></div>
+        <p class="consent">Údaje použijeme len na odpoveď a dohodnutie spolupráce, nie na reklamu. <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a></p>
+        <div><button class="btn" type="submit">Chcem sa stať partnerom</button></div>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
       <div class="done" role="status">
         <div class="done__mark"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 13.5l5 5 11-12"/></svg></div>
-        <h3>Ďakujem, návrh mám</h3>
-        <p>Potvrdenie som poslal na <strong data-echo="email"></strong>. Ozvem sa do 24 hodín v pracovné dni.</p>
+        <h3>Ďakujem, ozvem sa</h3>
+        <p>Potvrdenie som poslal na <strong data-echo="email"></strong>. Ozvem sa do 24 hodín v pracovné dni a dohodneme krátky hovor.</p>
         <p class="muted">Daniel Tomasch</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec faq" id="otazky" aria-labelledby="faq-h">
+  <div class="wrap faq__grid">
+    <div class="sec__head" data-group><h2 id="faq-h" data-rise>Časté otázky <span class="grey">partnerov</span></h2></div>
+    <div class="faq__list" data-group>
+      <details class="faq__item" data-rise><summary><h3>Koľko na tom zarobím?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Dostávate percento z každej mesačnej platby klienta, ktorého ste priniesli, kým zostane klientom. Výška závisí od toho, či len odporučíte, alebo pomôžete aj s predajom. Presné percento dohodneme vopred a máte ho v zmluve.</p></details>
+      <details class="faq__item" data-rise><summary><h3>Musím niečo predávať?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Nie. Stačí nám dať vedieť, akú firmu poznáte, a ideálne jej majiteľovi povedať, že sa ozveme. Stretnutie, ukážku aj nasadenie robíme my.</p></details>
+      <details class="faq__item" data-rise><summary><h3>Čo ak firma Replix po mesiaci zadarmo nechce?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Nič sa nedeje, nikto nič neplatí a vy nič nestrácate. Podiel dostávate iba z platieb, ktoré klient naozaj zaplatí.</p></details>
+      <details class="faq__item" data-rise><summary><h3>Ako zistím, že firma, ktorú som poslal, je vedená ako moja?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Hneď po prijatí vám potvrdíme e-mailom, že firmu vedieme ako vášho klienta. Ak ju už v tom čase poznáme z inej strany, povieme vám to na rovinu.</p></details>
+      <details class="faq__item" data-rise><summary><h3>Môžem byť partnerom, aj keď nie som firma?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Áno. Spolupracujeme so živnostníkmi aj s jednotlivcami. Ako sa podiel vypláca, dohodneme podľa toho, ako fakturujete.</p></details>
+      <details class="faq__item" data-rise><summary><h3>Mám nápad na inú spoluprácu. Má zmysel napísať?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Určite. Replix vznikol z jednej vety na networkingu. Ak vidíte spôsob, ako dostať Replix k správnym firmám, napíšte nám ho do formulára.</p></details>
     </div>
   </div>
 </section>

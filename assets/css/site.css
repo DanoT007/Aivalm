@@ -644,3 +644,86 @@ html.lenis,html.lenis body{height:auto}
 @media (max-width:600px){.sprog{width:50px;height:50px;right:14px;bottom:max(14px,env(safe-area-inset-bottom))}.sprog__n{font-size:.72rem}}
 @media (prefers-reduced-motion:reduce){.sprog,.sprog__bar{transition:none}}
 
+
+/* ===================== Partnerský program (spolupraca.html) ===================== */
+.phero2{padding:clamp(28px,4vw,64px) 0 clamp(64px,7vw,120px)}
+.phero2__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,540px);gap:clamp(36px,5vw,80px);align-items:center}
+.phero2 .phero2__h{font-size:clamp(2.4rem,1rem + 3vw,3.9rem);line-height:1;letter-spacing:-.04em;max-width:14ch}
+.phero2 .hero__lead{margin:26px 0 32px;max-width:42ch}
+@media (max-width:980px){.phero2__grid{grid-template-columns:1fr}}
+@media (max-width:600px){.phero2 .phero2__h{font-size:clamp(2.1rem,9.6vw,2.6rem)}.phero2 .hero__actions .btn{width:100%}}
+
+/* income chart */
+.pchart{margin:0;background:var(--ink);color:#fff;border-radius:28px;padding:clamp(22px,2.6vw,34px);box-shadow:0 40px 90px -40px rgba(0,0,0,.5)}
+.pchart__k{margin:0;font-size:.85rem;font-weight:700;color:var(--fog)}
+.pchart__t{margin:4px 0 0;font-size:1.15rem;font-weight:800;letter-spacing:-.01em;line-height:1.3}
+.pchart__plot{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;align-items:end;height:220px;margin:26px 0 0;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.14);position:relative}
+.pcol{position:relative;display:flex;flex-direction:column;gap:3px;height:100%;justify-content:flex-end}
+.pcol span{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-size:.72rem;font-weight:700;color:#7c7c7c}
+.pseg{display:block;height:calc(var(--h,1) * 30%);border-radius:6px;transform-origin:bottom;transition:transform .7s var(--ease-out),opacity .5s}
+.pseg--a{background:#fff}
+.pseg--b{background:#BDBDBD}
+.pseg--c{background:#7A7A7A}
+.pseg--free{background:transparent;box-shadow:inset 0 0 0 1.5px #5a5a5a;background-image:repeating-linear-gradient(135deg,transparent 0 4px,rgba(255,255,255,.12) 4px 6px)}
+.pchart.is-ready .pseg{transform:scaleY(0);opacity:0}
+.pchart.is-in .pseg{transform:none;opacity:1}
+.pchart.is-in .pcol:nth-child(1) .pseg{transition-delay:.0s}.pchart.is-in .pcol:nth-child(2) .pseg{transition-delay:.12s}.pchart.is-in .pcol:nth-child(3) .pseg{transition-delay:.24s}.pchart.is-in .pcol:nth-child(4) .pseg{transition-delay:.36s}.pchart.is-in .pcol:nth-child(5) .pseg{transition-delay:.48s}.pchart.is-in .pcol:nth-child(6) .pseg{transition-delay:.6s}.pchart.is-in .pcol:nth-child(7) .pseg{transition-delay:.72s}.pchart.is-in .pcol:nth-child(8) .pseg{transition-delay:.84s}.pchart.is-in .pcol:nth-child(9) .pseg{transition-delay:.96s}.pchart.is-in .pcol:nth-child(10) .pseg{transition-delay:1.08s}.pchart.is-in .pcol:nth-child(11) .pseg{transition-delay:1.2s}.pchart.is-in .pcol:nth-child(12) .pseg{transition-delay:1.32s}
+.pchart__axis{margin:6px 0 0;text-align:right;font-size:.72rem;font-weight:700;color:#7c7c7c}
+.pchart__legend{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.84rem;font-weight:600;color:#d6d6d6}
+.pchart__legend li{display:flex;align-items:center;gap:8px}
+.pchart__legend i{display:inline-block;width:14px;height:14px;border-radius:4px}
+.pchart__cap{margin:16px 0 0;font-size:.8rem;line-height:1.45;color:var(--fog)}
+@media (max-width:600px){.pchart{border-radius:22px}.pchart__plot{height:170px;gap:4px}.pseg{border-radius:4px}}
+
+/* who it is for */
+.pfor__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pfor__list li{background:var(--mist);border-radius:24px;padding:clamp(22px,2.2vw,30px);display:flex;flex-direction:column;gap:10px}
+.pfor__list b{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.pfor__list span{color:#3a3a3a;line-height:1.5}
+@media (max-width:980px){.pfor__list{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.pfor__list{grid-template-columns:1fr}}
+
+/* ICP */
+.picp{padding-top:0}
+.picp__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:clamp(36px,5vw,80px);align-items:center}
+.picp__ex{margin:22px 0 0;font-size:.95rem;color:var(--ash);max-width:52ch}
+.picp__card{background:var(--ink);color:#fff;border-radius:28px;padding:clamp(24px,3vw,40px)}
+.picp__k{margin:0 0 18px;font-size:.9rem;font-weight:700;color:var(--fog)}
+.picp__list{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.picp__list li{display:flex;gap:12px;align-items:flex-start;line-height:1.45;font-size:1.02rem}
+.picp__list .tick{--fill:1;border-color:#fff}
+.picp__list .tick::before{background:#fff}
+.picp__list .tick svg{stroke:var(--ink)}
+@media (max-width:900px){.picp__grid{grid-template-columns:1fr}}
+
+/* steps */
+.psteps{padding-top:0}
+.psteps__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:none}
+.psteps__list li{display:flex;flex-direction:column;gap:10px;padding:26px 0 0;border-top:2px solid var(--ink)}
+.psteps__list b{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.psteps__list span:last-child{color:#3a3a3a;line-height:1.5}
+.psteps__n{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;font-size:1rem;flex:0 0 auto}
+@media (max-width:980px){.psteps__list{grid-template-columns:1fr 1fr;gap:28px 12px}}
+@media (max-width:600px){.psteps__list{grid-template-columns:1fr}}
+
+/* two models */
+.pmodels__grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pmodel{background:#fff;border-radius:28px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column}
+.pmodel--ink{background:var(--ink);color:#fff}
+.pmodel__k{margin:0;font-size:.9rem;font-weight:700;color:var(--ash)}
+.pmodel--ink .pmodel__k{color:var(--fog)}
+.pmodel__h{margin:6px 0 22px;font-size:clamp(1.4rem,1rem + 1vw,1.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.pmodel .fit__list li{color:inherit}
+.pmodel .tick{--fill:1}
+.pmodel--ink .tick{border-color:#fff}
+.pmodel--ink .tick::before{background:#fff}
+.pmodel--ink .tick svg{stroke:var(--ink)}
+.pmodel__for{margin:auto 0 0;padding-top:22px;font-size:.92rem;font-weight:600;color:var(--ash)}
+.pmodel--ink .pmodel__for{color:var(--fog)}
+@media (max-width:820px){.pmodels__grid{grid-template-columns:1fr}}
+
+/* form: what happens next */
+.pform__next{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:12px}
+.pform__next li{display:flex;align-items:center;gap:14px;font-weight:600}
+.pform__next .psteps__n{width:32px;height:32px;font-size:.88rem}
+.cite a{color:inherit}

@@ -121,3 +121,12 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - CSS prepísané nanovo (z 1262 na ~640 riadkov, bez mŕtvych štýlov), `odhad.js` zmazaný, `demo.js` nový
 - Spolupráca: Replix + nová forma „Prepojenie systémov“ pre implementátorov ERP (Pohoda, Money, SAP)
 - GDPR, podmienky, cookies, llms.txt, sitemap, schema.org upravené na Replix
+
+## Zmeny 27. 10. večer
+- Ponuka: „Prvé 3 firmy: prvý mesiac zadarmo“ (hero pilulka, #pilot, FAQ, podmienky, llms.txt, e-mail z ukážky, outreach agent + šablóny REFERRAL/ZAUJEM_KONATEL)
+- Make 8100320: pri každej ukážke ide Danielovi e-mail „🔔 Replix demo“ (e-mail záujemcu, doména, o čo išlo, položky, suma, celý dopyt; Reply-To = záujemca)
+- Tlačidlo „Vyskúšať na vlastnom dopyte“ (`data-demo-cue`): PC = okno ukážky krátko zosivie, bodky zelené natrvalo, bez scrollu a bez fokusu; mobil = glide k ukážke + zelené bodky
+- build.py: cache-busting `?v=YYYYMMDDHHMM` na CSS/JS
+- Make: 15 nepoužívaných scenárov vypnutých a presunutých do priečinka „Na zmazanie (nepoužívané)“ (Daniel ich zmaže sám)
+- spolupraca.html prerobená na **Partnerský program**: hero + animovaný graf mesačného príjmu (`partner.js`), pre koho (6 typov partnerov), ideálna firma (ICP), 4 kroky, 2 modely (odporúčanie / spoločný predaj), prečo sa oplatí, formulár (polia typ, meno, email, telefon, firma, sprava → Make 8032260), FAQ. Percento podielu zámerne bez čísla – doplniť, keď ho Daniel určí.
+- Sobota 31. 10.: prechod z Makeu na Google Apps Script (pripomienka v kalendári)
