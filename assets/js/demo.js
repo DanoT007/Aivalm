@@ -76,7 +76,7 @@
         e.preventDefault();
         if (reduce) return;
         root.classList.remove('is-cue'); void root.offsetWidth; root.classList.add('is-cue');
-        setTimeout(function () { root.classList.remove('is-cue'); }, 1300);
+        setTimeout(function () { root.classList.remove('is-cue'); }, 3500);
       }
     });
   });
