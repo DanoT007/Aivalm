@@ -16,7 +16,8 @@ and search results still land somewhere useful. Edit REDIRECTS below, never by h
 
 Run: python3 tools/build.py
 """
-import pathlib, re
+import pathlib, re, time
+VER = time.strftime("%Y%m%d%H%M")  # cache-busting: every build gets fresh CSS/JS URLs
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
@@ -58,6 +59,7 @@ for page in sorted((SRC / "pages").glob("*.html")):
     foot = part["footer"].replace("{{scripts}}", scripts).replace("{{home}}", home)
     body = raw.replace("<!--@booking-->", part["booking"])
     out = head + body + foot
+    out = re.sub(r'(assets/(?:css|js|vendor)/[\w.-]+\.(?:css|js))"', r'\1?v=' + VER + '"', out)
     if 'id="rezervacia"' not in out:  # page without booking: send CTAs to the home page booking
         out = out.replace('href="#rezervacia"', 'href="index.html#rezervacia"')
     (ROOT / page.name).write_text(out, encoding="utf-8")
