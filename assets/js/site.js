@@ -3,7 +3,7 @@
   'use strict';
 
   /* Backend: Google Apps Script web app (AIVALM web backend, účet aivalm.agent) */
-  var BACKEND = '__BACKEND_URL__';
+  var BACKEND = 'https://script.google.com/macros/s/AKfycbwsNBPw5j1wWwmLSACzRgcPVsnziczKHeFiwqCkEJA9CVaFBLO6n3nM8H858gPf8JRIlw/exec';
   var HOOKS = {
     booking: BACKEND + '?f=booking',
     partner: BACKEND + '?f=partner',
