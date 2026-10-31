@@ -2,10 +2,12 @@
 (function () {
   'use strict';
 
+  /* Backend: Google Apps Script web app (AIVALM web backend, účet aivalm.agent) */
+  var BACKEND = '__BACKEND_URL__';
   var HOOKS = {
-    booking: 'https://hook.eu1.make.com/0di8queev6d1cqlisd70lujsswaiui8l',
-    partner: 'https://hook.eu1.make.com/42gkuqfpp97f332ughqe4usm2sgsddxc',
-    replix:  'https://hook.eu1.make.com/3hkb6j4f9ndi8lr6d40uqvr2nb47ol6a'
+    booking: BACKEND + '?f=booking',
+    partner: BACKEND + '?f=partner',
+    replix:  BACKEND + '?f=replix'
   };
   window.AIVALM = { HOOKS: HOOKS };
 
