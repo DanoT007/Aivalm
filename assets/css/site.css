@@ -316,6 +316,12 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-.035em;line-height:.98;text
 
 /* ---------- Revenue calculator ---------- */
 .rcalc__grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(40px,6vw,110px);align-items:center}
+.rtabs{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:var(--mist);margin-bottom:clamp(28px,3vw,44px)}
+.rtabs__b{border:0;background:transparent;font:inherit;font-weight:700;font-size:.98rem;padding:12px 22px;border-radius:999px;color:var(--ash);cursor:pointer;transition:background .2s,color .2s}
+.rtabs__b[aria-selected="true"]{background:var(--ink);color:#fff}
+.rtabs__b:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.rcalc__grid[hidden]{display:none}
+.rcalc__h{font-size:clamp(1.8rem,1.2rem + 2vw,2.8rem);max-width:16ch;margin-bottom:22px}
 .rcalc__card{background:var(--ink);color:#fff;border-radius:32px;padding:clamp(26px,3vw,48px)}
 .rcalc__name{margin:0 0 28px;font-weight:800;font-size:clamp(1.25rem,1rem + .8vw,1.7rem);line-height:1.2}
 .rcalc__f{padding:20px 0;border-top:1px solid rgba(255,255,255,.12)}
@@ -348,6 +354,7 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-.035em;line-height:.98;text
 @media (max-width:900px){
   .rcalc__grid{grid-template-columns:1fr}
   .rcalc__copy{order:-1}
+  .rtabs{display:flex}.rtabs__b{flex:1;padding:12px 10px;font-size:.92rem}
   .rcalc__card{border-radius:26px}
   .rcalc__top{flex-direction:column;align-items:flex-start;gap:8px}
   .rcalc__val input{text-align:left;width:96px;font-size:1.3rem}

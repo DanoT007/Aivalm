@@ -228,34 +228,78 @@ Martin</textarea>
 </section>
 
 <section class="sec rcalc" id="kalkulacka" aria-labelledby="calc-h">
-  <div class="wrap rcalc__grid">
-    <div class="rcalc__card" data-rcalc aria-label="Kalkulačka výnosov">
+  <div class="wrap">
+    <div class="sec__head" data-group>
+      <h2 id="calc-h" data-rise>Pridaná hodnota <span class="grey">Replixu</span></h2>
+      <p class="sec__lead" data-rise>Dve kalkulačky, dva pohľady: koľko zákaziek vám dnes môže unikať a koľko času obchodníci strávia písaním ponúk.</p>
+    </div>
+    <div class="rtabs" role="tablist" aria-label="Kalkulačky">
+      <button class="rtabs__b" role="tab" id="tab-zisk" aria-controls="pan-zisk" aria-selected="true">Potenciálne zisky</button>
+      <button class="rtabs__b" role="tab" id="tab-cas" aria-controls="pan-cas" aria-selected="false" tabindex="-1">Ušetrený čas</button>
+    </div>
+
+    <div class="rcalc__grid" id="pan-zisk" role="tabpanel" aria-labelledby="tab-zisk">
+    <div class="rcalc__card" data-rcalc="zisk" aria-label="Kalkulačka potenciálnych ziskov">
       <p class="rcalc__name">Vyrátajte si to na vlastných číslach</p>
       <div class="rcalc__f">
-        <div class="rcalc__top"><label for="rc-n-q">Koľko e-mailových dopytov vám príde za mesiac?</label><span class="rcalc__val"><input id="rc-n-q" type="number" inputmode="numeric" min="0" value="300"><span>dopytov</span></span></div>
-        <input class="rcalc__range" id="rc-r-q" type="range" min="10" max="2000" step="10" value="300" aria-label="Dopyty za mesiac">
+        <div class="rcalc__top"><label for="rc-q-n">Koľko e-mailových dopytov vám príde za mesiac?</label><span class="rcalc__val"><input id="rc-q-n" data-n type="number" inputmode="numeric" min="10" max="2000" value="300"><span>dopytov</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="10" max="2000" step="10" value="300" aria-label="Koľko e-mailových dopytov vám príde za mesiac?">
         <p class="rcalc__hint">15 dopytov denne je približne 300 mesačne</p>
       </div>
       <div class="rcalc__f">
-        <div class="rcalc__top"><label for="rc-n-o">Aká je vaša priemerná objednávka?</label><span class="rcalc__val"><input id="rc-n-o" type="number" inputmode="numeric" min="5" max="5000" value="800"><span>€</span></span></div>
-        <input class="rcalc__range" id="rc-r-o" type="range" min="5" max="5000" step="5" value="800" aria-label="Priemerná objednávka v eurách">
+        <div class="rcalc__top"><label for="rc-o-n">Aká je vaša priemerná objednávka?</label><span class="rcalc__val"><input id="rc-o-n" data-n type="number" inputmode="numeric" min="5" max="5000" value="800"><span>€</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="5" max="5000" step="5" value="800" aria-label="Aká je vaša priemerná objednávka?">
+        
       </div>
       <div class="rcalc__f">
-        <div class="rcalc__top"><label for="rc-n-l">Koľko dopytov strácate, lebo konkurencia odpovie skôr?</label><span class="rcalc__val"><input id="rc-n-l" type="number" inputmode="numeric" min="0" max="100" value="20"><span>%</span></span></div>
-        <input class="rcalc__range" id="rc-r-l" type="range" min="1" max="60" step="1" value="20" aria-label="Percento stratených dopytov">
+        <div class="rcalc__top"><label for="rc-l-n">Koľko dopytov strácate, lebo konkurencia odpovie skôr?</label><span class="rcalc__val"><input id="rc-l-n" data-n type="number" inputmode="numeric" min="1" max="40" value="15"><span>%</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="1" max="40" step="1" value="15" aria-label="Koľko dopytov strácate, lebo konkurencia odpovie skôr?">
         <p class="rcalc__hint">Odhadnite podľa seba: koľko ponúk minulý mesiac ostalo bez reakcie zákazníka?</p>
       </div>
       <div class="rcalc__res" aria-live="polite">
         <p class="rcalc__rl">Objednávky, ktoré vám dnes môžu unikať</p>
-        <p class="rcalc__big tnum"><b id="rc-out-m">48 000 €</b> <span>za mesiac</span></p>
-        <div class="rcalc__row"><p><b class="tnum" id="rc-out-y">576 000 €</b>za rok</p><p><b class="tnum" id="rc-out-d">60</b>dopytov mesačne</p></div>
+        <p class="rcalc__big tnum"><b data-o="m">36 000 €</b> <span>za mesiac</span></p>
+        <div class="rcalc__row"><p><b class="tnum" data-o="y">432 000 €</b>za rok</p><p><b class="tnum" data-o="d">45</b>dopytov mesačne</p></div>
       </div>
     </div>
-    <div class="rcalc__copy" data-group>
-      <h2 id="calc-h" data-rise>Pomalá ponuka <span class="grey">je stratená zákazka</span></h2>
-      <p class="sec__lead" data-rise>Zákazník pošle ten istý dopyt trom dodávateľom a objednávku zvyčajne dostane ten, kto odpovie prvý. Ak vaše ponuky odchádzajú za deň či dva, časť zákaziek odchádza s nimi.</p>
-      <p class="rcalc__formula" data-rise><span>dopyty za mesiac</span><i>×</i><span>priemerná objednávka</span><i>×</i><span>% stratených</span></p>
-      <p class="rcalc__note" data-rise>Výpočet je orientačný a vychádza z vašich odhadov. V pilote ho nahradíme skutočnými číslami z vašej schránky: kedy dopyt prišiel a kedy odišla ponuka.</p>
+    <div class="rcalc__copy">
+      <h3 class="rcalc__h">Pomalá ponuka <span class="grey">je stratená zákazka</span></h3>
+      <p class="sec__lead">Zákazník pošle ten istý dopyt trom dodávateľom a objednávku zvyčajne dostane ten, kto odpovie prvý. Ak vaše ponuky odchádzajú za deň či dva, časť zákaziek odchádza s nimi.</p>
+      <p class="rcalc__formula"><span>dopyty za mesiac</span><i>×</i><span>priemerná objednávka</span><i>×</i><span>% stratených</span></p>
+      <p class="rcalc__note">Výpočet je orientačný a vychádza z vašich odhadov. V pilote ho nahradíme skutočnými číslami z vašej schránky: kedy dopyt prišiel a kedy odišla ponuka.</p>
+    </div>
+    </div>
+
+    <div class="rcalc__grid" id="pan-cas" role="tabpanel" aria-labelledby="tab-cas" hidden>
+    <div class="rcalc__card" data-rcalc="cas" aria-label="Kalkulačka ušetreného času">
+      <p class="rcalc__name">Koľko času vám zaberajú ponuky</p>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rs-q-n">Koľko e-mailových dopytov vám príde za mesiac?</label><span class="rcalc__val"><input id="rs-q-n" data-n type="number" inputmode="numeric" min="10" max="2000" value="300"><span>dopytov</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="10" max="2000" step="10" value="300" aria-label="Koľko e-mailových dopytov vám príde za mesiac?">
+        
+      </div>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rs-n-n">Koľko obchodníkov máte v obchodnom tíme?</label><span class="rcalc__val"><input id="rs-n-n" data-n type="number" inputmode="numeric" min="1" max="50" value="3"><span>ľudí</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="1" max="50" step="1" value="3" aria-label="Koľko obchodníkov máte v obchodnom tíme?">
+        
+      </div>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rs-t-n">Koľko minút trvá pripraviť jednu ponuku?</label><span class="rcalc__val"><input id="rs-t-n" data-n type="number" inputmode="numeric" min="2" max="120" value="20"><span>min</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="2" max="120" step="1" value="20" aria-label="Koľko minút trvá pripraviť jednu ponuku?">
+        <p class="rcalc__hint">S Replixom obchodník ponuku iba skontroluje a potvrdí, rátame 2 minúty.</p>
+      </div>
+      <div class="rcalc__res" aria-live="polite">
+        <p class="rcalc__rl">Čas, ktorý tímu vrátite</p>
+        <p class="rcalc__big tnum"><b data-o="h">90 h</b> <span>mesačne</span></p>
+        <div class="rcalc__row"><p><b class="tnum" data-o="p">30 h</b>na obchodníka</p><p><b class="tnum" data-o="e">1 260 €</b>hodnota práce mesačne</p><p><b class="tnum" data-o="w">100 h</b>dnes na ponuky</p></div>
+      </div>
+    </div>
+    <div class="rcalc__copy">
+      <h3 class="rcalc__h">Obchodníci majú predávať, <span class="grey">nie písať ponuky</span></h3>
+      <p class="sec__lead">Ušetrené hodiny neznamenajú, že máte prepúšťať. Znamenajú, že vaši obchodníci majú o toľko viac času na skutočný obchod: telefonovať zákazníkom, dotiahnuť rozpracované zákazky a zháňať nových klientov.</p>
+      <p class="rcalc__formula"><span>dopyty za mesiac</span><i>×</i><span>(minúty na ponuku − 2)</span></p>
+      <p class="rcalc__note">Výpočet je orientačný. Hodnotu práce rátame pri 14 € za hodinu vrátane odvodov, čo zodpovedá bežnej mzde obchodníka na Slovensku. V pilote ju nahradíme skutočným časom vášho tímu.</p>
+    </div>
     </div>
   </div>
 </section>
@@ -492,6 +536,6 @@ Martin</textarea>
 <script src="assets/js/fx.js?v=202610311932" defer></script>
 <script src="assets/js/stories.js?v=202610311932" defer></script>
 <script src="assets/js/demo.js?v=202610311932" defer></script>
-<script src="assets/js/kalkulacka.js?v=202610311932" defer></script>
+<script src="assets/js/kalkulacka.js?v=202611032100" defer></script>
 </body>
 </html>
