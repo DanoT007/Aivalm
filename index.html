@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/montserrat-latin-ext-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=202610311932">
+<link rel="stylesheet" href="assets/css/site.css?v=202611032115">
 <script>document.documentElement.classList.add('js')</script>
 <script src="assets/js/stats.js?v=202610311932" defer></script>
 </head>
@@ -204,25 +204,34 @@ Martin</textarea>
   </div>
 </section>
 
-<section class="sec" style="background:var(--mist)" aria-labelledby="why-h">
-  <div class="wrap split race-split" data-group>
-    <div>
-      <h2 id="why-h" data-rise>Kto odpovie prvý, <span class="grey">ten predá</span></h2>
-      <p class="sec__lead" data-rise>Stavebná firma pošle ten istý dopyt štyrom dodávateľom naraz. Prvý odpovie do hodiny a objednávku dostane on. Ostatní sa ozvú o dva dni. Mali dobrú ponuku, ale zákazník už nakúpil inde.</p>
-      <p class="sec__lead" data-rise><strong>Často nerozhoduje najnižšia cena, ale najrýchlejšia odpoveď.</strong> S Replixom odpoviete do 2 minút, aj keď dopyt príde v piatok o šiestej večer.</p>
-      <p class="race__ill" data-rise>Ilustračný príklad</p>
+<section class="sec forwho" id="pre-koho" style="background:var(--mist)" aria-labelledby="who-h">
+  <div class="wrap">
+    <div class="sec__head" data-group>
+      <h2 id="who-h" data-rise>Pre koho je <span class="grey">Replix</span></h2>
+      <p class="sec__lead" data-rise>Pre veľkoobchody, distribútorov a výrobcov, ktorým chodí veľa dopytov e-mailom a odpovedajú na ne obchodníci. Teda ľudia, ktorí by mali predávať, nie prepisovať cenníky do e-mailov.</p>
     </div>
-    <div class="race ui" data-rise data-loop="4" data-loop-ms="1900" aria-label="Príklad: dopyt poslaný štyrom dodávateľom, objednávku získa ten, kto odpovie prvý">
-      <div class="race__head">
-        <p class="mail__from">Dopyt: materiál na garáž</p>
-        <p class="race__sub">Odoslané 4 dodávateľom, piatok 18:05</p>
+    <ul class="whochips" data-group>
+      <li data-rise>Stavebniny a stavebný materiál</li><li data-rise>Spojovací materiál a náradie</li><li data-rise>Kúrenie, voda, sanita</li><li data-rise>Elektro veľkoobchod</li><li data-rise>Hutný materiál</li><li data-rise>Obaly a spotrebný materiál</li><li data-rise>Papier, hygiena, čistiace prostriedky</li><li data-rise>Výrobcovia s pevným cenníkom</li>
+    </ul>
+    <div class="fitgrid" data-group>
+      <div class="fit" data-rise>
+        <p class="fit__h">Replix vám sedí, ak</p>
+        <ul class="fit__list">
+          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>vám denne chodia dopyty e-mailom, ideálne 10 a viac</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>máte cenník, aj keby bol len v Exceli</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>ponuky dnes píšu obchodníci ručne a zaberá im to hodiny</span></li>
+          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>zákazníci často dopytujú viacerých dodávateľov naraz</span></li>
+        </ul>
       </div>
-      <ol class="race__rows">
-        <li class="race__row race__row--win"><b>Vy s Replixom</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res" data-at="1">ponuka odišla o 18:06</span><span class="race__res race__res--win" data-at="2">Získali ste objednávku</span></span></li>
-        <li class="race__row"><b>Dodávateľ B</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">pondelok 10:30, zákazník už nakúpil</span></span></li>
-        <li class="race__row"><b>Dodávateľ C</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">pondelok 14:10, zákazník už nakúpil</span></span></li>
-        <li class="race__row"><b>Dodávateľ D</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">neodpovedal</span></span></li>
-      </ol>
+      <div class="fit fit--no" data-rise>
+        <p class="fit__h">Skôr nie, ak</p>
+        <ul class="fit__list">
+          <li><span class="cross" aria-hidden="true">–</span><span>je každá zákazka projekt na mieru podľa výkresu, bez cenníka</span></li>
+          <li><span class="cross" aria-hidden="true">–</span><span>vám príde len pár dopytov mesačne</span></li>
+          <li><span class="cross" aria-hidden="true">–</span><span>dopyty chodia hlavne telefonicky, nie e-mailom</span></li>
+          <li><span class="cross" aria-hidden="true">–</span><span>už máte e-shop, kde si zákazník cenu vypočíta sám</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -304,38 +313,6 @@ Martin</textarea>
   </div>
 </section>
 
-<section class="sec forwho" id="pre-koho" style="background:var(--mist)" aria-labelledby="who-h">
-  <div class="wrap">
-    <div class="sec__head" data-group>
-      <h2 id="who-h" data-rise>Pre koho je <span class="grey">Replix</span></h2>
-      <p class="sec__lead" data-rise>Pre veľkoobchody, distribútorov a výrobcov, ktorým chodí veľa dopytov e-mailom a odpovedajú na ne obchodníci. Teda ľudia, ktorí by mali predávať, nie prepisovať cenníky do e-mailov.</p>
-    </div>
-    <ul class="whochips" data-group>
-      <li data-rise>Stavebniny a stavebný materiál</li><li data-rise>Spojovací materiál a náradie</li><li data-rise>Kúrenie, voda, sanita</li><li data-rise>Elektro veľkoobchod</li><li data-rise>Hutný materiál</li><li data-rise>Obaly a spotrebný materiál</li><li data-rise>Papier, hygiena, čistiace prostriedky</li><li data-rise>Výrobcovia s pevným cenníkom</li>
-    </ul>
-    <div class="fitgrid" data-group>
-      <div class="fit" data-rise>
-        <p class="fit__h">Replix vám sedí, ak</p>
-        <ul class="fit__list">
-          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>vám denne chodia dopyty e-mailom, ideálne 10 a viac</span></li>
-          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>máte cenník, aj keby bol len v Exceli</span></li>
-          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>ponuky dnes píšu obchodníci ručne a zaberá im to hodiny</span></li>
-          <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>zákazníci často dopytujú viacerých dodávateľov naraz</span></li>
-        </ul>
-      </div>
-      <div class="fit fit--no" data-rise>
-        <p class="fit__h">Skôr nie, ak</p>
-        <ul class="fit__list">
-          <li><span class="cross" aria-hidden="true">–</span><span>je každá zákazka projekt na mieru podľa výkresu, bez cenníka</span></li>
-          <li><span class="cross" aria-hidden="true">–</span><span>vám príde len pár dopytov mesačne</span></li>
-          <li><span class="cross" aria-hidden="true">–</span><span>dopyty chodia hlavne telefonicky, nie e-mailom</span></li>
-          <li><span class="cross" aria-hidden="true">–</span><span>už máte e-shop, kde si zákazník cenu vypočíta sám</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="sec" id="bezpecnost" aria-labelledby="facts-h">
   <div class="wrap">
     <div class="sec__head" data-group>
@@ -393,6 +370,29 @@ Martin</textarea>
   </div>
 </section>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Čo presne Replix robí?", "acceptedAnswer": {"@type": "Answer", "text": "Keď do vašej schránky príde dopyt, Replix ho prečíta, rozpozná produkty a množstvá a spáruje ich s vaším cenníkom. Ceny, množstevné zľavy a DPH vypočíta systém podľa vašich pravidiel. Obchodník dostane hotovú ponuku aj s pôvodným dopytom a jedným klikom ju odošle zákazníkovi z vašej schránky."}}, {"@type": "Question", "name": "Môže AI poslať zákazníkovi nesprávnu cenu?", "acceptedAnswer": {"@type": "Answer", "text": "Ceny nepočíta jazykový model, ale váš cenník. AI len rozpozná, čo zákazník chce. Keď položku nenájde, označí ju obchodníkovi namiesto toho, aby hádala. A každú ponuku pred odoslaním schvaľuje obchodník."}}, {"@type": "Question", "name": "Odíde niekedy ponuka bez kontroly človeka?", "acceptedAnswer": {"@type": "Answer", "text": "Nie, pokiaľ si to sami nenastavíte. Automatické odosielanie zapíname až na vašu písomnú žiadosť, len pre položky s pevnou cenou a až keď obchodníci dlhšie posielajú ponuky bez úprav."}}, {"@type": "Question", "name": "Aký cenník potrebujeme? Funguje to s Pohodou, Money alebo SAP?", "acceptedAnswer": {"@type": "Answer", "text": "Na začiatok stačí cenník, ktorý už máte, aj v Exceli, alebo jeho pravidelný export z vášho systému. Priame napojenie na ERP riešime po pilote, keď je jasné, že sa vám to oplatí."}}, {"@type": "Question", "name": "Musíme meniť e-mail alebo spôsob práce?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Replix pracuje s vašou existujúcou schránkou na dopyty, napríklad obchod@ alebo ponuky@. Zákazníci píšu tam, kam doteraz, a ponuky odchádzajú pod vaším menom."}}, {"@type": "Question", "name": "Ako dlho trvá spustenie?", "acceptedAnswer": {"@type": "Answer", "text": "Po stretnutí zvyčajne niekoľko dní. Najprv Replix otestujeme na vašich starších dopytoch a až potom ho zapneme pre jedného alebo dvoch obchodníkov."}}, {"@type": "Question", "name": "Koľko Replix stojí?", "acceptedAnswer": {"@type": "Answer", "text": "Pre prvé 3 firmy je prvý mesiac zadarmo, vrátane nastavenia. Cena za ďalšie mesiace závisí od počtu dopytov, počtu obchodníkov a od toho, či treba napojenie na váš systém. Povieme vám ju vopred a dohodneme písomne. Bez viazanosti, nič sa automaticky nepredlžuje."}}, {"@type": "Question", "name": "Je to v súlade s GDPR a AI Actom?", "acceptedAnswer": {"@type": "Answer", "text": "S každou firmou podpisujeme zmluvu o spracúvaní osobných údajov. Schránku pripájate cez bezpečné prihlásenie, heslá nepotrebujeme, a dáta sa nepoužívajú na trénovanie AI. Do ponúk vieme pridať krátku poznámku, že pri príprave pomáhala AI, ako to odporúča európsky AI Act."}}]}</script>
+<section class="sec" aria-labelledby="why-h">
+  <div class="wrap split race-split" data-group>
+    <div>
+      <h2 id="why-h" data-rise>Kto odpovie prvý, <span class="grey">ten predá</span></h2>
+      <p class="sec__lead" data-rise>Stavebná firma pošle ten istý dopyt štyrom dodávateľom naraz. Prvý odpovie do hodiny a objednávku dostane on. Ostatní sa ozvú o dva dni. Mali dobrú ponuku, ale zákazník už nakúpil inde.</p>
+      <p class="sec__lead" data-rise><strong>Často nerozhoduje najnižšia cena, ale najrýchlejšia odpoveď.</strong> S Replixom odpoviete do 2 minút, aj keď dopyt príde v piatok o šiestej večer.</p>
+      <p class="race__ill" data-rise>Ilustračný príklad</p>
+    </div>
+    <div class="race ui" data-rise data-loop="4" data-loop-ms="1900" aria-label="Príklad: dopyt poslaný štyrom dodávateľom, objednávku získa ten, kto odpovie prvý">
+      <div class="race__head">
+        <p class="mail__from">Dopyt: materiál na garáž</p>
+        <p class="race__sub">Odoslané 4 dodávateľom, piatok 18:05</p>
+      </div>
+      <ol class="race__rows">
+        <li class="race__row race__row--win"><b>Vy s Replixom</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res" data-at="1">ponuka odišla o 18:06</span><span class="race__res race__res--win" data-at="2">Získali ste objednávku</span></span></li>
+        <li class="race__row"><b>Dodávateľ B</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">pondelok 10:30, zákazník už nakúpil</span></span></li>
+        <li class="race__row"><b>Dodávateľ C</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">pondelok 14:10, zákazník už nakúpil</span></span></li>
+        <li class="race__row"><b>Dodávateľ D</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">neodpovedal</span></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 
 <section class="sec on-ink" id="rezervacia" aria-labelledby="rez-h">
   <div class="wrap book" data-booking data-done>
@@ -536,6 +536,6 @@ Martin</textarea>
 <script src="assets/js/fx.js?v=202610311932" defer></script>
 <script src="assets/js/stories.js?v=202610311932" defer></script>
 <script src="assets/js/demo.js?v=202610311932" defer></script>
-<script src="assets/js/kalkulacka.js?v=202611032100" defer></script>
+<script src="assets/js/kalkulacka.js?v=202611032115" defer></script>
 </body>
 </html>

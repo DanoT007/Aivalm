@@ -138,3 +138,4 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Ochrana OÚ + cookies: doplnená anonymná štatistika PostHog (oprávnený záujem, 12 mesiacov, EÚ).
 - Logo: vlastný vektor ľalie `assets/img/fleur.svg` (nakreslený nanovo, tvar zhodný s pôvodným PNG); menu, opona a pätička používajú SVG; `fleur.png`, `favicon.png`, `favicon-192.png`, `apple-touch-icon.png` vyrendrované z SVG v rovnakých rozmeroch a odsadení.
 - 3. 11. 2026: sekcia #kalkulacka = „Pridaná hodnota Replixu“ s 2 tabmi: Potenciálne zisky (max. strata 40 %, predvolene 15 %) a Ušetrený čas (dopyty × (min na ponuku − 2), 14 €/h). JS generický podľa data-rcalc.
+- 3. 11. 2026: nové poradie: funguje → pre koho → kalkulačka → bezpečnosť → pilot → FAQ → Kto odpovie prvý → rezervácia; hlavička kalkulačky a taby na stred.
