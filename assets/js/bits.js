@@ -403,7 +403,7 @@
 
   /* ---------- 15. Glow curtain: every link to the meeting booking (#rezervacia) or to the partner form
      (#formular) travels under a black curtain: the fleur appears, grows with a soft glow behind it,
-     and the curtain lifts on the target (about 2.2 s, every click). */
+     and the curtain lifts on the target (3.1 s, every click). */
   function glowCurtain() {
     if (reduce || !window.gsap) return;
     var ov = document.createElement('div');
@@ -430,12 +430,12 @@
       gsap.set(logo, { autoAlpha: 0, scale: .8 });
       gsap.set(glow, { autoAlpha: 0, scale: .5 });
       gsap.timeline({ onComplete: function () { gsap.set(ov, { autoAlpha: 0 }); busy = false; if (l) l.start(); } })
-        .to(ov, { yPercent: 0, duration: .5, ease: 'power3.inOut' })
-        .to(logo, { autoAlpha: 1, scale: 1, duration: .4, ease: 'power2.out' }, .3)
-        .call(function () { jump(el, hash); }, null, .6)
-        .to(logo, { scale: 1.4, duration: .7, ease: 'power2.out' }, .75)
-        .to(glow, { autoAlpha: 1, scale: 1, duration: .7, ease: 'power2.out' }, .75)
-        .to(ov, { yPercent: -100, duration: .7, ease: 'power3.inOut' }, 1.5);
+        .to(ov, { yPercent: 0, duration: .6, ease: 'power3.inOut' })
+        .to(logo, { autoAlpha: 1, scale: 1, duration: .5, ease: 'power2.out' }, .35)
+        .call(function () { jump(el, hash); }, null, .8)
+        .to(logo, { scale: 1.4, duration: 1.1, ease: 'power2.out' }, 1)
+        .to(glow, { autoAlpha: 1, scale: 1, duration: 1.1, ease: 'power2.out' }, 1)
+        .to(ov, { yPercent: -100, duration: .75, ease: 'power3.inOut' }, 2.35);   /* ends at 3.1 s */
     }
     document.addEventListener('click', function (e) {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
