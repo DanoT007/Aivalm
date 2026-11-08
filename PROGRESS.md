@@ -139,3 +139,11 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Logo: vlastný vektor ľalie `assets/img/fleur.svg` (nakreslený nanovo, tvar zhodný s pôvodným PNG); menu, opona a pätička používajú SVG; `fleur.png`, `favicon.png`, `favicon-192.png`, `apple-touch-icon.png` vyrendrované z SVG v rovnakých rozmeroch a odsadení.
 - 3. 11. 2026: sekcia #kalkulacka = „Pridaná hodnota Replixu“ s 2 tabmi: Potenciálne zisky (max. strata 40 %, predvolene 15 %) a Ušetrený čas (dopyty × (min na ponuku − 2), 14 €/h). JS generický podľa data-rcalc.
 - 3. 11. 2026: nové poradie: funguje → pre koho → kalkulačka → pilot → bezpečnosť → FAQ → Kto odpovie prvý → rezervácia; hlavička kalkulačky a taby na stred.
+
+## Zmeny 8. 11. 2026
+- Pre koho: odvetvia so šípkou → glide k ukážke, prepne odvetvie, zelené bodky (is-live), pulz okna a zablikanie tlačidla odvetvia (`A.cueDemo` v demo.js, `glideTo(el, hash, cb)` v fx.js)
+- #bezpecnost prerobená: 3 fázy (1 = SharePoint export cenníka + preposielanie dopytov obchodníkom, 2 = priame napojenie M365/Gmail/systém po pilote, 3 = autonómny režim až pri >97 % ponúk bez úpravy) + 6 bodov o ochrane dát (vrátane Anthropic/Claude, bez trénovania)
+- #pilot: text zladený s fázou 1 (bez napojenia na schránku, export z ERP do SharePointu)
+- FAQ: odstránené otázky o cenníku/ERP, zmene e-mailu a GDPR/AI Act; schema FAQPage prepočítaná
+- „Kto odpovie prvý“ presunutá nad #pilot
+- POZOR: src/pages/index.html je zastaraný, upravuje sa priamo index.html v koreni (build.py by ho prepísal)

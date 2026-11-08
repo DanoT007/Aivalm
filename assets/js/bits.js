@@ -349,8 +349,11 @@
     }
     ul.addEventListener('click', function (e) {
       var a = e.target.closest('[data-ind-go]'); if (!a) return;
-      var b = document.querySelector('[data-ind="' + a.dataset.indGo + '"]');
-      if (b && b.getAttribute('aria-pressed') !== 'true') b.click();
+      var k = a.dataset.indGo, demo = document.getElementById('ukazka'), A = window.AIVALM || {};
+      if (!demo || !A.cueDemo) return; /* no demo script: plain #ukazka jump */
+      e.preventDefault();
+      if (A.glideTo) A.glideTo(demo, '#ukazka', function () { A.cueDemo(k); });
+      else { demo.scrollIntoView(); A.cueDemo(k); }
     });
   }
 

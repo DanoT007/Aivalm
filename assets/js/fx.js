@@ -91,10 +91,10 @@
     root.classList.remove('is-gliding');
     if (g.done) g.done();
   }
-  function glideTo(el, hash) {
+  function glideTo(el, hash, cb) {
     endGlide();
     var from = window.scrollY, to = targetY(el), vh = window.innerHeight;
-    var focus = function () { if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1'); try { el.focus({ preventScroll: true }); } catch (e) {} };
+    var focus = function () { if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1'); try { el.focus({ preventScroll: true }); } catch (e) {} if (cb) { var c = cb; cb = null; c(); } };
     if (hash) history.replaceState(null, '', hash);
     if (reduce || Math.abs(to - from) < 2) { setY(to); focus(); return; }
     setY(from); /* stop any smooth-scroll momentum still running */

@@ -81,6 +81,19 @@
     });
   });
 
+  /* Industry chips in "Pre koho": switch the sample to that industry, then (after the glide lands)
+     light the window dots green and pulse the window, same as "Vyskúšať na vlastnom dopyte". */
+  A.cueDemo = function (k) {
+    var b = k && root.querySelector('[data-ind="' + k + '"]');
+    if (b && b.getAttribute('aria-pressed') !== 'true') b.click();
+    else if (b && !touched) { stopTyping(); type(SAMPLES[k][1]); }
+    root.classList.add('is-live');
+    if (reduce) return;
+    root.classList.remove('is-cue'); void root.offsetWidth; root.classList.add('is-cue');
+    if (b) { b.classList.remove('is-flash'); void b.offsetWidth; b.classList.add('is-flash'); }
+    setTimeout(function () { root.classList.remove('is-cue'); if (b) b.classList.remove('is-flash'); }, 3500);
+  };
+
   /* ---------- panels ---------- */
   function show(state) {
     root.dataset.state = state;
