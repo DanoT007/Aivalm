@@ -401,6 +401,88 @@
     card.classList.add('fit--strike');   /* fitQuiz() adds .is-struck when 3+ items are checked */
   }
 
+  /* ---------- 15. Orbit curtain: the meeting / partner buttons travel under a black curtain.
+     First time on a page: the fleur appears, a planet circles it once on a tilted orbit, the orbit fades,
+     the fleur grows with a soft glow behind it, the curtain lifts on the target (~3.5 s).
+     Every later click: the short version (curtain, fleur, there). No storage is used: "once" = once per page load. */
+  function orbitCurtain() {
+    if (reduce || !window.gsap) return;
+    var links = [].slice.call(document.querySelectorAll('.nav__cta[href^="#"], .offer__sent a[href="#rezervacia"]'));
+    if (!links.length) return;
+    var ov = document.createElement('div');
+    ov.className = 'orbitc'; ov.setAttribute('aria-hidden', 'true');
+    ov.innerHTML = '<div class="orbitc__sys">' +
+      '<div class="orbitc__glow"></div>' +
+      '<svg class="orbitc__orbit" viewBox="-160 -160 320 320"><ellipse cx="0" cy="0" rx="138" ry="44" transform="rotate(-16)"/></svg>' +
+      '<i class="orbitc__planet"></i>' +
+      '<img class="orbitc__logo" src="assets/img/fleur.svg" alt="">' +
+      '</div>';
+    document.body.appendChild(ov);
+    var sys = ov.querySelector('.orbitc__sys'), ell = ov.querySelector('ellipse'), planet = ov.querySelector('.orbitc__planet'),
+        logo = ov.querySelector('.orbitc__logo'), glow = ov.querySelector('.orbitc__glow');
+    var LEN = ell.getTotalLength ? ell.getTotalLength() : 600, played = false, busy = false;
+    var RX = 138, RY = 44, ROT = -16 * Math.PI / 180;
+
+    function placePlanet(a) {        /* a: angle in radians on the tilted ellipse; behind the fleur on the far half */
+      var x = RX * Math.cos(a), y = RY * Math.sin(a);
+      var px = x * Math.cos(ROT) - y * Math.sin(ROT), py = x * Math.sin(ROT) + y * Math.cos(ROT);
+      var k = sys.offsetWidth / 320;
+      planet.style.transform = 'translate(' + (px * k).toFixed(2) + 'px,' + (py * k).toFixed(2) + 'px)';
+      planet.style.zIndex = Math.sin(a) < 0 ? 1 : 4;
+    }
+    function jump(el, hash) {
+      var y = el.getBoundingClientRect().top + window.scrollY - (el.classList.contains('story') ? 0 : 88);
+      y = Math.max(0, Math.min(Math.round(y), document.documentElement.scrollHeight - window.innerHeight));
+      var l = window.AIVALM && window.AIVALM.lenis;
+      if (l) l.scrollTo(y, { immediate: true, force: true }); else window.scrollTo(0, y);
+      if (window.ScrollTrigger) ScrollTrigger.update();
+      try { history.replaceState(null, '', hash); } catch (e) {}
+      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+      try { el.focus({ preventScroll: true }); } catch (e) {}
+    }
+    function run(el, hash) {
+      busy = true;
+      var full = !played; played = true;
+      var l = window.AIVALM && window.AIVALM.lenis; if (l) l.stop();
+      gsap.killTweensOf([ov, logo, ell, planet, glow]);
+      gsap.set(ov, { yPercent: 100, autoAlpha: 1 });
+      gsap.set(logo, { autoAlpha: 0, scale: .8 });
+      gsap.set(glow, { autoAlpha: 0, scale: .5 });
+      gsap.set(ell, { strokeDasharray: LEN, strokeDashoffset: LEN, autoAlpha: 1 });
+      gsap.set(planet, { autoAlpha: 0 });
+      var o = { a: 0 }; placePlanet(o.a);  /* the SVG ellipse stroke starts at angle 0, so the planet leads the line it draws */
+      var tl = gsap.timeline({ onComplete: function () {
+        gsap.set(ov, { autoAlpha: 0 }); busy = false; if (l) l.start();
+      } });
+      tl.to(ov, { yPercent: 0, duration: .55, ease: 'power3.inOut' })
+        .to(logo, { autoAlpha: 1, scale: 1, duration: .45, ease: 'power2.out' }, .3);
+      if (full) {
+        tl.call(function () { jump(el, hash); }, null, .7)
+          /* one full lap: the orbit draws itself behind the planet */
+          .to(planet, { autoAlpha: 1, duration: .2 }, .62)
+          .to(ell, { strokeDashoffset: 0, duration: 1.55, ease: 'power1.inOut' }, .62)
+          .to(o, { a: Math.PI * 2, duration: 1.55, ease: 'power1.inOut', onUpdate: function () { placePlanet(o.a); } }, .62)
+          /* orbit and planet leave, the fleur grows with a soft glow behind it */
+          .to([ell, planet], { autoAlpha: 0, duration: .35, ease: 'power1.out' }, 2.2)
+          .to(logo, { scale: 1.4, duration: .6, ease: 'power2.out' }, 2.2)
+          .to(glow, { autoAlpha: 1, scale: 1, duration: .6, ease: 'power2.out' }, 2.2)
+          .to(ov, { yPercent: -100, duration: .7, ease: 'power3.inOut' }, 2.8);
+      } else {
+        tl.call(function () { jump(el, hash); }, null, .6)
+          .to(ov, { yPercent: -100, duration: .7, ease: 'power3.inOut' }, .85);
+      }
+    }
+    links.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        var hash = a.getAttribute('href'), el = /^#[\w-]+$/.test(hash) && document.querySelector(hash);
+        if (!el) return;
+        e.preventDefault();               /* fx.js leaves prevented clicks alone (no glide) */
+        if (!busy) run(el, hash);
+      });
+    });
+  }
+
   /* scripts are deferred, so the DOM is ready; GSAP is loaded before this file */
   countUp();
   dotGrid(document.querySelector('.rhero, .phero2'), false);
@@ -411,6 +493,7 @@
   tilt();
   circularText();
   faqAnim();
+  orbitCurtain();
   whoChips();
   fitQuiz();
   fitStrike();
