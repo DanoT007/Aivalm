@@ -347,6 +347,7 @@
       ul.classList.add('is-wait');
       onceVisible(ul, '0px 0px -12% 0px', function () { ul.classList.add('is-pop'); });
     }
+    marquee(ul);
     ul.addEventListener('click', function (e) {
       var a = e.target.closest('[data-ind-go]'); if (!a) return;
       var k = a.dataset.indGo, demo = document.getElementById('ukazka'), A = window.AIVALM || {};
@@ -355,6 +356,55 @@
       if (A.glideTo) A.glideTo(demo, '#ukazka', function () { A.cueDemo(k); });
       else { demo.scrollIntoView(); A.cueDemo(k); }
     });
+  }
+
+
+  /* Phones: the industries become one row that drifts slowly to the right, endlessly (the list is
+     doubled and the scroll position wraps). A finger stops it and can swipe freely; 5 s after the
+     last touch it eases back into motion. Runs only while the row is on screen. */
+  function marquee(ul) {
+    var mq = window.matchMedia('(max-width:600px)');
+    if (!mq.matches || reduce) return;
+    var orig = [].slice.call(ul.children);
+    orig.forEach(function (li) {
+      var c = li.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      [].forEach.call(c.querySelectorAll('a'), function (a) { a.tabIndex = -1; });
+      ul.appendChild(c);
+    });
+    ul.classList.add('is-marquee');
+    var W = 0, pos = 0, speed = 0, MAX = 0.45, raf = 0, held = false, resume = 0, visible = false, last = 0;
+    function measure() { W = ul.children[orig.length].offsetLeft - ul.children[0].offsetLeft; }
+    function wrap(x) { if (!W) return x; while (x < 1) x += W; while (x >= W + 1) x -= W; return x; }
+    function frame(now) {
+      var dt = last ? Math.min(50, now - last) : 16; last = now;
+      var target = held ? 0 : MAX;
+      speed += (target - speed) * Math.min(1, dt / 420); /* ease in and out instead of jerking */
+      if (!held) { pos = wrap(pos - speed * dt / 16); ul.scrollLeft = pos; }
+      raf = visible ? requestAnimationFrame(frame) : 0;
+    }
+    function start() { if (!raf && visible) { last = 0; raf = requestAnimationFrame(frame); } }
+    function hold() { held = true; speed = 0; clearTimeout(resume); }
+    function release() {
+      clearTimeout(resume);
+      resume = setTimeout(function () { pos = wrap(ul.scrollLeft); ul.scrollLeft = pos; held = false; }, 5000);
+    }
+    ul.addEventListener('touchstart', hold, { passive: true });
+    ul.addEventListener('pointerdown', hold, { passive: true });
+    ul.addEventListener('touchend', release, { passive: true });
+    ul.addEventListener('touchcancel', release, { passive: true });
+    ul.addEventListener('pointerup', release, { passive: true });
+    ul.addEventListener('scroll', function () { /* a swipe past either end wraps around seamlessly */
+      if (!held || !W) return;
+      var x = ul.scrollLeft;
+      if (x < 1 || x >= W + 1) ul.scrollLeft = wrap(x);
+    }, { passive: true });
+    function init() { measure(); pos = W; ul.scrollLeft = pos; }
+    init();
+    window.addEventListener('resize', function () { measure(); pos = wrap(ul.scrollLeft); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(init);
+    if (hasIO) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) start(); }).observe(ul);
+    else { visible = true; start(); }
   }
 
   /* ---------- 13. "Replix vám sedí, ak": a tap-through self check, ticks draw when checked ---------- */
