@@ -18,9 +18,9 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/montserrat-latin-ext-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=202611081230">
+<link rel="stylesheet" href="assets/css/site.css?v=202611081116">
 <script>document.documentElement.classList.add('js')</script>
-<script src="assets/js/stats.js?v=202611081052" defer></script>
+<script src="assets/js/stats.js?v=202611081116" defer></script>
 </head>
 <body>
 <div class="curtain" aria-hidden="true"><img src="assets/img/fleur.svg" alt=""></div>
@@ -29,7 +29,7 @@
   <div class="wrap nav__in">
     <a class="brand" href="index.html#obsah" aria-label="AIVALM, Replix, na začiatok stránky"><img src="assets/img/fleur.svg" alt="" width="28" height="29">AIVALM</a>
     <a class="nav__link" href="spolupraca.html" data-nav="spolupraca" aria-current="page">Spolupráca</a>
-    <a class="btn nav__cta" href="#rezervacia"><span class="nav__cta-l">Dohodnúť stretnutie</span><span class="nav__cta-s">Stretnutie</span></a>
+    <a class="btn nav__cta" href="#formular"><span class="nav__cta-l">Stať sa partnerom</span><span class="nav__cta-s">Partnerstvo</span></a>
   </div>
 </header>
 <main id="obsah">
@@ -83,14 +83,62 @@
       <h2 id="pfor-h" data-rise>Je to pre vás, <span class="grey">ak ste…</span></h2>
       <p class="sec__lead" data-rise>…niekto, komu majitelia a obchodní riaditelia obchodných firiem dôverujú. Nemusíte rozumieť AI ani predávať. Stačí, že ich poznáte.</p>
     </div>
-    <ul class="pfor__list" data-group>
-      <li data-rise><b>Kouč alebo tréner obchodníkov</b><span>Školíte obchodné tímy, ktoré trávia hodiny písaním ponúk. Replix im ten čas vráti na predaj.</span></li>
-      <li data-rise><b>Marketingová alebo B2B agentúra</b><span>Firmám nosíte dopyty. My zariadime, aby ani jeden nečakal na cenu do zajtra.</span></li>
-      <li data-rise><b>Webové štúdio alebo e-shop agentúra</b><span>Robíte weby s formulárom na dopyt. Replix je logický ďalší krok pre vašich klientov.</span></li>
-      <li data-rise><b>Implementátor ERP alebo účtovník</b><span>Poznáte ich cenníky v Pohode, Money či SAP lepšie ako ktokoľvek iný.</span></li>
-      <li data-rise><b>Konzultant alebo poradca firiem</b><span>Pomáhate majiteľom rásť a hľadáte riešenia, ktoré sa dajú zaviesť za pár dní.</span></li>
-      <li data-rise><b>Obchodník alebo bývalý obchodný riaditeľ</b><span>Máte za sebou roky v obchode a kontakty na ľudí, ktorí rozhodujú.</span></li>
-    </ul>
+    <div data-group>
+    <div class="ppick" data-ppick data-rise>
+      <div class="ppick__tabs" role="tablist" aria-label="Kto ste">
+        <button type="button" class="ppick__tab" role="tab" id="pt-kouc" aria-controls="pp-kouc" aria-selected="true">Kouč alebo tréner</button>
+        <button type="button" class="ppick__tab" role="tab" id="pt-agentura" aria-controls="pp-agentura" aria-selected="false" tabindex="-1">Agentúra</button>
+        <button type="button" class="ppick__tab" role="tab" id="pt-web" aria-controls="pp-web" aria-selected="false" tabindex="-1">Webové štúdio</button>
+        <button type="button" class="ppick__tab" role="tab" id="pt-erp" aria-controls="pp-erp" aria-selected="false" tabindex="-1">ERP alebo účtovník</button>
+        <button type="button" class="ppick__tab" role="tab" id="pt-konzultant" aria-controls="pp-konzultant" aria-selected="false" tabindex="-1">Konzultant</button>
+        <button type="button" class="ppick__tab" role="tab" id="pt-obchodnik" aria-controls="pp-obchodnik" aria-selected="false" tabindex="-1">Obchodník</button>
+      </div>
+      <div class="ppick__stage">
+      <div class="ppick__panel" role="tabpanel" id="pp-kouc" aria-labelledby="pt-kouc" data-typ="Kouč alebo tréner obchodníkov">
+        <h3 class="ppick__h">Kouč alebo tréner obchodníkov</h3>
+        <p class="ppick__why">Školíte obchodné tímy, ktoré trávia hodiny písaním ponúk. Replix im ten čas vráti na predaj.</p>
+        <div class="ppick__how"><p class="ppick__k">Ako začať</p><p>Na školení sa opýtajte, koľko času tím denne strávi písaním ponúk. Ak je to hodina a viac, pošlite nám kontakt na riaditeľa.</p></div>
+        <p class="ppick__model"><b class="tnum">10 % alebo 30 %</b><span>podľa toho, či idete na stretnutie s nami</span></p>
+        <a class="btn ppick__cta" href="#formular" data-pick="Kouč alebo tréner obchodníkov">Chcem sa stať partnerom</a>
+      </div>
+      <div class="ppick__panel" role="tabpanel" id="pp-agentura" aria-labelledby="pt-agentura" data-typ="Marketingová alebo B2B agentúra" hidden>
+        <h3 class="ppick__h">Marketingová alebo B2B agentúra</h3>
+        <p class="ppick__why">Firmám nosíte dopyty. My zariadime, aby ani jeden nečakal na cenu do zajtra.</p>
+        <div class="ppick__how"><p class="ppick__k">Ako začať</p><p>Ponúknite Replix klientom, ktorým dnes generujete dopyty. Viac dopytov má zmysel len vtedy, keď na ne niekto rýchlo odpovie.</p></div>
+        <p class="ppick__model"><b class="tnum">30 %</b><span>spoločný predaj, Replix ako súčasť vašich služieb</span></p>
+        <a class="btn ppick__cta" href="#formular" data-pick="Marketingová alebo B2B agentúra">Chcem sa stať partnerom</a>
+      </div>
+      <div class="ppick__panel" role="tabpanel" id="pp-web" aria-labelledby="pt-web" data-typ="Webové štúdio alebo e-shop agentúra" hidden>
+        <h3 class="ppick__h">Webové štúdio alebo e-shop agentúra</h3>
+        <p class="ppick__why">Robíte weby s formulárom na dopyt. Replix je logický ďalší krok pre vašich klientov.</p>
+        <div class="ppick__how"><p class="ppick__k">Ako začať</p><p>Pri odovzdaní webu s dopytovým formulárom spomeňte, že na dopyty sa dá odpovedať automaticky. Zvyšok urobíme my.</p></div>
+        <p class="ppick__model"><b class="tnum">10 %</b><span>odporúčanie, pošlete kontakt</span></p>
+        <a class="btn ppick__cta" href="#formular" data-pick="Webové štúdio alebo e-shop agentúra">Chcem sa stať partnerom</a>
+      </div>
+      <div class="ppick__panel" role="tabpanel" id="pp-erp" aria-labelledby="pt-erp" data-typ="Implementátor ERP alebo účtovník" hidden>
+        <h3 class="ppick__h">Implementátor ERP alebo účtovník</h3>
+        <p class="ppick__why">Poznáte ich cenníky v Pohode, Money či SAP lepšie ako ktokoľvek iný.</p>
+        <div class="ppick__how"><p class="ppick__k">Ako začať</p><p>Cenník, ktorý už firma má vo svojom systéme, je pre Replix hotový základ. Stačí klientovi povedať, že sa ozveme.</p></div>
+        <p class="ppick__model"><b class="tnum">10 %</b><span>odporúčanie, pošlete kontakt</span></p>
+        <a class="btn ppick__cta" href="#formular" data-pick="Implementátor ERP alebo účtovník">Chcem sa stať partnerom</a>
+      </div>
+      <div class="ppick__panel" role="tabpanel" id="pp-konzultant" aria-labelledby="pt-konzultant" data-typ="Konzultant alebo poradca firiem" hidden>
+        <h3 class="ppick__h">Konzultant alebo poradca firiem</h3>
+        <p class="ppick__why">Pomáhate majiteľom rásť a hľadáte riešenia, ktoré sa dajú zaviesť za pár dní.</p>
+        <div class="ppick__how"><p class="ppick__k">Ako začať</p><p>Keď firma rieši pomalé ponuky alebo preťažených obchodníkov, odporučte riešenie, ktoré beží za pár dní, nie za pár mesiacov.</p></div>
+        <p class="ppick__model"><b class="tnum">10 %</b><span>odporúčanie, pošlete kontakt</span></p>
+        <a class="btn ppick__cta" href="#formular" data-pick="Konzultant alebo poradca firiem">Chcem sa stať partnerom</a>
+      </div>
+      <div class="ppick__panel" role="tabpanel" id="pp-obchodnik" aria-labelledby="pt-obchodnik" data-typ="Obchodník alebo obchodný riaditeľ" hidden>
+        <h3 class="ppick__h">Obchodník alebo obchodný riaditeľ</h3>
+        <p class="ppick__why">Máte za sebou roky v obchode a kontakty na ľudí, ktorí rozhodujú.</p>
+        <div class="ppick__how"><p class="ppick__k">Ako začať</p><p>Poznáte riaditeľov, ktorí rozhodujú. Dohodnite stretnutie, prídeme spolu a podiel máte vyšší.</p></div>
+        <p class="ppick__model"><b class="tnum">30 %</b><span>spoločný predaj, idete s nami na stretnutie</span></p>
+        <a class="btn ppick__cta" href="#formular" data-pick="Obchodník alebo obchodný riaditeľ">Chcem sa stať partnerom</a>
+      </div>
+      </div>
+    </div>
+    </div>
   </div>
 </section>
 
@@ -113,17 +161,56 @@
   </div>
 </section>
 
-<section class="sec psteps" id="ako" aria-labelledby="ako-h">
-  <div class="wrap">
-    <div class="sec__head" data-group>
-      <h2 id="ako-h" data-rise>Ako to <span class="grey">funguje</span></h2>
+<section class="psx" id="ako" data-psx aria-labelledby="ako-h">
+  <div class="psx__pin">
+    <div class="wrap">
+      <h2 class="psx__title" id="ako-h">Ako to <span class="grey">funguje</span></h2>
+      <div class="psx__grid">
+        <ol class="psx__steps">
+          <li class="psx__step is-on" data-s="0"><span class="psteps__n tnum">1</span><div><b>Pošlete nám kontakt</b><span>Cez formulár nižšie napíšete, akú firmu poznáte. Odo dňa, keď nám ju pošlete, ju vedieme ako vášho klienta.</span></div></li>
+          <li class="psx__step" data-s="1"><span class="psteps__n tnum">2</span><div><b>Dáte vedieť, že sa ozveme</b><span>Stačí jedna veta majiteľovi alebo riaditeľovi, že mu zavoláme. Pri spoločnom predaji idete s nami aj na stretnutie.</span></div></li>
+          <li class="psx__step" data-s="2"><span class="psteps__n tnum">3</span><div><b>Firma skúša mesiac zadarmo</b><span>Prvé 3 firmy majú prvý mesiac zadarmo, takže odporúčate bez rizika. Nastavenie aj ukážku robíme my.</span></div></li>
+          <li class="psx__step" data-s="3"><span class="psteps__n tnum">4</span><div><b>Vy dostávate 10 alebo 30 %</b><span>Z každej mesačnej platby klienta, kým zostane klientom. Podmienky máte vopred na papieri.</span></div></li>
+        </ol>
+        <div class="psx__stage" aria-hidden="true">
+          <div class="psx__scene" data-scene="0">
+            <div class="ui psx-card psx-form">
+              <p class="psx-k">Odporúčaná firma</p>
+              <p class="psx-field"><small>Firma</small><span data-type="Stavebniny XY, s.r.o.">Stavebniny XY, s.r.o.</span></p>
+              <p class="psx-field"><small>Kto rozhoduje</small><span data-type="konateľ, 6 obchodníkov">konateľ, 6 obchodníkov</span></p>
+              <span class="press-btn psx-send">Odoslať kontakt</span>
+            </div>
+            <p class="psx-stamp"><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span>Vedená ako vaša firma</p>
+          </div>
+          <div class="psx__scene" data-scene="1">
+            <div class="ui psx-card psx-chat">
+              <p class="psx-k">Správa riaditeľovi</p>
+              <p class="psx-bub psx-bub--out">Peter, ozve sa vám Daniel z AIVALM. Ukáže vám, ako odpovedať na dopyty do 2 minút.</p>
+              <p class="psx-typing"><i></i><i></i><i></i></p>
+              <p class="psx-bub psx-bub--in">Dobre, nech zavolá.</p>
+            </div>
+            <p class="psx-call"><span class="psx-ring"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span>Daniel Tomasch volá…</p>
+          </div>
+          <div class="psx__scene" data-scene="2">
+            <div class="ui psx-card psx-cal">
+              <div class="psx-cal__head"><p class="psx-k">Prvý mesiac</p><p class="psx-cal__price tnum">0 €<small>pre firmu</small></p></div>
+              <div class="psx-cal__grid"><i data-d="0"></i><i data-d="1"></i><i data-d="2"></i><i data-d="3"></i><i data-d="4"></i><i data-d="5"></i><i data-d="6"></i><i data-d="7"></i><i data-d="8"></i><i data-d="9"></i><i data-d="10"></i><i data-d="11"></i><i data-d="12"></i><i data-d="13"></i><i data-d="14"></i><i data-d="15"></i><i data-d="16"></i><i data-d="17"></i><i data-d="18"></i><i data-d="19"></i><i data-d="20"></i><i data-d="21"></i><i data-d="22"></i><i data-d="23"></i><i data-d="24"></i><i data-d="25"></i><i data-d="26"></i><i data-d="27"></i><i data-d="28"></i><i data-d="29"></i></div>
+              <p class="psx-cal__note">Nastavenie, ukážku aj ladenie robíme my</p>
+            </div>
+            <p class="psx-stamp psx-stamp--go"><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span>Firma pokračuje</p>
+          </div>
+          <div class="psx__scene" data-scene="3">
+            <div class="ui psx-card psx-pay">
+              <div class="psx-pay__head"><p class="psx-k">Váš podiel z platieb klienta</p>
+                <p class="psx-pay__sw"><span class="is-on" data-sw="10">10 %</span><span data-sw="30">30 %</span></p></div>
+              <div class="psx-pay__bars"><div class="psx-bar"><i></i><span>1.</span></div><div class="psx-bar"><i></i><span>2.</span></div><div class="psx-bar"><i></i><span>3.</span></div><div class="psx-bar"><i></i><span>4.</span></div><div class="psx-bar"><i></i><span>5.</span></div><div class="psx-bar"><i></i><span>6.</span></div><div class="psx-bar"><i></i><span>7.</span></div><div class="psx-bar"><i></i><span>8.</span></div></div>
+              <p class="psx-pay__note">mesiac po mesiaci, kým firma zostane klientom</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="psx__prog" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
     </div>
-    <ol class="psteps__list" data-group>
-      <li data-rise><span class="psteps__n tnum">1</span><b>Pošlete nám kontakt</b><span>Cez formulár nižšie napíšete, akú firmu poznáte. Odo dňa, keď nám ju pošlete, ju vedieme ako vášho klienta.</span></li>
-      <li data-rise><span class="psteps__n tnum">2</span><b>Dáte vedieť, že sa ozveme</b><span>Stačí jedna veta majiteľovi alebo riaditeľovi, že mu zavoláme. Pri spoločnom predaji idete s nami aj na stretnutie.</span></li>
-      <li data-rise><span class="psteps__n tnum">3</span><b>Firma skúša mesiac zadarmo</b><span>Prvé 3 firmy majú prvý mesiac zadarmo, takže odporúčate bez rizika. Nastavenie aj ukážku robíme my.</span></li>
-      <li data-rise><span class="psteps__n tnum">4</span><b>Vy dostávate 10 alebo 30 %</b><span>Z každej mesačnej platby klienta, kým zostane klientom. Podmienky máte vopred na papieri.</span></li>
-    </ol>
   </div>
 </section>
 
@@ -134,9 +221,9 @@
       <p class="sec__lead" data-rise>Vyberte si, koľko času do toho chcete dať. Čím viac pomôžete s predajom, tým vyšší je váš podiel.</p>
     </div>
     <div class="pmodels__grid" data-group>
-      <div class="pmodel" data-rise>
+      <div class="pmodel" data-rise data-tilt="4" data-spotlight>
         <p class="pmodel__k">Odporúčanie</p>
-        <p class="pmodel__pct tnum">10 %<small>z každej platby klienta</small></p>
+        <p class="pmodel__pct tnum" data-hovercount>10 %<small>z každej platby klienta</small></p>
         <p class="pmodel__h">Pošlete kontakt, zvyšok je na nás</p>
         <ul class="fit__list">
           <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>pošlete nám meno firmy a človeka, ktorý rozhoduje</span></li>
@@ -145,9 +232,9 @@
         </ul>
         <p class="pmodel__for">Ideálne pre koučov, účtovníkov, konzultantov a webové štúdiá</p>
       </div>
-      <div class="pmodel pmodel--ink" data-rise>
+      <div class="pmodel pmodel--ink" data-rise data-tilt="4" data-spotlight>
         <p class="pmodel__k">Spoločný predaj</p>
-        <p class="pmodel__pct tnum">30 %<small>z každej platby klienta</small></p>
+        <p class="pmodel__pct tnum" data-hovercount>30 %<small>z každej platby klienta</small></p>
         <p class="pmodel__h">Predávate s nami, máte vyšší podiel</p>
         <ul class="fit__list">
           <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>idete s nami na stretnutie alebo ho vediete sami</span></li>
@@ -166,12 +253,12 @@
       <h2 id="pwhy-h" data-rise>Prečo sa to <span class="grey">oplatí</span></h2>
     </div>
     <div class="facts" data-group>
-      <div class="fact" data-rise><h3>Pravidelný príjem každý mesiac</h3><p>Nie jednorazová odmena. 10 alebo 30 % dostávate z každej platby klienta, kým u nás zostane, a s každou ďalšou firmou rastie.</p></div>
-      <div class="fact" data-rise><h3>Ľahko sa odporúča</h3><p>Firma si Replix vyskúša na vlastných dopytoch a prvý mesiac nič neplatí. Vy odporúčate bez rizika a bez trápnych rozhovorov o cene.</p></div>
-      <div class="fact" data-rise><h3>Žiadna technická práca</h3><p>Nemusíte rozumieť AI ani cenníkom. Nastavenie, ladenie aj podporu robíme my, klient volá nám, nie vám.</p></div>
-      <div class="fact" data-rise><h3>Všetko na papieri</h3><p>Percento, splatnosť a podmienky spolupráce máte vopred v jednoduchej písomnej zmluve. Žiadne prekvapenia.</p></div>
-      <div class="fact" data-rise><h3>Vaše kontakty sú vaše</h3><p>Firmu, ktorú nám pošlete, vedieme ako vašu. Bez vášho súhlasu ju neoslovíme inou cestou.</p></div>
-      <div class="fact" data-rise><h3>Vyzeráte dobre u klienta</h3><p>Prinesiete im niečo, čo im ušetrí hodiny práce a pomôže predať viac. Takéto odporúčanie si ľudia pamätajú.</p></div>
+      <div class="fact" data-rise><h3>Pravidelný príjem každý mesiac</h3><p data-reveal>Nie jednorazová odmena. 10 alebo 30 % dostávate z každej platby klienta, kým u nás zostane, a s každou ďalšou firmou rastie.</p></div>
+      <div class="fact" data-rise><h3>Ľahko sa odporúča</h3><p data-reveal>Firma si Replix vyskúša na vlastných dopytoch a prvý mesiac nič neplatí. Vy odporúčate bez rizika a bez trápnych rozhovorov o cene.</p></div>
+      <div class="fact" data-rise><h3>Žiadna technická práca</h3><p data-reveal>Nemusíte rozumieť AI ani cenníkom. Nastavenie, ladenie aj podporu robíme my, klient volá nám, nie vám.</p></div>
+      <div class="fact" data-rise><h3>Všetko na papieri</h3><p data-reveal>Percento, splatnosť a podmienky spolupráce máte vopred v jednoduchej písomnej zmluve. Žiadne prekvapenia.</p></div>
+      <div class="fact" data-rise><h3>Vaše kontakty sú vaše</h3><p data-reveal>Firmu, ktorú nám pošlete, vedieme ako vašu. Bez vášho súhlasu ju neoslovíme inou cestou.</p></div>
+      <div class="fact" data-rise><h3>Vyzeráte dobre u klienta</h3><p data-reveal>Prinesiete im niečo, čo im ušetrí hodiny práce a pomôže predať viac. Takéto odporúčanie si ľudia pamätajú.</p></div>
     </div>
   </div>
 </section>
@@ -186,22 +273,28 @@
         <li><span class="psteps__n tnum">2</span>Dáme si krátky hovor a ukážeme vám Replix naživo.</li>
         <li><span class="psteps__n tnum">3</span>Pošleme vám jednoduchú zmluvu s podielom.</li>
       </ul>
-      <p class="cite" data-rise>Daniel Tomasch, zakladateľ AIVALM · <a href="tel:+421948475484">+421 948 475 484</a></p>
+      <figure class="pme" data-rise>
+        <img src="assets/img/daniel.jpg" alt="Daniel Tomasch" width="900" height="1124" loading="lazy" decoding="async">
+        <figcaption>
+          <p class="pme__q">„Každému partnerovi sa ozvem osobne. Podmienky dohodneme na rovinu a dostanete ich na papieri.“</p>
+          <p class="pme__n"><b>Daniel Tomasch</b><span>zakladateľ AIVALM · <a href="tel:+421948475484">+421 948 475 484</a></span></p>
+        </figcaption>
+      </figure>
     </div>
     <div class="panel" style="background:#fff">
       <form class="form" data-hook="partner" data-cooldown="120" novalidate>
-        <div class="field">
-          <label for="p-typ">Kto ste</label>
-          <select class="select" id="p-typ" name="typ">
-            <option>Kouč alebo tréner obchodníkov</option>
-            <option>Marketingová alebo B2B agentúra</option>
-            <option>Webové štúdio alebo e-shop agentúra</option>
-            <option>Implementátor ERP alebo účtovník</option>
-            <option>Konzultant alebo poradca firiem</option>
-            <option>Obchodník alebo obchodný riaditeľ</option>
-            <option>Iné</option>
-          </select>
-        </div>
+        <fieldset class="field pchips">
+          <legend>Kto ste</legend>
+          <div class="pchips__row">
+            <label class="pchip"><input type="radio" name="typ" value="Kouč alebo tréner obchodníkov" checked><span title="Kouč alebo tréner obchodníkov">Kouč alebo tréner</span></label>
+            <label class="pchip"><input type="radio" name="typ" value="Marketingová alebo B2B agentúra"><span title="Marketingová alebo B2B agentúra">Agentúra</span></label>
+            <label class="pchip"><input type="radio" name="typ" value="Webové štúdio alebo e-shop agentúra"><span title="Webové štúdio alebo e-shop agentúra">Webové štúdio</span></label>
+            <label class="pchip"><input type="radio" name="typ" value="Implementátor ERP alebo účtovník"><span title="Implementátor ERP alebo účtovník">ERP alebo účtovník</span></label>
+            <label class="pchip"><input type="radio" name="typ" value="Konzultant alebo poradca firiem"><span title="Konzultant alebo poradca firiem">Konzultant</span></label>
+            <label class="pchip"><input type="radio" name="typ" value="Obchodník alebo obchodný riaditeľ"><span title="Obchodník alebo obchodný riaditeľ">Obchodník</span></label>
+            <label class="pchip"><input type="radio" name="typ" value="Iné"><span>Iné</span></label>
+          </div>
+        </fieldset>
         <div class="row">
           <div class="field"><label for="p-meno">Meno a priezvisko</label><input class="input" id="p-meno" name="meno" autocomplete="name" required></div>
           <div class="field"><label for="p-email">E-mail</label><input class="input" id="p-email" name="email" type="email" autocomplete="email" required></div>
@@ -374,12 +467,12 @@
   </div>
 </footer>
 <script>document.querySelectorAll('[data-year]').forEach(function(e){e.textContent=new Date().getFullYear()})</script>
-<script src="assets/js/site.js?v=202611081052" defer></script>
-<script src="assets/vendor/gsap.min.js?v=202611081052" defer></script>
-<script src="assets/vendor/ScrollTrigger.min.js?v=202611081052" defer></script>
-<script src="assets/vendor/lenis.min.js?v=202611081052" defer></script>
-<script src="assets/js/fx.js?v=202611081052" defer></script>
-<script src="assets/js/bits.js?v=202611081230" defer></script>
-<script src="assets/js/partner.js?v=202611081052" defer></script>
+<script src="assets/js/site.js?v=202611081116" defer></script>
+<script src="assets/vendor/gsap.min.js?v=202611081116" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js?v=202611081116" defer></script>
+<script src="assets/vendor/lenis.min.js?v=202611081116" defer></script>
+<script src="assets/js/fx.js?v=202611081116" defer></script>
+<script src="assets/js/bits.js?v=202611081116" defer></script>
+<script src="assets/js/partner.js?v=202611081116" defer></script>
 </body>
 </html>

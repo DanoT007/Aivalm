@@ -44,6 +44,11 @@ for page in sorted((SRC / "pages").glob("*.html")):
     home = "" if page.name == "index.html" else "index.html"   # in-page anchors live on the home page
     head = (part["head"].replace("{{title}}", meta.get("title", "AIVALM"))
             .replace("{{desc}}", meta.get("desc", "")).replace("{{url}}", url).replace("{{home}}", home))
+    cta = meta.get("cta", "")  # "long label|short label|#anchor": page-specific nav action
+    if cta:
+        lab, short, href = [x.strip() for x in cta.split("|")]
+        head = re.sub(r'<a class="btn nav__cta" href="#rezervacia">.*?</a>',
+                      f'<a class="btn nav__cta" href="{href}"><span class="nav__cta-l">{lab}</span><span class="nav__cta-s">{short}</span></a>', head, flags=re.S)
     nav = meta.get("nav", "")
     if nav:
         head = head.replace(f'data-nav="{nav}"', f'data-nav="{nav}" aria-current="page"')
