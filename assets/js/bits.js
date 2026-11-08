@@ -402,7 +402,7 @@
   }
 
   /* ---------- 15. Orbit curtain: the meeting / partner buttons travel under a black curtain.
-     First time on a page: the fleur appears, a planet circles it once on a tilted orbit, the orbit fades,
+     First time on a page: the fleur appears, a textured ring draws itself around it, the ring fades,
      the fleur grows with a soft glow behind it, the curtain lifts on the target (~3.5 s).
      Every later click: the short version (curtain, fleur, there). No storage is used: "once" = once per page load. */
   function orbitCurtain() {
@@ -411,28 +411,27 @@
     if (!links.length) return;
     var ov = document.createElement('div');
     ov.className = 'orbitc'; ov.setAttribute('aria-hidden', 'true');
+    /* a textured ring like a planet's: several thin and wide bands with different opacity */
+    var BANDS = [[124, .9, .22], [130, 2.6, .38], [136, 1, .62], [141, 3.4, .3], [147, 1.2, .55], [153, .8, .2]];
+    function bands(clip) {
+      return BANDS.map(function (b) {
+        return '<ellipse cx="0" cy="0" rx="' + b[0] + '" ry="' + (b[0] * .115).toFixed(2) + '" stroke-width="' + b[1] + '" stroke-opacity="' + b[2] + '"' + (clip ? ' clip-path="url(#orbitc-near)"' : '') + '/>';
+      }).join('');
+    }
     ov.innerHTML = '<div class="orbitc__sys">' +
       '<div class="orbitc__glow"></div>' +
-      '<svg class="orbitc__orbit" viewBox="-160 -160 320 320"><g transform="rotate(-9)"><ellipse cx="0" cy="0" rx="140" ry="16"/></g></svg>' +
+      '<svg class="orbitc__orbit" viewBox="-160 -160 320 320"><g transform="rotate(-9)">' + bands(false) + '</g></svg>' +
       /* the near half of the ring is drawn again above the fleur, so the ring passes in front of it */
       '<svg class="orbitc__orbit orbitc__orbit--front" viewBox="-160 -160 320 320"><defs><clipPath id="orbitc-near"><rect x="-170" y="0" width="340" height="170"/></clipPath></defs>' +
-      '<g transform="rotate(-9)"><ellipse cx="0" cy="0" rx="140" ry="16" clip-path="url(#orbitc-near)"/></g></svg>' +
-      '<i class="orbitc__planet"></i>' +
+      '<g transform="rotate(-9)">' + bands(true) + '</g></svg>' +
       '<img class="orbitc__logo" src="assets/img/fleur.svg" alt="">' +
       '</div>';
     document.body.appendChild(ov);
-    var sys = ov.querySelector('.orbitc__sys'), ell = ov.querySelectorAll('ellipse'), planet = ov.querySelector('.orbitc__planet'),
-        logo = ov.querySelector('.orbitc__logo'), glow = ov.querySelector('.orbitc__glow');
-    var LEN = ell[0].getTotalLength ? ell[0].getTotalLength() : 600, played = false, busy = false;
-    var RX = 140, RY = 16, ROT = -9 * Math.PI / 180;
+    var ell = [].slice.call(ov.querySelectorAll('ellipse')), logo = ov.querySelector('.orbitc__logo'), glow = ov.querySelector('.orbitc__glow');
+    var lens = ell.map(function (e) { return e.getTotalLength ? e.getTotalLength() : 900; }), played = false, busy = false;
+    function len(i) { return lens[i]; }
+    function negLen(i) { return -lens[i]; }
 
-    function placePlanet(a) {        /* a: angle in radians on the tilted ellipse; behind the fleur on the far half */
-      var x = RX * Math.cos(a), y = RY * Math.sin(a);
-      var px = x * Math.cos(ROT) - y * Math.sin(ROT), py = x * Math.sin(ROT) + y * Math.cos(ROT);
-      var k = sys.offsetWidth / 320;
-      planet.style.transform = 'translate(' + (px * k).toFixed(2) + 'px,' + (py * k).toFixed(2) + 'px)';
-      planet.style.zIndex = Math.sin(a) < 0 ? 1 : 4;
-    }
     function jump(el, hash) {
       var y = el.getBoundingClientRect().top + window.scrollY - (el.classList.contains('story') ? 0 : 88);
       y = Math.max(0, Math.min(Math.round(y), document.documentElement.scrollHeight - window.innerHeight));
@@ -447,13 +446,11 @@
       busy = true;
       var full = !played; played = true;
       var l = window.AIVALM && window.AIVALM.lenis; if (l) l.stop();
-      gsap.killTweensOf([ov, logo, ell, planet, glow]);
+      gsap.killTweensOf([ov, logo, glow].concat(ell));
       gsap.set(ov, { yPercent: 100, autoAlpha: 1 });
       gsap.set(logo, { autoAlpha: 0, scale: .8 });
       gsap.set(glow, { autoAlpha: 0, scale: .5 });
-      gsap.set(ell, { strokeDasharray: LEN, strokeDashoffset: LEN, autoAlpha: 1 });
-      gsap.set(planet, { autoAlpha: 0 });
-      var o = { a: 0 }; placePlanet(o.a);  /* the SVG ellipse stroke starts at angle 0, so the planet leads the line it draws */
+      gsap.set(ell, { strokeDasharray: len, strokeDashoffset: len, autoAlpha: 1 });
       var tl = gsap.timeline({ onComplete: function () {
         gsap.set(ov, { autoAlpha: 0 }); busy = false; if (l) l.start();
       } });
@@ -461,12 +458,10 @@
         .to(logo, { autoAlpha: 1, scale: 1, duration: .45, ease: 'power2.out' }, .3);
       if (full) {
         tl.call(function () { jump(el, hash); }, null, .7)
-          /* one full lap: the orbit draws itself behind the planet */
-          .to(planet, { autoAlpha: 1, duration: .2 }, .62)
-          .fromTo(ell, { strokeDashoffset: -LEN }, { strokeDashoffset: 0, duration: 1.55, ease: 'power1.inOut' }, .62)
-          .to(o, { a: -Math.PI * 2, duration: 1.55, ease: 'power1.inOut', onUpdate: function () { placePlanet(o.a); } }, .62)
-          /* orbit and planet leave, the fleur grows with a soft glow behind it */
-          .to([ell, planet], { autoAlpha: 0, duration: .35, ease: 'power1.out' }, 2.2)
+          /* one full lap: the ring draws itself around the fleur, outer bands a touch later */
+          .fromTo(ell, { strokeDashoffset: negLen }, { strokeDashoffset: 0, duration: 1.45, ease: 'power2.inOut', stagger: { each: .025, from: 'center' } }, .62)
+          /* the ring leaves, the fleur grows with a soft glow behind it */
+          .to(ell, { autoAlpha: 0, duration: .35, ease: 'power1.out' }, 2.2)
           .to(logo, { scale: 1.4, duration: .6, ease: 'power2.out' }, 2.2)
           .to(glow, { autoAlpha: 1, scale: 1, duration: .6, ease: 'power2.out' }, 2.2)
           .to(ov, { yPercent: -100, duration: .7, ease: 'power3.inOut' }, 2.8);
