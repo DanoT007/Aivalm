@@ -929,3 +929,55 @@ html:not(.js) .ppick__panel+.ppick__panel{margin-top:40px}
 .pchip input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
 .pchip input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
 .pchip:active span{transform:scale(.97)}
+
+/* ===================== Pre koho je Replix (8. 11. 2026) ===================== */
+/* industries: pop in, hover inverts, arrow chips open the demo */
+.whochips li{transition:background var(--t-hover),color var(--t-hover),translate .3s var(--ease-out)}
+.whochips li:hover{background:var(--ink);color:#fff;translate:0 -2px}
+.whochip--go{padding:0!important}
+.whochip--go a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px 10px 18px;color:inherit;text-decoration:none;border-radius:inherit}
+.whochip--go svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease-out)}
+.whochip--go:hover svg{transform:translateX(3px)}
+.whochips__hint{margin:14px 0 0;font-size:.88rem;font-weight:600;color:var(--ash)}
+@media (max-width:820px){.whochip--go a{padding:9px 12px 9px 14px}}
+@media (prefers-reduced-motion:no-preference){
+  .whochips.is-wait li{opacity:0;transform:translateY(14px) scale(.85)}
+  .whochips.is-pop li{animation:chipPop .6s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(var(--i,0) * 70ms)}
+}
+@keyframes chipPop{from{opacity:0;transform:translateY(14px) scale(.85)}to{opacity:1;transform:none}}
+
+/* self check in the dark card */
+.fitq__hint{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:-6px 0 18px;font-size:.88rem;color:var(--fog);font-weight:600}
+.fitq__hint b{color:#fff;background:var(--graphite);border-radius:999px;padding:4px 11px;font-size:.82rem}
+.fit--quiz .fit__list li{cursor:pointer;border-radius:14px;margin:0 -10px;padding:8px 10px;transition:background var(--t-hover)}
+.fit--quiz .fit__list li:hover{background:rgba(255,255,255,.06)}
+.fit--quiz .fit__list li:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.fit--quiz .fit__list{gap:6px}
+.fit--quiz .tick{--fill:0;border-color:#6b6b6b;transition:border-color .25s,transform .45s cubic-bezier(.34,1.56,.64,1)}
+.fit--quiz .tick::before{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.fit--quiz .tick svg path{stroke-dasharray:12;stroke-dashoffset:12;transition:stroke-dashoffset .35s .12s var(--ease-out)}
+.fit--quiz li[aria-checked=true] .tick{--fill:1;border-color:#fff}
+.fit--quiz li[aria-checked=true] .tick svg path{stroke-dashoffset:0}
+.fit--quiz li[aria-checked=true]>span:last-child{color:#fff}
+.fit--quiz li>span:last-child{color:#cfcfcf;transition:color .25s}
+.fit--quiz.is-wait .tick{transform:scale(0)}
+.fit--quiz.is-wait.is-drawn .tick{transform:none;transition-delay:calc(var(--i,0) * 110ms + 150ms)}
+.fitq__res{margin-top:22px;padding:18px 20px;border-radius:20px;background:#fff;color:var(--ink);animation:fitIn .6s cubic-bezier(.34,1.56,.64,1)}
+.fitq__res p{margin:0 0 14px;line-height:1.45}
+.fitq__acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
+.fitq__acts .btn{min-height:46px}
+.fitq__acts .link{color:var(--ink)}
+@keyframes fitIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+
+/* strike-through in the light card */
+.fit--strike .fit__list li>span:last-child{position:relative;transition:color .5s ease;transition-delay:calc(var(--i,0) * 160ms + 250ms)}
+.fit--strike .fs{background:linear-gradient(rgba(11,11,11,.45),rgba(11,11,11,.45)) no-repeat 0 58%/0% 1.5px;-webkit-box-decoration-break:slice;box-decoration-break:slice;transition:background-size .9s var(--ease-out);transition-delay:calc(var(--i,0) * 160ms + 120ms)}
+.fit--strike .cross{transition:transform .35s var(--ease-out),opacity .3s;transition-delay:calc(var(--i,0) * 160ms)}
+.fit--strike.is-struck .cross{transform:scaleX(1.6);opacity:.4}
+.fit--strike.is-struck .fit__list li>span:last-child{color:var(--ash)}
+.fit--strike.is-struck .fs{background-size:100% 1.5px}
+
+/* tilt + spotlight on both cards */
+.fitgrid{perspective:1600px}
+.fit.spot::before{inset:0;border-radius:inherit;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.1),transparent 70%)}
+.fit--no.spot::before{background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(11,11,11,.06),transparent 70%)}

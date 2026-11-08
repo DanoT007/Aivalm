@@ -338,6 +338,68 @@
     });
   }
 
+  /* ---------- 12. "Pre koho": industries pop in one by one; the ones with an arrow open the demo ---------- */
+  function whoChips() {
+    var ul = document.querySelector('[data-whochips]');
+    if (!ul) return;
+    Array.prototype.forEach.call(ul.children, function (li, i) { li.style.setProperty('--i', i); });
+    if (!reduce && hasIO) {
+      ul.classList.add('is-wait');
+      onceVisible(ul, '0px 0px -12% 0px', function () { ul.classList.add('is-pop'); });
+    }
+    ul.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-ind-go]'); if (!a) return;
+      var b = document.querySelector('[data-ind="' + a.dataset.indGo + '"]');
+      if (b && b.getAttribute('aria-pressed') !== 'true') b.click();
+    });
+  }
+
+  /* ---------- 13. "Replix vám sedí, ak": a tap-through self check, ticks draw when checked ---------- */
+  function fitQuiz() {
+    var card = document.querySelector('[data-quiz]');
+    if (!card) return;
+    var items = [].slice.call(card.querySelectorAll('.fit__list li'));
+    var res = card.querySelector('.fitq__res'), total = items.length;
+    card.classList.add('fit--quiz');
+    var hint = document.createElement('p');
+    hint.className = 'fitq__hint';
+    hint.innerHTML = '<span>Odkliknite, čo platí pre vás</span><b class="tnum" aria-live="polite">0 z ' + total + '</b>';
+    card.querySelector('.fit__h').after(hint);
+    var count = hint.querySelector('b');
+    function update() {
+      var n = items.filter(function (li) { return li.getAttribute('aria-checked') === 'true'; }).length;
+      count.textContent = n + ' z ' + total;
+      var ok = n >= 3;
+      if (ok && res.hidden) { res.hidden = false; card.classList.add('is-fit'); }
+      else if (!ok && !res.hidden) { res.hidden = true; card.classList.remove('is-fit'); }
+    }
+    items.forEach(function (li, i) {
+      li.setAttribute('role', 'checkbox'); li.setAttribute('aria-checked', 'false'); li.tabIndex = 0;
+      li.style.setProperty('--i', i);
+      function toggle() { li.setAttribute('aria-checked', li.getAttribute('aria-checked') === 'true' ? 'false' : 'true'); update(); }
+      li.addEventListener('click', toggle);
+      li.addEventListener('keydown', function (e) { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); } });
+    });
+    if (!reduce && hasIO) {
+      card.classList.add('is-wait');
+      onceVisible(card, '0px 0px -18% 0px', function () { card.classList.add('is-drawn'); });
+    } else card.classList.add('is-drawn');
+  }
+
+  /* ---------- 14. "Skôr nie, ak": the dashes stretch into a strike-through, one line after another ---------- */
+  function fitStrike() {
+    var card = document.querySelector('[data-strike]');
+    if (!card) return;
+    [].forEach.call(card.querySelectorAll('.fit__list li'), function (li, i) {
+      li.style.setProperty('--i', i);
+      var t = li.querySelector('span:last-child'), w = document.createElement('span');
+      w.className = 'fs'; w.textContent = t.textContent; t.textContent = ''; t.appendChild(w); /* inline wrapper: the line runs through every wrapped row */
+    });
+    card.classList.add('fit--strike');
+    if (reduce || !hasIO) { card.classList.add('is-struck'); return; }
+    onceVisible(card, '0px 0px -25% 0px', function () { setTimeout(function () { card.classList.add('is-struck'); }, 350); });
+  }
+
   /* scripts are deferred, so the DOM is ready; GSAP is loaded before this file */
   countUp();
   dotGrid(document.querySelector('.rhero, .phero2'), false);
@@ -348,6 +410,9 @@
   tilt();
   circularText();
   faqAnim();
+  whoChips();
+  fitQuiz();
+  fitStrike();
   /* stories.js (loaded after this file) pins sections above; build the scroll triggers once it has */
   if (document.readyState === 'complete') scrollReveal();
   else window.addEventListener('load', function () { scrollReveal(); if (window.ScrollTrigger) ScrollTrigger.refresh(); });

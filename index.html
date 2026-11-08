@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/montserrat-latin-ext-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=202611081500">
+<link rel="stylesheet" href="assets/css/site.css?v=202611081600">
 <script>document.documentElement.classList.add('js')</script>
 <script src="assets/js/stats.js?v=202610311932" defer></script>
 </head>
@@ -210,11 +210,12 @@ Martin</textarea>
       <h2 id="who-h" data-rise>Pre koho je <span class="grey">Replix</span></h2>
       <p class="sec__lead" data-rise>Pre veľkoobchody, distribútorov a výrobcov, ktorým chodí veľa dopytov e-mailom a odpovedajú na ne obchodníci. Teda ľudia, ktorí by mali predávať, nie prepisovať cenníky do e-mailov.</p>
     </div>
-    <ul class="whochips" data-group>
-      <li data-rise>Stavebniny a stavebný materiál</li><li data-rise>Spojovací materiál a náradie</li><li data-rise>Kúrenie, voda, sanita</li><li data-rise>Elektro veľkoobchod</li><li data-rise>Hutný materiál</li><li data-rise>Obaly a spotrebný materiál</li><li data-rise>Papier, hygiena, čistiace prostriedky</li><li data-rise>Výrobcovia s pevným cenníkom</li>
+    <ul class="whochips" data-whochips>
+      <li class="whochip--go"><a href="#ukazka" data-ind-go="stavebniny" aria-label="Stavebniny a stavebný materiál, otvoriť živú ukážku s dopytom z tohto odvetvia">Stavebniny a stavebný materiál<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg></a></li><li class="whochip--go"><a href="#ukazka" data-ind-go="spojovaci" aria-label="Spojovací materiál a náradie, otvoriť živú ukážku s dopytom z tohto odvetvia">Spojovací materiál a náradie<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg></a></li><li>Kúrenie, voda, sanita</li><li class="whochip--go"><a href="#ukazka" data-ind-go="elektro" aria-label="Elektro veľkoobchod, otvoriť živú ukážku s dopytom z tohto odvetvia">Elektro veľkoobchod<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg></a></li><li>Hutný materiál</li><li>Obaly a spotrebný materiál</li><li class="whochip--go"><a href="#ukazka" data-ind-go="papier" aria-label="Papier, hygiena, čistiace prostriedky, otvoriť živú ukážku s dopytom z tohto odvetvia">Papier, hygiena, čistiace prostriedky<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg></a></li><li>Výrobcovia s pevným cenníkom</li>
     </ul>
+    <p class="whochips__hint">Odvetvia so šípkou si môžete hneď vyskúšať v živej ukážke.</p>
     <div class="fitgrid" data-group>
-      <div class="fit" data-rise>
+      <div class="fit" data-rise data-quiz data-tilt="3" data-spotlight>
         <p class="fit__h">Replix vám sedí, ak</p>
         <ul class="fit__list">
           <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>vám denne chodia dopyty e-mailom, ideálne 10 a viac</span></li>
@@ -222,8 +223,12 @@ Martin</textarea>
           <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>ponuky dnes píšu obchodníci ručne a zaberá im to hodiny</span></li>
           <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>zákazníci často dopytujú viacerých dodávateľov naraz</span></li>
         </ul>
+        <div class="fitq__res" hidden>
+          <p><b>Replix vám sedí.</b> Vyskúšajte ho na vlastnom dopyte, ponuku uvidíte zvyčajne do 30 sekúnd.</p>
+          <div class="fitq__acts"><a class="btn" href="#ukazka">Vyskúšať naživo</a><a class="link" href="#rezervacia">Dohodnúť stretnutie</a></div>
+        </div>
       </div>
-      <div class="fit fit--no" data-rise>
+      <div class="fit fit--no" data-rise data-strike data-tilt="3" data-spotlight>
         <p class="fit__h">Skôr nie, ak</p>
         <ul class="fit__list">
           <li><span class="cross" aria-hidden="true">–</span><span>je každá zákazka projekt na mieru podľa výkresu, bez cenníka</span></li>
@@ -534,7 +539,7 @@ Martin</textarea>
 <script src="assets/vendor/lenis.min.js?v=202610311932" defer></script>
 <script src="assets/vendor/DrawSVGPlugin.min.js?v=202610311932" defer></script>
 <script src="assets/js/fx.js?v=202610311932" defer></script>
-<script src="assets/js/bits.js?v=202611081500" defer></script>
+<script src="assets/js/bits.js?v=202611081600" defer></script>
 <script src="assets/js/stories.js?v=202610311932" defer></script>
 <script src="assets/js/demo.js?v=202610311932" defer></script>
 <script src="assets/js/kalkulacka.js?v=202611032115" defer></script>
