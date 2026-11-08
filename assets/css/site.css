@@ -743,3 +743,19 @@ html.lenis,html.lenis body{height:auto}
 .cite a{color:inherit}
 
 @media (max-width:600px){.phero2 .hero__actions{flex-direction:column-reverse;align-items:center}}
+
+/* ---------- React Bits effects (assets/js/bits.js) ---------- */
+/* Blur Text: headline words go from blurred and low to sharp */
+@media (prefers-reduced-motion:no-preference){
+  .bits-blur .bw{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(.32em);will-change:transform,filter,opacity}
+  .bits-blur.is-in .bw{opacity:1;filter:blur(0);transform:none;transition:opacity .7s var(--ease-out),filter .7s var(--ease-out),transform .9s var(--ease-out);transition-delay:var(--d,0ms)}
+}
+/* Scroll Reveal words keep inline flow */
+[data-reveal] .bw{display:inline}
+/* Dot Grid behind the hero */
+.has-dotgrid{position:relative;isolation:isolate}
+.has-dotgrid>.dotgrid{position:absolute;inset:0;z-index:-1;pointer-events:none;display:block}
+@media (max-width:820px){.has-dotgrid>.dotgrid{opacity:.7}}
+/* Click Spark overlay */
+.sparks{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9998;display:none}
+.sparks.is-on{display:block}

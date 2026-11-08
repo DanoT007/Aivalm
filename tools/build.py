@@ -55,7 +55,7 @@ for page in sorted((SRC / "pages").glob("*.html")):
             '<script src="assets/vendor/lenis.min.js" defer></script>\n')
     if "stories.js" in meta.get("scripts", ""):
         base += '<script src="assets/vendor/DrawSVGPlugin.min.js" defer></script>\n'
-    scripts = base + '<script src="assets/js/fx.js" defer></script>\n' + scripts
+    scripts = base + '<script src="assets/js/fx.js" defer></script>\n<script src="assets/js/bits.js" defer></script>\n' + scripts
     foot = part["footer"].replace("{{scripts}}", scripts).replace("{{home}}", home)
     body = raw.replace("<!--@booking-->", part["booking"])
     out = head + body + foot
