@@ -5,6 +5,7 @@
    - Count Up    : big numbers count up once when they come into view
    - Dot Grid    : quiet dot field behind the hero, dots move away from the cursor
    - Click Spark : a small spark around the pointer when a button is clicked
+   - Text Pressure, Spotlight Card, Tilted Card, Circular Text, Squares, Animated List (FAQ)
    Every effect is skipped (content shown in its final state) with prefers-reduced-motion. */
 (function () {
   'use strict';
@@ -223,10 +224,173 @@
     });
   }
 
+  /* ---------- 6. Text Pressure: the AIVALM wordmark in the footer leans towards the cursor ---------- */
+  function textPressure() {
+    var word = document.querySelector('.foot__word');
+    if (!word || reduce || !fine) return;
+    var letters = [];
+    Array.prototype.slice.call(word.childNodes).forEach(function (n) {
+      if (n.nodeType !== 3 || !n.textContent.trim()) return;
+      var frag = document.createDocumentFragment();
+      n.textContent.trim().split('').forEach(function (ch) {
+        var s = document.createElement('span'); s.className = 'tp'; s.textContent = ch;
+        frag.appendChild(s); letters.push({ el: s, k: 0 });
+      });
+      word.replaceChild(frag, n);
+    });
+    if (!letters.length) return;
+    word.classList.add('has-tp');
+    var foot = word.closest('footer') || word, mx = -1e4, my = -1e4, raf = 0;
+    function frame() {
+      raf = 0; var busy = false;
+      letters.forEach(function (l) {
+        var r = l.el.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        var d = Math.hypot(mx - cx, (my - cy) * 0.6), t = Math.max(0, 1 - d / (r.height * 1.4));
+        l.k += (t - l.k) * 0.16;
+        if (Math.abs(t - l.k) > 0.002) busy = true;
+        l.el.style.transform = 'scale(' + (1 - l.k * 0.08).toFixed(3) + ',' + (1 + l.k * 0.22).toFixed(3) + ')';
+        l.el.style.color = l.k > 0.01 ? 'rgb(' + Math.round(255 - l.k * 60) + ',' + Math.round(255 - l.k * 60) + ',' + Math.round(255 - l.k * 60) + ')' : '';
+      });
+      if (busy) raf = requestAnimationFrame(frame);
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(frame); }
+    foot.addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; kick(); }, { passive: true });
+    foot.addEventListener('pointerleave', function () { mx = my = -1e4; kick(); });
+  }
+
+  /* ---------- 7. Spotlight Card: a soft grey light follows the cursor over the safety facts ---------- */
+  function spotlight() {
+    if (!fine) return;
+    Array.prototype.forEach.call(document.querySelectorAll('.fact, [data-spotlight]'), function (el) {
+      el.classList.add('spot');
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }, { passive: true });
+    });
+  }
+
+  /* ---------- 8. Tilted Card: the live-demo window tilts slightly with the cursor ---------- */
+  function tilt() {
+    if (reduce || !fine) return;
+    Array.prototype.forEach.call(document.querySelectorAll('.demo, [data-tilt]'), function (el) {
+      var MAX = +(el.dataset.tilt || 3), tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+      el.parentElement.classList.add('tilt-host');
+      function frame() {
+        cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
+        var a = Math.hypot(cx, cy);
+        el.style.rotate = a < 0.01 ? '' : (cy / a).toFixed(4) + ' ' + (cx / a).toFixed(4) + ' 0 ' + a.toFixed(3) + 'deg';
+        raf = (Math.abs(tx - cx) > 0.005 || Math.abs(ty - cy) > 0.005) ? requestAnimationFrame(frame) : 0;
+      }
+      function kick() { if (!raf) raf = requestAnimationFrame(frame); }
+      el.addEventListener('pointermove', function (e) {
+        /* stay still while the visitor is typing into the demo */
+        if (el.contains(document.activeElement) && /INPUT|TEXTAREA/.test(document.activeElement.tagName)) { tx = ty = 0; kick(); return; }
+        var r = el.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 2 * MAX;
+        ty = -((e.clientY - r.top) / r.height - 0.5) * 2 * MAX;
+        kick();
+      }, { passive: true });
+      el.addEventListener('pointerleave', function () { tx = ty = 0; kick(); });
+      el.addEventListener('focusin', function () { tx = ty = 0; kick(); });
+    });
+  }
+
+  /* ---------- 9. Circular Text: a slowly turning badge on the pilot card ---------- */
+  function circularText() {
+    var card = document.querySelector('.pplan__card');
+    if (!card) return;
+    var txt = 'PRVÝ MESIAC ZADARMO • LEN PRE 3 FIRMY • ';
+    var b = document.createElement('div');
+    b.className = 'ctext'; b.setAttribute('aria-hidden', 'true');
+    b.innerHTML = '<svg viewBox="0 0 120 120"><defs><path id="ctext-p" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>' +
+      '<text><textPath href="#ctext-p" textLength="288" lengthAdjust="spacing">' + txt + '</textPath></text></svg>' +
+      '<img src="assets/img/fleur.svg" alt="">';
+    card.appendChild(b);
+  }
+
+  /* ---------- 10. Squares: a quiet moving grid behind the dark booking section ---------- */
+  function squares() {
+    var host = document.querySelector('#rezervacia');
+    if (!host) return;
+    var cv = document.createElement('canvas');
+    cv.className = 'squares'; cv.setAttribute('aria-hidden', 'true');
+    host.insertBefore(cv, host.firstChild);
+    host.classList.add('has-squares');
+    var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = 1, S = 56, off = 0, hover = null, visible = false, raf = 0, last = 0;
+    function size() {
+      var r = host.getBoundingClientRect(); dpr = Math.min(2, window.devicePixelRatio || 1);
+      W = r.width; H = r.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      cv.style.width = W + 'px'; cv.style.height = H + 'px'; draw();
+    }
+    function draw() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+      var o = off % S;
+      if (hover) {
+        var hx = Math.floor((hover.x + o) / S) * S - o, hy = Math.floor((hover.y + o) / S) * S - o;
+        ctx.fillStyle = 'rgba(255,255,255,.05)'; ctx.fillRect(hx, hy, S, S);
+      }
+      ctx.strokeStyle = 'rgba(255,255,255,.065)'; ctx.lineWidth = 1; ctx.beginPath();
+      for (var x = -o; x < W; x += S) { ctx.moveTo(Math.round(x) + .5, 0); ctx.lineTo(Math.round(x) + .5, H); }
+      for (var y = -o; y < H; y += S) { ctx.moveTo(0, Math.round(y) + .5); ctx.lineTo(W, Math.round(y) + .5); }
+      ctx.stroke();
+    }
+    function frame(t) {
+      raf = 0; if (!visible) return;
+      if (last) off += (t - last) * 0.012; last = t;
+      draw(); raf = requestAnimationFrame(frame);
+    }
+    size();
+    if ('ResizeObserver' in window) new ResizeObserver(size).observe(host); else window.addEventListener('resize', size);
+    if (reduce) return;
+    if (hasIO) new IntersectionObserver(function (en) {
+      visible = en[0].isIntersecting; last = 0;
+      if (visible && !raf) raf = requestAnimationFrame(frame);
+    }).observe(host);
+    if (fine) {
+      host.addEventListener('pointermove', function (e) { var r = host.getBoundingClientRect(); hover = { x: e.clientX - r.left, y: e.clientY - r.top }; }, { passive: true });
+      host.addEventListener('pointerleave', function () { hover = null; });
+    }
+  }
+
+  /* ---------- 11. Animated List: FAQ answers open and close smoothly ---------- */
+  function faqAnim() {
+    if (reduce) return;
+    Array.prototype.forEach.call(document.querySelectorAll('.faq__item'), function (d) {
+      var sum = d.querySelector('summary'), body = d.querySelector('summary ~ *');
+      if (!sum || !body) return;
+      var busy = null;
+      sum.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (busy) busy.cancel();
+        var opening = !d.open || d.classList.contains('is-closing');
+        d.classList.remove('is-closing');
+        if (opening) d.open = true; else d.classList.add('is-closing');
+        var h = body.scrollHeight;
+        busy = body.animate(opening
+          ? [{ height: '0px', opacity: 0, transform: 'translateY(-6px)' }, { height: h + 'px', opacity: 1, transform: 'none' }]
+          : [{ height: h + 'px', opacity: 1, transform: 'none' }, { height: '0px', opacity: 0, transform: 'translateY(-6px)' }],
+          { duration: opening ? 420 : 300, easing: 'cubic-bezier(.22,1,.36,1)' });
+        body.style.overflow = 'hidden';
+        busy.onfinish = function () {
+          busy = null; body.style.overflow = '';
+          if (!opening) { d.open = false; d.classList.remove('is-closing'); }
+        };
+      });
+    });
+  }
+
   /* scripts are deferred, so the DOM is ready; GSAP is loaded before this file */
   countUp();
   dotGrid();
   clickSpark();
+  textPressure();
+  spotlight();
+  tilt();
+  circularText();
+  squares();
+  faqAnim();
   /* stories.js (loaded after this file) pins sections above; build the scroll triggers once it has */
   if (document.readyState === 'complete') scrollReveal();
   else window.addEventListener('load', function () { scrollReveal(); if (window.ScrollTrigger) ScrollTrigger.refresh(); });

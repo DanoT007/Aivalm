@@ -759,3 +759,25 @@ html.lenis,html.lenis body{height:auto}
 /* Click Spark overlay */
 .sparks{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9998;display:none}
 .sparks.is-on{display:block}
+/* Text Pressure: footer wordmark letters */
+.foot__word.has-tp .tp{display:inline-block;transform-origin:50% 100%;will-change:transform}
+/* Spotlight Card */
+.spot{position:relative;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:0 -22px;z-index:-1;border-radius:20px;pointer-events:none;opacity:0;transition:opacity .35s var(--ease-out);background:radial-gradient(280px circle at calc(var(--mx,50%) + 22px) var(--my,50%),rgba(11,11,11,.06),transparent 70%)}
+.on-ink .spot::before{background:radial-gradient(280px circle at calc(var(--mx,50%) + 22px) var(--my,50%),rgba(255,255,255,.08),transparent 70%)}
+.spot:hover::before{opacity:1}
+/* Tilted Card */
+.tilt-host{perspective:1600px}
+/* Circular Text badge on the pilot card */
+.ctext{position:absolute;top:clamp(16px,2.4vw,26px);right:clamp(16px,2.4vw,26px);width:clamp(78px,7vw,98px);aspect-ratio:1;pointer-events:none}
+.ctext svg{width:100%;height:100%;display:block;overflow:visible;animation:ctextSpin 22s linear infinite}
+.ctext text{fill:#cfcfcf;font-size:10.4px;font-weight:700;letter-spacing:.06em}
+.ctext img{position:absolute;inset:0;margin:auto;width:28%;height:auto;filter:invert(1)}
+.pplan__card:hover .ctext svg{animation-duration:9s}
+@keyframes ctextSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.ctext svg{animation:none}}
+/* Squares behind the dark booking section */
+.has-squares{position:relative;isolation:isolate}
+.has-squares>.squares{position:absolute;inset:0;z-index:-1;pointer-events:none;display:block}
+/* Animated FAQ */
+.faq__item.is-closing .faq__ic::after{transform:translate(-50%,-50%) rotate(90deg)}
