@@ -5,7 +5,7 @@
    - Count Up    : big numbers count up once when they come into view
    - Dot Grid    : quiet dot field behind the hero, dots move away from the cursor
    - Click Spark : a small spark around the pointer when a button is clicked
-   - Text Pressure, Spotlight Card, Tilted Card, Circular Text, Squares, Animated List (FAQ)
+   - Text Pressure, Spotlight Card, Tilted Card, Circular Text, Animated List; Dot Grid also behind the dark booking section (FAQ)
    Every effect is skipped (content shown in its final state) with prefers-reduced-motion. */
 (function () {
   'use strict';
@@ -99,9 +99,10 @@
   }
 
   /* ---------- 4. Dot Grid behind the hero ---------- */
-  function dotGrid() {
-    var host = document.querySelector('.rhero, .phero2');
+  /* light: stone dots darkening to ash near the cursor; dark: graphite dots brightening towards white */
+  function dotGrid(host, dark) {
     if (!host) return;
+    var C0 = dark ? 58 : 228, C1 = dark ? 235 : 107;
     var cv = document.createElement('canvas');
     cv.className = 'dotgrid'; cv.setAttribute('aria-hidden', 'true');
     host.insertBefore(cv, host.firstChild);
@@ -129,7 +130,7 @@
       for (var i = 0; i < dots.length; i++) {
         var d = dots[i];
         /* stone #E4E4E4 at rest, towards ash #6B6B6B near the cursor */
-        var c = Math.round(228 - 121 * d.h);
+        var c = Math.round(C0 + (C1 - C0) * d.h);
         ctx.fillStyle = 'rgb(' + c + ',' + c + ',' + c + ')';
         ctx.beginPath();
         ctx.arc(d.x + d.dx, d.y + d.dy, R + d.h * 0.8, 0, 6.2832);
@@ -169,7 +170,7 @@
     host.addEventListener('pointerleave', function () { mouse.x = mouse.y = -9999; kick(); });
     /* click: a soft shockwave through the grid */
     host.addEventListener('pointerdown', function (e) {
-      if (e.target.closest('.demo, a, button, input, textarea, select, label')) return;
+      if (e.target.closest('.demo, .panel, a, button, input, textarea, select, label')) return;
       var r = cv.getBoundingClientRect(), cx = e.clientX - r.left, cy = e.clientY - r.top;
       dots.forEach(function (d) {
         var ex = d.x - cx, ey = d.y - cy, dist = Math.sqrt(ex * ex + ey * ey);
@@ -310,50 +311,6 @@
     card.appendChild(b);
   }
 
-  /* ---------- 10. Squares: a quiet moving grid behind the dark booking section ---------- */
-  function squares() {
-    var host = document.querySelector('#rezervacia');
-    if (!host) return;
-    var cv = document.createElement('canvas');
-    cv.className = 'squares'; cv.setAttribute('aria-hidden', 'true');
-    host.insertBefore(cv, host.firstChild);
-    host.classList.add('has-squares');
-    var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = 1, S = 56, off = 0, hover = null, visible = false, raf = 0, last = 0;
-    function size() {
-      var r = host.getBoundingClientRect(); dpr = Math.min(2, window.devicePixelRatio || 1);
-      W = r.width; H = r.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-      cv.style.width = W + 'px'; cv.style.height = H + 'px'; draw();
-    }
-    function draw() {
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-      var o = off % S;
-      if (hover) {
-        var hx = Math.floor((hover.x + o) / S) * S - o, hy = Math.floor((hover.y + o) / S) * S - o;
-        ctx.fillStyle = 'rgba(255,255,255,.05)'; ctx.fillRect(hx, hy, S, S);
-      }
-      ctx.strokeStyle = 'rgba(255,255,255,.065)'; ctx.lineWidth = 1; ctx.beginPath();
-      for (var x = -o; x < W; x += S) { ctx.moveTo(Math.round(x) + .5, 0); ctx.lineTo(Math.round(x) + .5, H); }
-      for (var y = -o; y < H; y += S) { ctx.moveTo(0, Math.round(y) + .5); ctx.lineTo(W, Math.round(y) + .5); }
-      ctx.stroke();
-    }
-    function frame(t) {
-      raf = 0; if (!visible) return;
-      if (last) off += (t - last) * 0.012; last = t;
-      draw(); raf = requestAnimationFrame(frame);
-    }
-    size();
-    if ('ResizeObserver' in window) new ResizeObserver(size).observe(host); else window.addEventListener('resize', size);
-    if (reduce) return;
-    if (hasIO) new IntersectionObserver(function (en) {
-      visible = en[0].isIntersecting; last = 0;
-      if (visible && !raf) raf = requestAnimationFrame(frame);
-    }).observe(host);
-    if (fine) {
-      host.addEventListener('pointermove', function (e) { var r = host.getBoundingClientRect(); hover = { x: e.clientX - r.left, y: e.clientY - r.top }; }, { passive: true });
-      host.addEventListener('pointerleave', function () { hover = null; });
-    }
-  }
-
   /* ---------- 11. Animated List: FAQ answers open and close smoothly ---------- */
   function faqAnim() {
     if (reduce) return;
@@ -383,13 +340,13 @@
 
   /* scripts are deferred, so the DOM is ready; GSAP is loaded before this file */
   countUp();
-  dotGrid();
+  dotGrid(document.querySelector('.rhero, .phero2'), false);
+  dotGrid(document.querySelector('#rezervacia'), true);
   clickSpark();
   textPressure();
   spotlight();
   tilt();
   circularText();
-  squares();
   faqAnim();
   /* stories.js (loaded after this file) pins sections above; build the scroll triggers once it has */
   if (document.readyState === 'complete') scrollReveal();

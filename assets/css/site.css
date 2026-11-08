@@ -776,9 +776,6 @@ html.lenis,html.lenis body{height:auto}
 .pplan__card:hover .ctext svg{animation-duration:9s}
 @keyframes ctextSpin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.ctext svg{animation:none}}
-/* Squares behind the dark booking section */
-.has-squares{position:relative;isolation:isolate}
-.has-squares>.squares{position:absolute;inset:0;z-index:-1;pointer-events:none;display:block}
 /* Animated FAQ */
 .faq__item.is-closing .faq__ic::after{transform:translate(-50%,-50%) rotate(90deg)}
 
