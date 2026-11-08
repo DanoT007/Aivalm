@@ -401,36 +401,16 @@
     card.classList.add('fit--strike');   /* fitQuiz() adds .is-struck when 3+ items are checked */
   }
 
-  /* ---------- 15. Orbit curtain: the meeting / partner buttons travel under a black curtain.
-     First time on a page: the fleur appears, a textured ring draws itself around it, the ring fades,
-     the fleur grows with a soft glow behind it, the curtain lifts on the target (~3.5 s).
-     Every later click: the short version (curtain, fleur, there). No storage is used: "once" = once per page load. */
-  function orbitCurtain() {
+  /* ---------- 15. Glow curtain: every link to the meeting booking (#rezervacia) or to the partner form
+     (#formular) travels under a black curtain: the fleur appears, grows with a soft glow behind it,
+     and the curtain lifts on the target (about 2.2 s, every click). */
+  function glowCurtain() {
     if (reduce || !window.gsap) return;
-    var links = [].slice.call(document.querySelectorAll('.nav__cta[href^="#"], .offer__sent a[href="#rezervacia"]'));
-    if (!links.length) return;
     var ov = document.createElement('div');
     ov.className = 'orbitc'; ov.setAttribute('aria-hidden', 'true');
-    /* a textured ring like a planet's: several thin and wide bands with different opacity */
-    var BANDS = [[124, .9, .22], [130, 2.6, .38], [136, 1, .62], [141, 3.4, .3], [147, 1.2, .55], [153, .8, .2]];
-    function bands(clip) {
-      return BANDS.map(function (b) {
-        return '<ellipse cx="0" cy="0" rx="' + b[0] + '" ry="' + (b[0] * .115).toFixed(2) + '" stroke-width="' + b[1] + '" stroke-opacity="' + b[2] + '"' + (clip ? ' clip-path="url(#orbitc-near)"' : '') + '/>';
-      }).join('');
-    }
-    ov.innerHTML = '<div class="orbitc__sys">' +
-      '<div class="orbitc__glow"></div>' +
-      '<svg class="orbitc__orbit" viewBox="-160 -160 320 320"><g transform="rotate(-9)">' + bands(false) + '</g></svg>' +
-      /* the near half of the ring is drawn again above the fleur, so the ring passes in front of it */
-      '<svg class="orbitc__orbit orbitc__orbit--front" viewBox="-160 -160 320 320"><defs><clipPath id="orbitc-near"><rect x="-170" y="0" width="340" height="170"/></clipPath></defs>' +
-      '<g transform="rotate(-9)">' + bands(true) + '</g></svg>' +
-      '<img class="orbitc__logo" src="assets/img/fleur.svg" alt="">' +
-      '</div>';
+    ov.innerHTML = '<div class="orbitc__sys"><div class="orbitc__glow"></div><img class="orbitc__logo" src="assets/img/fleur.svg" alt=""></div>';
     document.body.appendChild(ov);
-    var ell = [].slice.call(ov.querySelectorAll('ellipse')), logo = ov.querySelector('.orbitc__logo'), glow = ov.querySelector('.orbitc__glow');
-    var lens = ell.map(function (e) { return e.getTotalLength ? e.getTotalLength() : 900; }), played = false, busy = false;
-    function len(i) { return lens[i]; }
-    function negLen(i) { return -lens[i]; }
+    var logo = ov.querySelector('.orbitc__logo'), glow = ov.querySelector('.orbitc__glow'), busy = false;
 
     function jump(el, hash) {
       var y = el.getBoundingClientRect().top + window.scrollY - (el.classList.contains('story') ? 0 : 88);
@@ -444,41 +424,27 @@
     }
     function run(el, hash) {
       busy = true;
-      var full = !played; played = true;
       var l = window.AIVALM && window.AIVALM.lenis; if (l) l.stop();
-      gsap.killTweensOf([ov, logo, glow].concat(ell));
+      gsap.killTweensOf([ov, logo, glow]);
       gsap.set(ov, { yPercent: 100, autoAlpha: 1 });
       gsap.set(logo, { autoAlpha: 0, scale: .8 });
       gsap.set(glow, { autoAlpha: 0, scale: .5 });
-      gsap.set(ell, { strokeDasharray: len, strokeDashoffset: len, autoAlpha: 1 });
-      var tl = gsap.timeline({ onComplete: function () {
-        gsap.set(ov, { autoAlpha: 0 }); busy = false; if (l) l.start();
-      } });
-      tl.to(ov, { yPercent: 0, duration: .55, ease: 'power3.inOut' })
-        .to(logo, { autoAlpha: 1, scale: 1, duration: .45, ease: 'power2.out' }, .3);
-      if (full) {
-        tl.call(function () { jump(el, hash); }, null, .7)
-          /* one full lap: the ring draws itself around the fleur, outer bands a touch later */
-          .fromTo(ell, { strokeDashoffset: negLen }, { strokeDashoffset: 0, duration: 1.45, ease: 'power2.inOut', stagger: { each: .025, from: 'center' } }, .62)
-          /* the ring leaves, the fleur grows with a soft glow behind it */
-          .to(ell, { autoAlpha: 0, duration: .35, ease: 'power1.out' }, 2.2)
-          .to(logo, { scale: 1.4, duration: .6, ease: 'power2.out' }, 2.2)
-          .to(glow, { autoAlpha: 1, scale: 1, duration: .6, ease: 'power2.out' }, 2.2)
-          .to(ov, { yPercent: -100, duration: .7, ease: 'power3.inOut' }, 2.8);
-      } else {
-        tl.call(function () { jump(el, hash); }, null, .6)
-          .to(ov, { yPercent: -100, duration: .7, ease: 'power3.inOut' }, .85);
-      }
+      gsap.timeline({ onComplete: function () { gsap.set(ov, { autoAlpha: 0 }); busy = false; if (l) l.start(); } })
+        .to(ov, { yPercent: 0, duration: .5, ease: 'power3.inOut' })
+        .to(logo, { autoAlpha: 1, scale: 1, duration: .4, ease: 'power2.out' }, .3)
+        .call(function () { jump(el, hash); }, null, .6)
+        .to(logo, { scale: 1.4, duration: .7, ease: 'power2.out' }, .75)
+        .to(glow, { autoAlpha: 1, scale: 1, duration: .7, ease: 'power2.out' }, .75)
+        .to(ov, { yPercent: -100, duration: .7, ease: 'power3.inOut' }, 1.5);
     }
-    links.forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        var hash = a.getAttribute('href'), el = /^#[\w-]+$/.test(hash) && document.querySelector(hash);
-        if (!el) return;
-        e.preventDefault();               /* fx.js leaves prevented clicks alone (no glide) */
-        if (!busy) run(el, hash);
-      });
-    });
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest('a[href="#rezervacia"], a[href="#formular"]'); if (!a) return;
+      var hash = a.getAttribute('href'), el = document.querySelector(hash);
+      if (!el) return;
+      e.preventDefault();               /* fx.js leaves prevented clicks alone (no glide) */
+      if (!busy) run(el, hash);
+    }, true);                           /* capture: runs before the glide handler */
   }
 
   /* scripts are deferred, so the DOM is ready; GSAP is loaded before this file */
@@ -491,7 +457,7 @@
   tilt();
   circularText();
   faqAnim();
-  orbitCurtain();
+  glowCurtain();
   whoChips();
   fitQuiz();
   fitStrike();
