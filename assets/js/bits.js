@@ -477,43 +477,37 @@
     onceVisible(ul, '0px 0px -15% 0px', function () { ul.classList.remove('is-wait'); ul.classList.add('is-drawn'); });
   }
 
-  /* ---------- 17. "Kto odpovie prvý": a weekend timeline. A "now" line sweeps from Friday 18:05 to Monday;
-     your offer pops at 18:06, the customer orders at 18:35 (green line), then everything to the right
-     greys out as "already bought" while the others' replies arrive days later. Replays on request. ---------- */
-  function raceTimeline() {
-    var box = document.querySelector('[data-tl]');
+  /* ---------- 17. "Kto odpovie prvý": the customer's inbox over a weekend. Friday 18:05 the inquiry goes out;
+     your offer lands at 18:06 and gets stamped "Objednané" at 18:35. Then the weekend flies by (the window
+     darkens at night, the clock flips day by day) and the others' offers drop in on Monday, too late. ---------- */
+  function raceInbox() {
+    var box = document.querySelector('[data-ibx]');
     if (!box) return;
-    var TOT = 4085, ORDER = 30, clock = box.querySelector('[data-tlclock]'), now = box.querySelector('[data-tlnow]'),
-        lost = box.querySelector('[data-tllost]'), order = box.querySelector('[data-tlorder]'), again = box.querySelector('[data-tlagain]'),
-        rows = [].slice.call(box.querySelectorAll('.tl__row')), labs = [].slice.call(box.querySelectorAll('.tl__lab')), raf = 0;
+    var TOT = 4085, dayEl = box.querySelector('[data-ibxday]'), timeEl = box.querySelector('[data-ibxtime]'),
+        note = box.querySelector('[data-ibxnote]'), again = box.querySelector('[data-ibxagain]'),
+        night = box.querySelector('.ibx__night'), stamp = box.querySelector('.ibx__stamp'),
+        mails = [].slice.call(box.querySelectorAll('.ibx__m')), raf = 0, lastDay = '';
     var DAYS = ['piatok', 'sobota', 'nedeľa', 'pondelok'];
-    function fmt(m) {
-      var t = 18 * 60 + 5 + Math.round(m), d = Math.min(3, Math.floor(t / 1440)), r = t - d * 1440;
-      return DAYS[d] + ' ' + String(Math.floor(r / 60)).padStart(2, '0') + ':' + String(r % 60).padStart(2, '0');
-    }
+    var NOTES = [[0, 'Zákazník čaká na prvú ponuku…'], [1, 'Prvá ponuka je tu. Zákazník ju hneď otvára.'], [30, 'Objednané u vás. Ostatní ešte ani nezačali.'],
+                 [400, 'Víkend. Ostatní dodávatelia majú zatvorené.'], [3865, 'Pondelok: ponuky konkurencie prichádzajú neskoro.']];
     function render(m) {
-      var x = Math.min(100, m / TOT * 100);
-      clock.textContent = fmt(m);
-      now.style.left = x + '%';
-      box.classList.toggle('is-ordered', m >= ORDER);
-      lost.style.width = Math.max(0, x - ORDER / TOT * 100) + '%';
-      rows.forEach(function (r, k) {
-        var on = m >= +r.dataset.at;
-        if (on && !r.classList.contains('is-on')) { r.classList.add('is-on'); labs[k].classList.add('is-on'); }
-      });
+      var t = 18 * 60 + 5 + Math.round(m), d = Math.min(3, Math.floor(t / 1440)), r = t - d * 1440, h = Math.floor(r / 60);
+      if (DAYS[d] !== lastDay) { lastDay = DAYS[d]; dayEl.textContent = lastDay; dayEl.classList.remove('is-flip'); void dayEl.offsetWidth; dayEl.classList.add('is-flip'); }
+      timeEl.textContent = String(h).padStart(2, '0') + ':' + String(r % 60).padStart(2, '0');
+      var dark = h >= 22 || h < 6; box.classList.toggle('is-night', dark);
+      mails.forEach(function (li) { if (m >= +li.dataset.at) li.classList.add('is-in'); });
+      stamp.classList.toggle('is-on', m >= 30);
+      for (var k = NOTES.length - 1; k >= 0; k--) if (m >= NOTES[k][0]) { if (note.textContent !== NOTES[k][1]) note.textContent = NOTES[k][1]; break; }
     }
-    function reset() {
-      box.classList.remove('is-ordered', 'is-end');
-      rows.forEach(function (r, k) { r.classList.remove('is-on'); labs[k].classList.remove('is-on'); });
-      render(0);
-    }
+    function reset() { lastDay = ''; box.classList.remove('is-night', 'is-end'); mails.forEach(function (li) { li.classList.remove('is-in'); }); render(0); }
     function play() {
       cancelAnimationFrame(raf); reset(); if (again) again.hidden = true;
-      var t0 = performance.now(), A = 1300, B = 4600;
+      var t0 = performance.now(), A = 2600, B = 5200;
       (function step(n) {
         var t = n - t0, m;
-        if (t < A) m = ORDER * Math.min(1, t / (A * .85));          /* the first half hour, slowly */
-        else { var p = Math.min(1, (t - A) / B); m = ORDER + (TOT - ORDER) * (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2); }
+        if (t < 500) m = 0;
+        else if (t < A) m = 30 * Math.min(1, (t - 500) / (A - 900));   /* the first half hour, in slow motion */
+        else { var p = Math.min(1, (t - A) / B); m = 30 + (TOT - 30) * (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2); }
         render(m);
         if (t < A + B) raf = requestAnimationFrame(step);
         else { box.classList.add('is-end'); if (again) again.hidden = false; }
@@ -586,7 +580,7 @@
   fitQuiz();
   fitStrike();
   techIcons();
-  raceTimeline();
+  raceInbox();
   /* stories.js (loaded after this file) pins sections above; build the scroll triggers once it has */
   if (document.readyState === 'complete') scrollReveal();
   else window.addEventListener('load', function () { scrollReveal(); if (window.ScrollTrigger) ScrollTrigger.refresh(); });
