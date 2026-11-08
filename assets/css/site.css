@@ -1003,3 +1003,51 @@ html:not(.js) .ppick__panel+.ppick__panel{margin-top:40px}
 .orbitc__sys>*{grid-area:1/1}
 .orbitc__logo{position:relative;z-index:3;width:clamp(56px,7vw,72px);height:auto;filter:invert(1)}
 .orbitc__glow{z-index:0;width:clamp(150px,18vw,200px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.26) 0%,rgba(255,255,255,.08) 45%,transparent 70%);filter:blur(6px)}
+
+/* ---------- Technické zabezpečenie (8. 11. 2026) ---------- */
+.techs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
+.tech{position:relative;display:flex;flex-direction:column;padding:clamp(22px,2.2vw,30px);border-radius:22px;background:#141414;box-shadow:inset 0 0 0 1px #262626;transition:box-shadow .35s var(--ease-out)}
+.tech:hover{box-shadow:inset 0 0 0 1px #4a4a4a}
+.tech.spot::before{inset:0;border-radius:inherit;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.09),transparent 70%)}
+.tech__tile{display:grid;place-items:center;width:58px;height:58px;border-radius:16px;background:#1e1e1e;box-shadow:inset 0 0 0 1px #333;margin-bottom:26px}
+.tech__ic{width:32px;height:32px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.tech h3{color:#fff;font-size:1.12rem;letter-spacing:-.015em;line-height:1.25;margin-bottom:10px}
+.tech p{margin:0 0 22px;color:var(--fog);font-size:.95rem;line-height:1.55}
+.tech__tag{margin-top:auto;align-self:flex-start;font-size:.74rem;font-weight:700;letter-spacing:.02em;color:#d6d6d6;padding:6px 11px;border-radius:999px;box-shadow:inset 0 0 0 1px #3a3a3a}
+.js .techs.is-wait .tech__ic *{stroke-dasharray:1;stroke-dashoffset:1}
+.js .techs.is-drawn .tech__ic *{stroke-dasharray:1;stroke-dashoffset:0;transition:stroke-dashoffset 1.1s var(--ease-out);transition-delay:calc(var(--i,0) * 180ms + 250ms)}
+.techs.is-drawn .tech__tile{animation:techPop .7s var(--ease-out) both;animation-delay:calc(var(--i,0) * 180ms)}
+@keyframes techPop{0%{box-shadow:inset 0 0 0 1px #333,0 0 0 0 rgba(255,255,255,.25)}60%{box-shadow:inset 0 0 0 1px #777,0 0 0 10px rgba(255,255,255,0)}100%{box-shadow:inset 0 0 0 1px #333}}
+@media (max-width:1100px){.techs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.techs{grid-template-columns:1fr}.tech__tile{margin-bottom:18px}}
+
+/* ---------- Kto odpovie prvý: race lanes (8. 11. 2026) ---------- */
+.race2__stat{display:flex;align-items:flex-end;gap:clamp(14px,2vw,26px);margin:30px 0 0}
+.race2__stat p{margin:0;display:flex;flex-direction:column;gap:6px}
+.race2__stat b{font-size:clamp(2.6rem,5vw,4rem);font-weight:800;letter-spacing:-.04em;line-height:.9}
+.race2__stat span{font-size:.85rem;font-weight:600;color:var(--ash)}
+.race2__stat i{font-style:normal;font-weight:700;color:var(--smoke);padding-bottom:30px}
+.race2__slow b{color:var(--smoke);text-decoration:line-through;text-decoration-thickness:3px}
+.lanes{background:#fff;border-radius:24px;padding:clamp(20px,2.2vw,30px);box-shadow:0 30px 70px -40px rgba(0,0,0,.4),0 0 0 1.5px var(--stone)}
+.lanes__head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding-bottom:16px;border-bottom:1px solid var(--stone);margin-bottom:18px}
+.lanes__t{margin:0 0 4px;font-weight:800}
+.lanes__sub{margin:0;font-size:.88rem;color:var(--ash)}
+.lanes__clock{margin:0;padding:7px 12px;border-radius:999px;background:var(--ink);color:#fff;font-size:.85rem;font-weight:700;white-space:nowrap;min-width:9.5em;text-align:center}
+.lanes__list{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.lane{padding:12px 14px;border-radius:14px;transition:background .5s var(--ease-out),color .5s var(--ease-out)}
+.lane__top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:9px;font-size:.95rem}
+.lane__top b{font-weight:800;white-space:nowrap;transition:color .4s}
+.lane__st{font-weight:600;color:var(--ash);text-align:right;font-size:.88rem}
+.lane__track{height:6px;border-radius:999px;background:var(--mist);overflow:hidden}
+.lane__bar{display:block;height:100%;width:0;border-radius:inherit;background:var(--smoke)}
+.lane--win .lane__bar{background:var(--ink)}
+.lane.is-done.lane--win{background:var(--ink);color:#fff}
+.lane.is-done.lane--win .lane__st{color:#fff;font-weight:700}
+.lane.is-done.lane--win .lane__track{background:#333}
+.lane.is-done.lane--win .lane__bar{background:#22C55E}
+.lane.is-done:not(.lane--win) b{color:var(--smoke);text-decoration:line-through}
+.lane.is-done:not(.lane--win) .lane__st{color:var(--smoke)}
+.lane.is-pop{animation:lanePop .6s var(--ease-out)}
+@keyframes lanePop{40%{transform:scale(1.025)}}
+.lanes__again{margin-top:16px;border:0;background:none;padding:6px 0;font:inherit;font-size:.88rem;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:5px;cursor:pointer}
+@media (max-width:560px){.lane__top{flex-direction:column;gap:2px}.lane__st{text-align:left}.lanes__head{flex-direction:column}}

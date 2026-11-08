@@ -147,3 +147,7 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - FAQ: odstránené otázky o cenníku/ERP, zmene e-mailu a GDPR/AI Act; schema FAQPage prepočítaná
 - „Kto odpovie prvý“ presunutá nad #pilot
 - POZOR: src/pages/index.html je zastaraný, upravuje sa priamo index.html v koreni (build.py by ho prepísal)
+- (neskôr 8. 11.) Dopyty chodia Replixu cez automatické preposielanie (nie ručne obchodníkom) – texty v #bezpecnost a #pilot
+- Nová sekcia #technicke-zabezpecenie (on-ink, 4 karty s kreslenými ikonami): schválenie človekom, doplnenie chýbajúcich údajov do 30 s, Claude/Anthropic bez trénovania, oddelené dáta + DPA. Odstránené „Ceny počíta cenník“ a „Pokyny v e-mailoch“
+- „Kto odpovie prvý“ (#rychlost): nový text, 2 min vs. 2 dni, animované dráhy s hodinami pia 18:05 → po 14:10, tlačidlo Prehrať znova (`raceLanes` v bits.js)
+- Spolupráca: odstránené „Vaše kontakty sú vaše“ a „Vyzeráte dobre u klienta“

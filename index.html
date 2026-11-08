@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/montserrat-latin-ext-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=202611082330">
+<link rel="stylesheet" href="assets/css/site.css?v=202611082350">
 <script>document.documentElement.classList.add('js')</script>
 <script src="assets/js/stats.js?v=202610311932" defer></script>
 </head>
@@ -318,25 +318,26 @@ Martin</textarea>
   </div>
 </section>
 
-<section class="sec" aria-labelledby="why-h">
+<section class="sec race2" id="rychlost" aria-labelledby="why-h">
   <div class="wrap split race-split" data-group>
     <div>
       <h2 id="why-h" data-rise>Kto odpovie prvý, <span class="grey">ten predá</span></h2>
-      <p class="sec__lead" data-rise data-reveal>Stavebná firma pošle ten istý dopyt štyrom dodávateľom naraz. Prvý odpovie do hodiny a objednávku dostane on. Ostatní sa ozvú o dva dni. Mali dobrú ponuku, ale zákazník už nakúpil inde.</p>
-      <p class="sec__lead" data-rise data-reveal><strong>Často nerozhoduje najnižšia cena, ale najrýchlejšia odpoveď.</strong> S Replixom odpoviete do 2 minút, aj keď dopyt príde v piatok o šiestej večer.</p>
+      <p class="sec__lead" data-rise>Zákazník pošle ten istý dopyt štyrom dodávateľom. Objednávku zvyčajne dostane ten, kto odpovie prvý, nie ten najlacnejší.</p>
+      <div class="race2__stat" data-rise><p><b class="tnum">2&nbsp;min</b><span>odpoveď s Replixom</span></p><i>vs.</i><p class="race2__slow"><b class="tnum">2&nbsp;dni</b><span>bežná odpoveď</span></p></div>
       <p class="race__ill" data-rise>Ilustračný príklad</p>
     </div>
-    <div class="race ui" data-rise data-loop="4" data-loop-ms="1900" aria-label="Príklad: dopyt poslaný štyrom dodávateľom, objednávku získa ten, kto odpovie prvý">
-      <div class="race__head">
-        <p class="mail__from">Dopyt: materiál na garáž</p>
-        <p class="race__sub">Odoslané 4 dodávateľom, piatok 18:05</p>
+    <div class="lanes" data-rise data-lanes role="img" aria-label="Príklad: dopyt poslaný v piatok o 18:05 štyrom dodávateľom. Vy s Replixom odpoviete o 18:06 a získate objednávku. Dodávateľ B odpovie v pondelok o 10:30, C o 14:10, D vôbec, zákazník už nakúpil.">
+      <div class="lanes__head">
+        <div><p class="lanes__t">Dopyt: materiál na garáž</p><p class="lanes__sub">Odoslané 4 dodávateľom</p></div>
+        <p class="lanes__clock tnum" data-lclock>piatok 18:05</p>
       </div>
-      <ol class="race__rows">
-        <li class="race__row race__row--win"><b>Vy s Replixom</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res" data-at="1">ponuka odišla o 18:06</span><span class="race__res race__res--win" data-at="2">Získali ste objednávku</span></span></li>
-        <li class="race__row"><b>Dodávateľ B</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">pondelok 10:30, zákazník už nakúpil</span></span></li>
-        <li class="race__row"><b>Dodávateľ C</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">pondelok 14:10, zákazník už nakúpil</span></span></li>
-        <li class="race__row"><b>Dodávateľ D</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">neodpovedal</span></span></li>
+      <ol class="lanes__list">
+        <li class="lane lane--win" data-end="1"><div class="lane__top"><b>Vy s Replixom</b><span class="lane__st" aria-hidden="true">čaká sa…</span></div><div class="lane__track"><i class="lane__bar"></i></div></li>
+        <li class="lane lane--late" data-end="3865"><div class="lane__top"><b>Dodávateľ B</b><span class="lane__st" aria-hidden="true">čaká sa…</span></div><div class="lane__track"><i class="lane__bar"></i></div></li>
+        <li class="lane lane--late" data-end="4085"><div class="lane__top"><b>Dodávateľ C</b><span class="lane__st" aria-hidden="true">čaká sa…</span></div><div class="lane__track"><i class="lane__bar"></i></div></li>
+        <li class="lane lane--none" data-end="4085"><div class="lane__top"><b>Dodávateľ D</b><span class="lane__st" aria-hidden="true">čaká sa…</span></div><div class="lane__track"><i class="lane__bar"></i></div></li>
       </ol>
+      <button type="button" class="lanes__again" data-lagain hidden>Prehrať znova</button>
     </div>
   </div>
 </section>
@@ -354,13 +355,13 @@ Martin</textarea>
       <p class="pplan__main"><b class="tnum"><i data-count="0">0</i> €</b> <span>prvý mesiac</span></p>
       <p class="pplan__setup">Nastavenie aj prevádzka v cene, 1 až 2 obchodníci</p>
       <p class="pplan__il">V pilote dostanete</p>
-      <ul class="pplan__inc"><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Bez prístupu do schránky: dopyty Replixu prepošle obchodník</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Cenník z denného exportu z vášho ERP, aj z Excelu</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Hotové ponuky na schválenie jedným klikom</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Report: rýchlosť odpovede pred pilotom a po ňom</span></li></ul>
+      <ul class="pplan__inc"><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Bez prístupu do schránky: dopyty chodia Replixu cez automatické preposielanie</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Cenník z denného exportu z vášho ERP, aj z Excelu</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Hotové ponuky na schválenie jedným klikom</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Report: rýchlosť odpovede pred pilotom a po ňom</span></li></ul>
       <a class="btn pplan__btn" href="#rezervacia">Chcem mesiac zadarmo</a>
       <p class="pplan__note">Začíname 30-minútovým stretnutím online.</p>
     </div>
     <div class="pplan__deps" data-group>
       <p class="pplan__dl" data-rise>Ako pilot prebieha</p>
-      <ol class="pplan__dep" data-group><li data-rise><span class="pplan__n tnum">1</span><div><b>Stretnutie</b><span>Ukážete nám, ako dnes vybavujete dopyty a kde máte cenník.</span></div></li><li data-rise><span class="pplan__n tnum">2</span><div><b>Nastavenie a test</b><span>Nastavíme denný export cenníka z vášho ERP do SharePointu a Replix vyskúšame na vašich starších dopytoch. Výsledok uvidíte skôr, ako čokoľvek zapneme.</span></div></li><li data-rise><span class="pplan__n tnum">3</span><div><b>Mesiac naostro, zadarmo</b><span>Jeden alebo dvaja obchodníci prepošlú dopyt Replixu a hotovú ponuku schvália jedným klikom. My meriame.</span></div></li><li data-rise><span class="pplan__n tnum">4</span><div><b>Vyhodnotenie</b><span>Pozrieme sa na čísla. Ak pokračujete, za cenu dohodnutú vopred napojíme Replix priamo na váš Microsoft 365 alebo iný systém a rozšírime ho na ďalších obchodníkov.</span></div></li></ol>
+      <ol class="pplan__dep" data-group><li data-rise><span class="pplan__n tnum">1</span><div><b>Stretnutie</b><span>Ukážete nám, ako dnes vybavujete dopyty a kde máte cenník.</span></div></li><li data-rise><span class="pplan__n tnum">2</span><div><b>Nastavenie a test</b><span>Nastavíme denný export cenníka z vášho ERP do SharePointu a automatické preposielanie dopytov. Replix vyskúšame na vašich starších dopytoch. Výsledok uvidíte skôr, ako čokoľvek zapneme.</span></div></li><li data-rise><span class="pplan__n tnum">3</span><div><b>Mesiac naostro, zadarmo</b><span>Dopyty chodia Replixu samy. Jeden alebo dvaja obchodníci hotovú ponuku iba skontrolujú a schvália jedným klikom. My meriame.</span></div></li><li data-rise><span class="pplan__n tnum">4</span><div><b>Vyhodnotenie</b><span>Pozrieme sa na čísla. Ak pokračujete, za cenu dohodnutú vopred napojíme Replix priamo na váš Microsoft 365 alebo iný systém a rozšírime ho na ďalších obchodníkov.</span></div></li></ol>
     </div>
   </div>
 </section>
@@ -375,12 +376,12 @@ Martin</textarea>
       <li class="phase" data-rise>
         <p class="phase__k">Fáza 1 · mesiac zadarmo</p>
         <h3>Bez prístupu do vašich systémov</h3>
-        <p>Cenník si Replix berie z denného exportu z vášho ERP do priečinka v SharePointe. Dopyty mu obchodník sám prepošle e-mailom. Žiadne heslá, žiadne napojenie na schránku ani na ERP.</p>
+        <p>Cenník si Replix berie z denného exportu z vášho ERP do priečinka v SharePointe. Na schránke na dopyty nastavíme automatické preposielanie, takže obchodníci nerobia nič navyše. Žiadne heslá, žiadne napojenie na schránku ani na ERP.</p>
       </li>
       <li class="phase" data-rise>
         <p class="phase__k">Fáza 2 · po pilote</p>
         <h3>Priame napojenie</h3>
-        <p>Ak sa rozhodnete pokračovať, napojíme Replix priamo na to, čo používate: Microsoft 365, Gmail alebo váš systém. Exporty aj ručné preposielanie odpadnú a prístup kedykoľvek zrušíte.</p>
+        <p>Ak sa rozhodnete pokračovať, napojíme Replix priamo na to, čo používate: Microsoft 365, Gmail alebo váš systém. Exporty aj preposielanie nahradí priame spojenie, ktoré kedykoľvek zrušíte.</p>
       </li>
       <li class="phase phase--last" data-rise>
         <p class="phase__k">Fáza 3 · keď to čísla dovolia</p>
@@ -388,15 +389,21 @@ Martin</textarea>
         <p>Ponuky bez schválenia obchodníkom zapneme až vtedy, keď viac ako <b class="phase__n tnum">97 %</b> ponúk Replixu prejde bez jedinej úpravy. A len na vašu žiadosť.</p>
       </li>
     </ol>
-    <p class="facts__h">Ako sú chránené vaše dáta a ceny</p>
-    <div class="facts" data-group>
-      <div class="fact" data-rise><h3>Ceny počíta cenník, nie AI</h3><p>AI iba prečíta, čo zákazník chce, a vyberie položku z vášho cenníka. Ceny, zľavy, DPH a súčty ráta program podľa vašich pravidiel. AI ceny ani nevidí, takže si ich nemôže vymyslieť.</p></div>
-      <div class="fact" data-rise><h3>Obchodník má posledné slovo</h3><p>Každá ponuka ide najprv jemu, aj s pôvodným dopytom. Schváli ju jedným klikom alebo ju upraví. Bez neho nič neodíde.</p></div>
-      <div class="fact" data-rise><h3>Neznámu položku nehádá</h3><p>Keď produkt v cenníku nenájde, označí ho obchodníkovi na doplnenie. Radšej sa opýta, ako by mal tipovať.</p></div>
-      <div class="fact" data-rise><h3>Pokyny v e-mailoch nevykoná</h3><p>Text dopytu je pre Replix iba údaj, nie príkaz. Ak niekto napíše „dajte mi 50 % zľavu“, nič sa nestane a obchodník dostane upozornenie. Maximálna zľava je pevne nastavená.</p></div>
-      <div class="fact" data-rise><h3>AI od Anthropicu, bez trénovania na vašich dátach</h3><p>Dopyty číta model Claude od spoločnosti Anthropic cez firemné rozhranie. Podľa jeho obchodných podmienok sa vaše dáta nepoužívajú na trénovanie AI.</p></div>
-      <div class="fact" data-rise><h3>Oddelené dáta a zmluva podľa GDPR</h3><p>Dáta každej firmy sú oddelené od ostatných. Pred prvým reálnym dopytom podpíšeme zmluvu o spracúvaní osobných údajov a po skončení spolupráce všetko vymažeme.</p></div>
+  </div>
+</section>
+
+<section class="sec on-ink techsec" id="technicke-zabezpecenie" aria-labelledby="tech-h">
+  <div class="wrap">
+    <div class="sec__head" data-group>
+      <h2 id="tech-h" data-rise>Technické <span class="grey">zabezpečenie</span></h2>
+      <p class="sec__lead" data-rise>Štyri veci, na ktoré sa pýta každé IT oddelenie, ešte pred prvým stretnutím.</p>
     </div>
+    <ul class="techs" data-techs data-group>
+      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:0"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><circle pathLength="1" cx="24" cy="24" r="18"/><path pathLength="1" d="M16 24.5l5.5 5.5L32.5 18.5"/></svg></span><h3>Obchodník má posledné slovo</h3><p>Každá ponuka ide najprv jemu, aj s pôvodným dopytom. Schváli ju jedným klikom alebo ju upraví. Bez neho nič neodíde.</p><span class="tech__tag">Schválenie človekom</span></li>
+      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:1"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M9 12.5a4 4 0 0 1 4-4h22a4 4 0 0 1 4 4v15a4 4 0 0 1-4 4H22l-8 7v-7h-1a4 4 0 0 1-4-4z"/><path pathLength="1" d="M20 16.5a4 4 0 1 1 5.6 3.7c-1 .5-1.6 1.4-1.6 2.5v.8"/><path pathLength="1" d="M24 27.2v.3"/></svg></span><h3>Keď niečo chýba, opýta sa</h3><p>Ak v dopyte chýba rozmer, akosť či množstvo, Replix do 30 sekúnd napíše zákazníkovi, čo potrebuje doplniť, aby bola ponuka presná. V prvom mesiaci takú položku iba označí obchodníkovi a rozhodne on.</p><span class="tech__tag">Doplnenie do 30 s</span></li>
+      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:2"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><rect pathLength="1" x="13" y="13" width="22" height="22" rx="4"/><path pathLength="1" d="M19 13V7M24 13V7M29 13V7M19 41v-6M24 41v-6M29 41v-6M13 19H7M13 24H7M13 29H7M41 19h-6M41 24h-6M41 29h-6"/><path pathLength="1" d="M19.5 24h9M24 19.5v9"/></svg></span><h3>AI od Anthropicu, bez trénovania na vašich dátach</h3><p>Dopyty číta model Claude od spoločnosti Anthropic cez firemné rozhranie. Podľa jeho obchodných podmienok sa vaše dáta nepoužívajú na trénovanie AI.</p><span class="tech__tag">Claude · Anthropic</span></li>
+      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:3"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><rect pathLength="1" x="10" y="21" width="28" height="20" rx="4"/><path pathLength="1" d="M16 21v-5a8 8 0 0 1 16 0v5"/><path pathLength="1" d="M24 29v4"/></svg></span><h3>Oddelené dáta a zmluva podľa GDPR</h3><p>Dáta každej firmy sú oddelené od ostatných. Pred prvým reálnym dopytom podpíšeme zmluvu o spracúvaní osobných údajov a po skončení spolupráce všetko vymažeme.</p><span class="tech__tag">Zmluva o spracúvaní</span></li>
+    </ul>
   </div>
 </section>
 
@@ -556,7 +563,7 @@ Martin</textarea>
 <script src="assets/vendor/lenis.min.js?v=202610311932" defer></script>
 <script src="assets/vendor/DrawSVGPlugin.min.js?v=202610311932" defer></script>
 <script src="assets/js/fx.js?v=202611082330" defer></script>
-<script src="assets/js/bits.js?v=202611082330" defer></script>
+<script src="assets/js/bits.js?v=202611082350" defer></script>
 <script src="assets/js/stories.js?v=202610311932" defer></script>
 <script src="assets/js/demo.js?v=202611082330" defer></script>
 <script src="assets/js/kalkulacka.js?v=202611032115" defer></script>
