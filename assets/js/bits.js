@@ -413,7 +413,7 @@
     ov.className = 'orbitc'; ov.setAttribute('aria-hidden', 'true');
     ov.innerHTML = '<div class="orbitc__sys">' +
       '<div class="orbitc__glow"></div>' +
-      '<svg class="orbitc__orbit" viewBox="-160 -160 320 320"><ellipse cx="0" cy="0" rx="138" ry="44" transform="rotate(-16)"/></svg>' +
+      '<svg class="orbitc__orbit" viewBox="-160 -160 320 320"><ellipse cx="0" cy="0" rx="138" ry="44" transform="rotate(-9)"/></svg>' +
       '<i class="orbitc__planet"></i>' +
       '<img class="orbitc__logo" src="assets/img/fleur.svg" alt="">' +
       '</div>';
@@ -421,7 +421,7 @@
     var sys = ov.querySelector('.orbitc__sys'), ell = ov.querySelector('ellipse'), planet = ov.querySelector('.orbitc__planet'),
         logo = ov.querySelector('.orbitc__logo'), glow = ov.querySelector('.orbitc__glow');
     var LEN = ell.getTotalLength ? ell.getTotalLength() : 600, played = false, busy = false;
-    var RX = 138, RY = 44, ROT = -16 * Math.PI / 180;
+    var RX = 138, RY = 44, ROT = -9 * Math.PI / 180;
 
     function placePlanet(a) {        /* a: angle in radians on the tilted ellipse; behind the fleur on the far half */
       var x = RX * Math.cos(a), y = RY * Math.sin(a);
@@ -460,8 +460,8 @@
         tl.call(function () { jump(el, hash); }, null, .7)
           /* one full lap: the orbit draws itself behind the planet */
           .to(planet, { autoAlpha: 1, duration: .2 }, .62)
-          .to(ell, { strokeDashoffset: 0, duration: 1.55, ease: 'power1.inOut' }, .62)
-          .to(o, { a: Math.PI * 2, duration: 1.55, ease: 'power1.inOut', onUpdate: function () { placePlanet(o.a); } }, .62)
+          .fromTo(ell, { strokeDashoffset: -LEN }, { strokeDashoffset: 0, duration: 1.55, ease: 'power1.inOut' }, .62)
+          .to(o, { a: -Math.PI * 2, duration: 1.55, ease: 'power1.inOut', onUpdate: function () { placePlanet(o.a); } }, .62)
           /* orbit and planet leave, the fleur grows with a soft glow behind it */
           .to([ell, planet], { autoAlpha: 0, duration: .35, ease: 'power1.out' }, 2.2)
           .to(logo, { scale: 1.4, duration: .6, ease: 'power2.out' }, 2.2)
