@@ -477,50 +477,49 @@
     onceVisible(ul, '0px 0px -15% 0px', function () { ul.classList.remove('is-wait'); ul.classList.add('is-drawn'); });
   }
 
-  /* ---------- 17. "Kto odpovie prvý": race lanes with a clock from Friday 18:05 to Monday.
-     Phase 1 (1.6 s): one minute passes, your lane finishes, you win. Phase 2 (4 s): the weekend flies by,
-     the other suppliers arrive late. Plays when scrolled into view; "Prehrať znova" replays. ---------- */
-  function raceLanes() {
-    var box = document.querySelector('[data-lanes]');
+  /* ---------- 17. "Kto odpovie prvý": a weekend timeline. A "now" line sweeps from Friday 18:05 to Monday;
+     your offer pops at 18:06, the customer orders at 18:35 (green line), then everything to the right
+     greys out as "already bought" while the others' replies arrive days later. Replays on request. ---------- */
+  function raceTimeline() {
+    var box = document.querySelector('[data-tl]');
     if (!box) return;
-    var clock = box.querySelector('[data-lclock]'), again = box.querySelector('[data-lagain]');
-    var lanes = [].map.call(box.querySelectorAll('.lane'), function (li) {
-      return { li: li, end: +li.dataset.end, bar: li.querySelector('.lane__bar'), st: li.querySelector('.lane__st'),
-        win: li.classList.contains('lane--win'), none: li.classList.contains('lane--none'), done: false };
-    });
-    var DAYS = ['piatok', 'sobota', 'nedeľa', 'pondelok'], T1 = 1600, T2 = 4200, raf = 0;
-    function fmt(m) { /* minutes after Friday 18:05 */
+    var TOT = 4085, ORDER = 30, clock = box.querySelector('[data-tlclock]'), now = box.querySelector('[data-tlnow]'),
+        lost = box.querySelector('[data-tllost]'), order = box.querySelector('[data-tlorder]'), again = box.querySelector('[data-tlagain]'),
+        rows = [].slice.call(box.querySelectorAll('.tl__row')), labs = [].slice.call(box.querySelectorAll('.tl__lab')), raf = 0;
+    var DAYS = ['piatok', 'sobota', 'nedeľa', 'pondelok'];
+    function fmt(m) {
       var t = 18 * 60 + 5 + Math.round(m), d = Math.min(3, Math.floor(t / 1440)), r = t - d * 1440;
       return DAYS[d] + ' ' + String(Math.floor(r / 60)).padStart(2, '0') + ':' + String(r % 60).padStart(2, '0');
     }
-    function finish(l) {
-      l.done = true; l.li.classList.add('is-done', 'is-pop');
-      l.st.textContent = l.win ? 'ponuka o 18:06 · objednávka je vaša' : l.none ? 'neodpovedal' : fmt(l.end) + ' · zákazník už nakúpil';
+    function render(m) {
+      var x = Math.min(100, m / TOT * 100);
+      clock.textContent = fmt(m);
+      now.style.left = x + '%';
+      box.classList.toggle('is-ordered', m >= ORDER);
+      lost.style.width = Math.max(0, x - ORDER / TOT * 100) + '%';
+      rows.forEach(function (r, k) {
+        var on = m >= +r.dataset.at;
+        if (on && !r.classList.contains('is-on')) { r.classList.add('is-on'); labs[k].classList.add('is-on'); }
+      });
     }
     function reset() {
-      lanes.forEach(function (l) { l.done = false; l.li.classList.remove('is-done', 'is-pop'); l.bar.style.width = '0%'; l.st.textContent = 'čaká sa…'; });
-      clock.textContent = fmt(0);
-    }
-    function render(m) {
-      clock.textContent = fmt(m);
-      lanes.forEach(function (l) {
-        var f = l.win ? Math.min(1, m / l.end) : Math.min(1, Math.pow(m / l.end, 1.4));
-        l.bar.style.width = (f * 100).toFixed(1) + '%';
-        if (f >= 1 && !l.done) finish(l);
-      });
+      box.classList.remove('is-ordered', 'is-end');
+      rows.forEach(function (r, k) { r.classList.remove('is-on'); labs[k].classList.remove('is-on'); });
+      render(0);
     }
     function play() {
       cancelAnimationFrame(raf); reset(); if (again) again.hidden = true;
-      var t0 = performance.now(), END = 4085;
-      (function step(now) {
-        var t = now - t0, m;
-        if (t < T1) m = Math.min(1, t / (T1 * .75));
-        else { var p = Math.min(1, (t - T1) / T2); m = 1 + (END - 1) * (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2); }
+      var t0 = performance.now(), A = 1300, B = 4600;
+      (function step(n) {
+        var t = n - t0, m;
+        if (t < A) m = ORDER * Math.min(1, t / (A * .85));          /* the first half hour, slowly */
+        else { var p = Math.min(1, (t - A) / B); m = ORDER + (TOT - ORDER) * (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2); }
         render(m);
-        if (t < T1 + T2) raf = requestAnimationFrame(step); else if (again) again.hidden = false;
+        if (t < A + B) raf = requestAnimationFrame(step);
+        else { box.classList.add('is-end'); if (again) again.hidden = false; }
       })(t0);
     }
-    if (reduce || !hasIO) { render(4085); return; }
+    if (reduce || !hasIO) { render(TOT); box.classList.add('is-end'); return; }
     reset();
     onceVisible(box, '0px 0px -25% 0px', play);
     if (again) again.addEventListener('click', play);
@@ -587,7 +586,7 @@
   fitQuiz();
   fitStrike();
   techIcons();
-  raceLanes();
+  raceTimeline();
   /* stories.js (loaded after this file) pins sections above; build the scroll triggers once it has */
   if (document.readyState === 'complete') scrollReveal();
   else window.addEventListener('load', function () { scrollReveal(); if (window.ScrollTrigger) ScrollTrigger.refresh(); });

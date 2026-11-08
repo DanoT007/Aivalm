@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/montserrat-latin-ext-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=202611090035">
+<link rel="stylesheet" href="assets/css/site.css?v=202611090105">
 <script>document.documentElement.classList.add('js')</script>
 <script src="assets/js/stats.js?v=202610311932" defer></script>
 </head>
@@ -326,18 +326,22 @@ Martin</textarea>
       <div class="race2__stat" data-rise><p><b class="tnum">2&nbsp;min</b><span>odpoveď s Replixom</span></p><i>vs.</i><p class="race2__slow"><b class="tnum">2&nbsp;dni</b><span>bežná odpoveď</span></p></div>
       <p class="race__ill" data-rise>Ilustračný príklad</p>
     </div>
-    <div class="lanes" data-rise data-lanes role="img" aria-label="Príklad: dopyt poslaný v piatok o 18:05 štyrom dodávateľom. Vy s Replixom odpoviete o 18:06 a získate objednávku. Dodávateľ B odpovie v pondelok o 10:30, C o 14:10, D vôbec, zákazník už nakúpil.">
-      <div class="lanes__head">
-        <div><p class="lanes__t">Dopyt: materiál na garáž</p><p class="lanes__sub">Odoslané 4 dodávateľom</p></div>
-        <p class="lanes__clock tnum" data-lclock>piatok 18:05</p>
+    <div class="tl" data-rise data-tl role="img" aria-label="Príklad: dopyt poslaný v piatok o 18:05 štyrom dodávateľom. Vy s Replixom pošlete ponuku o 18:06 a zákazník u vás objedná o 18:35. Dodávateľ B odpovie v pondelok o 10:30, C o 14:10, D vôbec. Vtedy už zákazník dávno nakúpil.">
+      <div class="tl__head">
+        <div><p class="tl__t">Dopyt: materiál na garáž</p><p class="tl__sub">Odoslané 4 dodávateľom v piatok o 18:05</p></div>
+        <p class="tl__clock tnum" data-tlclock>piatok 18:05</p>
       </div>
-      <ol class="lanes__list">
-        <li class="lane lane--win" data-end="1"><div class="lane__top"><b>Vy s Replixom</b><span class="lane__st" aria-hidden="true">čaká sa…</span></div><div class="lane__track"><i class="lane__bar"></i></div></li>
-        <li class="lane lane--late" data-end="3865"><div class="lane__top"><b>Dodávateľ B</b><span class="lane__st" aria-hidden="true">čaká sa…</span></div><div class="lane__track"><i class="lane__bar"></i></div></li>
-        <li class="lane lane--late" data-end="4085"><div class="lane__top"><b>Dodávateľ C</b><span class="lane__st" aria-hidden="true">čaká sa…</span></div><div class="lane__track"><i class="lane__bar"></i></div></li>
-        <li class="lane lane--none" data-end="4085"><div class="lane__top"><b>Dodávateľ D</b><span class="lane__st" aria-hidden="true">čaká sa…</span></div><div class="lane__track"><i class="lane__bar"></i></div></li>
-      </ol>
-      <button type="button" class="lanes__again" data-lagain hidden>Prehrať znova</button>
+      <div class="tl__body">
+        <ol class="tl__labs" aria-hidden="true"><li class="tl__lab tl__lab--win">Vy s Replixom</li><li class="tl__lab">Dodávateľ B</li><li class="tl__lab">Dodávateľ C</li><li class="tl__lab">Dodávateľ D</li></ol>
+        <div class="tl__plot" aria-hidden="true">
+          <div class="tl__bg"><i class="tl__night" style="left:5.75%;width:11.75%"></i><i class="tl__night" style="left:41.00%;width:11.75%"></i><i class="tl__night" style="left:76.25%;width:11.75%"></i><span class="tl__day" style="left:0.00%">pi</span><span class="tl__day" style="left:8.69%">so</span><span class="tl__day" style="left:43.94%">ne</span><span class="tl__day" style="left:79.19%">po</span></div>
+          <div class="tl__lost" data-tllost><span>zákazník už nakúpil u vás</span></div>
+          <div class="tl__order" data-tlorder><span>objednávka u vás · 18:35</span></div>
+          <ol class="tl__rows"><li class="tl__row tl__row--win" data-at="1"><i class="tl__dot" style="--x:0.02%"></i><span class="tl__tag" style="--x:0.02%">18:06</span></li><li class="tl__row tl__row--late" data-at="3865"><i class="tl__dot" style="--x:94.61%"></i><span class="tl__tag" style="--x:94.61%">po 10:30</span></li><li class="tl__row tl__row--late" data-at="4085"><i class="tl__dot" style="--x:100.00%"></i><span class="tl__tag" style="--x:100.00%">po 14:10</span></li><li class="tl__row tl__row--none" data-at="4085"><i class="tl__dot" style="--x:100.00%"></i><span class="tl__tag" style="--x:100.00%">bez odpovede</span></li></ol>
+          <i class="tl__now" data-tlnow></i>
+        </div>
+      </div>
+      <div class="tl__foot"><span class="tl__legend"><i></i>noc</span><button type="button" class="tl__again" data-tlagain hidden>Prehrať znova</button></div>
     </div>
   </div>
 </section>
@@ -369,8 +373,8 @@ Martin</textarea>
 <section class="sec" id="bezpecnost" aria-labelledby="facts-h">
   <div class="wrap">
     <div class="sec__head" data-group>
-      <h2 id="facts-h" data-rise>Presné, bezpečné <span class="grey">a pod vašou kontrolou</span></h2>
-      <p class="sec__lead" data-rise>Do vašich systémov nevstupujeme hneď. Prístup a samostatnosť Replixu rastú až s dôverou, ktorú si získa na vašich vlastných dopytoch.</p>
+      <h2 id="facts-h" data-rise>Najprv dôkaz, <span class="grey">potom prístup</span></h2>
+      <p class="sec__lead" data-rise>Replix začína bez prístupu do vašich systémov. Viac právomocí dostane, až keď sa osvedčí na vašich vlastných dopytoch, a vždy len s vaším súhlasom.</p>
     </div>
     <ol class="phases" data-group aria-label="Ako Replix postupne nasadzujeme">
       <li class="phase" data-rise>
@@ -396,13 +400,12 @@ Martin</textarea>
   <div class="wrap">
     <div class="sec__head" data-group>
       <h2 id="tech-h" data-rise>Technické <span class="grey">zabezpečenie</span></h2>
-      <p class="sec__lead" data-rise>Štyri veci, na ktoré sa pýta každé IT oddelenie, ešte pred prvým stretnutím.</p>
+      <p class="sec__lead" data-rise>Tri veci, na ktoré sa pýta každé IT oddelenie, ešte pred prvým stretnutím.</p>
     </div>
     <ul class="techs" data-techs data-group>
-      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:0"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><circle pathLength="1" cx="24" cy="24" r="18"/><path pathLength="1" d="M16 24.5l5.5 5.5L32.5 18.5"/></svg></span><h3>Obchodník má posledné slovo</h3><p>Každá ponuka ide najprv jemu, aj s pôvodným dopytom. Schváli ju jedným klikom alebo ju upraví. Bez neho nič neodíde.</p><span class="tech__tag">Schválenie človekom</span></li>
-      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:1"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M9 12.5a4 4 0 0 1 4-4h22a4 4 0 0 1 4 4v15a4 4 0 0 1-4 4H22l-8 7v-7h-1a4 4 0 0 1-4-4z"/><path pathLength="1" d="M20 16.5a4 4 0 1 1 5.6 3.7c-1 .5-1.6 1.4-1.6 2.5v.8"/><path pathLength="1" d="M24 27.2v.3"/></svg></span><h3>Keď niečo chýba, opýta sa</h3><p>Ak v dopyte chýba rozmer, akosť či množstvo, Replix do 30 sekúnd napíše zákazníkovi, čo potrebuje doplniť, aby bola ponuka presná. V prvom mesiaci takú položku iba označí obchodníkovi a rozhodne on.</p><span class="tech__tag">Doplnenie do 30 s</span></li>
-      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:2"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><rect pathLength="1" x="13" y="13" width="22" height="22" rx="4"/><path pathLength="1" d="M19 13V7M24 13V7M29 13V7M19 41v-6M24 41v-6M29 41v-6M13 19H7M13 24H7M13 29H7M41 19h-6M41 24h-6M41 29h-6"/><path pathLength="1" d="M19.5 24h9M24 19.5v9"/></svg></span><h3>AI od Anthropicu, bez trénovania na vašich dátach</h3><p>Dopyty číta model Claude od spoločnosti Anthropic cez firemné rozhranie. Podľa jeho obchodných podmienok sa vaše dáta nepoužívajú na trénovanie AI.</p><span class="tech__tag">Claude · Anthropic</span></li>
-      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:3"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><rect pathLength="1" x="10" y="21" width="28" height="20" rx="4"/><path pathLength="1" d="M16 21v-5a8 8 0 0 1 16 0v5"/><path pathLength="1" d="M24 29v4"/></svg></span><h3>Oddelené dáta a zmluva podľa GDPR</h3><p>Dáta každej firmy sú oddelené od ostatných. Pred prvým reálnym dopytom podpíšeme zmluvu o spracúvaní osobných údajov a po skončení spolupráce všetko vymažeme.</p><span class="tech__tag">Zmluva o spracúvaní</span></li>
+      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:0"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><rect pathLength="1" x="10" y="21" width="28" height="20" rx="4"/><path pathLength="1" d="M16 21v-5a8 8 0 0 1 16 0v5"/><path pathLength="1" d="M24 29v4"/></svg></span><h3>Oddelené dáta a zmluva podľa GDPR</h3><p>Dáta každej firmy sú oddelené od ostatných. Pred prvým reálnym dopytom podpíšeme zmluvu o spracúvaní osobných údajov a po skončení spolupráce všetko vymažeme.</p><span class="tech__tag">Zmluva o spracúvaní</span></li>
+      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:1"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><rect pathLength="1" x="13" y="13" width="22" height="22" rx="4"/><path pathLength="1" d="M19 13V7M24 13V7M29 13V7M19 41v-6M24 41v-6M29 41v-6M13 19H7M13 24H7M13 29H7M41 19h-6M41 24h-6M41 29h-6"/><path pathLength="1" d="M19.5 24h9M24 19.5v9"/></svg></span><h3>AI od Anthropicu, bez trénovania na vašich dátach</h3><p>Dopyty číta model Claude od spoločnosti Anthropic cez firemné rozhranie. Podľa jeho obchodných podmienok sa vaše dáta nepoužívajú na trénovanie AI.</p><span class="tech__tag">Claude · Anthropic</span></li>
+      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:2"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M6 14a4 4 0 0 1 4-4h9l4 5h15a4 4 0 0 1 4 4v15a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z"/><path pathLength="1" d="M18 26.5a6 6 0 0 1 10.6-3.8M30 26.5a6 6 0 0 1-10.6 3.8"/><path pathLength="1" d="M29.5 19.5v3.6h-3.6M18.5 33.5v-3.6h3.6"/></svg></span><h3>Cenník cez denný export do SharePointu</h3><p>Váš ERP raz denne vyexportuje cenník do priečinka v SharePointe vo vašom Microsoft 365. Replix si odtiaľ berie iba posledný export, do samotného ERP nevstupuje. Priečinok aj prístup k nemu máte pod kontrolou.</p><span class="tech__tag">Bez prístupu do ERP</span></li>
     </ul>
   </div>
 </section>
@@ -412,14 +415,14 @@ Martin</textarea>
     <div class="sec__head" data-group><h2 id="faq-h" data-rise>Časté otázky <span class="grey">o Replixe</span></h2></div>
     <div class="faq__list" data-group>
       <details class="faq__item" data-rise><summary><h3>Čo presne Replix robí?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Replix prečíta e-mailový dopyt, rozpozná produkty a množstvá a spáruje ich s vaším cenníkom. Ceny, množstevné zľavy a DPH vypočíta program podľa vašich pravidiel. Obchodník dostane hotovú ponuku aj s pôvodným dopytom, skontroluje ju a odošle zákazníkovi pod vaším menom.</p></details>
-      <details class="faq__item" data-rise><summary><h3>Môže AI poslať zákazníkovi nesprávnu cenu?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Ceny nepočíta jazykový model, ale váš cenník. AI len rozpozná, čo zákazník chce. Keď položku nenájde, označí ju obchodníkovi namiesto toho, aby hádala. A každú ponuku pred odoslaním schvaľuje obchodník.</p></details>
-      <details class="faq__item" data-rise><summary><h3>Odíde niekedy ponuka bez kontroly človeka?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Nie. Každú ponuku schvaľuje obchodník. Automatický režim zapneme až vtedy, keď viac ako 97 % ponúk Replixu prejde bez jedinej úpravy, a len na vašu písomnú žiadosť.</p></details>
+      <details class="faq__item" data-rise><summary><h3>Čo urobí Replix, keď v dopyte niečo chýba?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Opýta sa. Ak v dopyte chýba rozmer, akosť či množstvo, Replix do 30 sekúnd napíše zákazníkovi, čo potrebuje doplniť, aby bola ponuka presná. V prvom mesiaci takú položku iba označí obchodníkovi a rozhodne on.</p></details>
+      <details class="faq__item" data-rise><summary><h3>Odíde niekedy ponuka bez kontroly človeka?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Nie. Obchodník má vždy posledné slovo: každá ponuka ide najprv jemu, aj s pôvodným dopytom, a on ju jedným klikom schváli alebo upraví. Bez neho nič neodíde. Plne automatický režim zapneme až vtedy, keď viac ako 97 % ponúk Replixu prejde bez jedinej úpravy, a len na vašu písomnú žiadosť.</p></details>
       <details class="faq__item" data-rise><summary><h3>Ako dlho trvá spustenie?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Po stretnutí zvyčajne niekoľko dní. Najprv Replix otestujeme na vašich starších dopytoch a až potom ho zapneme pre jedného alebo dvoch obchodníkov.</p></details>
       <details class="faq__item" data-rise><summary><h3>Koľko Replix stojí?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Pre prvé 3 firmy je prvý mesiac zadarmo, vrátane nastavenia. Cena za ďalšie mesiace závisí od počtu dopytov, počtu obchodníkov a od toho, či treba napojenie na váš systém. Povieme vám ju vopred a dohodneme písomne. Bez viazanosti, nič sa automaticky nepredlžuje.</p></details>
     </div>
   </div>
 </section>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Čo presne Replix robí?", "acceptedAnswer": {"@type": "Answer", "text": "Replix prečíta e-mailový dopyt, rozpozná produkty a množstvá a spáruje ich s vaším cenníkom. Ceny, množstevné zľavy a DPH vypočíta program podľa vašich pravidiel. Obchodník dostane hotovú ponuku aj s pôvodným dopytom, skontroluje ju a odošle zákazníkovi pod vaším menom."}}, {"@type": "Question", "name": "Môže AI poslať zákazníkovi nesprávnu cenu?", "acceptedAnswer": {"@type": "Answer", "text": "Ceny nepočíta jazykový model, ale váš cenník. AI len rozpozná, čo zákazník chce. Keď položku nenájde, označí ju obchodníkovi namiesto toho, aby hádala. A každú ponuku pred odoslaním schvaľuje obchodník."}}, {"@type": "Question", "name": "Odíde niekedy ponuka bez kontroly človeka?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Každú ponuku schvaľuje obchodník. Automatický režim zapneme až vtedy, keď viac ako 97 % ponúk Replixu prejde bez jedinej úpravy, a len na vašu písomnú žiadosť."}}, {"@type": "Question", "name": "Ako dlho trvá spustenie?", "acceptedAnswer": {"@type": "Answer", "text": "Po stretnutí zvyčajne niekoľko dní. Najprv Replix otestujeme na vašich starších dopytoch a až potom ho zapneme pre jedného alebo dvoch obchodníkov."}}, {"@type": "Question", "name": "Koľko Replix stojí?", "acceptedAnswer": {"@type": "Answer", "text": "Pre prvé 3 firmy je prvý mesiac zadarmo, vrátane nastavenia. Cena za ďalšie mesiace závisí od počtu dopytov, počtu obchodníkov a od toho, či treba napojenie na váš systém. Povieme vám ju vopred a dohodneme písomne. Bez viazanosti, nič sa automaticky nepredlžuje."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Čo presne Replix robí?", "acceptedAnswer": {"@type": "Answer", "text": "Replix prečíta e-mailový dopyt, rozpozná produkty a množstvá a spáruje ich s vaším cenníkom. Ceny, množstevné zľavy a DPH vypočíta program podľa vašich pravidiel. Obchodník dostane hotovú ponuku aj s pôvodným dopytom, skontroluje ju a odošle zákazníkovi pod vaším menom."}}, {"@type": "Question", "name": "Čo urobí Replix, keď v dopyte niečo chýba?", "acceptedAnswer": {"@type": "Answer", "text": "Opýta sa. Ak v dopyte chýba rozmer, akosť či množstvo, Replix do 30 sekúnd napíše zákazníkovi, čo potrebuje doplniť, aby bola ponuka presná. V prvom mesiaci takú položku iba označí obchodníkovi a rozhodne on."}}, {"@type": "Question", "name": "Odíde niekedy ponuka bez kontroly človeka?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Obchodník má vždy posledné slovo: každá ponuka ide najprv jemu, aj s pôvodným dopytom, a on ju jedným klikom schváli alebo upraví. Bez neho nič neodíde. Plne automatický režim zapneme až vtedy, keď viac ako 97 % ponúk Replixu prejde bez jedinej úpravy, a len na vašu písomnú žiadosť."}}, {"@type": "Question", "name": "Ako dlho trvá spustenie?", "acceptedAnswer": {"@type": "Answer", "text": "Po stretnutí zvyčajne niekoľko dní. Najprv Replix otestujeme na vašich starších dopytoch a až potom ho zapneme pre jedného alebo dvoch obchodníkov."}}, {"@type": "Question", "name": "Koľko Replix stojí?", "acceptedAnswer": {"@type": "Answer", "text": "Pre prvé 3 firmy je prvý mesiac zadarmo, vrátane nastavenia. Cena za ďalšie mesiace závisí od počtu dopytov, počtu obchodníkov a od toho, či treba napojenie na váš systém. Povieme vám ju vopred a dohodneme písomne. Bez viazanosti, nič sa automaticky nepredlžuje."}}]}</script>
 
 
 
@@ -563,7 +566,7 @@ Martin</textarea>
 <script src="assets/vendor/lenis.min.js?v=202610311932" defer></script>
 <script src="assets/vendor/DrawSVGPlugin.min.js?v=202610311932" defer></script>
 <script src="assets/js/fx.js?v=202611082330" defer></script>
-<script src="assets/js/bits.js?v=202611090015" defer></script>
+<script src="assets/js/bits.js?v=202611090105" defer></script>
 <script src="assets/js/stories.js?v=202610311932" defer></script>
 <script src="assets/js/demo.js?v=202611082330" defer></script>
 <script src="assets/js/kalkulacka.js?v=202611032115" defer></script>

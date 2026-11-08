@@ -153,3 +153,4 @@ https://claude.ai/artifact/FjvVvCMyryYpjEgys4V724 (formuláre v náhľade neodo�
 - Spolupráca: odstránené „Vaše kontakty sú vaše“ a „Vyzeráte dobre u klienta“
 - Pre koho na mobile (≤600 px): odvetvia v jednom riadku, samy sa posúvajú doprava donekonečna, prst zastaví, po 5 s sa plynulo rozbehnú (`marquee` v bits.js); odvetvia so šípkou čierne
 - Test Replix vám sedí: po 3 odkliknutiach text o vyrátaní prínosu + tlačidlo „Vyrátať prínos“ (glide ku kalkulačke, karta a polia zasvietia) a odkaz na stretnutie
+- (noc 8./9. 11.) #bezpecnost nadpis „Najprv dôkaz, potom prístup“; Technické zabezpečenie = 3 karty (GDPR, Anthropic, export cenníka do SharePointu); „Obchodník má posledné slovo“ a „Keď niečo chýba“ presunuté do FAQ (otázka o nesprávnej cene zmazaná); Kto odpovie prvý = víkendová časová os (`raceTimeline`, noci, čiara objednávky 18:35, šrafovaná zóna „už nakúpil“); mobil: väčší text „Ako pilot prebieha“, opona so žiarou loga v bielej verzii (≤820 px)
