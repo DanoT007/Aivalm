@@ -413,15 +413,18 @@
     ov.className = 'orbitc'; ov.setAttribute('aria-hidden', 'true');
     ov.innerHTML = '<div class="orbitc__sys">' +
       '<div class="orbitc__glow"></div>' +
-      '<svg class="orbitc__orbit" viewBox="-160 -160 320 320"><ellipse cx="0" cy="0" rx="138" ry="44" transform="rotate(-9)"/></svg>' +
+      '<svg class="orbitc__orbit" viewBox="-160 -160 320 320"><g transform="rotate(-9)"><ellipse cx="0" cy="0" rx="140" ry="16"/></g></svg>' +
+      /* the near half of the ring is drawn again above the fleur, so the ring passes in front of it */
+      '<svg class="orbitc__orbit orbitc__orbit--front" viewBox="-160 -160 320 320"><defs><clipPath id="orbitc-near"><rect x="-170" y="0" width="340" height="170"/></clipPath></defs>' +
+      '<g transform="rotate(-9)"><ellipse cx="0" cy="0" rx="140" ry="16" clip-path="url(#orbitc-near)"/></g></svg>' +
       '<i class="orbitc__planet"></i>' +
       '<img class="orbitc__logo" src="assets/img/fleur.svg" alt="">' +
       '</div>';
     document.body.appendChild(ov);
-    var sys = ov.querySelector('.orbitc__sys'), ell = ov.querySelector('ellipse'), planet = ov.querySelector('.orbitc__planet'),
+    var sys = ov.querySelector('.orbitc__sys'), ell = ov.querySelectorAll('ellipse'), planet = ov.querySelector('.orbitc__planet'),
         logo = ov.querySelector('.orbitc__logo'), glow = ov.querySelector('.orbitc__glow');
-    var LEN = ell.getTotalLength ? ell.getTotalLength() : 600, played = false, busy = false;
-    var RX = 138, RY = 44, ROT = -9 * Math.PI / 180;
+    var LEN = ell[0].getTotalLength ? ell[0].getTotalLength() : 600, played = false, busy = false;
+    var RX = 140, RY = 16, ROT = -9 * Math.PI / 180;
 
     function placePlanet(a) {        /* a: angle in radians on the tilted ellipse; behind the fleur on the far half */
       var x = RX * Math.cos(a), y = RY * Math.sin(a);
