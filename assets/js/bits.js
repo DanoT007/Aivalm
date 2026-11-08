@@ -372,6 +372,9 @@
       var ok = n >= 3;
       if (ok && res.hidden) { res.hidden = false; card.classList.add('is-fit'); }
       else if (!ok && !res.hidden) { res.hidden = true; card.classList.remove('is-fit'); }
+      /* the "Skôr nie, ak" reasons are struck through only once the visitor has 3+ reasons it fits */
+      var no = document.querySelector('[data-strike]');
+      if (no) no.classList.toggle('is-struck', ok);
     }
     items.forEach(function (li, i) {
       li.setAttribute('role', 'checkbox'); li.setAttribute('aria-checked', 'false'); li.tabIndex = 0;
@@ -395,9 +398,7 @@
       var t = li.querySelector('span:last-child'), w = document.createElement('span');
       w.className = 'fs'; w.textContent = t.textContent; t.textContent = ''; t.appendChild(w); /* inline wrapper: the line runs through every wrapped row */
     });
-    card.classList.add('fit--strike');
-    if (reduce || !hasIO) { card.classList.add('is-struck'); return; }
-    onceVisible(card, '0px 0px -25% 0px', function () { setTimeout(function () { card.classList.add('is-struck'); }, 350); });
+    card.classList.add('fit--strike');   /* fitQuiz() adds .is-struck when 3+ items are checked */
   }
 
   /* scripts are deferred, so the DOM is ready; GSAP is loaded before this file */
