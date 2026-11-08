@@ -440,6 +440,20 @@
       card.classList.add('is-wait');
       onceVisible(card, '0px 0px -18% 0px', function () { card.classList.add('is-drawn'); });
     } else card.classList.add('is-drawn');
+    /* "Vyrátať prínos": glide to the calculator, then its open card and its number fields light up */
+    var go = card.querySelector('[data-calc-go]'), calc = document.getElementById('kalkulacka');
+    if (go && calc) go.addEventListener('click', function (e) {
+      var A = window.AIVALM || {};
+      function flash() {
+        var c = calc.querySelector('.rcalc__grid:not([hidden]) .rcalc__card');
+        if (!c || reduce) return;
+        c.classList.remove('is-flash'); void c.offsetWidth; c.classList.add('is-flash');
+        setTimeout(function () { c.classList.remove('is-flash'); }, 2600);
+      }
+      if (!A.glideTo) return; /* plain #kalkulacka jump */
+      e.preventDefault();
+      A.glideTo(calc, '#kalkulacka', flash);
+    });
   }
 
   /* ---------- 14. "Skôr nie, ak": the dashes stretch into a strike-through, one line after another ---------- */

@@ -1061,3 +1061,11 @@ html:not(.js) .ppick__panel+.ppick__panel{margin-top:40px}
   .whochips.is-marquee .whochip--go{background:var(--ink);color:#fff}
   .whochips.is-marquee li:hover{translate:none}
 }
+
+/* "Vyrátať prínos" lands on the calculator: the card glows, the number fields underline one after another */
+.rcalc__card.is-flash{animation:calcGlow 1.3s var(--ease-out) 2}
+@keyframes calcGlow{40%{box-shadow:0 0 0 6px rgba(11,11,11,.12),0 30px 80px -30px rgba(0,0,0,.6)}}
+.rcalc__card.is-flash .rcalc__val input{animation:calcField 1.2s var(--ease-out) both}
+.rcalc__card.is-flash .rcalc__f:nth-of-type(2) .rcalc__val input{animation-delay:.18s}
+.rcalc__card.is-flash .rcalc__f:nth-of-type(3) .rcalc__val input{animation-delay:.36s}
+@keyframes calcField{30%{border-color:#22C55E;color:#22C55E}}
