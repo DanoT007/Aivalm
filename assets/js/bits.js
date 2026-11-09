@@ -483,31 +483,31 @@
   function raceInbox() {
     var box = document.querySelector('[data-ibx]');
     if (!box) return;
-    var TOT = 4085, dayEl = box.querySelector('[data-ibxday]'), timeEl = box.querySelector('[data-ibxtime]'),
+    var TOT = 1529, ORD = 203, dayEl = box.querySelector('[data-ibxday]'), timeEl = box.querySelector('[data-ibxtime]'),
         note = box.querySelector('[data-ibxnote]'), again = box.querySelector('[data-ibxagain]'),
         night = box.querySelector('.ibx__night'), stamp = box.querySelector('.ibx__stamp'),
         mails = [].slice.call(box.querySelectorAll('.ibx__m')), raf = 0, lastDay = '';
-    var DAYS = ['piatok', 'sobota', 'nedeľa', 'pondelok'];
-    var NOTES = [[0, 'Zákazník čaká na prvú ponuku…'], [1, 'Prvá ponuka je tu. Zákazník ju hneď otvára.'], [30, 'Objednané u vás. Ostatní ešte ani nezačali.'],
-                 [400, 'Víkend. Ostatní dodávatelia majú zatvorené.'], [3865, 'Pondelok: ponuky konkurencie prichádzajú neskoro.']];
+    var DAYS = ['pondelok', 'utorok'];
+    var NOTES = [[0, 'Zákazník čaká na prvú ponuku…'], [1, 'Prvá ponuka je tu, o minútu. Zákazník ju má na stole.'], [ORD, 'Objednané u vás. Ostatní ešte len počítajú.'],
+                 [322, 'Ponuka konkurencie prichádza neskoro.'], [720, 'Noc. Objednávka je dávno vaša.'], [1529, 'Utorok: posledná ponuka. Zákazník už nakúpil u vás.']];
     function render(m) {
-      var t = 18 * 60 + 5 + Math.round(m), d = Math.min(3, Math.floor(t / 1440)), r = t - d * 1440, h = Math.floor(r / 60);
+      var t = 10 * 60 + 1 + Math.round(m), d = Math.min(1, Math.floor(t / 1440)), r = t - d * 1440, h = Math.floor(r / 60);
       if (DAYS[d] !== lastDay) { lastDay = DAYS[d]; dayEl.textContent = lastDay; dayEl.classList.remove('is-flip'); void dayEl.offsetWidth; dayEl.classList.add('is-flip'); }
       timeEl.textContent = String(h).padStart(2, '0') + ':' + String(r % 60).padStart(2, '0');
       var dark = h >= 22 || h < 6; box.classList.toggle('is-night', dark);
       mails.forEach(function (li) { if (m >= +li.dataset.at) li.classList.add('is-in'); });
-      stamp.classList.toggle('is-on', m >= 30);
+      stamp.classList.toggle('is-on', m >= ORD);
       for (var k = NOTES.length - 1; k >= 0; k--) if (m >= NOTES[k][0]) { if (note.textContent !== NOTES[k][1]) note.textContent = NOTES[k][1]; break; }
     }
     function reset() { lastDay = ''; box.classList.remove('is-night', 'is-end'); mails.forEach(function (li) { li.classList.remove('is-in'); }); render(0); }
     function play() {
       cancelAnimationFrame(raf); reset(); if (again) again.hidden = true;
-      var t0 = performance.now(), A = 2600, B = 5200;
+      var t0 = performance.now(), A = 3000, B = 5000;
       (function step(n) {
         var t = n - t0, m;
         if (t < 500) m = 0;
-        else if (t < A) m = 30 * Math.min(1, (t - 500) / (A - 900));   /* the first half hour, in slow motion */
-        else { var p = Math.min(1, (t - A) / B); m = 30 + (TOT - 30) * (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2); }
+        else if (t < A) m = ORD * Math.min(1, (t - 500) / (A - 900));   /* offer at 10:02, order at 13:24 */
+        else { var p = Math.min(1, (t - A) / B); m = ORD + (TOT - ORD) * (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2); }
         render(m);
         if (t < A + B) raf = requestAnimationFrame(step);
         else { box.classList.add('is-end'); if (again) again.hidden = false; }
