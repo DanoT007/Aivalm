@@ -932,6 +932,7 @@ html:not(.js) .ppick__panel+.ppick__panel{margin-top:40px}
 .pme__n span{color:var(--ash)}
 .pme__n a{color:inherit}
 @media (max-width:520px){.pme{align-items:flex-start}.pme img{width:76px;height:92px}}
+@media (max-width:600px){.pme__q{font-weight:400;font-size:.86rem;line-height:1.5;color:var(--ash)}}
 
 /* Partner type as chips */
 .pchips{border:0;margin:0;padding:0;min-width:0}
