@@ -18,9 +18,9 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/montserrat-latin-ext-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=202611111750">
+<link rel="stylesheet" href="assets/css/site.css?v=202611111800">
 <script>document.documentElement.classList.add('js')</script>
-<script src="assets/js/stats.js?v=202611111750" defer></script>
+<script src="assets/js/stats.js?v=202610311932" defer></script>
 </head>
 <body>
 <div class="curtain" aria-hidden="true"><img src="assets/img/fleur.svg" alt=""></div>
@@ -206,73 +206,18 @@ Martin</textarea>
   </div>
 </section>
 
-<section class="sec" style="background:var(--mist)" aria-labelledby="why-h">
-  <div class="wrap split race-split" data-group>
-    <div>
-      <h2 id="why-h" data-rise>Kto odpovie prvý, <span class="grey">ten predá</span></h2>
-      <p class="sec__lead" data-rise>Stavebná firma pošle ten istý dopyt štyrom dodávateľom naraz. Prvý odpovie do hodiny a objednávku dostane on. Ostatní sa ozvú o dva dni. Mali dobrú ponuku, ale zákazník už nakúpil inde.</p>
-      <p class="sec__lead" data-rise><strong>Často nerozhoduje najnižšia cena, ale najrýchlejšia odpoveď.</strong> S Replixom odpoviete do 2 minút, aj keď dopyt príde v piatok o šiestej večer.</p>
-      <p class="race__ill" data-rise>Ilustračný príklad</p>
-    </div>
-    <div class="race ui" data-rise data-loop="4" data-loop-ms="1900" aria-label="Príklad: dopyt poslaný štyrom dodávateľom, objednávku získa ten, kto odpovie prvý">
-      <div class="race__head">
-        <p class="mail__from">Dopyt: materiál na garáž</p>
-        <p class="race__sub">Odoslané 4 dodávateľom, piatok 18:05</p>
-      </div>
-      <ol class="race__rows">
-        <li class="race__row race__row--win"><b>Vy s Replixom</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res" data-at="1">ponuka odišla o 18:06</span><span class="race__res race__res--win" data-at="2">Získali ste objednávku</span></span></li>
-        <li class="race__row"><b>Dodávateľ B</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">pondelok 10:30, zákazník už nakúpil</span></span></li>
-        <li class="race__row"><b>Dodávateľ C</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">pondelok 14:10, zákazník už nakúpil</span></span></li>
-        <li class="race__row"><b>Dodávateľ D</b><span class="race__st"><span class="race__wait">čaká sa na odpoveď…</span><span class="race__res race__res--late" data-at="3">neodpovedal</span></span></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<section class="sec rcalc" id="kalkulacka" aria-labelledby="calc-h">
-  <div class="wrap rcalc__grid">
-    <div class="rcalc__card" data-rcalc aria-label="Kalkulačka výnosov">
-      <p class="rcalc__name">Vyrátajte si to na vlastných číslach</p>
-      <div class="rcalc__f">
-        <div class="rcalc__top"><label for="rc-n-q">Koľko e-mailových dopytov vám príde za mesiac?</label><span class="rcalc__val"><input id="rc-n-q" type="number" inputmode="numeric" min="0" value="300"><span>dopytov</span></span></div>
-        <input class="rcalc__range" id="rc-r-q" type="range" min="10" max="2000" step="10" value="300" aria-label="Dopyty za mesiac">
-        <p class="rcalc__hint">15 dopytov denne je približne 300 mesačne</p>
-      </div>
-      <div class="rcalc__f">
-        <div class="rcalc__top"><label for="rc-n-o">Aká je vaša priemerná objednávka?</label><span class="rcalc__val"><input id="rc-n-o" type="number" inputmode="numeric" min="5" max="5000" value="800"><span>€</span></span></div>
-        <input class="rcalc__range" id="rc-r-o" type="range" min="5" max="5000" step="5" value="800" aria-label="Priemerná objednávka v eurách">
-      </div>
-      <div class="rcalc__f">
-        <div class="rcalc__top"><label for="rc-n-l">Koľko dopytov strácate, lebo konkurencia odpovie skôr?</label><span class="rcalc__val"><input id="rc-n-l" type="number" inputmode="numeric" min="0" max="100" value="20"><span>%</span></span></div>
-        <input class="rcalc__range" id="rc-r-l" type="range" min="1" max="60" step="1" value="20" aria-label="Percento stratených dopytov">
-        <p class="rcalc__hint">Odhadnite podľa seba: koľko ponúk minulý mesiac ostalo bez reakcie zákazníka?</p>
-      </div>
-      <div class="rcalc__res" aria-live="polite">
-        <p class="rcalc__rl">Objednávky, ktoré vám dnes môžu unikať</p>
-        <p class="rcalc__big tnum"><b id="rc-out-m">48 000 €</b> <span>za mesiac</span></p>
-        <div class="rcalc__row"><p><b class="tnum" id="rc-out-y">576 000 €</b>za rok</p><p><b class="tnum" id="rc-out-d">60</b>dopytov mesačne</p></div>
-      </div>
-    </div>
-    <div class="rcalc__copy" data-group>
-      <h2 id="calc-h" data-rise>Pomalá ponuka <span class="grey">je stratená zákazka</span></h2>
-      <p class="sec__lead" data-rise>Zákazník pošle ten istý dopyt trom dodávateľom a objednávku zvyčajne dostane ten, kto odpovie prvý. Ak vaše ponuky odchádzajú za deň či dva, časť zákaziek odchádza s nimi.</p>
-      <p class="rcalc__formula" data-rise><span>dopyty za mesiac</span><i>×</i><span>priemerná objednávka</span><i>×</i><span>% stratených</span></p>
-      <p class="rcalc__note" data-rise>Výpočet je orientačný a vychádza z vašich odhadov. V pilote ho nahradíme skutočnými číslami z vašej schránky: kedy dopyt prišiel a kedy odišla ponuka.</p>
-    </div>
-  </div>
-</section>
-
 <section class="sec forwho" id="pre-koho" style="background:var(--mist)" aria-labelledby="who-h">
   <div class="wrap">
     <div class="sec__head" data-group>
       <h2 id="who-h" data-rise>Pre koho je <span class="grey">Replix</span></h2>
       <p class="sec__lead" data-rise>Pre veľkoobchody, distribútorov a výrobcov, ktorým chodí veľa dopytov e-mailom a odpovedajú na ne obchodníci. Teda ľudia, ktorí by mali predávať, nie prepisovať cenníky do e-mailov.</p>
     </div>
-    <ul class="whochips" data-group>
-      <li data-rise>Stavebniny a stavebný materiál</li><li data-rise>Spojovací materiál a náradie</li><li data-rise>Kúrenie, voda, sanita</li><li data-rise>Elektro veľkoobchod</li><li data-rise>Hutný materiál</li><li data-rise>Obaly a spotrebný materiál</li><li data-rise>Papier, hygiena, čistiace prostriedky</li><li data-rise>Výrobcovia s pevným cenníkom</li>
+    <ul class="whochips" data-whochips>
+      <li class="whochip--go"><a href="#ukazka" data-ind-go="stavebniny" aria-label="Stavebniny a stavebný materiál, otvoriť živú ukážku s dopytom z tohto odvetvia">Stavebniny a stavebný materiál<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg></a></li><li class="whochip--go"><a href="#ukazka" data-ind-go="spojovaci" aria-label="Spojovací materiál a náradie, otvoriť živú ukážku s dopytom z tohto odvetvia">Spojovací materiál a náradie<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg></a></li><li>Kúrenie, voda, sanita</li><li class="whochip--go"><a href="#ukazka" data-ind-go="elektro" aria-label="Elektro veľkoobchod, otvoriť živú ukážku s dopytom z tohto odvetvia">Elektro veľkoobchod<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg></a></li><li>Hutný materiál</li><li>Obaly a spotrebný materiál</li><li class="whochip--go"><a href="#ukazka" data-ind-go="papier" aria-label="Papier, hygiena, čistiace prostriedky, otvoriť živú ukážku s dopytom z tohto odvetvia">Papier, hygiena, čistiace prostriedky<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg></a></li><li>Výrobcovia s pevným cenníkom</li>
     </ul>
+    <p class="whochips__hint">Odvetvia so šípkou si môžete hneď vyskúšať v živej ukážke.</p>
     <div class="fitgrid" data-group>
-      <div class="fit" data-rise>
+      <div class="fit" data-rise data-quiz data-tilt="3" data-spotlight>
         <p class="fit__h">Replix vám sedí, ak</p>
         <ul class="fit__list">
           <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>vám denne chodia dopyty e-mailom, ideálne 10 a viac</span></li>
@@ -280,8 +225,12 @@ Martin</textarea>
           <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>ponuky dnes píšu obchodníci ručne a zaberá im to hodiny</span></li>
           <li><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg></span><span>zákazníci často dopytujú viacerých dodávateľov naraz</span></li>
         </ul>
+        <div class="fitq__res" hidden>
+          <p><b>Replix vám sedí.</b> Vyrátajte si za minútu, koľko času a zákaziek vám môže priniesť.</p>
+          <div class="fitq__acts"><a class="btn" href="#kalkulacka" data-calc-go>Vyrátať prínos</a></div>
+        </div>
       </div>
-      <div class="fit fit--no" data-rise>
+      <div class="fit fit--no" data-rise data-strike data-tilt="3" data-spotlight>
         <p class="fit__h">Skôr nie, ak</p>
         <ul class="fit__list">
           <li><span class="cross" aria-hidden="true">–</span><span>je každá zákazka projekt na mieru podľa výkresu, bez cenníka</span></li>
@@ -294,19 +243,107 @@ Martin</textarea>
   </div>
 </section>
 
-<section class="sec" id="bezpecnost" aria-labelledby="facts-h">
+<section class="sec rcalc" id="kalkulacka" aria-labelledby="calc-h">
   <div class="wrap">
     <div class="sec__head" data-group>
-      <h2 id="facts-h" data-rise>Presné, bezpečné <span class="grey">a pod vašou kontrolou</span></h2>
-      <p class="sec__lead" data-rise>Najčastejšia obava je, že AI pošle zákazníkovi zlú cenu. Preto je Replix postavený tak, aby to nedokázala.</p>
+      <h2 id="calc-h" data-rise>Pridaná hodnota <span class="grey">Replixu</span></h2>
+      <p class="sec__lead" data-rise>Dve kalkulačky, dva pohľady: koľko zákaziek vám dnes môže unikať a koľko času obchodníci strávia písaním ponúk.</p>
     </div>
-    <div class="facts" data-group>
-      <div class="fact" data-rise><h3>Ceny počíta cenník, nie AI</h3><p>Ceny, množstevné zľavy aj DPH idú z vašich pravidiel. Jazykový model iba prečíta, čo zákazník chce. Sumu nikdy nevymýšľa.</p></div>
-      <div class="fact" data-rise><h3>Obchodník má posledné slovo</h3><p>Každá ponuka ide najprv jemu, aj s pôvodným dopytom. Schváli ju jedným klikom alebo ju upraví. Bez neho nič neodíde.</p></div>
-      <div class="fact" data-rise><h3>Neznámu položku nehádá</h3><p>Keď produkt v cenníku nenájde, označí ho obchodníkovi na doplnenie. Radšej sa opýta, ako by mal tipovať.</p></div>
-      <div class="fact" data-rise><h3>Pokyny v e-mailoch nevykoná</h3><p>Ak niekto do dopytu napíše „dajte mi 50 % zľavu“, Replix to ignoruje a upozorní obchodníka. Maximálna zľava je pevne nastavená v systéme.</p></div>
-      <div class="fact" data-rise><h3>Rozumie aj chaotickým e-mailom</h3><p>Preklepy, skratky, vlastné názvy výrobkov, viac položiek v jednej vete. Spáruje ich s vaším katalógom.</p></div>
-      <div class="fact" data-rise><h3>Bez hesiel, so zmluvou podľa GDPR</h3><p>Schránku pripojíte cez bezpečné prihlásenie a kedykoľvek ho zrušíte. Podpíšeme zmluvu o spracúvaní údajov a vaše dáta sa nepoužívajú na trénovanie AI.</p></div>
+    <div class="rtabs" role="tablist" aria-label="Kalkulačky">
+      <button class="rtabs__b" role="tab" id="tab-zisk" aria-controls="pan-zisk" aria-selected="true">Potenciálne zisky</button>
+      <button class="rtabs__b" role="tab" id="tab-cas" aria-controls="pan-cas" aria-selected="false" tabindex="-1">Ušetrený čas</button>
+    </div>
+
+    <div class="rcalc__grid" id="pan-zisk" role="tabpanel" aria-labelledby="tab-zisk">
+    <div class="rcalc__card" data-rcalc="zisk" aria-label="Kalkulačka potenciálnych ziskov">
+      <p class="rcalc__name">Vyrátajte si to na vlastných číslach</p>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rc-q-n">Koľko e-mailových dopytov vám príde za mesiac?</label><span class="rcalc__val"><input id="rc-q-n" data-n type="number" inputmode="numeric" min="10" max="2000" value="300"><span>dopytov</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="10" max="2000" step="10" value="300" aria-label="Koľko e-mailových dopytov vám príde za mesiac?">
+        <p class="rcalc__hint">15 dopytov denne je približne 300 mesačne</p>
+      </div>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rc-o-n">Aká je vaša priemerná objednávka?</label><span class="rcalc__val"><input id="rc-o-n" data-n type="number" inputmode="numeric" min="5" max="5000" value="800"><span>€</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="5" max="5000" step="5" value="800" aria-label="Aká je vaša priemerná objednávka?">
+        
+      </div>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rc-l-n">Koľko dopytov strácate, lebo konkurencia odpovie skôr?</label><span class="rcalc__val"><input id="rc-l-n" data-n type="number" inputmode="numeric" min="1" max="40" value="15"><span>%</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="1" max="40" step="1" value="15" aria-label="Koľko dopytov strácate, lebo konkurencia odpovie skôr?">
+        <p class="rcalc__hint">Odhadnite podľa seba: koľko ponúk minulý mesiac ostalo bez reakcie zákazníka?</p>
+      </div>
+      <div class="rcalc__res" aria-live="polite">
+        <p class="rcalc__rl">Objednávky, ktoré vám dnes môžu unikať</p>
+        <p class="rcalc__big tnum"><b data-o="m" data-countup>36 000 €</b> <span>za mesiac</span></p>
+        <div class="rcalc__row"><p><b class="tnum" data-o="y" data-countup>432 000 €</b>za rok</p><p><b class="tnum" data-o="d" data-countup>45</b>dopytov mesačne</p></div>
+      </div>
+    </div>
+    <div class="rcalc__copy">
+      <h3 class="rcalc__h">Pomalá ponuka <span class="grey">je stratená zákazka</span></h3>
+      <p class="sec__lead">Zákazník pošle ten istý dopyt trom dodávateľom a objednávku zvyčajne dostane ten, kto odpovie prvý. Ak vaše ponuky odchádzajú za deň či dva, časť zákaziek odchádza s nimi.</p>
+      <p class="rcalc__formula"><span>dopyty za mesiac</span><i>×</i><span>priemerná objednávka</span><i>×</i><span>% stratených</span></p>
+      <p class="rcalc__note">Výpočet je orientačný a vychádza z vašich odhadov. V pilote ho nahradíme skutočnými číslami z vašej schránky: kedy dopyt prišiel a kedy odišla ponuka.</p>
+    </div>
+    </div>
+
+    <div class="rcalc__grid" id="pan-cas" role="tabpanel" aria-labelledby="tab-cas" hidden>
+    <div class="rcalc__card" data-rcalc="cas" aria-label="Kalkulačka ušetreného času">
+      <p class="rcalc__name">Koľko času vám zaberajú ponuky</p>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rs-q-n">Koľko e-mailových dopytov vám príde za mesiac?</label><span class="rcalc__val"><input id="rs-q-n" data-n type="number" inputmode="numeric" min="10" max="2000" value="300"><span>dopytov</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="10" max="2000" step="10" value="300" aria-label="Koľko e-mailových dopytov vám príde za mesiac?">
+        
+      </div>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rs-n-n">Koľko obchodníkov máte v obchodnom tíme?</label><span class="rcalc__val"><input id="rs-n-n" data-n type="number" inputmode="numeric" min="1" max="50" value="3"><span>ľudí</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="1" max="50" step="1" value="3" aria-label="Koľko obchodníkov máte v obchodnom tíme?">
+        
+      </div>
+      <div class="rcalc__f">
+        <div class="rcalc__top"><label for="rs-t-n">Koľko minút trvá pripraviť jednu ponuku?</label><span class="rcalc__val"><input id="rs-t-n" data-n type="number" inputmode="numeric" min="2" max="120" value="20"><span>min</span></span></div>
+        <input class="rcalc__range" data-r type="range" min="2" max="120" step="1" value="20" aria-label="Koľko minút trvá pripraviť jednu ponuku?">
+        <p class="rcalc__hint">S Replixom obchodník ponuku iba skontroluje a potvrdí, rátame 2 minúty.</p>
+      </div>
+      <div class="rcalc__res" aria-live="polite">
+        <p class="rcalc__rl">Čas, ktorý tímu vrátite</p>
+        <p class="rcalc__big tnum"><b data-o="h" data-countup>90 h</b> <span>mesačne</span></p>
+        <div class="rcalc__row"><p><b class="tnum" data-o="p" data-countup>30 h</b>na obchodníka</p><p><b class="tnum" data-o="e" data-countup>1 260 €</b>hodnota práce mesačne</p><p><b class="tnum" data-o="w" data-countup>100 h</b>dnes na ponuky</p></div>
+      </div>
+    </div>
+    <div class="rcalc__copy">
+      <h3 class="rcalc__h">Obchodníci majú predávať, <span class="grey">nie písať ponuky</span></h3>
+      <p class="sec__lead">Ušetrené hodiny neznamenajú, že máte prepúšťať. Znamenajú, že vaši obchodníci majú o toľko viac času na skutočný obchod: telefonovať zákazníkom, dotiahnuť rozpracované zákazky a zháňať nových klientov.</p>
+      <p class="rcalc__formula"><span>dopyty za mesiac</span><i>×</i><span>(minúty na ponuku − 2)</span></p>
+      <p class="rcalc__note">Výpočet je orientačný. Hodnotu práce rátame pri 14 € za hodinu vrátane odvodov, čo zodpovedá bežnej mzde obchodníka na Slovensku. V pilote ju nahradíme skutočným časom vášho tímu.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec race2" id="rychlost" aria-labelledby="why-h">
+  <div class="wrap split race-split" data-group>
+    <div>
+      <h2 id="why-h" data-rise>Kto odpovie prvý, <span class="grey">ten predá</span></h2>
+      <p class="sec__lead" data-rise>Zákazník pošle ten istý dopyt viacerým dodávateľom. Objednávku zvyčajne dostane ten, kto odpovie prvý, nie ten najlacnejší.</p>
+      <div class="race2__stat" data-rise><p><b class="tnum">2&nbsp;min</b><span>odpoveď s Replixom</span></p><i>vs.</i><p class="race2__slow"><b class="tnum">2&nbsp;dni</b><span>bežná odpoveď</span></p></div>
+      <p class="race__ill" data-rise>Ilustračný príklad</p>
+    </div>
+    <div class="ibx" data-rise data-ibx role="img" aria-label="Príklad: schránka zákazníka. Dopyt odišiel v pondelok o 10:01 trom dodávateľom. Vaša ponuka s Replixom prišla o 10:02 a zákazník o 13:24 objednal u vás. Dodávateľ B poslal ponuku o 15:23, C až v utorok o 11:30. Vtedy už bolo objednané.">
+      <div class="ibx__bar">
+        <span class="ibx__dots"><i></i><i></i><i></i></span>
+        <span class="ibx__who">Schránka zákazníka · Stavby Novák</span>
+        <span class="ibx__clock tnum"><svg class="ibx__sun" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg><svg class="ibx__moon" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.5 10.2A5.5 5.5 0 0 1 5.8 3.5a5.5 5.5 0 1 0 6.7 6.7z"/></svg><b data-ibxday>pondelok</b><span data-ibxtime>10:01</span></span>
+      </div>
+      <div class="ibx__body">
+        <p class="ibx__sent"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8l12-5-5 12-2-5z"/></svg>Odoslané 3 dodávateľom: <b>Dopyt – materiál na garáž</b></p>
+        <ol class="ibx__list">
+          <li class="ibx__m ibx__m--win" data-at="1"><span class="ibx__av">R</span><div class="ibx__tx"><b>Vy s Replixom</b><span>Cenová ponuka – materiál na garáž · 3 položky, s DPH</span></div><time>po 10:02</time><span class="ibx__stamp" data-at="203">Objednané 13:24</span></li>
+          <li class="ibx__m ibx__m--late" data-at="322"><span class="ibx__av">B</span><div class="ibx__tx"><b>Dodávateľ B</b><span>RE: Dopyt – materiál na garáž</span></div><time>po 15:23</time><span class="ibx__late">neskoro</span></li>
+          <li class="ibx__m ibx__m--late" data-at="1529"><span class="ibx__av">C</span><div class="ibx__tx"><b>Dodávateľ C</b><span>Cenová ponuka</span></div><time>ut 11:30</time><span class="ibx__late">neskoro</span></li>
+        </ol>
+        <div class="ibx__night" aria-hidden="true"></div>
+      </div>
+      <div class="ibx__foot"><p class="ibx__note" data-ibxnote>Zákazník čaká na prvú ponuku…</p><button type="button" class="tl__again" data-ibxagain hidden>Prehrať znova</button></div>
     </div>
   </div>
 </section>
@@ -324,14 +361,54 @@ Martin</textarea>
       <p class="pplan__main"><b class="tnum"><i data-count="0">0</i> €</b> <span>prvý mesiac</span></p>
       <p class="pplan__setup">Nastavenie aj prevádzka v cene, 1 až 2 obchodníci</p>
       <p class="pplan__il">V pilote dostanete</p>
-      <ul class="pplan__inc"><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Napojenie na firemnú schránku na dopyty</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Párovanie dopytov s vaším cenníkom, aj z Excelu</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Hotové ponuky na schválenie jedným klikom</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Report: rýchlosť odpovede pred pilotom a po ňom</span></li></ul>
+      <ul class="pplan__inc"><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Bez prístupu do schránky: dopyty chodia Replixu cez automatické preposielanie</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Cenník z denného exportu z vášho ERP, aj z Excelu</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Hotové ponuky na schválenie jedným klikom</span></li><li><svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="10"/><path d="M6.5 11.3l3 3 6-6.4"/></svg><span>Report: rýchlosť odpovede pred pilotom a po ňom</span></li></ul>
       <a class="btn pplan__btn" href="#rezervacia">Chcem mesiac zadarmo</a>
       <p class="pplan__note">Začíname 30-minútovým stretnutím online.</p>
     </div>
     <div class="pplan__deps" data-group>
       <p class="pplan__dl" data-rise>Ako pilot prebieha</p>
-      <ol class="pplan__dep" data-group><li data-rise><span class="pplan__n tnum">1</span><div><b>Stretnutie</b><span>Ukážete nám, ako dnes vybavujete dopyty a kde máte cenník.</span></div></li><li data-rise><span class="pplan__n tnum">2</span><div><b>Test na vašich starších dopytoch</b><span>Pošlete cenník a vzorku dopytov bez osobných údajov. Výsledok uvidíte skôr, ako čokoľvek zapneme.</span></div></li><li data-rise><span class="pplan__n tnum">3</span><div><b>Mesiac naostro, zadarmo</b><span>Jeden alebo dvaja obchodníci schvaľujú ponuky jedným klikom, my meriame.</span></div></li><li data-rise><span class="pplan__n tnum">4</span><div><b>Vyhodnotenie</b><span>Pozrieme sa na čísla. Ak to dáva zmysel, pokračujeme za cenu dohodnutú vopred a rozšírime Replix na ďalších obchodníkov.</span></div></li></ol>
+      <ol class="pplan__dep" data-group><li data-rise><span class="pplan__n tnum">1</span><div><b>Stretnutie</b><span>Ukážete nám, ako dnes vybavujete dopyty a kde máte cenník.</span></div></li><li data-rise><span class="pplan__n tnum">2</span><div><b>Nastavenie a test</b><span>Nastavíme denný export cenníka z vášho ERP do SharePointu a automatické preposielanie dopytov. Replix vyskúšame na vašich starších dopytoch. Výsledok uvidíte skôr, ako čokoľvek zapneme.</span></div></li><li data-rise><span class="pplan__n tnum">3</span><div><b>Mesiac naostro, zadarmo</b><span>Dopyty chodia Replixu samy. Jeden alebo dvaja obchodníci hotovú ponuku iba skontrolujú a schvália jedným klikom. My meriame.</span></div></li><li data-rise><span class="pplan__n tnum">4</span><div><b>Vyhodnotenie</b><span>Pozrieme sa na čísla. Ak pokračujete, za cenu dohodnutú vopred napojíme Replix priamo na váš Microsoft 365 alebo iný systém a rozšírime ho na ďalších obchodníkov.</span></div></li></ol>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="bezpecnost" aria-labelledby="facts-h">
+  <div class="wrap">
+    <div class="sec__head" data-group>
+      <h2 id="facts-h" data-rise>Bezpečné nasadenie <span class="grey">v troch krokoch</span></h2>
+      <p class="sec__lead" data-rise>Replix začína bez prístupu do vašich systémov. Viac právomocí dostane, až keď sa osvedčí na vašich vlastných dopytoch, a vždy len s vaším súhlasom.</p>
+    </div>
+    <ol class="phases" data-group aria-label="Ako Replix postupne nasadzujeme">
+      <li class="phase" data-rise>
+        <p class="phase__k">Fáza 1 · mesiac zadarmo</p>
+        <h3>Bez prístupu do vašich systémov</h3>
+        <p>Cenník si Replix berie z denného exportu z vášho ERP do priečinka v SharePointe. Na schránke na dopyty nastavíme automatické preposielanie, takže obchodníci nerobia nič navyše. Žiadne heslá, žiadne napojenie na schránku ani na ERP.</p>
+      </li>
+      <li class="phase" data-rise>
+        <p class="phase__k">Fáza 2 · po pilote</p>
+        <h3>Priame napojenie</h3>
+        <p>Ak sa rozhodnete pokračovať, napojíme Replix priamo na to, čo používate: Microsoft 365, Gmail alebo váš systém. Exporty aj preposielanie nahradí priame spojenie, ktoré kedykoľvek zrušíte.</p>
+      </li>
+      <li class="phase phase--last" data-rise>
+        <p class="phase__k">Fáza 3 · keď to čísla dovolia</p>
+        <h3>Plne automatický režim</h3>
+        <p>Ponuky bez schválenia obchodníkom zapneme až vtedy, keď viac ako <b class="phase__n tnum">97 %</b> ponúk Replixu prejde bez jedinej úpravy. A len na vašu žiadosť.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec on-ink techsec" id="technicke-zabezpecenie" aria-labelledby="tech-h">
+  <div class="wrap">
+    <div class="sec__head" data-group>
+      <h2 id="tech-h" data-rise>Technické <span class="grey">zabezpečenie</span></h2>
+      <p class="sec__lead" data-rise>Tri veci, na ktoré sa pýta každé IT oddelenie, ešte pred prvým stretnutím.</p>
+    </div>
+    <ul class="techs" data-techs data-group>
+      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:0"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><rect pathLength="1" x="13" y="13" width="22" height="22" rx="4"/><path pathLength="1" d="M19 13V7M24 13V7M29 13V7M19 41v-6M24 41v-6M29 41v-6M13 19H7M13 24H7M13 29H7M41 19h-6M41 24h-6M41 29h-6"/><path pathLength="1" d="M19.5 24h9M24 19.5v9"/></svg></span><h3>AI od Anthropicu, bez trénovania na vašich dátach</h3><p>Dopyty číta model Claude od spoločnosti Anthropic cez firemné rozhranie. Podľa jeho obchodných podmienok sa vaše dáta nepoužívajú na trénovanie AI.</p><span class="tech__tag">Claude · Anthropic</span></li>
+      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:1"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M6 14a4 4 0 0 1 4-4h9l4 5h15a4 4 0 0 1 4 4v15a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z"/><path pathLength="1" d="M18 26.5a6 6 0 0 1 10.6-3.8M30 26.5a6 6 0 0 1-10.6 3.8"/><path pathLength="1" d="M29.5 19.5v3.6h-3.6M18.5 33.5v-3.6h3.6"/></svg></span><h3>Cenník cez denný export do SharePointu</h3><p>Váš ERP raz denne vyexportuje cenník do priečinka v SharePointe vo vašom Microsoft 365. Replix si odtiaľ berie iba posledný export, do samotného ERP nevstupuje. Priečinok aj prístup k nemu máte pod kontrolou.</p><span class="tech__tag">Bez prístupu do ERP</span></li>
+      <li class="tech" data-rise data-tilt="4" data-spotlight style="--i:2"><span class="tech__tile"><svg class="tech__ic" viewBox="0 0 48 48" aria-hidden="true"><rect pathLength="1" x="6" y="11" width="30" height="22" rx="4"/><path pathLength="1" d="M7.5 13.5L21 23.5l13.5-10"/><path pathLength="1" d="M30 37h12M37 32l5 5-5 5"/></svg></span><h3>E-maily: najprv kópia, potom koncepty</h3><p>Prvý mesiac nám vaša schránka na dopyty automaticky preposiela kópie. Replix pošle obchodníkovi e-mail s hotovou ponukou a ten ju odošle zákazníkovi. Po prvom mesiaci sa napojíme priamo na vašu poštu: ponuky čakajú ako koncepty a časom, keď to čísla dovolia, môžu odchádzať samy.</p><span class="tech__tag">Preposielanie → koncepty</span></li>
+    </ul>
   </div>
 </section>
 
@@ -339,18 +416,16 @@ Martin</textarea>
   <div class="wrap faq__grid">
     <div class="sec__head" data-group><h2 id="faq-h" data-rise>Časté otázky <span class="grey">o Replixe</span></h2></div>
     <div class="faq__list" data-group>
-      <details class="faq__item" data-rise><summary><h3>Čo presne Replix robí?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Keď do vašej schránky príde dopyt, Replix ho prečíta, rozpozná produkty a množstvá a spáruje ich s vaším cenníkom. Ceny, množstevné zľavy a DPH vypočíta systém podľa vašich pravidiel. Obchodník dostane hotovú ponuku aj s pôvodným dopytom a jedným klikom ju odošle zákazníkovi z vašej schránky.</p></details>
-      <details class="faq__item" data-rise><summary><h3>Môže AI poslať zákazníkovi nesprávnu cenu?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Ceny nepočíta jazykový model, ale váš cenník. AI len rozpozná, čo zákazník chce. Keď položku nenájde, označí ju obchodníkovi namiesto toho, aby hádala. A každú ponuku pred odoslaním schvaľuje obchodník.</p></details>
-      <details class="faq__item" data-rise><summary><h3>Odíde niekedy ponuka bez kontroly človeka?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Nie, pokiaľ si to sami nenastavíte. Automatické odosielanie zapíname až na vašu písomnú žiadosť, len pre položky s pevnou cenou a až keď obchodníci dlhšie posielajú ponuky bez úprav.</p></details>
-      <details class="faq__item" data-rise><summary><h3>Aký cenník potrebujeme? Funguje to s Pohodou, Money alebo SAP?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Na začiatok stačí cenník, ktorý už máte, aj v Exceli, alebo jeho pravidelný export z vášho systému. Priame napojenie na ERP riešime po pilote, keď je jasné, že sa vám to oplatí.</p></details>
-      <details class="faq__item" data-rise><summary><h3>Musíme meniť e-mail alebo spôsob práce?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Nie. Replix pracuje s vašou existujúcou schránkou na dopyty, napríklad obchod@ alebo ponuky@. Zákazníci píšu tam, kam doteraz, a ponuky odchádzajú pod vaším menom.</p></details>
+      <details class="faq__item" data-rise><summary><h3>Čo presne Replix robí?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Replix prečíta e-mailový dopyt, rozpozná produkty a množstvá a spáruje ich s vaším cenníkom. Ceny, množstevné zľavy a DPH vypočíta program podľa vašich pravidiel. Obchodník dostane hotovú ponuku aj s pôvodným dopytom, skontroluje ju a odošle zákazníkovi pod vaším menom.</p></details>
+      <details class="faq__item" data-rise><summary><h3>Odíde niekedy ponuka bez kontroly človeka?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Nie. Obchodník má vždy posledné slovo: každá ponuka ide najprv jemu, aj s pôvodným dopytom, a on ju jedným klikom schváli alebo upraví. Bez neho nič neodíde. Plne automatický režim zapneme až vtedy, keď viac ako 97 % ponúk Replixu prejde bez jedinej úpravy, a len na vašu písomnú žiadosť.</p></details>
       <details class="faq__item" data-rise><summary><h3>Ako dlho trvá spustenie?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Po stretnutí zvyčajne niekoľko dní. Najprv Replix otestujeme na vašich starších dopytoch a až potom ho zapneme pre jedného alebo dvoch obchodníkov.</p></details>
       <details class="faq__item" data-rise><summary><h3>Koľko Replix stojí?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>Prvý mesiac je pre každú firmu zadarmo, vrátane nastavenia. Cena za ďalšie mesiace závisí od počtu dopytov, počtu obchodníkov a od toho, či treba napojenie na váš systém. Povieme vám ju vopred a dohodneme písomne. Bez viazanosti, nič sa automaticky nepredlžuje.</p></details>
-      <details class="faq__item" data-rise><summary><h3>Je to v súlade s GDPR a AI Actom?</h3><span class="faq__ic" aria-hidden="true"></span></summary><p>S každou firmou podpisujeme zmluvu o spracúvaní osobných údajov. Schránku pripájate cez bezpečné prihlásenie, heslá nepotrebujeme, a dáta sa nepoužívajú na trénovanie AI. Do ponúk vieme pridať krátku poznámku, že pri príprave pomáhala AI, ako to odporúča európsky AI Act.</p></details>
     </div>
   </div>
 </section>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Čo presne Replix robí?", "acceptedAnswer": {"@type": "Answer", "text": "Keď do vašej schránky príde dopyt, Replix ho prečíta, rozpozná produkty a množstvá a spáruje ich s vaším cenníkom. Ceny, množstevné zľavy a DPH vypočíta systém podľa vašich pravidiel. Obchodník dostane hotovú ponuku aj s pôvodným dopytom a jedným klikom ju odošle zákazníkovi z vašej schránky."}}, {"@type": "Question", "name": "Môže AI poslať zákazníkovi nesprávnu cenu?", "acceptedAnswer": {"@type": "Answer", "text": "Ceny nepočíta jazykový model, ale váš cenník. AI len rozpozná, čo zákazník chce. Keď položku nenájde, označí ju obchodníkovi namiesto toho, aby hádala. A každú ponuku pred odoslaním schvaľuje obchodník."}}, {"@type": "Question", "name": "Odíde niekedy ponuka bez kontroly človeka?", "acceptedAnswer": {"@type": "Answer", "text": "Nie, pokiaľ si to sami nenastavíte. Automatické odosielanie zapíname až na vašu písomnú žiadosť, len pre položky s pevnou cenou a až keď obchodníci dlhšie posielajú ponuky bez úprav."}}, {"@type": "Question", "name": "Aký cenník potrebujeme? Funguje to s Pohodou, Money alebo SAP?", "acceptedAnswer": {"@type": "Answer", "text": "Na začiatok stačí cenník, ktorý už máte, aj v Exceli, alebo jeho pravidelný export z vášho systému. Priame napojenie na ERP riešime po pilote, keď je jasné, že sa vám to oplatí."}}, {"@type": "Question", "name": "Musíme meniť e-mail alebo spôsob práce?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Replix pracuje s vašou existujúcou schránkou na dopyty, napríklad obchod@ alebo ponuky@. Zákazníci píšu tam, kam doteraz, a ponuky odchádzajú pod vaším menom."}}, {"@type": "Question", "name": "Ako dlho trvá spustenie?", "acceptedAnswer": {"@type": "Answer", "text": "Po stretnutí zvyčajne niekoľko dní. Najprv Replix otestujeme na vašich starších dopytoch a až potom ho zapneme pre jedného alebo dvoch obchodníkov."}}, {"@type": "Question", "name": "Koľko Replix stojí?", "acceptedAnswer": {"@type": "Answer", "text": "Prvý mesiac je pre každú firmu zadarmo, vrátane nastavenia. Cena za ďalšie mesiace závisí od počtu dopytov, počtu obchodníkov a od toho, či treba napojenie na váš systém. Povieme vám ju vopred a dohodneme písomne. Bez viazanosti, nič sa automaticky nepredlžuje."}}, {"@type": "Question", "name": "Je to v súlade s GDPR a AI Actom?", "acceptedAnswer": {"@type": "Answer", "text": "S každou firmou podpisujeme zmluvu o spracúvaní osobných údajov. Schránku pripájate cez bezpečné prihlásenie, heslá nepotrebujeme, a dáta sa nepoužívajú na trénovanie AI. Do ponúk vieme pridať krátku poznámku, že pri príprave pomáhala AI, ako to odporúča európsky AI Act."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Čo presne Replix robí?", "acceptedAnswer": {"@type": "Answer", "text": "Replix prečíta e-mailový dopyt, rozpozná produkty a množstvá a spáruje ich s vaším cenníkom. Ceny, množstevné zľavy a DPH vypočíta program podľa vašich pravidiel. Obchodník dostane hotovú ponuku aj s pôvodným dopytom, skontroluje ju a odošle zákazníkovi pod vaším menom."}}, {"@type": "Question", "name": "Odíde niekedy ponuka bez kontroly človeka?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Obchodník má vždy posledné slovo: každá ponuka ide najprv jemu, aj s pôvodným dopytom, a on ju jedným klikom schváli alebo upraví. Bez neho nič neodíde. Plne automatický režim zapneme až vtedy, keď viac ako 97 % ponúk Replixu prejde bez jedinej úpravy, a len na vašu písomnú žiadosť."}}, {"@type": "Question", "name": "Ako dlho trvá spustenie?", "acceptedAnswer": {"@type": "Answer", "text": "Po stretnutí zvyčajne niekoľko dní. Najprv Replix otestujeme na vašich starších dopytoch a až potom ho zapneme pre jedného alebo dvoch obchodníkov."}}, {"@type": "Question", "name": "Koľko Replix stojí?", "acceptedAnswer": {"@type": "Answer", "text": "Prvý mesiac je pre každú firmu zadarmo, vrátane nastavenia. Cena za ďalšie mesiace závisí od počtu dopytov, počtu obchodníkov a od toho, či treba napojenie na váš systém. Povieme vám ju vopred a dohodneme písomne. Bez viazanosti, nič sa automaticky nepredlžuje."}}]}</script>
+
+
 
 <section class="sec on-ink" id="rezervacia" aria-labelledby="rez-h">
   <div class="wrap book" data-booking data-done>
@@ -486,15 +561,15 @@ Martin</textarea>
   </div>
 </footer>
 <script>document.querySelectorAll('[data-year]').forEach(function(e){e.textContent=new Date().getFullYear()})</script>
-<script src="assets/js/site.js?v=202611111750" defer></script>
-<script src="assets/vendor/gsap.min.js?v=202611111750" defer></script>
-<script src="assets/vendor/ScrollTrigger.min.js?v=202611111750" defer></script>
-<script src="assets/vendor/lenis.min.js?v=202611111750" defer></script>
-<script src="assets/vendor/DrawSVGPlugin.min.js?v=202611111750" defer></script>
-<script src="assets/js/fx.js?v=202611111750" defer></script>
-<script src="assets/js/bits.js?v=202611111750" defer></script>
-<script src="assets/js/stories.js?v=202611111750" defer></script>
-<script src="assets/js/demo.js?v=202611111750" defer></script>
-<script src="assets/js/kalkulacka.js?v=202611111750" defer></script>
+<script src="assets/js/site.js?v=202610311932" defer></script>
+<script src="assets/vendor/gsap.min.js?v=202610311932" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js?v=202610311932" defer></script>
+<script src="assets/vendor/lenis.min.js?v=202610311932" defer></script>
+<script src="assets/vendor/DrawSVGPlugin.min.js?v=202610311932" defer></script>
+<script src="assets/js/fx.js?v=202611082330" defer></script>
+<script src="assets/js/bits.js?v=202611111800" defer></script>
+<script src="assets/js/stories.js?v=202610311932" defer></script>
+<script src="assets/js/demo.js?v=202611082330" defer></script>
+<script src="assets/js/kalkulacka.js?v=202611032115" defer></script>
 </body>
 </html>

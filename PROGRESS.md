@@ -1,5 +1,7 @@
 # AIVALM redesign – stav práce (vetva `claude-redesign`)
 
+
+> POZOR (11. 11. 2026): koreňové HTML sú novšie ako `src/`. `tools/build.py` NESPÚŠŤAŤ – prepísal by web starou verziou. Upravovať priamo koreňové HTML.
 Zdroj pravdy pre dizajn: `DESIGN.md`. Stránky sa skladajú cez `python3 tools/build.py` zo `src/pages` + `src/partials` (menu, pätička, rezervácia). Needitovať HTML v koreni ručne.
 
 ## Hotové
