@@ -18,9 +18,9 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/montserrat-latin-ext-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=202611090220">
+<link rel="stylesheet" href="assets/css/site.css?v=202611111747">
 <script>document.documentElement.classList.add('js')</script>
-<script src="assets/js/stats.js?v=202611081116" defer></script>
+<script src="assets/js/stats.js?v=202611111747" defer></script>
 </head>
 <body>
 <div class="curtain" aria-hidden="true"><img src="assets/img/fleur.svg" alt=""></div>
@@ -30,8 +30,10 @@
     <a class="brand" href="index.html#obsah" aria-label="AIVALM, Replix, na začiatok stránky"><img src="assets/img/fleur.svg" alt="" width="28" height="29">AIVALM</a>
     <a class="nav__link" href="spolupraca.html" data-nav="spolupraca" aria-current="page">Spolupráca</a>
     <a class="btn nav__cta" href="#formular"><span class="nav__cta-l">Stať sa partnerom</span><span class="nav__cta-s">Partnerstvo</span></a>
+    <button class="nav__menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="smenu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<div class="smenu" id="smenu" hidden><div class="smenu__in"><p class="smenu__t">Replix</p><ol class="smenu__l"><li><a href="index.html#ukazka">Živá ukážka</a></li><li><a href="index.html#ako-to-funguje">Ako to funguje</a></li><li><a href="index.html#pre-koho">Pre koho je Replix</a></li><li><a href="index.html#kalkulacka">Pridaná hodnota</a></li><li><a href="index.html#rychlost">Rýchlosť odpovede</a></li><li><a href="index.html#pilot">Prvý mesiac zadarmo</a></li><li><a href="index.html#bezpecnost">Nasadenie</a></li><li><a href="index.html#technicke-zabezpecenie">Zabezpečenie</a></li><li><a href="index.html#otazky">Otázky</a></li><li><a href="index.html#rezervacia">Stretnutie</a></li></ol></div></div>
 <main id="obsah">
 <section class="hero phero2" aria-labelledby="ph-h">
   <div class="wrap phero2__grid">
@@ -169,7 +171,7 @@
         <ol class="psx__steps">
           <li class="psx__step is-on" data-s="0"><span class="psteps__n tnum">1</span><div><b>Pošlete nám kontakt</b><span>Cez formulár nižšie napíšete, akú firmu poznáte. Odo dňa, keď nám ju pošlete, ju vedieme ako vášho klienta.</span></div></li>
           <li class="psx__step" data-s="1"><span class="psteps__n tnum">2</span><div><b>Dáte vedieť, že sa ozveme</b><span>Stačí jedna veta majiteľovi alebo riaditeľovi, že mu zavoláme. Pri spoločnom predaji idete s nami aj na stretnutie.</span></div></li>
-          <li class="psx__step" data-s="2"><span class="psteps__n tnum">3</span><div><b>Firma skúša mesiac zadarmo</b><span>Prvé 3 firmy majú prvý mesiac zadarmo, takže odporúčate bez rizika. Nastavenie aj ukážku robíme my.</span></div></li>
+          <li class="psx__step" data-s="2"><span class="psteps__n tnum">3</span><div><b>Firma skúša mesiac zadarmo</b><span>Každá firma má prvý mesiac zadarmo, takže odporúčate bez rizika. Nastavenie aj ukážku robíme my.</span></div></li>
           <li class="psx__step" data-s="3"><span class="psteps__n tnum">4</span><div><b>Vy dostávate 10 alebo 30 %</b><span>Z každej mesačnej platby klienta, kým zostane klientom. Podmienky máte vopred na papieri.</span></div></li>
         </ol>
         <div class="psx__stage" aria-hidden="true">
@@ -257,6 +259,8 @@
       <div class="fact" data-rise><h3>Ľahko sa odporúča</h3><p data-reveal>Firma si Replix vyskúša na vlastných dopytoch a prvý mesiac nič neplatí. Vy odporúčate bez rizika a bez trápnych rozhovorov o cene.</p></div>
       <div class="fact" data-rise><h3>Žiadna technická práca</h3><p data-reveal>Nemusíte rozumieť AI ani cenníkom. Nastavenie, ladenie aj podporu robíme my, klient volá nám, nie vám.</p></div>
       <div class="fact" data-rise><h3>Všetko na papieri</h3><p data-reveal>Percento, splatnosť a podmienky spolupráce máte vopred v jednoduchej písomnej zmluve. Žiadne prekvapenia.</p></div>
+      <div class="fact" data-rise><h3>Vaše kontakty sú vaše</h3><p data-reveal>Firmu, ktorú nám pošlete, vedieme ako vašu. Bez vášho súhlasu ju neoslovíme inou cestou.</p></div>
+      <div class="fact" data-rise><h3>Vyzeráte dobre u klienta</h3><p data-reveal>Prinesiete im niečo, čo im ušetrí hodiny práce a pomôže predať viac. Takéto odporúčanie si ľudia pamätajú.</p></div>
     </div>
   </div>
 </section>
@@ -465,12 +469,12 @@
   </div>
 </footer>
 <script>document.querySelectorAll('[data-year]').forEach(function(e){e.textContent=new Date().getFullYear()})</script>
-<script src="assets/js/site.js?v=202611081116" defer></script>
-<script src="assets/vendor/gsap.min.js?v=202611081116" defer></script>
-<script src="assets/vendor/ScrollTrigger.min.js?v=202611081116" defer></script>
-<script src="assets/vendor/lenis.min.js?v=202611081116" defer></script>
-<script src="assets/js/fx.js?v=202611082330" defer></script>
-<script src="assets/js/bits.js?v=202611090215" defer></script>
-<script src="assets/js/partner.js?v=202611081116" defer></script>
+<script src="assets/js/site.js?v=202611111747" defer></script>
+<script src="assets/vendor/gsap.min.js?v=202611111747" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js?v=202611111747" defer></script>
+<script src="assets/vendor/lenis.min.js?v=202611111747" defer></script>
+<script src="assets/js/fx.js?v=202611111747" defer></script>
+<script src="assets/js/bits.js?v=202611111747" defer></script>
+<script src="assets/js/partner.js?v=202611111747" defer></script>
 </body>
 </html>

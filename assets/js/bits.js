@@ -160,7 +160,7 @@
     layout();
     if ('ResizeObserver' in window) new ResizeObserver(function () { layout(); }).observe(host);
     else window.addEventListener('resize', layout);
-    if (reduce || !fine) return;                  /* static dots on touch / reduced motion */
+    return;                                       /* dots are static everywhere (Nov 2026: no cursor effect) */
 
     if (hasIO) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(host);
     host.addEventListener('pointermove', function (e) {
@@ -584,4 +584,13 @@
   /* stories.js (loaded after this file) pins sections above; build the scroll triggers once it has */
   if (document.readyState === 'complete') scrollReveal();
   else window.addEventListener('load', function () { scrollReveal(); if (window.ScrollTrigger) ScrollTrigger.refresh(); });
+})();
+
+/* Section menu (grey circle, 3 black lines) */
+(function () {
+  var btn = document.querySelector('.nav__menu'), m = document.getElementById('smenu'); if (!btn || !m) return;
+  function set(o) { m.hidden = !o; btn.setAttribute('aria-expanded', o); document.documentElement.classList.toggle('smenu-open', o); }
+  btn.addEventListener('click', function () { set(m.hidden); });
+  m.addEventListener('click', function (e) { if (e.target === m || e.target.closest('a')) set(false); }, true);
+  addEventListener('keydown', function (e) { if (e.key === 'Escape' && !m.hidden) set(false); });
 })();
