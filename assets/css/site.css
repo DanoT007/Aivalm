@@ -1184,3 +1184,11 @@ html:not(.js) .ppick__panel+.ppick__panel{margin-top:40px}
 .smenu__l a:hover,.smenu__l a:focus-visible{background:#F4F4F4}
 html.smenu-open,html.smenu-open body{overflow:hidden}
 @media (max-width:640px){.smenu{padding-top:76px}.nav__menu{width:40px;height:40px}}
+/* video hero (13. 11. 2026) */
+.vhero{position:relative;height:calc(100svh - 76px);min-height:420px;max-height:960px;overflow:hidden;background:#111;color:#fff}
+.vhero__v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vhero__fade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 35%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.88) 100%)}
+.vhero__txt{position:absolute;left:0;right:0;bottom:clamp(28px,7vh,72px)}
+.vhero__h{margin:0;font-weight:800;font-size:clamp(28px,4.6vw,64px);line-height:1.05;letter-spacing:-.02em;max-width:16ch;color:#fff}
+.vhero__s{margin:.6em 0 0;font-weight:500;font-size:clamp(17px,1.8vw,24px);color:rgba(255,255,255,.82)}
+@media (max-width:640px){.vhero{height:calc(100svh - 64px)}}
