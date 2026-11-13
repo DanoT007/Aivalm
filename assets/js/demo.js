@@ -93,6 +93,15 @@
     if (b) { b.classList.remove('is-flash'); void b.offsetWidth; b.classList.add('is-flash'); }
     setTimeout(function () { root.classList.remove('is-cue'); if (b) b.classList.remove('is-flash'); }, 3500);
   };
+  /* Industry carousel cards: same as the chips. */
+  document.querySelectorAll('.indcar [data-ind-go]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var k = a.dataset.indGo, demo = document.getElementById('ukazka');
+      if (!demo) return; e.preventDefault();
+      if (A.glideTo) A.glideTo(demo, '#ukazka', function () { A.cueDemo(k); });
+      else { demo.scrollIntoView(); A.cueDemo(k); }
+    });
+  });
 
   /* ---------- panels ---------- */
   function show(state) {
