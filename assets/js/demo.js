@@ -15,7 +15,10 @@
     stavebniny: ['Dopyt – materiál na garáž', 'Dobrý deň,\n\nstaviame garáž a prosím o cenovú ponuku na:\n– 220 ks pórobetónových tvárnic 30 cm\n– 12 vriec lepidla na pórobetón\n– 3 palety suchej betónovej zmesi\n\nDoprava do Senca. Ďakujem,\nMartin'],
     spojovaci: ['Cenová ponuka – spojovací materiál', 'Dobrý deň,\n\nprosím o nacenenie:\n– 2 000 ks skrutiek do dreva 5×60 TX\n– 500 ks hmoždiniek 8 mm\n– 40 ks závitových tyčí M10, 1 m\n– 10 bal. podložiek M10\n\nOdber budúci týždeň. Vďaka,\nPeter'],
     elektro: ['Dopyt – elektroinštalácia rodinný dom', 'Dobrý deň,\n\nposielam zoznam na elektroinštaláciu:\n– 300 m kábla CYKY-J 3×2,5\n– 150 m kábla CYKY-J 3×1,5\n– 40 ks zásuviek 230 V, biela\n– 12 ks ističov B16 jednopólových\n\nĎakujem za ponuku,\nTomáš'],
-    papier: ['Dopyt – papier a hygiena pre novú pobočku', 'Dobrý deň,\n\notvárame novú pobočku a prosím o cenovú ponuku na:\n– 120 rís kancelárskeho papiera A4 80 g\n– 30 balení toaletného papiera 3-vrstvového\n– 15 kartónov papierových uterákov ZZ\n\nĎakujem,\nLucia']
+    papier: ['Dopyt – papier a hygiena pre novú pobočku', 'Dobrý deň,\n\notvárame novú pobočku a prosím o cenovú ponuku na:\n– 120 rís kancelárskeho papiera A4 80 g\n– 30 balení toaletného papiera 3-vrstvového\n– 15 kartónov papierových uterákov ZZ\n\nĎakujem,\nLucia'],
+    kurenie: ['Dopyt – kúrenie a sanita do bytovky', 'Dobrý deň,\n\nprosím o cenovú ponuku na:\n– 24 ks radiátorov 22/600×1000 s bočným pripojením\n– 400 m PEX-AL-PEX rúrky 16×2\n– 24 ks termostatických hlavíc\n– 12 ks WC kombi s doskou\n\nDodanie do Trnavy. Ďakujem,\nJozef'],
+    hutny: ['Cenová ponuka – hutný materiál', 'Dobrý deň,\n\nprosím o nacenenie:\n– 3 t betonárskej ocele B500B priemer 12, 6 m\n– 40 ks jäklu 60×40×3, 6 m\n– 20 ks L profilu 50×50×5, 6 m\n– 8 ks plechu 2000×1000×3 mm\n\nOdber v sklade. Vďaka,\nRichard'],
+    obaly: ['Dopyt – obalový materiál pre e-shop', 'Dobrý deň,\n\nprosím o cenovú ponuku na:\n– 2 000 ks kartónových krabíc 300×200×150 3VVL\n– 50 roliek bublinkovej fólie 100 cm × 100 m\n– 120 roliek lepiacej pásky 48 mm × 66 m\n– 30 roliek stretch fólie 23 µm\n\nĎakujem,\nZuzana']
   };
 
   var ta = form.querySelector('textarea[name=text]'), subj = form.querySelector('input[name=predmet]');
@@ -92,6 +95,13 @@
     root.classList.remove('is-cue'); void root.offsetWidth; root.classList.add('is-cue');
     if (b) { b.classList.remove('is-flash'); void b.offsetWidth; b.classList.add('is-flash'); }
     setTimeout(function () { root.classList.remove('is-cue'); if (b) b.classList.remove('is-flash'); }, 3500);
+    /* 5 s after the cue ends: flash "Odoslať dopyt" green once, so visitors know what to press. */
+    clearTimeout(A._nudge);
+    A._nudge = setTimeout(function () {
+      var s = form.querySelector('[type=submit]'); if (!s || root.dataset.state !== 'compose') return;
+      s.classList.remove('is-nudge'); void s.offsetWidth; s.classList.add('is-nudge');
+      setTimeout(function () { s.classList.remove('is-nudge'); }, 2600);
+    }, 8500);
   };
   /* Industry carousel cards: same as the chips. */
   document.querySelectorAll('.indcar [data-ind-go]').forEach(function (a) {

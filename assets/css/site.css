@@ -1226,3 +1226,11 @@ a.indc em{align-self:center}
 .indcar:hover .indc:not(:hover){opacity:.55;transition:opacity .35s,transform .35s}
 @media (hover:none){.indc em{opacity:1}}
 @media (max-width:640px){.indcar{margin:0 0 44px calc(50% - 50vw);padding:24px 0 28px}.indc{width:200px}}
+/* karusel: tlačidlo ukážky + zelený nudge na Odoslať */
+.indc{display:flex;flex-direction:column}
+.indc__go{align-self:center;margin-top:6px;padding:7px 14px;border-radius:99px;background:#fff;color:#111;font-size:12px;font-weight:700;text-decoration:none;opacity:0;transition:opacity .3s,transform .25s,background .25s,color .25s}
+.indc:hover .indc__go,.indc__go:focus-visible{opacity:1}
+.indc__go:hover{transform:scale(1.08);background:#22C55E;color:#fff}
+@media (hover:none){.indc__go{opacity:1}}
+.demo [type=submit].is-nudge{animation:sendnudge 1.3s ease-in-out 2}
+@keyframes sendnudge{50%{background:#22C55E;border-color:#22C55E;color:#fff;box-shadow:0 0 0 6px rgba(34,197,94,.25)}}
