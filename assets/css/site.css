@@ -1234,3 +1234,4 @@ a.indc em{align-self:center}
 @media (hover:none){.indc__go{opacity:1}}
 .demo [type=submit].is-nudge{animation:sendnudge 1.3s ease-in-out 2}
 @keyframes sendnudge{50%{background:#22C55E;border-color:#22C55E;color:#fff;box-shadow:0 0 0 6px rgba(34,197,94,.25)}}
+@media (hover:none){.indcar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.indcar::-webkit-scrollbar{display:none}.indcar__t{animation:none!important}.indcar::before,.indcar::after{position:sticky;display:none}}
